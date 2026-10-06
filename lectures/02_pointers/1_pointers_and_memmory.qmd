@@ -1,0 +1,698 @@
+---
+title: 1. Pointers and memory management
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - diagram
+diagram:
+  engine:
+    tikz:
+      execpath: pdflatex
+      header-includes: |
+        \usepackage{tikz}
+      additional-packages: |
+        \usetikzlibrary{matrix, shapes.symbols, positioning}
+---
+
+# Pointers and memory management
+
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this course
+- Understand memory management
+- start to use pointers
+:::
+
+## You probably have all (implicitly) used pointers
+
+and were maybe confused by the result...
+
+::: {.column width="100%" .custom-box}
+### Can you explain the behaviour in Python?
+```{python}
+a = 1
+b = a
+a = 5
+print(f"{a = }, {b = }")
+```
+
+```{python}
+a = [1,2,3]
+b = a
+a[1] = 5
+print(f"{a = }, {b = }")
+```
+:::
+
+## Addresses
+
+- Every variable has a certain place in memory, called its address.
+- Access address via `&` operator
+  ```{.cpp}
+  double d = 0.1;
+  std::cout << "Address of d is " << &d << std::endl;
+  ```
+
+```{dot}
+//| label: memory1
+//| fig-width: 4
+//| fig-height: 2
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1"></TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">d = 0.1</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078ec0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd3"></TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+
+
+## :writing_hand: In class exercise
+
+What does the code do? Which output do you expect?
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers0.cpp`](./code/main_pointers0.cpp)
+```{.cpp include="./code/main_pointers0.cpp"}
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+
+```{dot}
+//| label: memory2
+//| fig-width: 4
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">b</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+::::
+:::
+
+## :writing_hand: In class exercise - Solution 1/2
+
+What does the code do? Which output do you expect?
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers0.cpp`](./code/main_pointers0.cpp)
+```{.cpp include="./code/main_pointers0.cpp"}
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+
+```{dot}
+//| label: memory3
+//| fig-width: 4
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a = 0.1</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">b</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+::::
+:::
+
+## :writing_hand: In class exercise - Solution 1/2
+
+What does the code do? Which output do you expect?
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers0.cpp`](./code/main_pointers0.cpp)
+```{.cpp include="./code/main_pointers0.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers0.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+
+```{dot}
+//| label: memory4
+//| fig-width: 4
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a = 0.1</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">b = 0.1</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+::::
+:::
+- Changing the value does not change address!
+- Is there a datatype for addresses?
+
+## Pointers 1/4
+
+Datatype to store an address is a pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers1.cpp`](./code/main_pointers1.cpp)
+```{.cpp include="./code/main_pointers1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers1.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  //mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+}
+```
+::::
+:::::
+
+## Pointers 2/4
+
+Datatype to store an address is a pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers1.cpp`](./code/main_pointers1.cpp)
+```{.cpp include="./code/main_pointers1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers1.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4.25
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p = &amp;a&nbsp;</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+}
+```
+::::
+:::::
+
+## Pointers 3/4
+
+Datatype to store an address is a pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers1.cpp`](./code/main_pointers1.cpp)
+```{.cpp include="./code/main_pointers1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers1.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4.25
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a = 0.1 </TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p = &amp;a&nbsp;</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+}
+```
+::::
+:::::
+
+## Pointers 4/4
+
+Datatype to store an address is a pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers1.cpp`](./code/main_pointers1.cpp)
+```{.cpp include="./code/main_pointers1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers1.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4.25
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a = 0.1 </TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p = &amp;a&nbsp;</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+}
+```
+::::
+:::::
+
+- Changes of address will change `*p`.
+- Address of `p` remains the same.
+- Pointers depend on data types.
+- Dereference with `*`.
+
+## Pointers on pointers 1/3
+
+Datatypes to store an address of a pointer is a double pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers2.cpp`](./code/main_pointers2.cpp)
+```{.cpp include="./code/main_pointers2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers2.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4.25
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a </TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p </TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078ec0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd3">pp</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  //mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+}
+```
+::::
+:::::
+
+## Pointers on pointers 2/3
+
+Datatypes to store an address of a pointer is a double pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers2.cpp`](./code/main_pointers2.cpp)
+```{.cpp include="./code/main_pointers2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers2.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4.25
+//| fig-height: 4
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a = 1.0</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p = &amp;a&nbsp;</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078ec0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd3">pp = &amp;p&nbsp;</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+  mem:cmd3:e -> mem:cmd2:e [color=blue, penwidth=1.5, fontcolor=blue];
+}
+```
+::::
+:::::
+
+## Pointers on pointers 3/3
+
+Datatypes to store an address of a pointer is a double pointer:
+
+::: {.columns}
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_pointers2.cpp`](./code/main_pointers2.cpp)
+```{.cpp include="./code/main_pointers2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers2.cpp
+```
+:::::
+::::
+
+::::  {.column width="33%"} 
+```{dot}
+//| label: memory5_1
+//| fig-width: 4.25
+//| fig-height: 4.75
+//| echo: false
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd1">a = 1.0</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078eb8&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd2">p = &amp;a&nbsp;</TD></TR>
+      <TR><TD ALIGN="RIGHT">0x558eef078ec0&nbsp;</TD>
+          <TD BORDER="1" HEIGHT="28" WIDTH="110" PORT="cmd3">pp = &amp;p&nbsp;</TD></TR>
+      <TR><TD></TD>
+          <TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+
+  mem:cmd2:e -> mem:cmd1:e [color=red, penwidth=1.5, fontcolor=red];
+  mem:cmd3:e -> mem:cmd2:e [color=blue, penwidth=1.5, fontcolor=blue];
+}
+```
+::::
+:::::
+
+- Pointer on pointer is `**pp`.
+- You can go on with `***p3`, $\ldots$
+- Dereference with `**`.
+
+## :writing_hand: Exercise
+
+::: {.column width="100%" .custom-box}
+### Write your own program - pointer manipulation 1 - [`main_sol_pointers1.cpp`](./code/main_sol_pointers1.cpp)
+
+Write a code which changes the value of an integer `i` from $1$ to $2$ by using pointers.
+That is, do not use statements like `i = 2`.
+:::
+
+::: {.column width="100%" .custom-box}
+### Write your own program - pointer manipulation 2 - [`main_sol_pointers2.cpp`](./code/main_sol_pointers2.cpp)
+
+Change the value to $3$ with a pointer on a pointer.
+:::
+
+::: {.column width="100%" .custom-box}
+### Write your own program - pointer manipulation 3 - [`main_sol_pointers3.cpp`](./code/main_sol_pointers3.cpp)
+
+Print the memory location of `pp`, `p`, and `i` by only using `pp`.
+:::
+
+## :writing_hand: Exercise
+
+::: {.column width="100%" .custom-box}
+### Write your own program - pointer manipulation 4 - [`main_sol_pointers4.cpp`](./code/main_sol_pointers4.cpp)
+
+Given the code below, make sure that `*one = 1`, `*two = 2`, `*three = 3` without changing the first two lines and without using $i, j$ and $k$.
+
+```{.cpp include="./code/pointers4.cpp"}
+```
+:::
+
+## :writing_hand: Exercise
+
+::: {.column width="100%" .custom-box}
+### Write your own program - pointer manipulation 5 - [`main_sol_pointers5.cpp`](./code/main_sol_pointers5.cpp)
+
+Generate an `std::vector` for type `long` of size $3$ with values $v = [0,1,2]$. Generate a pointer `p` which points on the vector's address. Change the size of `v` to $4$ and add a value `v[3] = 3` by only using `p`.
+
+:::
+
+
+## More fun with pointers 1/6
+
+What does the code do? Which output do you expect?
+
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers6.cpp`](./code/main_pointers6.cpp)
+```{.cpp include="./code/main_pointers6.cpp"}
+```
+:::
+
+
+## More fun with pointers 2/6
+
+What does the code do? Which output do you expect?
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers6.cpp`](./code/main_pointers6.cpp)
+```{.cpp include="./code/main_pointers6.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers6.cpp
+```
+:::
+
+## More fun with pointers 3/6
+
+What does the code do? Which output do you expect?
+
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers7.cpp`](./code/main_pointers7.cpp)
+```{.cpp include="./code/main_pointers7.cpp"}
+```
+:::
+
+
+## More fun with pointers 4/6
+
+What does the code do? Which output do you expect?
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers7.cpp`](./code/main_pointers7.cpp)
+```{.cpp include="./code/main_pointers7.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers7.cpp
+```
+:::
+
+## More fun with pointers 5/6
+
+What does the code do? Which output do you expect?
+
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers8.cpp`](./code/main_pointers8.cpp)
+```{.cpp include="./code/main_pointers8.cpp"}
+```
+:::
+
+
+## More fun with pointers 6/6
+
+What does the code do? Which output do you expect?
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers8.cpp`](./code/main_pointers8.cpp)
+```{.cpp include="./code/main_pointers8.cpp"}
+```
+```{bash}
+Segmentation fault (core dumped)
+```
+:::
+
+## More fun with pointers 7/6
+
+What does the code do? Which output do you expect?
+
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers8.cpp`](./code/main_pointers8.cpp)
+```{.cpp include="./code/main_pointers8.cpp"}
+```
+:::
+
+
+## More fun with pointers 8/6
+
+What does the code do? Which output do you expect?
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_pointers9.cpp`](./code/main_pointers9.cpp)
+```{.cpp include="./code/main_pointers9.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_pointers9.cpp
+```
+:::
+
+## Avoid wrong code behaviour
+
+- Uninitialized pointers can point on random space in memory.
+- Avoid with `NULL` or `0` keyword
+   
+   ```{.cpp}
+    double *p1;
+    double *p2 = 0;
+    
+    std::cout << *p1 << " might print some value" << std::endl;
+    std::cout << *p2 << " gives segmentation fault" << std::endl;
+   ```
+   
+   Equivalent to
+
+   ```{.cpp}
+    double *p1;
+    double *p2 = NULL;
+    
+    std::cout << *p1 << " might print some value" << std::endl;
+    std::cout << *p2 << " gives segmentation fault" << std::endl;
+   ```

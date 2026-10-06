@@ -1,0 +1,48 @@
+project:
+  type: website
+  title: "C and C++ in Simulation Development"
+  output-dir: _site
+  render:
+    - "*.qmd"           # exclude ipynb from rendering
+  resources:
+    - "*.ipynb"
+  pre-render:
+    - "./scripts/drawio_darkmode_fixer.py"
+    - "./scripts/convert_plantuml_code.py"
+execute:
+  freeze: auto
+  echo: true
+
+#reveal.js
+authors:
+  - name: Peter Kandolf
+    affiliation: Research Area Scientific Computing - University of Innsbruck
+    roles: writing
+from: markdown+emoji
+theme: [solarized, ../slides.scss]
+slide-number: true
+navigation-mode: linear
+width: 1600
+height: 900
+logo: ./images_global/research-area-scientific-computing.jpg
+lang: en-gb
+code-copy: true
+code-block-height: 600px
+chalkboard:
+  theme: whiteboard
+  chalk-effect: 0.0
+
+#bibliography: references.bib
+
+website:
+  title: "C and C++ in Simulation Development"
+  #google-analytics: G-GQTQPSPD1B
+  #cookie-consent:
+  #  type: implied
+  #  style: simple
+  #  palette: light
+
+  navbar:
+    left:
+    - href: index.qmd
+      text: Home

@@ -1,0 +1,53 @@
+---
+title: 0. Basic introduction to the lecture
+format: revealjs
+footer: '<a href="../../index.html">← Back to overview</a>'
+output-dir: ../../
+---
+
+
+# Basics and introduction
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this course
+- learn how to write scientific code in C++
+  - write and compile (efficient)
+  - understand and use core language features
+  - $\ldots$
+:::
+
+## Who?
+- Peter Kandolf - [Peter.Kandolf@uibk.ac.at](mailto:peter.kandolf@uibk.ac.at)
+- BSc, MSc, PhD in (Technischer) Mathematik, LFU Innsbruck
+- Senior Postdoc - Forschungsschwerpunkt **Scientific Computing**, LFU Innsbruck
+
+## What we expect from you?
+
+The syllabus is on the overview page [../index]
+
+:::{.column width="100%" .custom-box}
+### Structure of the class
+- You learn programming by writing/reviewing/debugging code
+- LLMs can be helpful but you need to understand and be able to explain the code
+- _Exercises during class_, hand in exercises via UIBK gitlab
+- Present the occasional exercise
+- Programming project
+  - groups of at most three
+  - use UIBK gitlab, everybody is expected to work with `git`/have commits
+  - presentation of the code
+  - topics are fixed in 
+:::
+
+## Common markings on the slides
+
+- We use some emojies throughout the slides &rarr; they should help when you look at the slides outside of class.
+
+- :nerd_face:: Additional information if you want to dive in &rarr; probably something that will only be for self study
+- :repeat:: We have seen this in another lecture already, here is the reference
+- :writing_hand:: This is an exercise &rarr; some of them we will do in class
+- :trophy:: This is one of the advanced exercises
+
+## :warning: Important!
+- The curriculum changed and this lecture is slightly different &rarr; probably some things change and get shifted around
+- Please provide some feedback already during class so we can adapt to it
+

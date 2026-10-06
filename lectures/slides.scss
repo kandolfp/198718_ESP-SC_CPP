@@ -1,0 +1,91 @@
+/*-- scss:defaults --*/
+
+$code-color: #b5890f; /* taken from old solarized.css */
+$text-bold-color: #dc322f; /* taken from old solarized.css */
+/*-- scss:rules --*/
+$code-inline-font-size: $code-font-size !default; 
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-transform: none; /* remove uppercase transformation */
+}
+
+/* General text smaller */
+.reveal section {
+  font-size: 1.0em;
+}
+
+.reveal strong {
+  color: $text-bold-color;
+}
+
+.reveal li::marker {
+  color: $text-bold-color;
+}
+
+/* Headings */
+.reveal h1 { font-size: 1.8em; }
+.reveal h2 { font-size: 1.5em; }
+.reveal h3 { font-size: 1.3em; }
+
+/* Code blocks larger (everywhere) */
+//.reveal pre code {
+//  font-size: 1.2em;
+//  line-height: 1.3;
+//}
+
+/* Optional: slightly larger code inside callouts */
+//.reveal .callout pre code {
+//  font-size: 1.25em;
+//}
+
+/* Inline code */
+/* .reveal code {
+  //font-size: 1.05em;
+  max-height: 600px !important;
+} */
+
+.reveal .custom-box {
+  margin-left: 0;
+  border-radius: 5px;
+  padding: 0 0;
+  margin: 0.4rem 0;   /* spacing between stacked boxes */
+  background-color: #eee8d5;
+  border: 1px solid #657b83;
+  line-height: 1.3;
+}
+
+.reveal .custom-box h3 {
+  margin: 0 0 0.3rem 0;
+  padding: 0.2rem 0.4rem;
+  background-color: #657b83;
+  color: #fdf6df;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Target both the container and the pre element specifically */
+.cell-output-display pre,
+.cell-output-stdout pre,
+.cell-output-error pre,
+.cell-output-stderr pre {
+  margin-left: 1em !important;
+  width: calc(100% - 1.25em); 
+  border-left: 3px solid #666 !important;
+  background-color: #e9e9ddda !important; /* Your desired background */
+  border-radius: 5px;
+}
+
+/* Ensure the code inside doesn't have a competing background */
+.cell-output-display pre code, 
+.cell-output-stdout pre code, 
+.cell-output-error pre code, 
+.cell-output-stderr pre code {
+  background-color: transparent !important; 
+  color: #333 !important;
+  padding: 10px;
+  //display: block; /* Ensures padding applies correctly */
+}

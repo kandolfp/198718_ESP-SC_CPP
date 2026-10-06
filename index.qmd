@@ -1,0 +1,57 @@
+---
+title: "C and C++ in Simulation Development"
+format: html
+theme: simple
+---
+
+## Welcome to the course on _C and C++ in Simulation and Development_.
+Here you will find all slides as an interactive presentation (Reveal.js):
+
+This is a practical course. 
+For each part of the lecture some exercises will be posed.
+The main learning benefit is only attained if **you** actively implement all of the exercises.
+
+You have to form groups (consisting of at most 3 students) to work on the exercises and the final project.
+Working alone is permissible but discouraged.
+
+For the exercises, please comply to the following instructions:
+
+- Upload the exercises to a repository on the university GitLab <https://git.uibk.ac.at/>.
+  Make sure that we have access to your code for grading.
+- Use a distinct folder for each lecture and use a consistent naming scheme for the folders and files.
+- For every program, indicate in the first line as a comment the compilation instructions (e.g. which libraries have to be linked, compiler flags) and the used compiler (vendor and version).
+- Document and discuss your results in a Markdown file or generate a PDF.
+
+We will also, from time to time, ask some of you to present exercises in the classroom in order to facilitate discussion.
+
+To pass this course, at least 50% of the exercises have to be solved and the final project has to be completed successfully.
+The grade consists of standard exercises (40%), project work (40%), advanced exercises (10%), and classroom participation (10%).
+If you want to get an 'excellent' we expect you to solve all advanced exercises.
+
+The plan for the lecture is as follows:
+
+::: {.callout-tip}
+You can navigate the slides with the arrow keys **← →**.
+The button in the lower left corner opens a toc per slide deck and you can export the slides as a pdf.
+:::
+
+## Term plan
+
+| Meeting | Chapter                                                  | Subchapter                                                                                           | Exercise  |
+|---------|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------|-------|------|
+| 1       |  00 General information to the lecture                | [0. Introduction](/lectures/01_introduction/0_introduction.html)                              | |
+| 1       |  01 Basics and why we teach C/C++                        | [1. Why we teach C++ and some basics](/lectures/01_introduction/1_helloworld.html)                             | :writing_hand: :trophy: |
+| 2       |  Pointers and memory management                       |                              | |
+| 3       |  Pointers and memory management                       |                              | |
+| 4       |  Functions and classes                       |                              | |
+| 5       |  CMake, Unit testing                       |                              | |
+| 6       |  Linter Code analysis, different types of libraries                       |                              | |
+| 7       |  Finalize the topics of the projects                       |                              | |
+| 8       |  Object oriented programming, operator overloading                       |                              | |
+| 9       |  Templates, RAIi and smart pointers                       |                              | |
+| 10      |  BLAS, LAPACK, Eigen                       |                              | |
+| 11      |  Sparse matrix computations |                              | |
+| 12      |  FFT, TOML, Netcdf, Modules                       |                              | |
+| 13      |  Debugging and profiling                       |                              | |
+| 14      |  Q&A Projects                       |                              | |
+| 15      |  Project presentations                       |                              | |
