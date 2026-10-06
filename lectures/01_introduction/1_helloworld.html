@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>C and C++ in Simulation Development – 1. Why we teach C++ and some basics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +16,16 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -94,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2201332e6c6b5b21d73a8fc26ec80bd9.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-4782559d5f3a9b0ca613ce4bb94d040f.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -199,7 +205,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Peter Kandolf 
+Peter Kandolf
 </div>
         <p class="quarto-title-affiliation">
             Research Area Scientific Computing - University of Innsbruck
@@ -230,21 +236,21 @@ Peter Kandolf
 <section id="a-simple-stencil-code" class="slide level2">
 <h2>A simple stencil code</h2>
 <p>Python</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, N <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb1-2"><a></a>  <span class="cf">for</span> j <span class="kw">in</span> np.arange(<span class="dv">1</span>, N <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb1-3"><a></a>      out[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">=</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">\</span></span>
-<span id="cb1-4"><a></a>                     <span class="op">+</span> alpha <span class="op">*</span> (inn[j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">-</span> </span>
-<span id="cb1-5"><a></a>                               <span class="fl">2.0</span> <span class="op">*</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> inn[j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, N <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb1-2"><a aria-label="2"></a>  <span class="cf">for</span> j <span class="kw">in</span> np.arange(<span class="dv">1</span>, N <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb1-3"><a aria-label="3"></a>      out[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">=</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">\</span></span>
+<span id="cb1-4"><a aria-label="4"></a>                     <span class="op">+</span> alpha <span class="op">*</span> (inn[j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">-</span> </span>
+<span id="cb1-5"><a aria-label="5"></a>                               <span class="fl">2.0</span> <span class="op">*</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> inn[j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Compile</span> and Wall time <span class="er">(</span><span class="ex">2nd</span> order<span class="kw">)</span><span class="bu">:</span>  7.65 s <span class="er">(</span><span class="ex">1.08</span> s with numba<span class="kw">)</span></span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>                                           <span class="kw">(</span><span class="ex">0.67</span> s with slicing<span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>C++</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb3-2"><a></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> j <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span></span>
-<span id="cb3-3"><a></a>        out<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">=</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> </span>
-<span id="cb3-4"><a></a>                       <span class="op">+</span> alpha <span class="op">*</span> <span class="op">(</span>in<span class="op">[</span>j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">-</span> </span>
-<span id="cb3-5"><a></a>                                 <span class="fl">2.0</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> in<span class="op">[</span>j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a aria-label="1"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-2"><a aria-label="2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> j <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span></span>
+<span id="cb3-3"><a aria-label="3"></a>        out<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">=</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> </span>
+<span id="cb3-4"><a aria-label="4"></a>                       <span class="op">+</span> alpha <span class="op">*</span> <span class="op">(</span>in<span class="op">[</span>j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">-</span> </span>
+<span id="cb3-5"><a aria-label="5"></a>                                 <span class="fl">2.0</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> in<span class="op">[</span>j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Compile</span> and Wall time <span class="er">(</span><span class="ex">2nd</span> order<span class="kw">)</span><span class="bu">:</span> 0.28 s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -271,10 +277,10 @@ Peter Kandolf
 <section id="what-is-compilation" class="slide level2">
 <h2>What is compilation</h2>
 <p>Can we compile <code>Python</code>?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x <span class="op">=</span> <span class="dv">3</span>           <span class="co"># x is a integer</span></span>
-<span id="cb5-2"><a></a><span class="cf">if</span> condition:</span>
-<span id="cb5-3"><a></a>    x <span class="op">=</span> <span class="fl">3.0</span>     <span class="co"># x is a floating point number</span></span>
-<span id="cb5-4"><a></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>x <span class="op">=</span> <span class="dv">3</span>           <span class="co"># x is a integer</span></span>
+<span id="cb5-2"><a aria-label="2"></a><span class="cf">if</span> condition:</span>
+<span id="cb5-3"><a aria-label="3"></a>    x <span class="op">=</span> <span class="fl">3.0</span>     <span class="co"># x is a floating point number</span></span>
+<span id="cb5-4"><a aria-label="4"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>What operation should “2 * x” be compiled to?
 <ul>
@@ -293,22 +299,22 @@ Peter Kandolf
 <section id="performance-part-2" class="slide level2">
 <h2>Performance part 2</h2>
 <p>Fourth order stencil in Python</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, N<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb6-2"><a></a>    <span class="cf">for</span> j <span class="kw">in</span> np.arange(<span class="dv">1</span>,N<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb6-3"><a></a>        out[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">=</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> alpha <span class="op">*</span> (</span>
-<span id="cb6-4"><a></a>                <span class="op">-</span><span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> inn[j <span class="op">-</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> inn[j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">\</span></span>
-<span id="cb6-5"><a></a>                <span class="op">-</span> <span class="fl">5.</span><span class="op">/</span><span class="fl">2.</span> <span class="op">*</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> inn[j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">\</span></span>
-<span id="cb6-6"><a></a>                <span class="op">-</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> inn[j <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>, N<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb6-2"><a aria-label="2"></a>    <span class="cf">for</span> j <span class="kw">in</span> np.arange(<span class="dv">1</span>,N<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb6-3"><a aria-label="3"></a>        out[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">=</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> alpha <span class="op">*</span> (</span>
+<span id="cb6-4"><a aria-label="4"></a>                <span class="op">-</span><span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> inn[j <span class="op">-</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> inn[j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">\</span></span>
+<span id="cb6-5"><a aria-label="5"></a>                <span class="op">-</span> <span class="fl">5.</span><span class="op">/</span><span class="fl">2.</span> <span class="op">*</span> inn[j <span class="op">+</span> i <span class="op">*</span> N] <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> inn[j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N] <span class="op">\</span></span>
+<span id="cb6-6"><a aria-label="6"></a>                <span class="op">-</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> inn[j <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Compile</span> and Wall time <span class="er">(</span><span class="ex">2nd</span> order<span class="kw">)</span><span class="bu">:</span>  7.65 s, <span class="er">(</span><span class="ex">4th</span> order<span class="kw">)</span><span class="bu">:</span>  11.84 s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Fourth order stencil in C++</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb8-2"><a></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> j<span class="op">=</span><span class="dv">2</span><span class="op">;</span>j <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">2</span><span class="op">;</span> j<span class="op">++)</span></span>
-<span id="cb8-3"><a></a>        out<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">=</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> alpha <span class="op">*</span> <span class="op">(</span></span>
-<span id="cb8-4"><a></a>            <span class="op">-</span><span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">-</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> \</span>
-<span id="cb8-5"><a></a>            <span class="op">-</span> <span class="fl">5.</span><span class="op">/</span><span class="fl">2.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> \</span>
-<span id="cb8-6"><a></a>            <span class="op">-</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a aria-label="1"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb8-2"><a aria-label="2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> j<span class="op">=</span><span class="dv">2</span><span class="op">;</span>j <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">2</span><span class="op">;</span> j<span class="op">++)</span></span>
+<span id="cb8-3"><a aria-label="3"></a>        out<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">=</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> alpha <span class="op">*</span> <span class="op">(</span></span>
+<span id="cb8-4"><a aria-label="4"></a>            <span class="op">-</span><span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">-</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> \</span>
+<span id="cb8-5"><a aria-label="5"></a>            <span class="op">-</span> <span class="fl">5.</span><span class="op">/</span><span class="fl">2.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> <span class="op">+</span> <span class="fl">4.</span><span class="op">/</span><span class="fl">3.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]</span> \</span>
+<span id="cb8-6"><a aria-label="6"></a>            <span class="op">-</span> <span class="fl">1.</span><span class="op">/</span><span class="fl">12.</span> <span class="op">*</span> in<span class="op">[</span>j <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> N<span class="op">]);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Compile</span> and Wall time <span class="er">(</span><span class="ex">2nd</span> order<span class="kw">)</span><span class="bu">:</span> 0.28 s, <span class="er">(</span><span class="ex">4th</span> order<span class="kw">)</span><span class="bu">:</span> 0.28 s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -344,13 +350,13 @@ Peter Kandolf
 <h2><code>Hello World!</code> in C++</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="lets-start-with-hello_world.cpp">Let’s start with <a href="./code/hello_world.cpp"><code>hello_world.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// include dependencies; header files of libraries</span></span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span> <span class="co">// the main function is called when executing the code</span></span>
-<span id="cb10-4"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello World!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// print "Hello World!"</span></span>
-<span id="cb10-5"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                                 <span class="co">// return terminates the program</span></span>
-<span id="cb10-6"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b7d50f10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// include dependencies; header files of libraries</span></span>
+<span id="cb10-2"><a aria-label="2"></a></span>
+<span id="cb10-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span> <span class="co">// the main function is called when executing the code</span></span>
+<span id="cb10-4"><a aria-label="4"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello World!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// print "Hello World!"</span></span>
+<span id="cb10-5"><a aria-label="5"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                                 <span class="co">// return terminates the program</span></span>
+<span id="cb10-6"><a aria-label="6"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="06461823" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello World!</code></pre>
 </div>
@@ -367,13 +373,13 @@ Peter Kandolf
 <section id="compiling-code" class="slide level2">
 <h2>Compiling code</h2>
 <p>To compile the code we run the following code in the terminal</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a></a><span class="ex">$</span> g++ <span class="at">-o</span> hello.out main.cpp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-label="1"></a><span class="ex">$</span> g++ <span class="at">-o</span> hello.out main.cpp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The compiler <code>g++</code> goes through your source code to</p>
 <ul>
 <li><p>check if the code has the correct syntax</p></li>
 <li><p>translate the code into instructions readable by the computer</p></li>
 <li><p>generates the executable `hello.out} which you can run with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a></a><span class="ex">$</span> ./hello.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-label="1"></a><span class="ex">$</span> ./hello.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="in-class-exercise" class="slide level2">
@@ -386,25 +392,25 @@ Peter Kandolf
 <li><strong>Hint 2:</strong> To print a number with <code>cout</code> you do not need the quotation marks <code>"</code>.</li>
 </ul>
 </div><p>Recall</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// include dependencies; header files of libraries</span></span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span> <span class="co">// the main function is called when executing the code</span></span>
-<span id="cb14-4"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello World!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// print "Hello World!"</span></span>
-<span id="cb14-5"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                                 <span class="co">// return terminates the program</span></span>
-<span id="cb14-6"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// include dependencies; header files of libraries</span></span>
+<span id="cb14-2"><a aria-label="2"></a></span>
+<span id="cb14-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span> <span class="co">// the main function is called when executing the code</span></span>
+<span id="cb14-4"><a aria-label="4"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello World!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// print "Hello World!"</span></span>
+<span id="cb14-5"><a aria-label="5"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                                 <span class="co">// return terminates the program</span></span>
+<span id="cb14-6"><a aria-label="6"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="in-class-exercise---solution" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_sin.cpp">Solution <a href="./code/main_sin_error.cpp"><code>main_sin.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span><span class="pp">    </span><span class="co">// library includes sin</span></span>
-<span id="cb15-2"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// library includes cout, endl</span></span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb15-5"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb15-6"><a></a>  <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb15-7"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="52e05237" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span><span class="pp">    </span><span class="co">// library includes sin</span></span>
+<span id="cb15-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// library includes cout, endl</span></span>
+<span id="cb15-3"><a aria-label="3"></a></span>
+<span id="cb15-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb15-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="423c3c1c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>main_sin_error.cpp: In function ‘int main()’:
 main_sin_error.cpp:5:28: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
@@ -429,14 +435,14 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution - working</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_sin.cpp-1">Solution <a href="./code/main_sin.cpp"><code>main_sin.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span><span class="pp">    </span><span class="co">// library includes sin</span></span>
-<span id="cb17-2"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// library includes cout, endl</span></span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb17-5"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb17-6"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb17-7"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="ffb92a99" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span><span class="pp">    </span><span class="co">// library includes sin</span></span>
+<span id="cb17-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// library includes cout, endl</span></span>
+<span id="cb17-3"><a aria-label="3"></a></span>
+<span id="cb17-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb17-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb17-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bcd85840" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>0.909297</code></pre>
 </div>
@@ -447,21 +453,21 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <p>The <code>fstream</code> library can be used to read/write data from and to files.</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_fstream.cpp-input-file-input.txt">Code file <a href="./code/main_fstream.cpp"><code>main_fstream.cpp</code></a>, input file <a href="./code/main_fstream_input.txt"><code>input.txt</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a></a><span class="pp">#include </span><span class="im">&lt;fstream&gt;</span><span class="pp"> </span><span class="co">// library to read/write data</span></span>
-<span id="cb19-2"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb19-5"><a></a>  <span class="dt">double</span> tmp1<span class="op">,</span> tmp2<span class="op">;</span></span>
-<span id="cb19-6"><a></a>  <span class="bu">std::</span>fstream in<span class="op">(</span><span class="st">"./code/main_fstream_input.txt"</span><span class="op">);</span> <span class="co">// specify input file</span></span>
-<span id="cb19-7"><a></a></span>
-<span id="cb19-8"><a></a>  in <span class="op">&gt;&gt;</span> tmp1<span class="op">;</span> <span class="co">// read first value</span></span>
-<span id="cb19-9"><a></a>  in <span class="op">&gt;&gt;</span> tmp2<span class="op">;</span> <span class="co">// read second value</span></span>
-<span id="cb19-10"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tmp1 <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
-<span id="cb19-11"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tmp2 <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb19-12"><a></a></span>
-<span id="cb19-13"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb19-14"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f14dd313" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;fstream&gt;</span><span class="pp"> </span><span class="co">// library to read/write data</span></span>
+<span id="cb19-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb19-3"><a aria-label="3"></a></span>
+<span id="cb19-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb19-5"><a aria-label="5"></a>  <span class="dt">double</span> tmp1<span class="op">,</span> tmp2<span class="op">;</span></span>
+<span id="cb19-6"><a aria-label="6"></a>  <span class="bu">std::</span>fstream in<span class="op">(</span><span class="st">"./code/main_fstream_input.txt"</span><span class="op">);</span> <span class="co">// specify input file</span></span>
+<span id="cb19-7"><a aria-label="7"></a></span>
+<span id="cb19-8"><a aria-label="8"></a>  in <span class="op">&gt;&gt;</span> tmp1<span class="op">;</span> <span class="co">// read first value</span></span>
+<span id="cb19-9"><a aria-label="9"></a>  in <span class="op">&gt;&gt;</span> tmp2<span class="op">;</span> <span class="co">// read second value</span></span>
+<span id="cb19-10"><a aria-label="10"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tmp1 <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb19-11"><a aria-label="11"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tmp2 <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb19-12"><a aria-label="12"></a></span>
+<span id="cb19-13"><a aria-label="13"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1929f42d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>1 2</code></pre>
 </div>
@@ -472,17 +478,17 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <p>The <code>fstream</code> library can be used to read/write data from and to files.</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_ofstream.cpp">Code file <a href="./code/main_ofstream.cpp"><code>main_ofstream.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a></a><span class="pp">#include </span><span class="im">&lt;fstream&gt;</span><span class="pp"> </span><span class="co">// library to read/write data</span></span>
-<span id="cb21-2"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb21-3"><a></a></span>
-<span id="cb21-4"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb21-5"><a></a>  <span class="bu">std::</span>ofstream out<span class="op">(</span><span class="st">"./code/result.txt"</span><span class="op">);</span> <span class="co">// specify output file</span></span>
-<span id="cb21-6"><a></a></span>
-<span id="cb21-7"><a></a>  out <span class="op">&lt;&lt;</span> <span class="fl">1.0</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
-<span id="cb21-8"><a></a>  out <span class="op">&lt;&lt;</span> <span class="fl">2.2</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// write values</span></span>
-<span id="cb21-9"><a></a></span>
-<span id="cb21-10"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb21-11"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;fstream&gt;</span><span class="pp"> </span><span class="co">// library to read/write data</span></span>
+<span id="cb21-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb21-3"><a aria-label="3"></a></span>
+<span id="cb21-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb21-5"><a aria-label="5"></a>  <span class="bu">std::</span>ofstream out<span class="op">(</span><span class="st">"./code/result.txt"</span><span class="op">);</span> <span class="co">// specify output file</span></span>
+<span id="cb21-6"><a aria-label="6"></a></span>
+<span id="cb21-7"><a aria-label="7"></a>  out <span class="op">&lt;&lt;</span> <span class="fl">1.0</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb21-8"><a aria-label="8"></a>  out <span class="op">&lt;&lt;</span> <span class="fl">2.2</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// write values</span></span>
+<span id="cb21-9"><a aria-label="9"></a></span>
+<span id="cb21-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></section></section>
 <section>
 <section id="types" class="title-slide slide level1 center">
@@ -658,10 +664,10 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <ul>
 <li><p>Whenever possible, we would like to tell the program how many bits we need.</p></li>
 <li><p>Remember that the C++ compiler requires us to define the type in advance</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>x <span class="op">=</span> <span class="dv">3</span> <span class="co"># x is a integer</span></span>
-<span id="cb22-2"><a></a><span class="cf">if</span> condition:</span>
-<span id="cb22-3"><a></a>  x <span class="op">=</span> <span class="fl">3.0</span> <span class="co"># x is a floating point number</span></span>
-<span id="cb22-4"><a></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>x <span class="op">=</span> <span class="dv">3</span> <span class="co"># x is a integer</span></span>
+<span id="cb22-2"><a aria-label="2"></a><span class="cf">if</span> condition:</span>
+<span id="cb22-3"><a aria-label="3"></a>  x <span class="op">=</span> <span class="fl">3.0</span> <span class="co"># x is a floating point number</span></span>
+<span id="cb22-4"><a aria-label="4"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Types simplify readability.</p></li>
 <li><p>Main types are: <code>char</code>, <code>string</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code></p></li>
 </ul>
@@ -670,13 +676,13 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <h2>Code example</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_typer.cpp">Code file <a href="./code/main_typer.cpp"><code>main_typer.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb23-2"><a></a>  <span class="dt">int</span> i<span class="op">;</span>          <span class="co">// declaration</span></span>
-<span id="cb23-3"><a></a>  i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>          <span class="co">// definition</span></span>
-<span id="cb23-4"><a></a>  <span class="dt">float</span> d <span class="op">=</span> <span class="fl">2.3</span><span class="bu">f</span><span class="op">;</span> <span class="co">// declaration and definition</span></span>
-<span id="cb23-5"><a></a>  <span class="dt">double</span> a <span class="op">=</span> <span class="fl">1.0</span><span class="op">,</span> b <span class="op">=</span> <span class="fl">2.3</span><span class="op">;</span></span>
-<span id="cb23-6"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb23-7"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a aria-label="1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb23-2"><a aria-label="2"></a>  <span class="dt">int</span> i<span class="op">;</span>          <span class="co">// declaration</span></span>
+<span id="cb23-3"><a aria-label="3"></a>  i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>          <span class="co">// definition</span></span>
+<span id="cb23-4"><a aria-label="4"></a>  <span class="dt">float</span> d <span class="op">=</span> <span class="fl">2.3</span><span class="bu">f</span><span class="op">;</span> <span class="co">// declaration and definition</span></span>
+<span id="cb23-5"><a aria-label="5"></a>  <span class="dt">double</span> a <span class="op">=</span> <span class="fl">1.0</span><span class="op">,</span> b <span class="op">=</span> <span class="fl">2.3</span><span class="op">;</span></span>
+<span id="cb23-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><ul>
 <li>From the code, the compiler knows that <span class="math inline">\(16\)</span> bit are needed for <code>i</code>, <span class="math inline">\(32\)</span> bit for <code>d</code>, and <span class="math inline">\(64\)</span> for <code>a</code> and <code>b</code>.</li>
 <li>It is good practice to declare variables at the beginning of the code.</li>
@@ -692,21 +698,21 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_type2.cpp">Solution <a href="./code/main_type2.cpp"><code>main_type2.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
-<span id="cb24-2"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb24-3"><a></a></span>
-<span id="cb24-4"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb24-5"><a></a>  <span class="dt">double</span> input<span class="op">;</span></span>
-<span id="cb24-6"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a number: "</span><span class="op">;</span></span>
-<span id="cb24-7"><a></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> input<span class="op">;</span></span>
-<span id="cb24-8"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl</span>
-<span id="cb24-9"><a></a>            <span class="op">&lt;&lt;</span> <span class="st">"sin("</span> <span class="op">&lt;&lt;</span> input <span class="op">&lt;&lt;</span> <span class="st">") = "</span> <span class="op">&lt;&lt;</span> sin<span class="op">(</span>input<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb24-10"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb24-11"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3de03624" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
+<span id="cb24-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb24-3"><a aria-label="3"></a></span>
+<span id="cb24-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb24-5"><a aria-label="5"></a>  <span class="dt">double</span> input<span class="op">;</span></span>
+<span id="cb24-6"><a aria-label="6"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a number: "</span><span class="op">;</span></span>
+<span id="cb24-7"><a aria-label="7"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> input<span class="op">;</span></span>
+<span id="cb24-8"><a aria-label="8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl</span>
+<span id="cb24-9"><a aria-label="9"></a>            <span class="op">&lt;&lt;</span> <span class="st">"sin("</span> <span class="op">&lt;&lt;</span> input <span class="op">&lt;&lt;</span> <span class="st">") = "</span> <span class="op">&lt;&lt;</span> sin<span class="op">(</span>input<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb24-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bb8be6bc" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter a number: 
-sin(6.55415e-310) = 6.55415e-310</code></pre>
+sin(0) = 0</code></pre>
 </div>
 </div>
 </div></section>
@@ -720,23 +726,23 @@ sin(6.55415e-310) = 6.55415e-310</code></pre>
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_type3.cpp">Solution <a href="./code/main_type3.cpp"><code>main_type3.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb26-2"><a></a></span>
-<span id="cb26-3"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb26-4"><a></a>  <span class="dt">double</span> inputInt<span class="op">;</span></span>
-<span id="cb26-5"><a></a>  <span class="dt">double</span> inputDouble<span class="op">;</span></span>
-<span id="cb26-6"><a></a></span>
-<span id="cb26-7"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: Integer "</span><span class="op">;</span></span>
-<span id="cb26-8"><a></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputInt<span class="op">;</span></span>
-<span id="cb26-9"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">", Double "</span><span class="op">;</span></span>
-<span id="cb26-10"><a></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputDouble<span class="op">;</span></span>
-<span id="cb26-11"><a></a></span>
-<span id="cb26-12"><a></a>  <span class="dt">int</span> sum <span class="op">=</span> inputInt <span class="op">+</span> inputDouble<span class="op">;</span></span>
-<span id="cb26-13"><a></a></span>
-<span id="cb26-14"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb26-15"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb26-16"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="89e2dd6d" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb26-2"><a aria-label="2"></a></span>
+<span id="cb26-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-4"><a aria-label="4"></a>  <span class="dt">double</span> inputInt<span class="op">;</span></span>
+<span id="cb26-5"><a aria-label="5"></a>  <span class="dt">double</span> inputDouble<span class="op">;</span></span>
+<span id="cb26-6"><a aria-label="6"></a></span>
+<span id="cb26-7"><a aria-label="7"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: Integer "</span><span class="op">;</span></span>
+<span id="cb26-8"><a aria-label="8"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputInt<span class="op">;</span></span>
+<span id="cb26-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">", Double "</span><span class="op">;</span></span>
+<span id="cb26-10"><a aria-label="10"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputDouble<span class="op">;</span></span>
+<span id="cb26-11"><a aria-label="11"></a></span>
+<span id="cb26-12"><a aria-label="12"></a>  <span class="dt">int</span> sum <span class="op">=</span> inputInt <span class="op">+</span> inputDouble<span class="op">;</span></span>
+<span id="cb26-13"><a aria-label="13"></a></span>
+<span id="cb26-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb26-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb26-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5bfe68e8" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter two numbers: Integer , Double sum is -2147483648</code></pre>
 </div>
@@ -750,23 +756,23 @@ sin(6.55415e-310) = 6.55415e-310</code></pre>
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Second Solution</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_type3_1.cpp">Solution <a href="./code/main_type3_1.cpp"><code>main_type3_1.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb28-2"><a></a></span>
-<span id="cb28-3"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb28-4"><a></a>  <span class="dt">double</span> inputInt<span class="op">;</span></span>
-<span id="cb28-5"><a></a>  <span class="dt">double</span> inputDouble<span class="op">;</span></span>
-<span id="cb28-6"><a></a></span>
-<span id="cb28-7"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: Integer "</span><span class="op">;</span></span>
-<span id="cb28-8"><a></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputInt<span class="op">;</span></span>
-<span id="cb28-9"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">", Double "</span><span class="op">;</span></span>
-<span id="cb28-10"><a></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputDouble<span class="op">;</span></span>
-<span id="cb28-11"><a></a></span>
-<span id="cb28-12"><a></a>  <span class="dt">double</span> sum <span class="op">=</span> inputInt <span class="op">+</span> inputDouble<span class="op">;</span></span>
-<span id="cb28-13"><a></a></span>
-<span id="cb28-14"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb28-15"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb28-16"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e70f66fe" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb28-2"><a aria-label="2"></a></span>
+<span id="cb28-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb28-4"><a aria-label="4"></a>  <span class="dt">double</span> inputInt<span class="op">;</span></span>
+<span id="cb28-5"><a aria-label="5"></a>  <span class="dt">double</span> inputDouble<span class="op">;</span></span>
+<span id="cb28-6"><a aria-label="6"></a></span>
+<span id="cb28-7"><a aria-label="7"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: Integer "</span><span class="op">;</span></span>
+<span id="cb28-8"><a aria-label="8"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputInt<span class="op">;</span></span>
+<span id="cb28-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">", Double "</span><span class="op">;</span></span>
+<span id="cb28-10"><a aria-label="10"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputDouble<span class="op">;</span></span>
+<span id="cb28-11"><a aria-label="11"></a></span>
+<span id="cb28-12"><a aria-label="12"></a>  <span class="dt">double</span> sum <span class="op">=</span> inputInt <span class="op">+</span> inputDouble<span class="op">;</span></span>
+<span id="cb28-13"><a aria-label="13"></a></span>
+<span id="cb28-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb28-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb28-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="eb30e19f" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter two numbers: Integer , Double sum is 2.11653e+214</code></pre>
 </div>
@@ -777,20 +783,20 @@ sin(6.55415e-310) = 6.55415e-310</code></pre>
 <p>The standard C++ libraries provide various helpful datatypes, e.g.&nbsp;<code>std::vector</code></p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_vector1.cpp">Solution <a href="./code/main_vector1.cpp"><code>main_vector1.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb30-2"><a></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb30-3"><a></a></span>
-<span id="cb30-4"><a></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb30-5"><a></a>  <span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> v<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb30-6"><a></a>  v<span class="op">.</span>reserve<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
-<span id="cb30-7"><a></a>  v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
-<span id="cb30-8"><a></a>  v<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
-<span id="cb30-9"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> v<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb30-10"><a></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb30-11"><a></a></span>
-<span id="cb30-12"><a></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb30-13"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3810d990" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb30-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb30-3"><a aria-label="3"></a></span>
+<span id="cb30-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb30-5"><a aria-label="5"></a>  <span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> v<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb30-6"><a aria-label="6"></a>  v<span class="op">.</span>reserve<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb30-7"><a aria-label="7"></a>  v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
+<span id="cb30-8"><a aria-label="8"></a>  v<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
+<span id="cb30-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> v<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb30-10"><a aria-label="10"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb30-11"><a aria-label="11"></a></span>
+<span id="cb30-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb30-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5824d5e3" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>5
 1 0 1</code></pre>
@@ -814,10 +820,10 @@ sin(6.55415e-310) = 6.55415e-310</code></pre>
 <li><p>The main tools are the <strong>compiler</strong> and the <strong>linker</strong>.</p></li>
 <li><p><strong>Compiler</strong>: C++ code into machine language file (object file, <code>main.o</code>, <code>main.obj</code>)</p></li>
 <li><p><strong>Linker</strong>: combine obj files and libraries (precompiled code)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a></a><span class="ex">$</span> g++ <span class="at">-c</span> hello.cpp</span>
-<span id="cb32-2"><a></a><span class="ex">$</span> g++ <span class="at">-o</span> hello.out hello.o</span>
-<span id="cb32-3"><a></a><span class="ex">$</span> ls</span>
-<span id="cb32-4"><a></a><span class="ex">hello.cpp</span>  hello.o  hello.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a aria-label="1"></a><span class="ex">$</span> g++ <span class="at">-c</span> hello.cpp</span>
+<span id="cb32-2"><a aria-label="2"></a><span class="ex">$</span> g++ <span class="at">-o</span> hello.out hello.o</span>
+<span id="cb32-3"><a aria-label="3"></a><span class="ex">$</span> ls</span>
+<span id="cb32-4"><a aria-label="4"></a><span class="ex">hello.cpp</span>  hello.o  hello.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We will revisit the compiler multiple times once our programs become more complicated.</p></li>
 </ul>
 </section>
@@ -835,45 +841,45 @@ sin(6.55415e-310) = 6.55415e-310</code></pre>
 <section id="conditionals" class="slide level2">
 <h2>Conditionals</h2>
 <p>C/C++ comes with the basic conditionals: <code>if</code>, <code>else if</code>, <code>else</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a></a>if ( boolean == true ){</span>
-<span id="cb33-2"><a></a>    // statement executed if the condition boolean == true is valid</span>
-<span id="cb33-3"><a></a>} else if (boolean1 == true){</span>
-<span id="cb33-4"><a></a>    // statement executed if the condition boolean == true is not valid but boolean1 == true</span>
-<span id="cb33-5"><a></a>} else{</span>
-<span id="cb33-6"><a></a>    // statement executed if both conditions are false</span>
-<span id="cb33-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a aria-label="1"></a>if ( boolean == true ){</span>
+<span id="cb33-2"><a aria-label="2"></a>    // statement executed if the condition boolean == true is valid</span>
+<span id="cb33-3"><a aria-label="3"></a>} else if (boolean1 == true){</span>
+<span id="cb33-4"><a aria-label="4"></a>    // statement executed if the condition boolean == true is not valid but boolean1 == true</span>
+<span id="cb33-5"><a aria-label="5"></a>} else{</span>
+<span id="cb33-6"><a aria-label="6"></a>    // statement executed if both conditions are false</span>
+<span id="cb33-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>New variables defined inside these environments are unknown to the global scope.</p>
 </section>
 <section id="loops" class="slide level2">
 <h2>Loops</h2>
 <p>C/C++ comes with the basic loops: <code>for</code>, <code>while</code>, <code>do while</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a></a>for ( long i = 0; i &lt; 10; i++ ){</span>
-<span id="cb34-2"><a></a>   // statement</span>
-<span id="cb34-3"><a></a>}</span>
-<span id="cb34-4"><a></a></span>
-<span id="cb34-5"><a></a>while ( boolean == true ){</span>
-<span id="cb34-6"><a></a>   // statement</span>
-<span id="cb34-7"><a></a>}</span>
-<span id="cb34-8"><a></a>    </span>
-<span id="cb34-9"><a></a>do {</span>
-<span id="cb34-10"><a></a>  // statement</span>
-<span id="cb34-11"><a></a>} while( boolean == true )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a aria-label="1"></a>for ( long i = 0; i &lt; 10; i++ ){</span>
+<span id="cb34-2"><a aria-label="2"></a>   // statement</span>
+<span id="cb34-3"><a aria-label="3"></a>}</span>
+<span id="cb34-4"><a aria-label="4"></a></span>
+<span id="cb34-5"><a aria-label="5"></a>while ( boolean == true ){</span>
+<span id="cb34-6"><a aria-label="6"></a>   // statement</span>
+<span id="cb34-7"><a aria-label="7"></a>}</span>
+<span id="cb34-8"><a aria-label="8"></a>    </span>
+<span id="cb34-9"><a aria-label="9"></a>do {</span>
+<span id="cb34-10"><a aria-label="10"></a>  // statement</span>
+<span id="cb34-11"><a aria-label="11"></a>} while( boolean == true )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To exit a loop early we can use <code>break</code> and <code>continue</code> to jup along</p>
 </section>
 <section id="range-based-loops" class="slide level2">
 <h2>Range based loops</h2>
 <p>The range based of often also called <code>for each</code> loop is available in C++ as well</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a></a>std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};</span>
-<span id="cb35-2"><a></a></span>
-<span id="cb35-3"><a></a>// Range-based for loop</span>
-<span id="cb35-4"><a></a>for (int num : numbers) {</span>
-<span id="cb35-5"><a></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
-<span id="cb35-6"><a></a>}</span>
-<span id="cb35-7"><a></a></span>
-<span id="cb35-8"><a></a>// Range-based for loop with auto key word</span>
-<span id="cb35-9"><a></a>for (auto num : numbers) {</span>
-<span id="cb35-10"><a></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
-<span id="cb35-11"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a aria-label="1"></a>std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};</span>
+<span id="cb35-2"><a aria-label="2"></a></span>
+<span id="cb35-3"><a aria-label="3"></a>// Range-based for loop</span>
+<span id="cb35-4"><a aria-label="4"></a>for (int num : numbers) {</span>
+<span id="cb35-5"><a aria-label="5"></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
+<span id="cb35-6"><a aria-label="6"></a>}</span>
+<span id="cb35-7"><a aria-label="7"></a></span>
+<span id="cb35-8"><a aria-label="8"></a>// Range-based for loop with auto key word</span>
+<span id="cb35-9"><a aria-label="9"></a>for (auto num : numbers) {</span>
+<span id="cb35-10"><a aria-label="10"></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
+<span id="cb35-11"><a aria-label="11"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="exercise-1" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> Exercise</h2>

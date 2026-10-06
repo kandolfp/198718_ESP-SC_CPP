@@ -32,35 +32,35 @@
     "href": "lectures/02_pointers/1_pointers_and_memmory.html#in-class-exercise---solution-12-1",
     "title": "1. Pointers and memory management",
     "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffce7361188 0x7ffce7361190\nAddresses: 0x7ffce7361188 0x7ffce7361190\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffd47c5eb58 0x7ffd47c5eb60\nAddresses: 0x7ffd47c5eb58 0x7ffd47c5eb60\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-14",
     "href": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-14",
     "title": "1. Pointers and memory management",
     "section": "Pointers 1/4",
-    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fff4b05f4c8 0x7fff4b05f4c8 0x7fff4b05f4d0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
+    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffe99b23b8 0x7fffe99b23b8 0x7fffe99b23c0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-24",
     "href": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-24",
     "title": "1. Pointers and memory management",
     "section": "Pointers 2/4",
-    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffed9412f28 0x7ffed9412f28 0x7ffed9412f30\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe98f887f8 0x7ffe98f887f8 0x7ffe98f88800\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-34",
     "href": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-34",
     "title": "1. Pointers and memory management",
     "section": "Pointers 3/4",
-    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffdeb3fb098 0x7ffdeb3fb098 0x7ffdeb3fb0a0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe51916c08 0x7ffe51916c08 0x7ffe51916c10\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-44",
     "href": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-44",
     "title": "1. Pointers and memory management",
     "section": "Pointers 4/4",
-    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffd161bff58 0x7ffd161bff58 0x7ffd161bff60\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
+    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffd85b57e48 0x7ffd85b57e48 0x7ffd85b57e50\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers_and_memmory.html#pointers-on-pointers-13",
@@ -354,7 +354,7 @@
     "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution-1",
     "title": "1. Why we teach C++ and some basics",
     "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(6.55415e-310) = 6.55415e-310"
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(0) = 0"
   },
   {
     "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise-2",
