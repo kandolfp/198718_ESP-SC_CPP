@@ -6,15 +6,6 @@ format:
     output-dir: ../../
 filters:
   - include-code-files
-  - diagram
-diagram:
-  engine:
-    tikz:
-      execpath: pdflatex
-      header-includes: |
-        \usepackage{tikz}
-      additional-packages: |
-        \usetikzlibrary{matrix, shapes.symbols, positioning}
 ---
 
 # Pointers and memory management
