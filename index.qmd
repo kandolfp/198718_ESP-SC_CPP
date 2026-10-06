@@ -25,7 +25,7 @@ For the exercises, please comply to the following instructions:
 We will also, from time to time, ask some of you to present exercises in the classroom in order to facilitate discussion.
 
 To pass this course, at least 50% of the exercises have to be solved and the final project has to be completed successfully.
-The grade consists of standard exercises (40%), project work (40%), advanced exercises (10%), and classroom participation (10%).
+The grade consists of standard exercises (40% - indicated by :writing_hand:), project work (40%), advanced exercises (10% - indicated by :trophy:), and classroom participation (10%).
 If you want to get an 'excellent' we expect you to solve all advanced exercises.
 
 The plan for the lecture is as follows:
