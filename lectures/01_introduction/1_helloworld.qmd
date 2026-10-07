@@ -51,6 +51,8 @@ Compile and Wall time (2nd order): 0.28 s
 ```
 :::
 
+- The reference code can be downloaded [here](./code/references.zip)
+
 ## Performance implications
 
 - **Drastic performance improvement ($\approx 27$x).**
@@ -118,6 +120,8 @@ for(int i=1; i < N-1; i++)
 Compile and Wall time (2nd order): 0.28 s, (4th order): 0.28 s
 ```
 :::
+
+- The reference code can be downloaded [here](./code/references.zip)
 
 ## Performance and use of the language
 
