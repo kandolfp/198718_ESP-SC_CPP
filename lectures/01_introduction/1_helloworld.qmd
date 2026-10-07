@@ -79,7 +79,7 @@ if condition:
 y = 2 * x
 ```
 
-- What operation should "2 * x" be compiled to?
+- What operation should `2 * x` be compiled to?
     - integer/floating point multiplication
 - Compiler would need to understand all possible types that x can have.
     - For an interpreted language this is much simpler (can be decided during run time)
@@ -124,7 +124,7 @@ Compile and Wall time (2nd order): 0.28 s, (4th order): 0.28 s
 In `Python` using the second order method is $1.5$x faster than fourth order method.
 In C++ the second and fourth order methods take the same time.
 
-- Performance is often limited by fetching data from memory and not by the number of arithmetic operations the CPU can perform. This is called a \emph{memory bound problem}.
+- Performance is often limited by fetching data from memory and not by the number of arithmetic operations the CPU can perform. This is called a _memory bound problem_.
   
 **Writing Python code to predict the performance of a C++ code is a bad idea!**
 
@@ -134,7 +134,7 @@ In C++ the second and fourth order methods take the same time.
 
 Makes the software approachable for users while maintaining good performance.
 
-## Performance comparisson
+## Performance comparison
 
 ![Original source of the image <https://julialang.org/benchmarks/> or directly <https://julialang.org/assets/images/benchmarks.svg>](https://julialang.org/assets/images/benchmarks.svg)
 
@@ -170,16 +170,16 @@ Makes the software approachable for users while maintaining good performance.
 
 To compile the code we run the following code in the terminal
 ```bash
-$ g++ -o hello.out main.cpp
+$ g++ -o hello_world.out hello_world.cpp
 ```
 The compiler `g++` goes through your source code to 
 
 - check if the code has the correct syntax
 - translate the code into instructions readable by the computer
-- generates the executable `hello.out} which you can run with
+- generates the executable `hello_world.out` which you can run with
 
    ```bash
-   $ ./hello.out
+   $ ./hello_world.out
    ```
 
 ## :writing_hand: In class Exercise
@@ -227,7 +227,7 @@ Recall
 The `fstream` library can be used to read/write data from and to files.
 
 ::: {.column width="100%" .custom-box}
-### Code file [`main_fstream.cpp`](./code/main_fstream.cpp), input file [`input.txt`](./code/main_fstream_input.txt)
+### Code file [`main_fstream.cpp`](./code/main_fstream.cpp), input file [`main_fstream_input.txt`](./code/main_fstream_input.txt)
 ```{.cpp include="./code/main_fstream.cpp"}
 ```
 ```{python}
@@ -248,309 +248,8 @@ The `fstream` library can be used to read/write data from and to files.
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_ofstream.cpp
 ```
-:::
-
-# Types
-
-What are types and why do we need them?
-
-## Number representation 1/2
-
-```{dot}
-//| echo: false
-//| label: binary42
-//| fig-width: 7
-//| fig-height: 1.5
-digraph binary {
-  node [shape=plaintext, fontname="Courier"];
-  bits [label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="2">
-      <TR>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#9999ee" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">1</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#9999ee" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">1</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#9999ee" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">1</TD>
-        <TD BGCOLOR="white" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BORDER="0" ROWSPAN="2"><FONT POINT-SIZE="18"> = 42</FONT></TD>
-      </TR>
-      <TR>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>10</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>9</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>8</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>7</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>6</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>5</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>4</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>3</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>2</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>1</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>0</SUP></TD>
-      </TR>
-    </TABLE>
-  >];
-}
-```
-
-- Numbers are represented by bits.
-- Integers usually use $16$ bits ($-32768$ to $32767$)
-
-## Number representation 2/2
-
-```{dot}
-//| echo: false
-//| label: float-layout
-//| fig-width: 7
-//| fig-height: 1.5
-digraph float {
-  node [shape=plaintext, fontname="Courier"];
-  bits [label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="2">
-      <TR>
-        <TD BGCOLOR="#ffdddd" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BORDER="0" WIDTH="12" FIXEDSIZE="TRUE"> </TD>
-        <TD BGCOLOR="#ddffdd" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#ddffdd" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#ddffdd" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#99cc99" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">1</TD>
-        <TD BORDER="0" WIDTH="12" FIXEDSIZE="TRUE"> </TD>
-        <TD BGCOLOR="#ddddff" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#ddddff" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#ddddff" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#9999cc" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">1</TD>
-        <TD BGCOLOR="#ddddff" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-        <TD BGCOLOR="#ddddff" WIDTH="36" HEIGHT="36" FIXEDSIZE="TRUE">0</TD>
-      </TR>
-      <TR>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">&#177;1</TD>
-        <TD BORDER="0" WIDTH="12" HEIGHT="30" FIXEDSIZE="TRUE"> </TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>3</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>2</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>1</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>0</SUP></TD>
-        <TD BORDER="0" WIDTH="12" HEIGHT="30" FIXEDSIZE="TRUE"> </TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>-1</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>-2</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>-3</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>-4</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>-5</SUP></TD>
-        <TD BORDER="0" WIDTH="36" HEIGHT="30" FIXEDSIZE="TRUE">2<SUP>-6</SUP></TD>
-      </TR>
-    </TABLE>
-  >];
-}
-```
-
-- Real numbers: sign $\cdot$ mantissa $\cdot\ 2^\text{exponent}$
-- `double` uses $64$ bits
-
-## What are types and why do we need them?
-
-- Whenever possible, we would like to tell the program how many bits we need.
-- Remember that the C++ compiler requires us to define the type in advance
-  ```{.python}
-  x = 3 # x is a integer
-  if condition:
-    x = 3.0 # x is a floating point number
-  y = 2 * x
-  ```
-- Types simplify readability.
-- Main types are: `char`, `string`, `int`, `long`, `float`, `double`
-
-## Code example
-
-::: {.column width="100%" .custom-box}
-### Code file [`main_typer.cpp`](./code/main_typer.cpp)
-```{.cpp include="./code/main_typer.cpp"}
-```
 ```{python}
-#| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_typer.cpp
+#| echo: true
+%cat ./code/result.txt
 ```
-:::
-- From the code, the compiler knows that $16$ bit are needed for `i`, $32$ bit for `d`, and $64$ for `a` and `b`.
-- It is good practice to declare variables at the beginning of the code.
-
-## :writing_hand: In Class Exercise
-
-::: {.column width="100%" .custom-box}
-### Write your own program
-
-Apart from the `cout` and `endl` commands that you have already seen, the `iostream` library also offers the `cin` command to read inputs from the command line via `cin >> INPUT;`. Write a program which asks the user to provide a number of type `double` and returns the `sin` of this value.
-:::
-
-## :writing_hand: In Class Exercise - Solution
-
-::: {.column width="100%" .custom-box}
-### Solution [`main_type2.cpp`](./code/main_type2.cpp)
-```{.cpp include="./code/main_type2.cpp"}
-```
-```{python}
-#| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_type2.cpp
-```
-:::
-
-## :writing_hand: In Class Exercise
-
-::: {.column width="100%" .custom-box}
-### Write your own program
-
-Read in an integer and a double and print out the sum of these two values.
-:::
-
-## :writing_hand: In Class Exercise - Solution 
-
-::: {.column width="100%" .custom-box}
-### Solution [`main_type3.cpp`](./code/main_type3.cpp)
-```{.cpp include="./code/main_type3.cpp"}
-```
-```{python}
-#| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_type3.cpp
-```
-- Accuracy is lost since `sum` is an integer.
-- Use _typecast_ `int sum = inputInt + int(inputDouble)`
-:::
-
-## :writing_hand: In Class Exercise - Second Solution
-
-::: {.column width="100%" .custom-box}
-### Solution [`main_type3_1.cpp`](./code/main_type3_1.cpp)
-```{.cpp include="./code/main_type3_1.cpp"}
-```
-```{python}
-#| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_type3_1.cpp
-```
-:::
-
-## Introducing `vector`
-
-The standard C++ libraries provide various helpful datatypes, e.g. `std::vector`
-
-::: {.column width="100%" .custom-box}
-### Solution [`main_vector1.cpp`](./code/main_vector1.cpp)
-```{.cpp include="./code/main_vector1.cpp"}
-```
-```{python}
-#| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_vector1.cpp
-```
-:::
-
-- Note that you need to put an `std::` in front of the vector (and `cout`, `endl`). This is a namespace which we will cover later.
-- indexing starts at $0$ in C++!
-- some useful functions `size`, `reserve`, `resize`
-
-# The compiler and linker
-
-## Compiler and linker basics
-
-- We write code that humans understand but computers can't &rarr; translation into machine language
-- The main tools are the **compiler** and the **linker**.
-- **Compiler**: C++ code into machine language file (object file, `main.o`, `main.obj`)
-- **Linker**: combine obj files and libraries (precompiled code)
-  ```bash
-  $ g++ -c hello.cpp
-  $ g++ -o hello.out hello.o
-  $ ls
-  hello.cpp  hello.o  hello.out
-  ```
-
-  We will revisit the compiler multiple times once our programs become more complicated.
-
-## :writing_hand: Exercise
-
-::: {.column width="100%" .custom-box}
-### Write your own program
-
-Write a program which generates two vector $v_1 = [0, 0.5, 1]$ and $v_2 = [0, sin(0.1), 1]$ of type float. Generate a third vector $v_3 = v_1 + v_2$. 
-:::
-
-# Basic programming concepts
-We need some conditionals and loops
-
-## Conditionals
-
-C/C++ comes with the basic conditionals: `if`, `else if`, `else` 
-```{cpp}
-if ( boolean == true ){
-    // statement executed if the condition boolean == true is valid
-} else if (boolean1 == true){
-    // statement executed if the condition boolean == true is not valid but boolean1 == true
-} else{
-    // statement executed if both conditions are false
-}
-```
-New variables defined inside these environments are unknown to the global scope.
-
-## Loops
-
-C/C++ comes with the basic loops: `for`, `while`, `do while` 
-```{cpp}
-for ( long i = 0; i < 10; i++ ){
-   // statement
-}
-
-while ( boolean == true ){
-   // statement
-}
-    
-do {
-  // statement
-} while( boolean == true )
-```
-To exit a loop early we can use `break` and `continue` to jup along
-
-## Range based loops
-
-The range based of often also called `for each` loop is available in C++ as well
-
-```{cpp}
-std::vector<int> numbers = {1, 2, 3, 4, 5};
-
-// Range-based for loop
-for (int num : numbers) {
-    std::cout << num << " ";
-}
-
-// Range-based for loop with auto key word
-for (auto num : numbers) {
-    std::cout << num << " ";
-}
-```
-
-## :writing_hand: Exercise
-
-::: {.column width="100%" .custom-box}
-### Write your own program - FizzBuzz
-
-Write a program that prints the integers from $1$ to $100$ (inclusive).
-If, however, the number is a multiple of three then print `Fizz` instead, and if the number is a multiple of five then print `Buzz`.
-If multiple conditions hold true then all replacements should be printed, for example $15$ should print `FizzBuzz`.
-:::
-
-## :trophy: Advanced Exercise
-
-::: {.column width="100%" .custom-box}
-### Solving an ordinary differential equation
-
-Consider a simple ODE
-$$
-\dot y(t) = \sin(y(t))
-$$
-
-Forward Euler time discretization: Define grid $\{t_1,\cdots,t_{N}\}$ and define $y^n \simeq y(t_n)$
-$$
-    y^{n+1} = y^{n} + (t_{n+1}-t_n) \sin(y^n)
-$$
-
-
-Implement a forward Euler method with equidistant time step size $\Delta t = t_{n+1}-t_n = 0.01$. Store the solution at all time points $t\in[0, 1]$ in a vector and write it to a text file.
 :::

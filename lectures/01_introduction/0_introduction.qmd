@@ -23,7 +23,7 @@ output-dir: ../../
 
 ## What we expect from you?
 
-The syllabus is on the overview page [../index]
+The syllabus is on the overview page [index](../../index.html)
 
 :::{.column width="100%" .custom-box}
 ### Structure of the class
