@@ -1,4 +1,4 @@
-# MExtension Study Programmes Scientific Computing - 198718 VU C and C++ in Simulation Development
+# Extension Study Programmes Scientific Computing - 198718 VU C and C++ in Simulation Development
 
 Repository for the "C and C++ in Simulation Development" course (198718) at the University of Innsbruck
 
