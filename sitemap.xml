@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/02_pointers/1_pointers_and_memmory.html</loc>
-    <lastmod>2026-10-06T14:39:52.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/0_introduction.html</loc>
-    <lastmod>2026-10-06T14:24:30.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/index.html</loc>
-    <lastmod>2026-10-06T14:56:41.000Z</lastmod>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/02_pointers/1_pointers.html</loc>
+    <lastmod>2026-10-07T08:40:13.000Z</lastmod>
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/1_helloworld.html</loc>
-    <lastmod>2026-10-06T14:24:30.000Z</lastmod>
+    <lastmod>2026-10-07T08:38:08.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/index.html</loc>
+    <lastmod>2026-10-07T08:40:13.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/0_introduction.html</loc>
+    <lastmod>2026-10-07T08:38:08.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/2_types.html</loc>
+    <lastmod>2026-10-07T08:38:08.000Z</lastmod>
   </url>
 </urlset>

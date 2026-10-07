@@ -282,7 +282,7 @@ Peter Kandolf
 <span id="cb5-3"><a aria-label="3"></a>    x <span class="op">=</span> <span class="fl">3.0</span>     <span class="co"># x is a floating point number</span></span>
 <span id="cb5-4"><a aria-label="4"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>What operation should “2 * x” be compiled to?
+<li>What operation should <code>2 * x</code> be compiled to?
 <ul>
 <li>integer/floating point multiplication</li>
 </ul></li>
@@ -323,15 +323,15 @@ Peter Kandolf
 <h2>Performance and use of the language</h2>
 <p>In <code>Python</code> using the second order method is <span class="math inline">\(1.5\)</span>x faster than fourth order method. In C++ the second and fourth order methods take the same time.</p>
 <ul>
-<li>Performance is often limited by fetching data from memory and not by the number of arithmetic operations the CPU can perform. This is called a .</li>
+<li>Performance is often limited by fetching data from memory and not by the number of arithmetic operations the CPU can perform. This is called a <em>memory bound problem</em>.</li>
 </ul>
 <p><strong>Writing Python code to predict the performance of a C++ code is a bad idea!</strong></p>
 <p><strong>Why is Python used?:</strong> Many software packages have embraced a high-level Python interface.</p>
 <p><code>Python</code> is often used to specify the problem but all the heavy lifting is done under the hood is usually in C++.</p>
 <p>Makes the software approachable for users while maintaining good performance.</p>
 </section>
-<section id="performance-comparisson" class="slide level2">
-<h2>Performance comparisson</h2>
+<section id="performance-comparison" class="slide level2">
+<h2>Performance comparison</h2>
 
 <img data-src="https://julialang.org/assets/images/benchmarks.svg" class="r-stretch quarto-figure-center"><p class="caption">Original source of the image <a href="https://julialang.org/benchmarks/" class="uri">https://julialang.org/benchmarks/</a> or directly <a href="https://julialang.org/assets/images/benchmarks.svg" class="uri">https://julialang.org/assets/images/benchmarks.svg</a></p></section>
 <section id="set-up-your-working-environment" class="slide level2">
@@ -356,7 +356,7 @@ Peter Kandolf
 <span id="cb10-4"><a aria-label="4"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello World!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// print "Hello World!"</span></span>
 <span id="cb10-5"><a aria-label="5"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                                 <span class="co">// return terminates the program</span></span>
 <span id="cb10-6"><a aria-label="6"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="ae021f09" class="cell" data-execution_count="1">
+<div id="d32c9b30" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello World!</code></pre>
 </div>
@@ -373,13 +373,13 @@ Peter Kandolf
 <section id="compiling-code" class="slide level2">
 <h2>Compiling code</h2>
 <p>To compile the code we run the following code in the terminal</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-label="1"></a><span class="ex">$</span> g++ <span class="at">-o</span> hello.out main.cpp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-label="1"></a><span class="ex">$</span> g++ <span class="at">-o</span> hello_world.out hello_world.cpp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The compiler <code>g++</code> goes through your source code to</p>
 <ul>
 <li><p>check if the code has the correct syntax</p></li>
 <li><p>translate the code into instructions readable by the computer</p></li>
-<li><p>generates the executable `hello.out} which you can run with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-label="1"></a><span class="ex">$</span> ./hello.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>generates the executable <code>hello_world.out</code> which you can run with</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-label="1"></a><span class="ex">$</span> ./hello_world.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="in-class-exercise" class="slide level2">
@@ -410,7 +410,7 @@ Peter Kandolf
 <span id="cb15-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
 <span id="cb15-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span></span>
 <span id="cb15-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="0bcf8171" class="cell" data-execution_count="2">
+<div id="4c6e22ff" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>main_sin_error.cpp: In function ‘int main()’:
 main_sin_error.cpp:5:28: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
@@ -442,7 +442,7 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <span id="cb17-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb17-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb17-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="9f03326c" class="cell" data-execution_count="3">
+<div id="ef3dee81" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>0.909297</code></pre>
 </div>
@@ -452,7 +452,7 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <h2>A simple I/O library - 1/2</h2>
 <p>The <code>fstream</code> library can be used to read/write data from and to files.</p>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_fstream.cpp-input-file-input.txt">Code file <a href="./code/main_fstream.cpp"><code>main_fstream.cpp</code></a>, input file <a href="./code/main_fstream_input.txt"><code>input.txt</code></a></h3>
+<h3 id="code-file-main_fstream.cpp-input-file-main_fstream_input.txt">Code file <a href="./code/main_fstream.cpp"><code>main_fstream.cpp</code></a>, input file <a href="./code/main_fstream_input.txt"><code>main_fstream_input.txt</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;fstream&gt;</span><span class="pp"> </span><span class="co">// library to read/write data</span></span>
 <span id="cb19-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb19-3"><a aria-label="3"></a></span>
@@ -467,7 +467,7 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <span id="cb19-12"><a aria-label="12"></a></span>
 <span id="cb19-13"><a aria-label="13"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb19-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e5c71a69" class="cell" data-execution_count="4">
+<div id="8550e103" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>1 2</code></pre>
 </div>
@@ -489,415 +489,12 @@ main_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token
 <span id="cb21-9"><a aria-label="9"></a></span>
 <span id="cb21-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb21-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></section></section>
-<section>
-<section id="types" class="title-slide slide level1 center">
-<h1>Types</h1>
-<p>What are types and why do we need them?</p>
-</section>
-<section id="number-representation-12" class="slide level2">
-<h2>Number representation 1/2</h2>
-<div class="cell" data-fig-width="7" data-fig-height="1.5" data-layout-align="default">
-<div class="cell-output-display">
-<div id="binary42">
-<div>
-<svg width="672" height="144" viewbox="0.00 0.00 504.00 88.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 84)">
-<title>binary</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-84 500,-84 500,4 -4,4"></polygon>
-<!-- bits -->
-<g id="node1" class="node">
-<title>bits</title>
-<polygon fill="white" stroke="transparent" points="10,-38 10,-74 46,-74 46,-38 10,-38"></polygon>
-<polygon fill="none" stroke="black" points="10,-38 10,-74 46,-74 46,-38 10,-38"></polygon>
-<text text-anchor="start" x="23.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="white" stroke="transparent" points="48,-38 48,-74 84,-74 84,-38 48,-38"></polygon>
-<polygon fill="none" stroke="black" points="48,-38 48,-74 84,-74 84,-38 48,-38"></polygon>
-<text text-anchor="start" x="61.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="white" stroke="transparent" points="86,-38 86,-74 122,-74 122,-38 86,-38"></polygon>
-<polygon fill="none" stroke="black" points="86,-38 86,-74 122,-74 122,-38 86,-38"></polygon>
-<text text-anchor="start" x="99.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="white" stroke="transparent" points="124,-38 124,-74 160,-74 160,-38 124,-38"></polygon>
-<polygon fill="none" stroke="black" points="124,-38 124,-74 160,-74 160,-38 124,-38"></polygon>
-<text text-anchor="start" x="137.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="white" stroke="transparent" points="162,-38 162,-74 198,-74 198,-38 162,-38"></polygon>
-<polygon fill="none" stroke="black" points="162,-38 162,-74 198,-74 198,-38 162,-38"></polygon>
-<text text-anchor="start" x="175.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#9999ee" stroke="transparent" points="200,-38 200,-74 236,-74 236,-38 200,-38"></polygon>
-<polygon fill="none" stroke="black" points="200,-38 200,-74 236,-74 236,-38 200,-38"></polygon>
-<text text-anchor="start" x="213.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">1</text>
-<polygon fill="white" stroke="transparent" points="238,-38 238,-74 274,-74 274,-38 238,-38"></polygon>
-<polygon fill="none" stroke="black" points="238,-38 238,-74 274,-74 274,-38 238,-38"></polygon>
-<text text-anchor="start" x="251.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#9999ee" stroke="transparent" points="276,-38 276,-74 312,-74 312,-38 276,-38"></polygon>
-<polygon fill="none" stroke="black" points="276,-38 276,-74 312,-74 312,-38 276,-38"></polygon>
-<text text-anchor="start" x="289.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">1</text>
-<polygon fill="white" stroke="transparent" points="314,-38 314,-74 350,-74 350,-38 314,-38"></polygon>
-<polygon fill="none" stroke="black" points="314,-38 314,-74 350,-74 350,-38 314,-38"></polygon>
-<text text-anchor="start" x="327.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#9999ee" stroke="transparent" points="352,-38 352,-74 388,-74 388,-38 352,-38"></polygon>
-<polygon fill="none" stroke="black" points="352,-38 352,-74 388,-74 388,-38 352,-38"></polygon>
-<text text-anchor="start" x="365.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">1</text>
-<polygon fill="white" stroke="transparent" points="390,-38 390,-74 426,-74 426,-38 390,-38"></polygon>
-<polygon fill="none" stroke="black" points="390,-38 390,-74 426,-74 426,-38 390,-38"></polygon>
-<text text-anchor="start" x="403.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<text text-anchor="start" x="430" y="-34.6" font-family="Courier,monospace" font-size="18.00"> = 42</text>
-<text text-anchor="start" x="15.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="23.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">10</text>
-<text text-anchor="start" x="57.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="66" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">9</text>
-<text text-anchor="start" x="95.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="104" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">8</text>
-<text text-anchor="start" x="133.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="142" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">7</text>
-<text text-anchor="start" x="171.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="180" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">6</text>
-<text text-anchor="start" x="209.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="218" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">5</text>
-<text text-anchor="start" x="247.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="256" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">4</text>
-<text text-anchor="start" x="285.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="294" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">3</text>
-<text text-anchor="start" x="323.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="332" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">2</text>
-<text text-anchor="start" x="361.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="370" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">1</text>
-<text text-anchor="start" x="399.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="408" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">0</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>Numbers are represented by bits.</li>
-<li>Integers usually use <span class="math inline">\(16\)</span> bits (<span class="math inline">\(-32768\)</span> to <span class="math inline">\(32767\)</span>)</li>
-</ul>
-</section>
-<section id="number-representation-22" class="slide level2">
-<h2>Number representation 2/2</h2>
-<div class="cell" data-fig-width="7" data-fig-height="1.5" data-layout-align="default">
-<div class="cell-output-display">
-<div id="float-layout">
-<div>
-<svg width="672" height="144" viewbox="0.00 0.00 472.00 88.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 84)">
-<title>float</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-84 468,-84 468,4 -4,4"></polygon>
-<!-- bits -->
-<g id="node1" class="node">
-<title>bits</title>
-<polygon fill="#ffdddd" stroke="transparent" points="10,-38 10,-74 46,-74 46,-38 10,-38"></polygon>
-<polygon fill="none" stroke="black" points="10,-38 10,-74 46,-74 46,-38 10,-38"></polygon>
-<text text-anchor="start" x="23.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<text text-anchor="start" x="49.8" y="-51.8" font-family="Courier,monospace" font-size="14.00"> </text>
-<polygon fill="#ddffdd" stroke="transparent" points="62,-38 62,-74 98,-74 98,-38 62,-38"></polygon>
-<polygon fill="none" stroke="black" points="62,-38 62,-74 98,-74 98,-38 62,-38"></polygon>
-<text text-anchor="start" x="75.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#ddffdd" stroke="transparent" points="100,-38 100,-74 136,-74 136,-38 100,-38"></polygon>
-<polygon fill="none" stroke="black" points="100,-38 100,-74 136,-74 136,-38 100,-38"></polygon>
-<text text-anchor="start" x="113.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#ddffdd" stroke="transparent" points="138,-38 138,-74 174,-74 174,-38 138,-38"></polygon>
-<polygon fill="none" stroke="black" points="138,-38 138,-74 174,-74 174,-38 138,-38"></polygon>
-<text text-anchor="start" x="151.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#99cc99" stroke="transparent" points="176,-38 176,-74 212,-74 212,-38 176,-38"></polygon>
-<polygon fill="none" stroke="black" points="176,-38 176,-74 212,-74 212,-38 176,-38"></polygon>
-<text text-anchor="start" x="189.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">1</text>
-<text text-anchor="start" x="215.8" y="-51.8" font-family="Courier,monospace" font-size="14.00"> </text>
-<polygon fill="#ddddff" stroke="transparent" points="228,-38 228,-74 264,-74 264,-38 228,-38"></polygon>
-<polygon fill="none" stroke="black" points="228,-38 228,-74 264,-74 264,-38 228,-38"></polygon>
-<text text-anchor="start" x="241.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#ddddff" stroke="transparent" points="266,-38 266,-74 302,-74 302,-38 266,-38"></polygon>
-<polygon fill="none" stroke="black" points="266,-38 266,-74 302,-74 302,-38 266,-38"></polygon>
-<text text-anchor="start" x="279.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#ddddff" stroke="transparent" points="304,-38 304,-74 340,-74 340,-38 304,-38"></polygon>
-<polygon fill="none" stroke="black" points="304,-38 304,-74 340,-74 340,-38 304,-38"></polygon>
-<text text-anchor="start" x="317.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#9999cc" stroke="transparent" points="342,-38 342,-74 378,-74 378,-38 342,-38"></polygon>
-<polygon fill="none" stroke="black" points="342,-38 342,-74 378,-74 378,-38 342,-38"></polygon>
-<text text-anchor="start" x="355.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">1</text>
-<polygon fill="#ddddff" stroke="transparent" points="380,-38 380,-74 416,-74 416,-38 380,-38"></polygon>
-<polygon fill="none" stroke="black" points="380,-38 380,-74 416,-74 416,-38 380,-38"></polygon>
-<text text-anchor="start" x="393.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<polygon fill="#ddddff" stroke="transparent" points="418,-38 418,-74 454,-74 454,-38 418,-38"></polygon>
-<polygon fill="none" stroke="black" points="418,-38 418,-74 454,-74 454,-38 418,-38"></polygon>
-<text text-anchor="start" x="431.8" y="-51.8" font-family="Courier,monospace" font-size="14.00">0</text>
-<text text-anchor="start" x="15.4" y="-16.8" font-family="Courier,monospace" font-size="14.00">±1</text>
-<text text-anchor="start" x="49.8" y="-16.8" font-family="Courier,monospace" font-size="14.00"> </text>
-<text text-anchor="start" x="71.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="80" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">3</text>
-<text text-anchor="start" x="109.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="118" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">2</text>
-<text text-anchor="start" x="147.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="156" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">1</text>
-<text text-anchor="start" x="185.6" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="194" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">0</text>
-<text text-anchor="start" x="215.8" y="-16.8" font-family="Courier,monospace" font-size="14.00"> </text>
-<text text-anchor="start" x="233.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="241.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">-1</text>
-<text text-anchor="start" x="271.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="279.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">-2</text>
-<text text-anchor="start" x="309.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="317.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">-3</text>
-<text text-anchor="start" x="347.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="355.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">-4</text>
-<text text-anchor="start" x="385.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="393.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">-5</text>
-<text text-anchor="start" x="423.4" y="-17.8" font-family="Courier,monospace" font-size="14.00">2</text>
-<text text-anchor="start" x="431.8" y="-17.8" font-family="Courier,monospace" baseline-shift="super" font-size="14.00">-6</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-<ul>
-<li>Real numbers: sign <span class="math inline">\(\cdot\)</span> mantissa <span class="math inline">\(\cdot\ 2^\text{exponent}\)</span></li>
-<li><code>double</code> uses <span class="math inline">\(64\)</span> bits</li>
-</ul>
-</section>
-<section id="what-are-types-and-why-do-we-need-them" class="slide level2">
-<h2>What are types and why do we need them?</h2>
-<ul>
-<li><p>Whenever possible, we would like to tell the program how many bits we need.</p></li>
-<li><p>Remember that the C++ compiler requires us to define the type in advance</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>x <span class="op">=</span> <span class="dv">3</span> <span class="co"># x is a integer</span></span>
-<span id="cb22-2"><a aria-label="2"></a><span class="cf">if</span> condition:</span>
-<span id="cb22-3"><a aria-label="3"></a>  x <span class="op">=</span> <span class="fl">3.0</span> <span class="co"># x is a floating point number</span></span>
-<span id="cb22-4"><a aria-label="4"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Types simplify readability.</p></li>
-<li><p>Main types are: <code>char</code>, <code>string</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code></p></li>
-</ul>
-</section>
-<section id="code-example" class="slide level2">
-<h2>Code example</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_typer.cpp">Code file <a href="./code/main_typer.cpp"><code>main_typer.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a aria-label="1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb23-2"><a aria-label="2"></a>  <span class="dt">int</span> i<span class="op">;</span>          <span class="co">// declaration</span></span>
-<span id="cb23-3"><a aria-label="3"></a>  i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>          <span class="co">// definition</span></span>
-<span id="cb23-4"><a aria-label="4"></a>  <span class="dt">float</span> d <span class="op">=</span> <span class="fl">2.3</span><span class="bu">f</span><span class="op">;</span> <span class="co">// declaration and definition</span></span>
-<span id="cb23-5"><a aria-label="5"></a>  <span class="dt">double</span> a <span class="op">=</span> <span class="fl">1.0</span><span class="op">,</span> b <span class="op">=</span> <span class="fl">2.3</span><span class="op">;</span></span>
-<span id="cb23-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb23-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><ul>
-<li>From the code, the compiler knows that <span class="math inline">\(16\)</span> bit are needed for <code>i</code>, <span class="math inline">\(32\)</span> bit for <code>d</code>, and <span class="math inline">\(64\)</span> for <code>a</code> and <code>b</code>.</li>
-<li>It is good practice to declare variables at the beginning of the code.</li>
-</ul>
-</section>
-<section id="in-class-exercise-1" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="write-your-own-program-1">Write your own program</h3>
-<p>Apart from the <code>cout</code> and <code>endl</code> commands that you have already seen, the <code>iostream</code> library also offers the <code>cin</code> command to read inputs from the command line via <code>cin &gt;&gt; INPUT;</code>. Write a program which asks the user to provide a number of type <code>double</code> and returns the <code>sin</code> of this value.</p>
-</div></section>
-<section id="in-class-exercise---solution-1" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="solution-main_type2.cpp">Solution <a href="./code/main_type2.cpp"><code>main_type2.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
-<span id="cb24-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb24-3"><a aria-label="3"></a></span>
-<span id="cb24-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb24-5"><a aria-label="5"></a>  <span class="dt">double</span> input<span class="op">;</span></span>
-<span id="cb24-6"><a aria-label="6"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a number: "</span><span class="op">;</span></span>
-<span id="cb24-7"><a aria-label="7"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> input<span class="op">;</span></span>
-<span id="cb24-8"><a aria-label="8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl</span>
-<span id="cb24-9"><a aria-label="9"></a>            <span class="op">&lt;&lt;</span> <span class="st">"sin("</span> <span class="op">&lt;&lt;</span> input <span class="op">&lt;&lt;</span> <span class="st">") = "</span> <span class="op">&lt;&lt;</span> sin<span class="op">(</span>input<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb24-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb24-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d63735d3" class="cell" data-execution_count="7">
+<div id="c28b82b5" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="op">%</span>cat .<span class="op">/</span>code<span class="op">/</span>result.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Enter a number: 
-sin(0) = 0</code></pre>
+<pre><code>1 2.2</code></pre>
 </div>
 </div>
-</div></section>
-<section id="in-class-exercise-2" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="write-your-own-program-2">Write your own program</h3>
-<p>Read in an integer and a double and print out the sum of these two values.</p>
-</div></section>
-<section id="in-class-exercise---solution-2" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="solution-main_type3.cpp">Solution <a href="./code/main_type3.cpp"><code>main_type3.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb26-2"><a aria-label="2"></a></span>
-<span id="cb26-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb26-4"><a aria-label="4"></a>  <span class="dt">double</span> inputInt<span class="op">;</span></span>
-<span id="cb26-5"><a aria-label="5"></a>  <span class="dt">double</span> inputDouble<span class="op">;</span></span>
-<span id="cb26-6"><a aria-label="6"></a></span>
-<span id="cb26-7"><a aria-label="7"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: Integer "</span><span class="op">;</span></span>
-<span id="cb26-8"><a aria-label="8"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputInt<span class="op">;</span></span>
-<span id="cb26-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">", Double "</span><span class="op">;</span></span>
-<span id="cb26-10"><a aria-label="10"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputDouble<span class="op">;</span></span>
-<span id="cb26-11"><a aria-label="11"></a></span>
-<span id="cb26-12"><a aria-label="12"></a>  <span class="dt">int</span> sum <span class="op">=</span> inputInt <span class="op">+</span> inputDouble<span class="op">;</span></span>
-<span id="cb26-13"><a aria-label="13"></a></span>
-<span id="cb26-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb26-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb26-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="dd569c33" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-stdout">
-<pre><code>Enter two numbers: Integer , Double sum is -2147483648</code></pre>
-</div>
-</div>
-<ul>
-<li>Accuracy is lost since <code>sum</code> is an integer.</li>
-<li>Use <em>typecast</em> <code>int sum = inputInt + int(inputDouble)</code></li>
-</ul>
-</div></section>
-<section id="in-class-exercise---second-solution" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Second Solution</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="solution-main_type3_1.cpp">Solution <a href="./code/main_type3_1.cpp"><code>main_type3_1.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb28-2"><a aria-label="2"></a></span>
-<span id="cb28-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb28-4"><a aria-label="4"></a>  <span class="dt">double</span> inputInt<span class="op">;</span></span>
-<span id="cb28-5"><a aria-label="5"></a>  <span class="dt">double</span> inputDouble<span class="op">;</span></span>
-<span id="cb28-6"><a aria-label="6"></a></span>
-<span id="cb28-7"><a aria-label="7"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: Integer "</span><span class="op">;</span></span>
-<span id="cb28-8"><a aria-label="8"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputInt<span class="op">;</span></span>
-<span id="cb28-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">", Double "</span><span class="op">;</span></span>
-<span id="cb28-10"><a aria-label="10"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> inputDouble<span class="op">;</span></span>
-<span id="cb28-11"><a aria-label="11"></a></span>
-<span id="cb28-12"><a aria-label="12"></a>  <span class="dt">double</span> sum <span class="op">=</span> inputInt <span class="op">+</span> inputDouble<span class="op">;</span></span>
-<span id="cb28-13"><a aria-label="13"></a></span>
-<span id="cb28-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb28-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb28-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="6115e01c" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-stdout">
-<pre><code>Enter two numbers: Integer , Double sum is 2.11653e+214</code></pre>
-</div>
-</div>
-</div></section>
-<section id="introducing-vector" class="slide level2">
-<h2>Introducing <code>vector</code></h2>
-<p>The standard C++ libraries provide various helpful datatypes, e.g.&nbsp;<code>std::vector</code></p>
-<div class="column custom-box" style="width:100%;">
-<h3 id="solution-main_vector1.cpp">Solution <a href="./code/main_vector1.cpp"><code>main_vector1.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb30-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb30-3"><a aria-label="3"></a></span>
-<span id="cb30-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb30-5"><a aria-label="5"></a>  <span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> v<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb30-6"><a aria-label="6"></a>  v<span class="op">.</span>reserve<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
-<span id="cb30-7"><a aria-label="7"></a>  v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
-<span id="cb30-8"><a aria-label="8"></a>  v<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
-<span id="cb30-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> v<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb30-10"><a aria-label="10"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> v<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb30-11"><a aria-label="11"></a></span>
-<span id="cb30-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb30-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="de437aa7" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-stdout">
-<pre><code>5
-1 0 1</code></pre>
-</div>
-</div>
-</div><ul>
-<li>Note that you need to put an <code>std::</code> in front of the vector (and <code>cout</code>, <code>endl</code>). This is a namespace which we will cover later.</li>
-<li>indexing starts at <span class="math inline">\(0\)</span> in C++!</li>
-<li>some useful functions <code>size</code>, <code>reserve</code>, <code>resize</code></li>
-</ul>
-</section></section>
-<section>
-<section id="the-compiler-and-linker" class="title-slide slide level1 center">
-<h1>The compiler and linker</h1>
-
-</section>
-<section id="compiler-and-linker-basics" class="slide level2">
-<h2>Compiler and linker basics</h2>
-<ul>
-<li><p>We write code that humans understand but computers can’t → translation into machine language</p></li>
-<li><p>The main tools are the <strong>compiler</strong> and the <strong>linker</strong>.</p></li>
-<li><p><strong>Compiler</strong>: C++ code into machine language file (object file, <code>main.o</code>, <code>main.obj</code>)</p></li>
-<li><p><strong>Linker</strong>: combine obj files and libraries (precompiled code)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a aria-label="1"></a><span class="ex">$</span> g++ <span class="at">-c</span> hello.cpp</span>
-<span id="cb32-2"><a aria-label="2"></a><span class="ex">$</span> g++ <span class="at">-o</span> hello.out hello.o</span>
-<span id="cb32-3"><a aria-label="3"></a><span class="ex">$</span> ls</span>
-<span id="cb32-4"><a aria-label="4"></a><span class="ex">hello.cpp</span>  hello.o  hello.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>We will revisit the compiler multiple times once our programs become more complicated.</p></li>
-</ul>
-</section>
-<section id="exercise" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> Exercise</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="write-your-own-program-3">Write your own program</h3>
-<p>Write a program which generates two vector <span class="math inline">\(v_1 = [0, 0.5, 1]\)</span> and <span class="math inline">\(v_2 = [0, sin(0.1), 1]\)</span> of type float. Generate a third vector <span class="math inline">\(v_3 = v_1 + v_2\)</span>.</p>
-</div></section></section>
-<section>
-<section id="basic-programming-concepts" class="title-slide slide level1 center">
-<h1>Basic programming concepts</h1>
-<p>We need some conditionals and loops</p>
-</section>
-<section id="conditionals" class="slide level2">
-<h2>Conditionals</h2>
-<p>C/C++ comes with the basic conditionals: <code>if</code>, <code>else if</code>, <code>else</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a aria-label="1"></a>if ( boolean == true ){</span>
-<span id="cb33-2"><a aria-label="2"></a>    // statement executed if the condition boolean == true is valid</span>
-<span id="cb33-3"><a aria-label="3"></a>} else if (boolean1 == true){</span>
-<span id="cb33-4"><a aria-label="4"></a>    // statement executed if the condition boolean == true is not valid but boolean1 == true</span>
-<span id="cb33-5"><a aria-label="5"></a>} else{</span>
-<span id="cb33-6"><a aria-label="6"></a>    // statement executed if both conditions are false</span>
-<span id="cb33-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>New variables defined inside these environments are unknown to the global scope.</p>
-</section>
-<section id="loops" class="slide level2">
-<h2>Loops</h2>
-<p>C/C++ comes with the basic loops: <code>for</code>, <code>while</code>, <code>do while</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a aria-label="1"></a>for ( long i = 0; i &lt; 10; i++ ){</span>
-<span id="cb34-2"><a aria-label="2"></a>   // statement</span>
-<span id="cb34-3"><a aria-label="3"></a>}</span>
-<span id="cb34-4"><a aria-label="4"></a></span>
-<span id="cb34-5"><a aria-label="5"></a>while ( boolean == true ){</span>
-<span id="cb34-6"><a aria-label="6"></a>   // statement</span>
-<span id="cb34-7"><a aria-label="7"></a>}</span>
-<span id="cb34-8"><a aria-label="8"></a>    </span>
-<span id="cb34-9"><a aria-label="9"></a>do {</span>
-<span id="cb34-10"><a aria-label="10"></a>  // statement</span>
-<span id="cb34-11"><a aria-label="11"></a>} while( boolean == true )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To exit a loop early we can use <code>break</code> and <code>continue</code> to jup along</p>
-</section>
-<section id="range-based-loops" class="slide level2">
-<h2>Range based loops</h2>
-<p>The range based of often also called <code>for each</code> loop is available in C++ as well</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a aria-label="1"></a>std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};</span>
-<span id="cb35-2"><a aria-label="2"></a></span>
-<span id="cb35-3"><a aria-label="3"></a>// Range-based for loop</span>
-<span id="cb35-4"><a aria-label="4"></a>for (int num : numbers) {</span>
-<span id="cb35-5"><a aria-label="5"></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
-<span id="cb35-6"><a aria-label="6"></a>}</span>
-<span id="cb35-7"><a aria-label="7"></a></span>
-<span id="cb35-8"><a aria-label="8"></a>// Range-based for loop with auto key word</span>
-<span id="cb35-9"><a aria-label="9"></a>for (auto num : numbers) {</span>
-<span id="cb35-10"><a aria-label="10"></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
-<span id="cb35-11"><a aria-label="11"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="exercise-1" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> Exercise</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="write-your-own-program---fizzbuzz">Write your own program - FizzBuzz</h3>
-<p>Write a program that prints the integers from <span class="math inline">\(1\)</span> to <span class="math inline">\(100\)</span> (inclusive). If, however, the number is a multiple of three then print <code>Fizz</code> instead, and if the number is a multiple of five then print <code>Buzz</code>. If multiple conditions hold true then all replacements should be printed, for example <span class="math inline">\(15\)</span> should print <code>FizzBuzz</code>.</p>
-</div></section>
-<section id="advanced-exercise" class="slide level2">
-<h2><span class="emoji" data-emoji="trophy">🏆</span> Advanced Exercise</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="solving-an-ordinary-differential-equation">Solving an ordinary differential equation</h3>
-<p>Consider a simple ODE <span class="math display">\[
-\dot y(t) = \sin(y(t))
-\]</span></p>
-<p>Forward Euler time discretization: Define grid <span class="math inline">\(\{t_1,\cdots,t_{N}\}\)</span> and define <span class="math inline">\(y^n \simeq y(t_n)\)</span> <span class="math display">\[
-    y^{n+1} = y^{n} + (t_{n+1}-t_n) \sin(y^n)
-\]</span></p>
-<p>Implement a forward Euler method with equidistant time step size <span class="math inline">\(\Delta t = t_{n+1}-t_n = 0.01\)</span>. Store the solution at all time points <span class="math inline">\(t\in[0, 1]\)</span> in a vector and write it to a text file.</p>
 </div></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
