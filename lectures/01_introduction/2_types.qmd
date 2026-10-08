@@ -17,7 +17,7 @@ filters:
 - use loops
 :::
 
-## Number representation 1/2
+## Number representation
 
 ```{dot}
 //| echo: false
@@ -62,8 +62,6 @@ digraph binary {
 
 - Numbers are represented by bits.
 - Integers usually use $16$ bits ($-32768$ to $32767$)
-
-## Number representation 2/2
 
 ```{dot}
 //| echo: false
@@ -136,7 +134,10 @@ digraph float {
 %run ../../scripts/compile_and_run_cpp.py ./code/main_typer.cpp
 ```
 :::
-- From the code, the compiler knows that $16$ bit are needed for `i`, $32$ bit for `d`, and $64$ for `a` and `b`.
+- From the code, the compiler knows that:
+   - $16$ bit are needed for `i`,
+   - $32$ bit for `d`,
+   - $64$ for `a` and `b`.
 - It is good practice to declare variables at the beginning of the code.
 
 ## :writing_hand: In Class Exercise
@@ -159,6 +160,10 @@ Apart from the `cout` and `endl` commands that you have already seen, the `iostr
 ```
 :::
 
+::: {.callout-warning}
+These slides are compiled automatically so no input is provided.
+:::
+
 ## :writing_hand: In Class Exercise
 
 ::: {.column width="100%" .custom-box}
@@ -177,8 +182,13 @@ Read in an integer and a double and print out the sum of these two values.
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_type3.cpp
 ```
+:::
+
 - Accuracy is lost since `sum` is an integer.
 - Use _typecast_ `int sum = inputInt + int(inputDouble)`
+
+::: {.callout-warning}
+These slides are compiled automatically so no input is provided.
 :::
 
 ## :writing_hand: In Class Exercise - Second Solution
@@ -191,6 +201,10 @@ Read in an integer and a double and print out the sum of these two values.
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_type3_1.cpp
 ```
+:::
+
+::: {.callout-warning}
+These slides are compiled automatically so no input is provided.
 :::
 
 ## Introducing `vector`
