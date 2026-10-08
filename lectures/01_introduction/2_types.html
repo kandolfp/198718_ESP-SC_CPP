@@ -232,8 +232,8 @@ Peter Kandolf
 </div>
 </div>
 </section>
-<section id="number-representation-12" class="slide level2">
-<h2>Number representation 1/2</h2>
+<section id="number-representation" class="slide level2">
+<h2>Number representation</h2>
 <div class="cell" data-fig-width="7" data-fig-height="1.5" data-layout-align="default">
 <div class="cell-output-display">
 <div id="binary42">
@@ -312,9 +312,6 @@ Peter Kandolf
 <li>Numbers are represented by bits.</li>
 <li>Integers usually use <span class="math inline">\(16\)</span> bits (<span class="math inline">\(-32768\)</span> to <span class="math inline">\(32767\)</span>)</li>
 </ul>
-</section>
-<section id="number-representation-22" class="slide level2">
-<h2>Number representation 2/2</h2>
 <div class="cell" data-fig-width="7" data-fig-height="1.5" data-layout-align="default">
 <div class="cell-output-display">
 <div id="float-layout">
@@ -421,7 +418,12 @@ Peter Kandolf
 <span id="cb2-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb2-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><ul>
-<li>From the code, the compiler knows that <span class="math inline">\(16\)</span> bit are needed for <code>i</code>, <span class="math inline">\(32\)</span> bit for <code>d</code>, and <span class="math inline">\(64\)</span> for <code>a</code> and <code>b</code>.</li>
+<li>From the code, the compiler knows that:
+<ul>
+<li><span class="math inline">\(16\)</span> bit are needed for <code>i</code>,</li>
+<li><span class="math inline">\(32\)</span> bit for <code>d</code>,</li>
+<li><span class="math inline">\(64\)</span> for <code>a</code> and <code>b</code>.</li>
+</ul></li>
 <li>It is good practice to declare variables at the beginning of the code.</li>
 </ul>
 </section>
@@ -446,13 +448,26 @@ Peter Kandolf
 <span id="cb3-9"><a aria-label="9"></a>            <span class="op">&lt;&lt;</span> <span class="st">"sin("</span> <span class="op">&lt;&lt;</span> input <span class="op">&lt;&lt;</span> <span class="st">") = "</span> <span class="op">&lt;&lt;</span> sin<span class="op">(</span>input<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb3-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb3-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="5e9adb9f" class="cell" data-execution_count="2">
+<div id="e49b90ea" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter a number: 
-sin(6.91017e-310) = 6.91017e-310</code></pre>
+sin(0) = 0</code></pre>
 </div>
 </div>
-</div></section>
+</div><div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>These slides are compiled automatically so no input is provided.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="in-class-exercise-1" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise</h2>
 <div class="column custom-box" style="width:100%;">
@@ -479,16 +494,29 @@ sin(6.91017e-310) = 6.91017e-310</code></pre>
 <span id="cb5-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb5-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb5-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="813c4ce7" class="cell" data-execution_count="3">
+<div id="a94602b9" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter two numbers: Integer , Double sum is -2147483648</code></pre>
 </div>
 </div>
-<ul>
+</div><ul>
 <li>Accuracy is lost since <code>sum</code> is an integer.</li>
 <li>Use <em>typecast</em> <code>int sum = inputInt + int(inputDouble)</code></li>
 </ul>
-</div></section>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>These slides are compiled automatically so no input is provided.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="in-class-exercise---second-solution" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Second Solution</h2>
 <div class="column custom-box" style="width:100%;">
@@ -509,12 +537,25 @@ sin(6.91017e-310) = 6.91017e-310</code></pre>
 <span id="cb7-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb7-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb7-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="fd9ff5d0" class="cell" data-execution_count="4">
+<div id="8e9cf4e6" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter two numbers: Integer , Double sum is 2.11653e+214</code></pre>
 </div>
 </div>
-</div></section>
+</div><div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>These slides are compiled automatically so no input is provided.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="introducing-vector" class="slide level2">
 <h2>Introducing <code>vector</code></h2>
 <p>The standard C++ libraries provide various helpful datatypes, e.g.&nbsp;<code>std::vector</code></p>
@@ -533,7 +574,7 @@ sin(6.91017e-310) = 6.91017e-310</code></pre>
 <span id="cb9-11"><a aria-label="11"></a></span>
 <span id="cb9-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb9-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d2637c5c" class="cell" data-execution_count="5">
+<div id="ae6f49f0" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>5
 1 0 1</code></pre>

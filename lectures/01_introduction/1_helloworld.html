@@ -254,6 +254,9 @@ Peter Kandolf
 <div class="cell-output-display">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Compile</span> and Wall time <span class="er">(</span><span class="ex">2nd</span> order<span class="kw">)</span><span class="bu">:</span> 0.28 s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<ul>
+<li>The reference code can be downloaded <a href="./code/references.zip">here</a></li>
+</ul>
 </section>
 <section id="performance-implications" class="slide level2">
 <h2>Performance implications</h2>
@@ -318,6 +321,9 @@ Peter Kandolf
 <div class="cell-output-display">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Compile</span> and Wall time <span class="er">(</span><span class="ex">2nd</span> order<span class="kw">)</span><span class="bu">:</span> 0.28 s, <span class="er">(</span><span class="ex">4th</span> order<span class="kw">)</span><span class="bu">:</span> 0.28 s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<ul>
+<li>The reference code can be downloaded <a href="./code/references.zip">here</a></li>
+</ul>
 </section>
 <section id="performance-and-use-of-the-language" class="slide level2">
 <h2>Performance and use of the language</h2>
@@ -356,7 +362,7 @@ Peter Kandolf
 <span id="cb10-4"><a aria-label="4"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello World!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">// print "Hello World!"</span></span>
 <span id="cb10-5"><a aria-label="5"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                                 <span class="co">// return terminates the program</span></span>
 <span id="cb10-6"><a aria-label="6"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="959a434f" class="cell" data-execution_count="1">
+<div id="6a4658fc" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello World!</code></pre>
 </div>
@@ -402,7 +408,7 @@ Peter Kandolf
 <section id="in-class-exercise---solution" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="solution-main_sin.cpp">Solution <a href="./code/main_sin_error.cpp"><code>main_sin.cpp</code></a></h3>
+<h3 id="solution-main_sin_error.cpp">Solution <a href="./code/main_sin_error.cpp"><code>main_sin_error.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span><span class="pp">    </span><span class="co">// library includes sin</span></span>
 <span id="cb15-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// library includes cout, endl</span></span>
 <span id="cb15-3"><a aria-label="3"></a></span>
@@ -410,39 +416,24 @@ Peter Kandolf
 <span id="cb15-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
 <span id="cb15-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span></span>
 <span id="cb15-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="02471c3a" class="cell" data-execution_count="2">
+<div id="aa2a8d8a" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">main_sin_error.cpp:</span> In function ‘<span class="ansi-bold">int</span><span class="ansi-green-fg ansi-bold"> main</span>()’:
-
 <span class="ansi-bold">main_sin_error.cpp:5:28:</span> <span class="ansi-red-fg ansi-bold">error: </span>‘<span class="ansi-bold">endl</span>’ was not declared in this scope; did you mean ‘<span class="ansi-bold">std::endl</span>’?
-
     5 |   std::cout &lt;&lt; sin(2.0) &lt;&lt; <span class="ansi-red-fg ansi-bold">endl</span>;
-
       |                            <span class="ansi-red-fg ansi-bold">^~~~</span>
-
       |                            <span class="ansi-green-fg">std::endl</span>
-
 In file included from <span class="ansi-bold">/usr/include/c++/13/iostream:41</span>,
-
                  from <span class="ansi-bold">main_sin_error.cpp:2</span>:
-
 <span class="ansi-bold">/usr/include/c++/13/ostream:735:5:</span> <span class="ansi-cyan-fg ansi-bold">note: </span>‘<span class="ansi-bold">std::endl</span>’ declared here
-
   735 |     <span class="ansi-cyan-fg ansi-bold">endl</span>(basic_ostream&lt;_CharT, _Traits&gt;&amp; __os)
-
       |     <span class="ansi-cyan-fg ansi-bold">^~~~</span>
-
 <span class="ansi-bold">main_sin_error.cpp:6:11:</span> <span class="ansi-red-fg ansi-bold">error: </span>expected ‘<span class="ansi-bold">;</span>’ before ‘<span class="ansi-bold">}</span>’ token
-
     6 |   return 0
-
       |           <span class="ansi-red-fg ansi-bold">^</span>
-
       |           <span class="ansi-green-fg">;</span>
-
     7 | <span class="ansi-green-fg">}</span>
-
       | <span class="ansi-green-fg">~</span>          
 </pre>
 </div>
@@ -452,7 +443,7 @@ In file included from <span class="ansi-bold">/usr/include/c++/13/iostream:41</s
 <section id="in-class-exercise---solution---working" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Solution - working</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="solution-main_sin.cpp-1">Solution <a href="./code/main_sin.cpp"><code>main_sin.cpp</code></a></h3>
+<h3 id="solution-main_sin.cpp">Solution <a href="./code/main_sin.cpp"><code>main_sin.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span><span class="pp">    </span><span class="co">// library includes sin</span></span>
 <span id="cb16-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span><span class="pp"> </span><span class="co">// library includes cout, endl</span></span>
 <span id="cb16-3"><a aria-label="3"></a></span>
@@ -460,7 +451,7 @@ In file included from <span class="ansi-bold">/usr/include/c++/13/iostream:41</s
 <span id="cb16-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sin<span class="op">(</span><span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb16-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb16-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="53da691a" class="cell" data-execution_count="3">
+<div id="25a72305" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>0.909297</code></pre>
 </div>
@@ -485,7 +476,7 @@ In file included from <span class="ansi-bold">/usr/include/c++/13/iostream:41</s
 <span id="cb18-12"><a aria-label="12"></a></span>
 <span id="cb18-13"><a aria-label="13"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb18-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f8ec134c" class="cell" data-execution_count="4">
+<div id="4497ebe4" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>1 2</code></pre>
 </div>
@@ -507,7 +498,7 @@ In file included from <span class="ansi-bold">/usr/include/c++/13/iostream:41</s
 <span id="cb20-9"><a aria-label="9"></a></span>
 <span id="cb20-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb20-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="9709e2d6" class="cell" data-execution_count="6">
+<div id="509ccccf" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="op">%</span>cat .<span class="op">/</span>code<span class="op">/</span>result.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 2.2</code></pre>

@@ -32,35 +32,35 @@
     "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
     "title": "1. Pointers and memory management",
     "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffd559703b8 0x7ffd559703c0\nAddresses: 0x7ffd559703b8 0x7ffd559703c0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffcf8f83e78 0x7ffcf8f83e80\nAddresses: 0x7ffcf8f83e78 0x7ffcf8f83e80\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-14",
     "href": "lectures/02_pointers/1_pointers.html#pointers-14",
     "title": "1. Pointers and memory management",
     "section": "Pointers 1/4",
-    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fff00b3da78 0x7fff00b3da78 0x7fff00b3da80\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
+    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffddf85aac8 0x7ffddf85aac8 0x7ffddf85aad0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-24",
     "href": "lectures/02_pointers/1_pointers.html#pointers-24",
     "title": "1. Pointers and memory management",
     "section": "Pointers 2/4",
-    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffebff4a668 0x7ffebff4a668 0x7ffebff4a670\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe7d970f78 0x7ffe7d970f78 0x7ffe7d970f80\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-34",
     "href": "lectures/02_pointers/1_pointers.html#pointers-34",
     "title": "1. Pointers and memory management",
     "section": "Pointers 3/4",
-    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc6c920558 0x7ffc6c920558 0x7ffc6c920560\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffefce23818 0x7ffefce23818 0x7ffefce23820\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-44",
     "href": "lectures/02_pointers/1_pointers.html#pointers-44",
     "title": "1. Pointers and memory management",
     "section": "Pointers 4/4",
-    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffe25c5198 0x7fffe25c5198 0x7fffe25c51a0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
+    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc002d1b98 0x7ffc002d1b98 0x7ffc002d1ba0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
@@ -116,7 +116,7 @@
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-26",
     "title": "1. Pointers and memory management",
     "section": "More fun with pointers 2/6",
-    "text": "More fun with pointers 2/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n\nmain_pointers6.cpp: In function ‘int main()’:\n\nmain_pointers6.cpp:4:12: error: invalid conversion from ‘int’ to ‘int*’ [-fpermissive]\n\n    4 |   int *i = 1, j = 2;\n\n      |            ^\n\n      |            |\n\n      |            int"
+    "text": "More fun with pointers 2/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n\nmain_pointers6.cpp: In function ‘int main()’:\nmain_pointers6.cpp:4:12: error: invalid conversion from ‘int’ to ‘int*’ [-fpermissive]\n    4 |   int *i = 1, j = 2;\n      |            ^\n      |            |\n      |            int"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-36",
@@ -172,7 +172,7 @@
     "href": "lectures/01_introduction/1_helloworld.html#a-simple-stencil-code",
     "title": "1. Why we teach C++ and some basics",
     "section": "A simple stencil code",
-    "text": "A simple stencil code\nPython\nfor i in np.arange(1, N - 1):\n  for j in np.arange(1, N - 1):\n      out[j + i * N] = inn[j + i * N] \\\n                     + alpha * (inn[j - 1 + i * N] - \n                               2.0 * inn[j + i * N] + inn[j + 1 + i * N])\n\nCompile and Wall time (2nd order):  7.65 s (1.08 s with numba)\n                                           (0.67 s with slicing)\nC++\n\nfor(int i = 1; i &lt; N-1; i++)\n    for(int j = 1; j &lt; N-1; j++)\n        out[j + i * N] = in[j + i * N] \n                       + alpha * (in[j - 1 + i * N] - \n                                 2.0 * in[j + i * N] + in[j + 1 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s"
+    "text": "A simple stencil code\nPython\nfor i in np.arange(1, N - 1):\n  for j in np.arange(1, N - 1):\n      out[j + i * N] = inn[j + i * N] \\\n                     + alpha * (inn[j - 1 + i * N] - \n                               2.0 * inn[j + i * N] + inn[j + 1 + i * N])\n\nCompile and Wall time (2nd order):  7.65 s (1.08 s with numba)\n                                           (0.67 s with slicing)\nC++\n\nfor(int i = 1; i &lt; N-1; i++)\n    for(int j = 1; j &lt; N-1; j++)\n        out[j + i * N] = in[j + i * N] \n                       + alpha * (in[j - 1 + i * N] - \n                                 2.0 * in[j + i * N] + in[j + 1 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s\n\n\nThe reference code can be downloaded here"
   },
   {
     "objectID": "lectures/01_introduction/1_helloworld.html#performance-implications",
@@ -193,7 +193,7 @@
     "href": "lectures/01_introduction/1_helloworld.html#performance-part-2",
     "title": "1. Why we teach C++ and some basics",
     "section": "Performance part 2",
-    "text": "Performance part 2\nFourth order stencil in Python\nfor i in np.arange(1, N-1):\n    for j in np.arange(1,N-1):\n        out[j + i * N] = inn[j + i * N] + alpha * (\n                -1./12. * inn[j - 2 + i * N] + 4./3. * inn[j - 1 + i * N] \\\n                - 5./2. * inn[j + i * N] + 4./3. * inn[j + 1 + i * N] \\\n                - 1./12. * inn[j + 2 + i * N]);\n\nCompile and Wall time (2nd order):  7.65 s, (4th order):  11.84 s\nFourth order stencil in C++\n\nfor(int i=1; i &lt; N-1; i++)\n    for(int j=2;j &lt; N-2; j++)\n        out[j + i * N] = in[j + i * N] + alpha * (\n            -1./12. * in[j - 2 + i * N] + 4./3. * in[j - 1 + i * N] \\\n            - 5./2. * in[j + i * N] + 4./3. * in[j + 1 + i * N] \\\n            - 1./12. * in[j + 2 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s, (4th order): 0.28 s"
+    "text": "Performance part 2\nFourth order stencil in Python\nfor i in np.arange(1, N-1):\n    for j in np.arange(1,N-1):\n        out[j + i * N] = inn[j + i * N] + alpha * (\n                -1./12. * inn[j - 2 + i * N] + 4./3. * inn[j - 1 + i * N] \\\n                - 5./2. * inn[j + i * N] + 4./3. * inn[j + 1 + i * N] \\\n                - 1./12. * inn[j + 2 + i * N]);\n\nCompile and Wall time (2nd order):  7.65 s, (4th order):  11.84 s\nFourth order stencil in C++\n\nfor(int i=1; i &lt; N-1; i++)\n    for(int j=2;j &lt; N-2; j++)\n        out[j + i * N] = in[j + i * N] + alpha * (\n            -1./12. * in[j - 2 + i * N] + 4./3. * in[j - 1 + i * N] \\\n            - 5./2. * in[j + i * N] + 4./3. * in[j + 1 + i * N] \\\n            - 1./12. * in[j + 2 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s, (4th order): 0.28 s\n\n\nThe reference code can be downloaded here"
   },
   {
     "objectID": "lectures/01_introduction/1_helloworld.html#performance-and-use-of-the-language",
@@ -242,7 +242,7 @@
     "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution",
     "title": "1. Why we teach C++ and some basics",
     "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_sin.cpp\n#include &lt;cmath&gt;    // library includes sin\n#include &lt;iostream&gt; // library includes cout, endl\n\nint main() {\n  std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n  return 0\n}\n\n\n\nmain_sin_error.cpp: In function ‘int main()’:\n\nmain_sin_error.cpp:5:28: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?\n\n    5 |   std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n\n      |                            ^~~~\n\n      |                            std::endl\n\nIn file included from /usr/include/c++/13/iostream:41,\n\n                 from main_sin_error.cpp:2:\n\n/usr/include/c++/13/ostream:735:5: note: ‘std::endl’ declared here\n\n  735 |     endl(basic_ostream&lt;_CharT, _Traits&gt;& __os)\n\n      |     ^~~~\n\nmain_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token\n\n    6 |   return 0\n\n      |           ^\n\n      |           ;\n\n    7 | }\n\n      | ~"
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_sin_error.cpp\n#include &lt;cmath&gt;    // library includes sin\n#include &lt;iostream&gt; // library includes cout, endl\n\nint main() {\n  std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n  return 0\n}\n\n\n\nmain_sin_error.cpp: In function ‘int main()’:\nmain_sin_error.cpp:5:28: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?\n    5 |   std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n      |                            ^~~~\n      |                            std::endl\nIn file included from /usr/include/c++/13/iostream:41,\n                 from main_sin_error.cpp:2:\n/usr/include/c++/13/ostream:735:5: note: ‘std::endl’ declared here\n  735 |     endl(basic_ostream&lt;_CharT, _Traits&gt;& __os)\n      |     ^~~~\nmain_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token\n    6 |   return 0\n      |           ^\n      |           ;\n    7 | }\n      | ~"
   },
   {
     "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution---working",
@@ -315,18 +315,11 @@
     "text": "⚠️ Important!\n\nThe curriculum changed and this lecture is slightly different → probably some things change and get shifted around\nPlease provide some feedback already during class so we can adapt to it"
   },
   {
-    "objectID": "lectures/01_introduction/2_types.html#number-representation-12",
-    "href": "lectures/01_introduction/2_types.html#number-representation-12",
+    "objectID": "lectures/01_introduction/2_types.html#number-representation",
+    "href": "lectures/01_introduction/2_types.html#number-representation",
     "title": "1. Why we teach C++ and some basics",
-    "section": "Number representation 1/2",
-    "text": "Number representation 1/2\n\n\n\n\n\n\nbinary\n\n\n\nbits\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n = 42\n2\n10\n2\n9\n2\n8\n2\n7\n2\n6\n2\n5\n2\n4\n2\n3\n2\n2\n2\n1\n2\n0\n\n\n\n\n\n\n\n\nNumbers are represented by bits.\nIntegers usually use \\(16\\) bits (\\(-32768\\) to \\(32767\\))"
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#number-representation-22",
-    "href": "lectures/01_introduction/2_types.html#number-representation-22",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Number representation 2/2",
-    "text": "Number representation 2/2\n\n\n\n\n\n\nfloat\n\n\n\nbits\n\n\n0\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n±1\n \n2\n3\n2\n2\n2\n1\n2\n0\n \n2\n-1\n2\n-2\n2\n-3\n2\n-4\n2\n-5\n2\n-6\n\n\n\n\n\n\n\n\nReal numbers: sign \\(\\cdot\\) mantissa \\(\\cdot\\ 2^\\text{exponent}\\)\ndouble uses \\(64\\) bits"
+    "section": "Number representation",
+    "text": "Number representation\n\n\n\n\n\n\nbinary\n\n\n\nbits\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n = 42\n2\n10\n2\n9\n2\n8\n2\n7\n2\n6\n2\n5\n2\n4\n2\n3\n2\n2\n2\n1\n2\n0\n\n\n\n\n\n\n\n\nNumbers are represented by bits.\nIntegers usually use \\(16\\) bits (\\(-32768\\) to \\(32767\\))\n\n\n\n\n\n\n\nfloat\n\n\n\nbits\n\n\n0\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n±1\n \n2\n3\n2\n2\n2\n1\n2\n0\n \n2\n-1\n2\n-2\n2\n-3\n2\n-4\n2\n-5\n2\n-6\n\n\n\n\n\n\n\n\nReal numbers: sign \\(\\cdot\\) mantissa \\(\\cdot\\ 2^\\text{exponent}\\)\ndouble uses \\(64\\) bits"
   },
   {
     "objectID": "lectures/01_introduction/2_types.html#what-are-types-and-why-do-we-need-them",
@@ -340,7 +333,7 @@
     "href": "lectures/01_introduction/2_types.html#code-example",
     "title": "1. Why we teach C++ and some basics",
     "section": "Code example",
-    "text": "Code example\n\nCode file main_typer.cpp\nint main() {\n  int i;          // declaration\n  i = 2;          // definition\n  float d = 2.3f; // declaration and definition\n  double a = 1.0, b = 2.3;\n  return 0;\n}\n\nFrom the code, the compiler knows that \\(16\\) bit are needed for i, \\(32\\) bit for d, and \\(64\\) for a and b.\nIt is good practice to declare variables at the beginning of the code."
+    "text": "Code example\n\nCode file main_typer.cpp\nint main() {\n  int i;          // declaration\n  i = 2;          // definition\n  float d = 2.3f; // declaration and definition\n  double a = 1.0, b = 2.3;\n  return 0;\n}\n\nFrom the code, the compiler knows that:\n\n\\(16\\) bit are needed for i,\n\\(32\\) bit for d,\n\\(64\\) for a and b.\n\nIt is good practice to declare variables at the beginning of the code."
   },
   {
     "objectID": "lectures/01_introduction/2_types.html#in-class-exercise",
@@ -354,7 +347,7 @@
     "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution",
     "title": "1. Why we teach C++ and some basics",
     "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(6.91017e-310) = 6.91017e-310"
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(0) = 0\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
   },
   {
     "objectID": "lectures/01_introduction/2_types.html#in-class-exercise-1",
@@ -368,14 +361,14 @@
     "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution-1",
     "title": "1. Why we teach C++ and some basics",
     "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type3.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  int sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is -2147483648\n\n\n\nAccuracy is lost since sum is an integer.\nUse typecast int sum = inputInt + int(inputDouble)"
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type3.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  int sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is -2147483648\n\n\n\nAccuracy is lost since sum is an integer.\nUse typecast int sum = inputInt + int(inputDouble)\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
   },
   {
     "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---second-solution",
     "href": "lectures/01_introduction/2_types.html#in-class-exercise---second-solution",
     "title": "1. Why we teach C++ and some basics",
     "section": "✍️ In Class Exercise - Second Solution",
-    "text": "✍️ In Class Exercise - Second Solution\n\nSolution main_type3_1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  double sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is 2.11653e+214"
+    "text": "✍️ In Class Exercise - Second Solution\n\nSolution main_type3_1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  double sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is 2.11653e+214\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
   },
   {
     "objectID": "lectures/01_introduction/2_types.html#introducing-vector",
