@@ -5,6 +5,7 @@ footer: '<a href="../../index.html">← Back to overview</a>'
 output-dir: ../../
 filters:
   - include-code-files
+  - ansi-newlines
 ---
 
 

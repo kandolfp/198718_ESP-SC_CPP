@@ -6,6 +6,7 @@ format:
     output-dir: ../../
 filters:
   - include-code-files
+  - ansi-newlines
 ---
 
 # Pointers and memory management
