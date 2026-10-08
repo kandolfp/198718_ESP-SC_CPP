@@ -32,7 +32,7 @@ if not any(opt.startswith("-O") for opt in compile_options):
     compile_options.insert(0, "-O3")
 
 sources: list[Path] = [(Path.cwd() / path).resolve() for path in source_paths]
-executable = str(sources[0].absolute().with_suffix(""))
+executable = str(sources[0].absolute().with_suffix(".out"))
 
 # By default subprocess.run() will open a new console window on Windows, which captures focus and is quite annoying.
 # This is surpressed using either the windows_hide argument (Python >= 3.7) or the creationflags argument (Python < 3.7).
