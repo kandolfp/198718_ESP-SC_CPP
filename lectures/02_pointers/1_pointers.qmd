@@ -1,5 +1,5 @@
 ---
-title: 1. Pointers and memory management
+title: 1. Pointers
 format:
   revealjs:
     footer: '<a href="../../index.html">← Back to overview</a>'
@@ -9,12 +9,11 @@ filters:
   - ansi-newlines
 ---
 
-# Pointers and memory management
+# Pointers
 
 
 ::: {.callout-tip icon=false} 
 ## :dart: Learning goals of this course
-- Understand memory management
 - start to use pointers
 :::
 
@@ -214,6 +213,8 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
+
+memory after line 5
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4
@@ -258,6 +259,7 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
+memory after line 6
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4.25
@@ -302,6 +304,7 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
+memory after line 7
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4.25
@@ -346,6 +349,7 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
+memory after line 7
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4.25
