@@ -1,0 +1,298 @@
+---
+title: 2. Memory Management
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Memory management
+
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this course
+- Understand memory management
+:::
+
+
+## Why?
+
+- Pointers give control over memory.
+- Pass data to a different program part without copying it (`functions`, `classes`,...).
+- Control when to delete data [dynamic]{style="color:orange;"}  vs. [static]{style="color:blue"} memory.
+
+::: {.columns}
+:::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: stack-heap
+//| fig-width: 3
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd1"><FONT COLOR="blue"><I>stack</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd2"><FONT COLOR="blue"><I>stack</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd3"><FONT COLOR="blue"><I>stack</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd4">...</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd5"><FONT COLOR="orange"><I>heap</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd6"><FONT COLOR="orange"><I>heap</I></FONT></TD></TR>
+    </TABLE>
+  >];
+
+  //mem:cmd2:e -> mem:cmd6:e;
+}
+```
+::::
+
+::::  {.column width="66%"} 
+- [static]{style="color:blue"} memory managed by compiler ([stack]{style="color:blue"})
+- [dynamic]{style="color:orange;"} memory managed by user ([heap]{style="color:orange;"})
+- dynamic memory can be accessed with pointers (stored in stack)
+- address space in heap is accessed with `new`
+::::
+:::
+
+## Why?
+
+- Pointers give control over memory.
+- Pass data to a different program part without copying it (`functions`, `classes`,...).
+- Control when to delete data [dynamic]{style="color:orange;"}  vs. [static]{style="color:blue"} memory.
+
+::: {.columns}
+:::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: stack-heap
+//| fig-width: 3.5
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd1"><FONT COLOR="blue"><I>stack</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd2"><FONT COLOR="blue"><I>stack</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd3"><FONT COLOR="blue"><I>stack</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd4">...</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd5"><FONT COLOR="orange"><I>heap</I></FONT></TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd6"><FONT COLOR="orange"><I>heap</I></FONT></TD></TR>
+    </TABLE>
+  >];
+
+  mem:cmd2:e -> mem:cmd6:e;
+}
+```
+::::
+
+::::  {.column width="66%"} 
+- [static]{style="color:blue"} memory managed by compiler ([stack]{style="color:blue"})
+- [dynamic]{style="color:orange;"} memory managed by user ([heap]{style="color:orange;"})
+- dynamic memory can be accessed with pointers (stored in stack)
+- address space in heap is accessed with `new`
+::::
+:::
+
+## Some code examples 1/2
+::::: {.column width="100%" .custom-box}
+### Code file [`main_heap1.cpp`](./code/main_heap1.cpp)
+```{.cpp include="./code/main_heap1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_heap1.cpp
+```
+:::::
+
+## Some code examples 2/2
+::::: {.column width="100%" .custom-box}
+### Code file [`main_heap2.cpp`](./code/main_heap2.cpp)
+```{.cpp include="./code/main_heap2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_heap2.cpp
+```
+:::::
+
+
+## An array in heap
+
+```{dot}
+//| echo: false
+//| label: stack-heap
+//| fig-width: 3
+digraph memory {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd1">...</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd2">v[3]</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd3">v[2]</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd4">v[1]</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd5">v = v[0]</TD></TR>
+      <TR><TD HEIGHT="28" WIDTH="110" PORT="cmd6">...</TD></TR>
+    </TABLE>
+  >];
+
+}
+```
+
+- We store address of `v[0]` in `v`.
+- Since ` v[1]`, $\ldots$ neighbour `v[0]` we also know their addresses.
+- More about this when talking about pointer arithmetic.
+
+## Multi-dimensional arrays
+
+In the C/C++ standard there is no dynamic multi-dimensional array.
+
+1. option: Use a pointer to a pointer.
+   - Access via `a[i][j]`.
+	 - Not very good memory layout on modern computer architectures (pointer chasing).
+    
+2. option: Use an one-dimensional array and do the index calculations by hand.
+	 - Access via `a[i + j*n]`.
+
+3. option: Use an external library that implements 2d arrays.
+	 - Access is usually provided by `a(i, j)`
+
+## Some code examples with pointers and memory access 1/3
+
+Can you explain the behaviour?
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_heap4.cpp`](./code/main_heap4.cpp)
+```{.cpp include="./code/main_heap4.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_heap4.cpp
+```
+:::::
+
+## Some code examples with pointers and memory access 2/3
+
+Can you explain the behaviour?
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_heap5.cpp`](./code/main_heap5.cpp)
+```{.cpp include="./code/main_heap5.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_heap5.cpp
+```
+:::::
+
+## Some code examples with pointers and memory access 3/3
+
+Can you explain the behaviour?
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_heap6.cpp`](./code/main_heap6.cpp)
+```{.cpp include="./code/main_heap6.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_heap6.cpp
+```
+:::::
+
+
+## Good practice!
+
+Always delete storage you allocated with `new`. 
+
+
+## Pointer arithmetics
+
+- Arithmetics on pointers allowed.
+- `d[i]` equivalent to `*(d + i)`
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_arithmetics1.cpp`](./code/main_arithmetics1.cpp)
+```{.cpp include="./code/main_arithmetics1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_arithmetics1.cpp
+```
+:::::
+
+## Pointer arithmetics
+
+:::: {.columns}
+
+::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: ptr-arith1
+//| fig-width: 3
+digraph mem1 {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">v[3]</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">v[2]</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">v[1]</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">*v = v[0]</TD></TR>
+      <TR><TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+:::
+
+::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: ptr-arith2
+//| fig-width: 3
+digraph mem2 {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">*(v+3)</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">*(v+2)</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">*(v+1)</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">*v = v[0]</TD></TR>
+      <TR><TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+:::
+
+::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: ptr-arith3
+//| fig-width: 3
+digraph mem3 {
+  node [shape=plaintext, fontname="Courier"];
+  mem [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">(v+1)[2]</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">(v+1)[1]</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">(v+1)[0]</TD></TR>
+      <TR><TD BORDER="1" HEIGHT="28" WIDTH="110">*v = v[0]</TD></TR>
+      <TR><TD BORDER="1" SIDES="LR" HEIGHT="28" WIDTH="110">...</TD></TR>
+    </TABLE>
+  >];
+}
+```
+:::
+
+::::
+
+## :trophy: Advanced Exercise
+
+::: {.column width="100%" .custom-box}
+### Solving an ordinary differential equation
+
+Rewrite your ODE solver by using dynamic arrays. Make sure to free your memory before the program terminates.
+:::
