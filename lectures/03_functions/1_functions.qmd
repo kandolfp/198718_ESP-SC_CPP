@@ -1,0 +1,255 @@
+---
+title: 1. Functions
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Functions
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this course
+- Understand the concept of functions
+- Implement functions
+:::
+
+## Basic structure
+
+- Who is not familiar with the concept of a function in programming?
+
+```{.cpp}
+<return_data_type> function_name( <input_1>, <input_2>,... ){
+    // function body
+    return <return_value>
+```
+
+## Our first function in C/C++
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function.cpp`](./code/main_function.cpp)
+```{.cpp include="./code/main_function.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function.cpp
+```
+:::::
+
+## Function overloading 1/2
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_functionoverloading.cpp`](./code/main_functionoverloading.cpp)
+```{.cpp include="./code/main_functionoverloading.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_functionoverloading.cpp
+```
+:::::
+
+## Function overloading 2/3
+
+- Which of the implementations is going to be called?
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_functionoverloading2.cpp`](./code/main_functionoverloading2.cpp)
+```{.cpp include="./code/main_functionoverloading2.cpp"}
+```
+:::::
+
+## Function overloading 3/3
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_functionoverloading2.cpp`](./code/main_functionoverloading2.cpp)
+```{.cpp include="./code/main_functionoverloading2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_functionoverloading2.cpp
+```
+:::::
+
+
+## `main` is also a function
+
+- input to `main` are command line arguments
+
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_argv.cpp`](./code/main_argv.cpp)
+```{.cpp include="./code/main_argv.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_argv.cpp 
+```
+:::::
+
+## :trophy: Advanced Exercise
+
+::: {.column width="100%" .custom-box}
+### Solving an ordinary differential equation
+
+Rewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.
+
+Rewrite your ODE solver to take the initial condition as an argument.
+:::
+
+## Call by value
+
+-  What happens in memory? Let's check!
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory.cpp`](./code/main_function_memory.cpp)
+```{.cpp include="./code/main_function_memory.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory.cpp 
+```
+:::::
+
+- Per default, the input is copied to a new location in memory.
+- Advantage: Data is save from modification inside the function.
+- Disadvantage?
+
+
+## Call by reference
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory2p.cpp`](./code/main_function_memory2p.cpp)
+```{.cpp include="./code/main_function_memory2p.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory2p.cpp 
+```
+:::::
+
+- Address of a is copied to a new location in memory.
+- Data can be modified by dereferencing the pointer (output).
+- Disadvantage?
+
+## Call by reference C++ style
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory2.cpp`](./code/main_function_memory2.cpp)
+```{.cpp include="./code/main_function_memory2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory2.cpp 
+```
+:::::
+
+- `&` operator ensures data is not copied (pointers!)
+- Disadvantage: Data is not save from modification inside function.
+- Advantage: Data can be modified from within function, performance
+
+
+
+## Call by reference avoids copying arrays
+
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory3.cpp`](./code/main_function_memory3.cpp)
+```{.cpp include="./code/main_function_memory3.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory3.cpp 
+```
+:::::
+
+
+
+## `const`
+
+- But avoiding copying and avoiding modification is not the same.
+
+::::: {.column width="100%" .custom-box}
+### Code file [`const.cpp`](./code/const.cpp)
+```{.cpp include="./code/const.cpp"}
+```
+
+:::::
+
+
+## Some examples 1/5
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory5.cpp`](./code/main_function_memory5.cpp)
+```{.cpp include="./code/main_function_memory5.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory5.cpp 
+```
+:::::
+
+## Some examples 2/5
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory6.cpp`](./code/main_function_memory6.cpp)
+```{.cpp include="./code/main_function_memory6.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory6.cpp 
+```
+:::::
+
+
+## Some examples 3/5
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory7.cpp`](./code/main_function_memory7.cpp)
+```{.cpp include="./code/main_function_memory7.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory7.cpp 
+```
+:::::
+
+## Some examples 4/5
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory8.cpp`](./code/main_function_memory8.cpp)
+```{.cpp include="./code/main_function_memory8.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory8.cpp 
+```
+:::::
+
+## Some examples 5/5
+::::: {.column width="100%" .custom-box}
+### Code file [`main_function_memory9.cpp`](./code/main_function_memory9.cpp)
+```{.cpp include="./code/main_function_memory9.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory9.cpp 
+```
+:::::
+
+
+
+## :trophy: Advanced Exercise
+
+::: {.column width="100%" .custom-box}
+### Solving an ordinary differential equation
+
+- Rewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.
+
+- Rewrite your ODE solver to take the initial condition as an argument.
+:::
+
+::: {.column width="100%" .custom-box}
+### Memory management
+
+Write a function which takes a dynamic array of type `double` called `x` as an input and an array `y` as output.
+The function then stores $sin(x[i])$ in the output array.
+Make sure that `x` is copied efficiently and cannot be modified inside the function. The output `y` should be available outside the function after it has been called.
+:::
