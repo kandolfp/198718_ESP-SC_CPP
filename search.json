@@ -1,169 +1,295 @@
 [
   {
+    "objectID": "lectures/03_functions/1_functions.html#basic-structure",
+    "href": "lectures/03_functions/1_functions.html#basic-structure",
+    "title": "1. Functions",
+    "section": "Basic structure",
+    "text": "Basic structure\n\nWho is not familiar with the concept of a function in programming?\n\n&lt;return_data_type&gt; function_name( &lt;input_1&gt;, &lt;input_2&gt;,... ){\n    // function body\n    return &lt;return_value&gt;"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#our-first-function-in-cc",
+    "href": "lectures/03_functions/1_functions.html#our-first-function-in-cc",
+    "title": "1. Functions",
+    "section": "Our first function in C/C++",
+    "text": "Our first function in C/C++\n\nCode file main_function.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  double c = a + b;\n  return c;\n}\n\nint main() {\n  std::cout &lt;&lt; \"add(1, 2) = \" &lt;&lt; add(1, 2) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nadd(1, 2) = 3"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#function-overloading-12",
+    "href": "lectures/03_functions/1_functions.html#function-overloading-12",
+    "title": "1. Functions",
+    "section": "Function overloading 1/2",
+    "text": "Function overloading 1/2\n\nCode file main_functionoverloading.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double\";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int\";\n  return a + b;\n}\n\nint main() {\n  std::cout &lt;&lt; add(1, 2) &lt;&lt; std::endl;\n  std::cout &lt;&lt; add(1.0, 2.0) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nint3\ndouble3"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#function-overloading-23",
+    "href": "lectures/03_functions/1_functions.html#function-overloading-23",
+    "title": "1. Functions",
+    "section": "Function overloading 2/3",
+    "text": "Function overloading 2/3\n\nWhich of the implementations is going to be called?\n\n\nCode file main_functionoverloading2.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double\";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int\";\n  return a + b;\n}\n\nint main() {\n  float a = 1.2, b = 2.2;\n  std::cout &lt;&lt; add(a, b) &lt;&lt; std::endl;\n  char c = 'c';\n  long i = 1;\n  std::cout &lt;&lt; add(c, i) &lt;&lt; std::endl;\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#function-overloading-33",
+    "href": "lectures/03_functions/1_functions.html#function-overloading-33",
+    "title": "1. Functions",
+    "section": "Function overloading 3/3",
+    "text": "Function overloading 3/3\n\nCode file main_functionoverloading2.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double\";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int\";\n  return a + b;\n}\n\nint main() {\n  float a = 1.2, b = 2.2;\n  std::cout &lt;&lt; add(a, b) &lt;&lt; std::endl;\n  char c = 'c';\n  long i = 1;\n  std::cout &lt;&lt; add(c, i) &lt;&lt; std::endl;\n  return 0;\n}\n\n\ndouble3.4\nint100"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#main-is-also-a-function",
+    "href": "lectures/03_functions/1_functions.html#main-is-also-a-function",
+    "title": "1. Functions",
+    "section": "main is also a function",
+    "text": "main is also a function\n\ninput to main are command line arguments\n\n\nCode file main_argv.cpp\n#include &lt;iostream&gt;\n\nint main(int argc, char **argv) {\n  std::cout &lt;&lt; \"number inputs: \" &lt;&lt; argc &lt;&lt; \", arguments are:\" &lt;&lt; std::endl;\n  for (int i = 0; i &lt; argc; ++i) {\n    std::cout &lt;&lt; argv[i] &lt;&lt; std::endl;\n  }\n\n  return 0;\n}\n\n\nnumber inputs: 1, arguments are:\n/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/03_functions/code/main_argv.out"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#advanced-exercise",
+    "href": "lectures/03_functions/1_functions.html#advanced-exercise",
+    "title": "1. Functions",
+    "section": "🏆 Advanced Exercise",
+    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nRewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.\nRewrite your ODE solver to take the initial condition as an argument."
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-value",
+    "href": "lectures/03_functions/1_functions.html#call-by-value",
+    "title": "1. Functions",
+    "section": "Call by value",
+    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffc10914a30\nAddress in function 0x7ffc10914a08\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-reference",
+    "href": "lectures/03_functions/1_functions.html#call-by-reference",
+    "title": "1. Functions",
+    "section": "Call by reference",
+    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7ffddb3cda00\nAddress in function 0x7ffddb3cda00\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
+    "href": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
+    "title": "1. Functions",
+    "section": "Call by reference C++ style",
+    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffd9e1f3820\nAddress in function 0x7ffd9e1f3820\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
+    "href": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
+    "title": "1. Functions",
+    "section": "Call by reference avoids copying arrays",
+    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffddcdc8970\n0"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#const",
+    "href": "lectures/03_functions/1_functions.html#const",
+    "title": "1. Functions",
+    "section": "const",
+    "text": "const\n\nBut avoiding copying and avoiding modification is not the same.\n\n\nCode file const.cpp\nvoid print_value(const std::vector&lt;double&gt; &a) {\n  std::cout &lt;&lt; a[0] &lt;&lt; std::endl;\n  a[0] = 5.0; // compile error\n}\n\nvoid print_value(std::vector&lt;double&gt; &a) { a[0] = 5.0; }\n\nconst double *p;      // p can be modified, but *p cannot.\ndouble *const p = &a; // p can not be modified, but *p can."
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-15",
+    "href": "lectures/03_functions/1_functions.html#some-examples-15",
+    "title": "1. Functions",
+    "section": "Some examples 1/5",
+    "text": "Some examples 1/5\n\nCode file main_function_memory5.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double a) { a = 0.123; }\n\nint main() {\n  double a = 1.2;\n  foo(a);\n  std::cout &lt;&lt; a &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.2"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-25",
+    "href": "lectures/03_functions/1_functions.html#some-examples-25",
+    "title": "1. Functions",
+    "section": "Some examples 2/5",
+    "text": "Some examples 2/5\n\nCode file main_function_memory6.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double &a) { a = 0.123; }\n\nint main() {\n  double a = 1.2;\n  foo(a);\n  std::cout &lt;&lt; a &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0.123"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-35",
+    "href": "lectures/03_functions/1_functions.html#some-examples-35",
+    "title": "1. Functions",
+    "section": "Some examples 3/5",
+    "text": "Some examples 3/5\n\nCode file main_function_memory7.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double &a) { a = 0.123; }\n\nint main() {\n  double *p = new double;\n  *p = 1.0;\n  foo(*p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0.123"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-45",
+    "href": "lectures/03_functions/1_functions.html#some-examples-45",
+    "title": "1. Functions",
+    "section": "Some examples 4/5",
+    "text": "Some examples 4/5\n\nCode file main_function_memory8.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double *a) { a[0] = 1.234; }\n\nint main() {\n  double *p = new double[3];\n  p[0] = 0;\n  p[1] = 1;\n  p[2] = 2;\n  foo(p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.234"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-55",
+    "href": "lectures/03_functions/1_functions.html#some-examples-55",
+    "title": "1. Functions",
+    "section": "Some examples 5/5",
+    "text": "Some examples 5/5\n\nCode file main_function_memory9.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double *a) { a = a + 1; }\n\nint main() {\n  double *p = new double[3];\n  p[0] = 0;\n  p[1] = 1;\n  p[2] = 2;\n  foo(p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#advanced-exercise-1",
+    "href": "lectures/03_functions/1_functions.html#advanced-exercise-1",
+    "title": "1. Functions",
+    "section": "🏆 Advanced Exercise",
+    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\n\nRewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.\nRewrite your ODE solver to take the initial condition as an argument.\n\n\nMemory management\nWrite a function which takes a dynamic array of type double called x as an input and an array y as output. The function then stores \\(sin(x[i])\\) in the output array. Make sure that x is copied efficiently and cannot be modified inside the function. The output y should be available outside the function after it has been called."
+  },
+  {
     "objectID": "lectures/02_pointers/1_pointers.html#you-probably-have-all-implicitly-used-pointers",
     "href": "lectures/02_pointers/1_pointers.html#you-probably-have-all-implicitly-used-pointers",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "You probably have all (implicitly) used pointers",
     "text": "You probably have all (implicitly) used pointers\nand were maybe confused by the result…\n\nCan you explain the behaviour in Python?\n\na = 1\nb = a\na = 5\nprint(f\"{a = }, {b = }\")\n\na = 5, b = 1\n\n\n\na = [1,2,3]\nb = a\na[1] = 5\nprint(f\"{a = }, {b = }\")\n\na = [1, 5, 3], b = [1, 5, 3]"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#addresses",
     "href": "lectures/02_pointers/1_pointers.html#addresses",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Addresses",
     "text": "Addresses\n\nEvery variable has a certain place in memory, called its address.\nAccess address via & operator\ndouble d = 0.1;\nstd::cout &lt;&lt; \"Address of d is \" &lt;&lt; &d &lt;&lt; std::endl;\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\n0x558eef078eb8 \n\nd = 0.1\n0x558eef078ec0 \n\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise",
     "href": "lectures/02_pointers/1_pointers.html#in-class-exercise",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "✍️ In class exercise",
     "text": "✍️ In class exercise\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\nb\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12",
     "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "✍️ In class exercise - Solution 1/2",
     "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
     "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffcf8f83e78 0x7ffcf8f83e80\nAddresses: 0x7ffcf8f83e78 0x7ffcf8f83e80\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffd9b401678 0x7ffd9b401680\nAddresses: 0x7ffd9b401678 0x7ffd9b401680\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-14",
     "href": "lectures/02_pointers/1_pointers.html#pointers-14",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers 1/4",
-    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffddf85aac8 0x7ffddf85aac8 0x7ffddf85aad0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
+    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fff9bcfcf48 0x7fff9bcfcf48 0x7fff9bcfcf50\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-24",
     "href": "lectures/02_pointers/1_pointers.html#pointers-24",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers 2/4",
-    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe7d970f78 0x7ffe7d970f78 0x7ffe7d970f80\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffde93b3b48 0x7ffde93b3b48 0x7ffde93b3b50\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-34",
     "href": "lectures/02_pointers/1_pointers.html#pointers-34",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers 3/4",
-    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffefce23818 0x7ffefce23818 0x7ffefce23820\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fff00a5a508 0x7fff00a5a508 0x7fff00a5a510\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-44",
     "href": "lectures/02_pointers/1_pointers.html#pointers-44",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers 4/4",
-    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc002d1b98 0x7ffc002d1b98 0x7ffc002d1ba0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
+    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffd537732e8 0x7ffd537732e8 0x7ffd537732f0\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
     "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers on pointers 1/3",
     "text": "Pointers on pointers 1/3\nDatatypes to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na \n0x558eef078eb8 \n\np \n0x558eef078ec0 \n\npp\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-23",
     "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-23",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers on pointers 2/3",
     "text": "Pointers on pointers 2/3\nDatatypes to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 1.0\n0x558eef078eb8 \n\np = &a \n0x558eef078ec0 \n\npp = &p \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-33",
     "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-33",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Pointers on pointers 3/3",
     "text": "Pointers on pointers 3/3\nDatatypes to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 1.0\n0x558eef078eb8 \n\np = &a \n0x558eef078ec0 \n\npp = &p \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nPointer on pointer is **pp.\nYou can go on with ***p3, \\(\\ldots\\)\nDereference with **."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#exercise",
     "href": "lectures/02_pointers/1_pointers.html#exercise",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "✍️ Exercise",
     "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 1 - main_sol_pointers1.cpp\nWrite a code which changes the value of an integer i from \\(1\\) to \\(2\\) by using pointers. That is, do not use statements like i = 2.\n\nWrite your own program - pointer manipulation 2 - main_sol_pointers2.cpp\nChange the value to \\(3\\) with a pointer on a pointer.\n\nWrite your own program - pointer manipulation 3 - main_sol_pointers3.cpp\nPrint the memory location of pp, p, and i by only using pp."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#exercise-1",
     "href": "lectures/02_pointers/1_pointers.html#exercise-1",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "✍️ Exercise",
     "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 4 - main_sol_pointers4.cpp\nGiven the code below, make sure that *one = 1, *two = 2, *three = 3 without changing the first two lines and without using \\(i, j\\) and \\(k\\).\nint i = 1, j = 2, k = 3;\nint *one = &j, *two = &k, *three = &i;"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#exercise-2",
     "href": "lectures/02_pointers/1_pointers.html#exercise-2",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "✍️ Exercise",
     "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 5 - main_sol_pointers5.cpp\nGenerate an std::vector for type long of size \\(3\\) with values \\(v = [0,1,2]\\). Generate a pointer p which points on the vector’s address. Change the size of v to \\(4\\) and add a value v[3] = 3 by only using p."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-16",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-16",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 1/6",
     "text": "More fun with pointers 1/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-26",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-26",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 2/6",
     "text": "More fun with pointers 2/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n\nmain_pointers6.cpp: In function ‘int main()’:\nmain_pointers6.cpp:4:12: error: invalid conversion from ‘int’ to ‘int*’ [-fpermissive]\n    4 |   int *i = 1, j = 2;\n      |            ^\n      |            |\n      |            int"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-36",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-36",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 3/6",
     "text": "More fun with pointers 3/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers7.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, j = 2;\n  int *p = &i;\n  *p = *p + 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-46",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-46",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 4/6",
     "text": "More fun with pointers 4/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers7.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, j = 2;\n  int *p = &i;\n  *p = *p + 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n5"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-56",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-56",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 5/6",
     "text": "More fun with pointers 5/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-66",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-66",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 6/6",
     "text": "More fun with pointers 6/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}\nSegmentation fault (core dumped)"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-76",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-76",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 7/6",
     "text": "More fun with pointers 7/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-86",
     "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-86",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "More fun with pointers 8/6",
     "text": "More fun with pointers 8/6\nWhat does the code do? Which output do you expect?\n\nCode file main_pointers9.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p = &i;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}\n\n\n4"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#avoid-wrong-code-behaviour",
     "href": "lectures/02_pointers/1_pointers.html#avoid-wrong-code-behaviour",
-    "title": "1. Pointers and memory management",
+    "title": "1. Pointers",
     "section": "Avoid wrong code behaviour",
     "text": "Avoid wrong code behaviour\n\nUninitialized pointers can point on random space in memory.\nAvoid with NULL or 0 keyword\n double *p1;\n double *p2 = 0;\n\n std::cout &lt;&lt; *p1 &lt;&lt; \" might print some value\" &lt;&lt; std::endl;\n std::cout &lt;&lt; *p2 &lt;&lt; \" gives segmentation fault\" &lt;&lt; std::endl;\nEquivalent to\n double *p1;\n double *p2 = NULL;\n\n std::cout &lt;&lt; *p1 &lt;&lt; \" might print some value\" &lt;&lt; std::endl;\n std::cout &lt;&lt; *p2 &lt;&lt; \" gives segmentation fault\" &lt;&lt; std::endl;"
   },
@@ -284,7 +410,7 @@
     "href": "index.html#term-plan",
     "title": "C and C++ in Simulation Development",
     "section": "Term plan",
-    "text": "Term plan\n\n\n\nMeeting\nChapter\nSubchapter\nExercise\n\n\n\n\n\n1\n00 General information to the lecture\n0. Introduction\n\n\n\n\n1\n01 Basics and why we teach C/C++\n1. Why we teach C++ and some basics\n✍️\n\n\n\n2\n01 Types\n2. Types\n✍️ 🏆\n\n\n\n2\n02 Pointers\n1. Pointers\n✍️\n\n\n\n3\n02 Memory management\n\n\n\n\n\n4\nFunctions and classes\n\n\n\n\n\n5\nCMake, Unit testing\n\n\n\n\n\n6\nLinter Code analysis, different types of libraries\n\n\n\n\n\n7\nFinalize the topics of the projects\n\n\n\n\n\n8\nObject oriented programming, operator overloading\n\n\n\n\n\n9\nTemplates, RAIi and smart pointers\n\n\n\n\n\n10\nBLAS, LAPACK, Eigen\n\n\n\n\n\n11\nSparse matrix computations\n\n\n\n\n\n12\nFFT, TOML, Netcdf, Modules\n\n\n\n\n\n13\nDebugging and profiling\n\n\n\n\n\n14\nQ&A Projects\n\n\n\n\n\n15\nProject presentations"
+    "text": "Term plan\n\n\n\nMeeting\nChapter\nSubchapter\nExercise\n\n\n\n\n\n1\n00 General information to the lecture\n0. Introduction\n\n\n\n\n1\n01 Basics and why we teach C/C++\n1. Why we teach C++ and some basics\n✍️\n\n\n\n2\n01 Types\n2. Types\n✍️ 🏆\n\n\n\n2\n02 Pointers\n1. Pointers\n✍️\n\n\n\n3\n02 Memory management\n2. Memory\n✍️ 🏆\n\n\n\n4\nFunctions, structs and classes\n1. Functions\n✍️ 🏆\n\n\n\n5\nCMake, Unit testing\n\n\n\n\n\n6\nLinter Code analysis, different types of libraries\n\n\n\n\n\n7\nFinalize the topics of the projects\n\n\n\n\n\n8\nObject oriented programming, operator overloading\n\n\n\n\n\n9\nTemplates, RAIi and smart pointers\n\n\n\n\n\n10\nBLAS, LAPACK, Eigen\n\n\n\n\n\n11\nSparse matrix computations\n\n\n\n\n\n12\nFFT, TOML, Netcdf, Modules\n\n\n\n\n\n13\nDebugging and profiling\n\n\n\n\n\n14\nQ&A Projects\n\n\n\n\n\n15\nProject presentations"
   },
   {
     "objectID": "lectures/01_introduction/0_introduction.html#who",
@@ -425,5 +551,96 @@
     "title": "1. Why we teach C++ and some basics",
     "section": "🏆 Advanced Exercise",
     "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nConsider a simple ODE \\[\n\\dot y(t) = \\sin(y(t))\n\\]\nForward Euler time discretization: Define grid \\(\\{t_1,\\cdots,t_{N}\\}\\) and define \\(y^n \\simeq y(t_n)\\) \\[\n    y^{n+1} = y^{n} + (t_{n+1}-t_n) \\sin(y^n)\n\\]\nImplement a forward Euler method with equidistant time step size \\(\\Delta t = t_{n+1}-t_n = 0.01\\). Store the solution at all time points \\(t\\in[0, 1]\\) in a vector and write it to a text file."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#why",
+    "href": "lectures/02_pointers/2_memory.html#why",
+    "title": "2. Memory Management",
+    "section": "Why?",
+    "text": "Why?\n\nPointers give control over memory.\nPass data to a different program part without copying it (functions, classes,…).\nControl when to delete data dynamic vs. static memory.\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\nstack\n\nstack\n\nstack\n\n...\n\nheap\n\nheap\n\n\n\n\n\n\n\n\n\nstatic memory managed by compiler (stack)\ndynamic memory managed by user (heap)\ndynamic memory can be accessed with pointers (stored in stack)\naddress space in heap is accessed with new"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#why-1",
+    "href": "lectures/02_pointers/2_memory.html#why-1",
+    "title": "2. Memory Management",
+    "section": "Why?",
+    "text": "Why?\n\nPointers give control over memory.\nPass data to a different program part without copying it (functions, classes,…).\nControl when to delete data dynamic vs. static memory.\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\nstack\n\nstack\n\nstack\n\n...\n\nheap\n\nheap\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nstatic memory managed by compiler (stack)\ndynamic memory managed by user (heap)\ndynamic memory can be accessed with pointers (stored in stack)\naddress space in heap is accessed with new"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-12",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-12",
+    "title": "2. Memory Management",
+    "section": "Some code examples 1/2",
+    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.13739e-313"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-22",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-22",
+    "title": "2. Memory Management",
+    "section": "Some code examples 2/2",
+    "text": "Some code examples 2/2\n\nCode file main_heap2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *v = new double[2]; // allocate array of size 2 in heap\n  v[0] = 0.1;\n  v[1] = 0.12;\n\n  for (int i = 0; i &lt; 2; i++)\n    std::cout &lt;&lt; v[i] &lt;&lt; \" \";\n  std::cout &lt;&lt; std::endl;\n\n  delete[] v; // free memory of entire array\n\n  return 0;\n}\n\n\n0.1 0.12"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#an-array-in-heap",
+    "href": "lectures/02_pointers/2_memory.html#an-array-in-heap",
+    "title": "2. Memory Management",
+    "section": "An array in heap",
+    "text": "An array in heap\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n...\n\nv[3]\n\nv[2]\n\nv[1]\n\nv = v[0]\n\n...\n\n\n\n\n\n\n\n\nWe store address of v[0] in v.\nSince v[1], \\(\\ldots\\) neighbour v[0] we also know their addresses.\nMore about this when talking about pointer arithmetic."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#multi-dimensional-arrays",
+    "href": "lectures/02_pointers/2_memory.html#multi-dimensional-arrays",
+    "title": "2. Memory Management",
+    "section": "Multi-dimensional arrays",
+    "text": "Multi-dimensional arrays\nIn the C/C++ standard there is no dynamic multi-dimensional array.\n\noption: Use a pointer to a pointer.\n\nAccess via a[i][j].\n\nNot very good memory layout on modern computer architectures (pointer chasing).\n\n\noption: Use an one-dimensional array and do the index calculations by hand.\n\nAccess via a[i + j*n].\n\noption: Use an external library that implements 2d arrays.\n\nAccess is usually provided by a(i, j)"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
+    "title": "2. Memory Management",
+    "section": "Some code examples with pointers and memory access 1/3",
+    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.13249e-313"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
+    "title": "2. Memory Management",
+    "section": "Some code examples with pointers and memory access 2/3",
+    "text": "Some code examples with pointers and memory access 2/3\nCan you explain the behaviour?\n\nCode file main_heap5.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  bool condition = true;\n\n  if (condition) {\n    double *d = new double;\n    *d = 0.1;\n  }\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n\nmain_heap5.cpp: In function ‘int main()’:\nmain_heap5.cpp:11:17: error: ‘d’ was not declared in this scope\n   11 |   std::cout &lt;&lt; *d &lt;&lt; std::endl;\n      |                 ^"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-33",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-33",
+    "title": "2. Memory Management",
+    "section": "Some code examples with pointers and memory access 3/3",
+    "text": "Some code examples with pointers and memory access 3/3\nCan you explain the behaviour?\n\nCode file main_heap6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  bool condition = true;\n  double *d;\n\n  if (condition) {\n    d = new double;\n    *d = 0.1;\n  }\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#good-practice",
+    "href": "lectures/02_pointers/2_memory.html#good-practice",
+    "title": "2. Memory Management",
+    "section": "Good practice!",
+    "text": "Good practice!\nAlways delete storage you allocated with new."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#pointer-arithmetics",
+    "href": "lectures/02_pointers/2_memory.html#pointer-arithmetics",
+    "title": "2. Memory Management",
+    "section": "Pointer arithmetics",
+    "text": "Pointer arithmetics\n\nArithmetics on pointers allowed.\nd[i] equivalent to *(d + i)\n\n\nCode file main_arithmetics1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d;\n  d = new double[4];\n  d[0] = 0.0;\n  d[1] = 0.1;\n  d[2] = 0.2;\n\n  std::cout &lt;&lt; *d &lt;&lt; \" \" &lt;&lt; *(d + 1) &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0 0.1"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#pointer-arithmetics-1",
+    "href": "lectures/02_pointers/2_memory.html#pointer-arithmetics-1",
+    "title": "2. Memory Management",
+    "section": "Pointer arithmetics",
+    "text": "Pointer arithmetics\n\n\n\n\n\n\n\n\nmem1\n\n\n\nmem\n\n\n...\n\nv[3]\n\nv[2]\n\nv[1]\n\n*v = v[0]\n\n\n...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmem2\n\n\n\nmem\n\n\n...\n\n*(v+3)\n\n*(v+2)\n\n*(v+1)\n\n*v = v[0]\n\n\n...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmem3\n\n\n\nmem\n\n\n...\n\n(v+1)[2]\n\n(v+1)[1]\n\n(v+1)[0]\n\n*v = v[0]\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#advanced-exercise",
+    "href": "lectures/02_pointers/2_memory.html#advanced-exercise",
+    "title": "2. Memory Management",
+    "section": "🏆 Advanced Exercise",
+    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nRewrite your ODE solver by using dynamic arrays. Make sure to free your memory before the program terminates."
   }
 ]
