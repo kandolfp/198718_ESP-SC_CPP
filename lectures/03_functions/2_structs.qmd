@@ -1,0 +1,65 @@
+---
+title: 2. Structs
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Structs
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- Know what a `struct` is
+- Implement your own `structs`
+:::
+
+## Structs
+- Sometimes you want to generate your own data types.
+- Example: Pair of two doubles.
+
+::: {.column width="100%" .custom-box}
+### Solution [`main_struct1.cpp`](./code/main_struct1.cpp)
+```{.cpp include="./code/main_struct1.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_struct1.cpp
+```
+:::
+
+
+## What does this code do? 1/2
+
+::: {.column width="100%" .custom-box}
+### Solution [`main_struct2.cpp`](./code/main_struct2.cpp)
+```{.cpp include="./code/main_struct2.cpp"}
+```
+:::
+
+## What does this code do? 2/2
+
+::: {.column width="100%" .custom-box}
+### Solution [`main_struct2_solution.cpp`](./code/main_struct2_solution.cpp)
+```{.cpp include="./code/main_struct2_solution.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_struct2_solution.cpp
+```
+:::
+
+
+
+## :writing_hand: In class Exercise
+
+::: {.column width="100%" .custom-box}
+### Write your own program
+
+- Print all entries in reverse and forward order by running through the created objects of type `entry`.
+
+- Delete all created objects of type `entry`.
+:::
