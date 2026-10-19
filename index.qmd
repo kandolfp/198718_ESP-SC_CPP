@@ -45,7 +45,8 @@ The button in the lower left corner opens a toc per slide deck and you can expor
 | 2       |  02 Pointers | [1. Pointers](/lectures/02_pointers/1_pointers.html)                             | :writing_hand: |
 | 3       |  02 Memory management                       |    [2. Memory](/lectures/02_pointers/2_memory.html)                           | :writing_hand: :trophy:  |
 | 4       |  03 Functions, structs and classes                    | [1. Functions](/lectures/03_functions/1_functions.html)                             | :writing_hand: :trophy: |
-| 4       |  03 Functions, structs and classes                    | [2. Functions](/lectures/03_functions/2_structs.html)                             | :writing_hand: |
+| 4       |  03 Functions, structs and classes                    | [2. Structs](/lectures/03_functions/2_structs.html)                             | :writing_hand: |
+| 4       |  03 Functions, structs and classes                    | [3. Classes](/lectures/03_functions/3_classes.html)                             | :writing_hand: :trophy:|
 | 5       |  CMake, Unit testing                       |                              | |
 | 6       |  Linter Code analysis, different types of libraries                       |                              | |
 | 7       |  Finalize the topics of the projects                       |                              | |

@@ -1,0 +1,406 @@
+---
+title: 3. Classes
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Classes
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- Know what a `classes` and object oriented programming
+- Implement your own `classes`
+:::
+
+## Classes
+
+**Classes** can be seen as fancy structs which are equipped with
+
+- constructors that take care of initialization
+- destructors that take care of deletion
+- (copy) operations
+- functions that operate on the data (methods)
+- hierarchies
+- protection of variables and functions
+- $\ldots$
+
+## Classes - Syntax
+
+
+```{.cpp}
+class class_name{
+private:
+  // private variables and functions
+public:
+  // public variables and functions
+};
+``` 
+
+Example:
+```{.cpp}
+class Entry {
+private:
+  long _data;
+  Entry *_next;
+  Entry *_previous;
+
+public:
+  Entry(long data) : _data(data) {}
+};
+```
+
+
+In C++ the only difference between `struct` and `class` is whether data is `public` or `private` by default.  
+
+## Classes - Functions 1/2
+```{.cpp}
+class Entry {
+private:
+  long _data;
+  Entry *_next;
+  Entry *_previous;
+
+public:
+  Entry(long data) : _data(data) {}
+  void Print() { std::cout << _data << std::endl; }
+};
+
+Entry first(2);
+first.print();
+```
+
+## Classes - Functions 2/2
+
+```{.cpp}
+class Entry {
+private:
+  long _data;
+  Entry *_next;
+  Entry *_previous;
+
+public:
+  Entry(long data) : _data(data) {}
+  void Print();
+};
+
+void Entry::Print() { std::cout << _data << std::endl; }
+```
+
+## Classes - private and public
+
+```{.cpp}
+#include <iostream>
+
+class Entry {
+private:
+  long _data;
+  Entry *_next;
+  Entry *_previous;
+
+public:
+  long _publicData;
+  Entry(long data) : _data(data), _publicData(data) {}
+};
+
+Entry first(2);
+std::cout << first._data;
+std::cout << first._publicData;
+```
+
+- `private` data/functions are protected from modification
+- `public` data/functions are accessible 
+- note that the `Print` function _can_ access `private` data 
+
+## The constructor 1/2
+
+- Every class has a constructor, i.e., a function which is called when an object is created.
+
+```{.cpp}
+class Entry{
+    ...
+public:
+    Entry(long data);
+};
+
+Entry::Entry(long data)
+    : _data(data), _publicData(data), _next(0), _previous(0) {
+  std::cout << "Constructor called." << std::endl;
+}
+```
+
+What happens if we create an object `Entry tmp`?
+
+## The constructor 2/2
+
+```{.cpp}
+class Entry{
+    ...
+public:
+    Entry(double data);
+private:
+    Entry(){}
+};
+```
+
+- Making the default constructor private will remove the option to call it.
+
+
+
+
+## Data management 1/2
+
+```{.cpp}
+class Entry {
+  double *_data;
+
+public:
+  Entry(double data) : _data(new double) { *_data = data; }
+};
+
+int main() {
+  if (true)
+    Entry tmp(1);
+  return 0;
+}
+``` 
+
+- What behaviour do you expect?
+- Dynamic memory will not be deleted by default. This has to be done via the destructor.
+
+## Data management
+```{.cpp}
+class Entry {
+  double *_data;
+
+public:
+  Entry(double data) : _data(new double) { *_data = data; }
+  ~Entry() { delete _data; }
+};
+
+int main() {
+  if (true)
+    Entry tmp(1);
+  return 0;
+}
+``` 
+
+- What behaviour do you expect?
+- Dynamic memory will not be deleted by default. This has to be done via the destructor.
+- Usually an object which allocates dynamic memory is responsible for deallocating it.
+
+
+## Do I need a destructor?
+```{.cpp}
+class Entry {
+  double *_data;
+
+public:
+  Entry(double data) : _data(NULL) {
+    _data = new double[10];
+    _data[0] = data;
+  }
+};
+
+int main() {
+  double *data = new double;
+  Entry tmp(*data);
+  delete data;
+  return 0;
+}
+
+```
+
+## What does this code do? 1/8
+```{.cpp}
+class Entry {
+  double *_data;
+
+public:
+  Entry(double data) : _data(&data) {}
+  ~Entry() { delete data; }
+};
+
+int main() {
+  double *data = new double;
+  Entry tmp(data);
+  delete data;
+  return 0;
+}
+```
+
+## What does this code do? 2/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor.cpp`](./code/main_destructor.cpp)
+```{.cpp include="./code/main_destructor.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor.cpp
+```
+:::
+
+
+##  What does this code do? 3/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor2.cpp`](./code/main_destructor2.cpp)
+```{.cpp include="./code/main_destructor2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor2.cpp
+```
+:::
+
+
+##  What does this code do? 4/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor3.cpp`](./code/main_destructor3.cpp)
+```{.cpp include="./code/main_destructor3.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor3.cpp
+```
+:::
+
+##  What does this code do? 5/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor4.cpp`](./code/main_destructor4.cpp)
+```{.cpp include="./code/main_destructor4.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor4.cpp
+```
+:::
+
+##  What does this code do? 6/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor5.cpp`](./code/main_destructor5.cpp)
+```{.cpp include="./code/main_destructor5.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor5.cpp
+```
+:::
+
+##  What does this code do? 7/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor6.cpp`](./code/main_destructor6.cpp)
+```{.cpp include="./code/main_destructor6.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor5.cpp
+```
+:::
+
+
+##  What does this code do? 8/8
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor7.cpp`](./code/main_destructor7.cpp)
+```{.cpp include="./code/main_destructor7.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor7.cpp
+```
+:::
+
+
+## What was the problem?
+
+- Class undefined when used in function [(forward declaration can help)]{style="color:green"}
+- Function accessed private data [(declare as friend)]{style="color:green"}
+
+**Data protection:**
+
+- Ensure that data is not manipulated.
+- Think of all the errors we generated by passing a pointer to the constructor.
+
+## :writing_hand: Exercise
+
+::: {.column width="100%" .custom-box}
+### Write your own program
+
+Write a class `List` which has a pointer to the first and last `Entry` in the list.
+Moreover, it incorporates a function `Add` which creates a new entry (in dynamic memory) and adds it to the back of the list.
+Provide a function `Print` which prints out all values in the list. 
+
+Do not forget the destructor!
+:::
+
+## Copy constructor 1/3
+::: {.column width="100%" .custom-box}
+### Code file [`main_copy.cpp`](./code/main_copy.cpp)
+```{.cpp include="./code/main_copy.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_copy.cpp
+```
+:::
+
+
+## Copy constructor 2/3
+
+- Function `foo` creates a new object `aFoo` and copies all values from `a`.
+- We did not specify how this new class `A` is copied!
+- By default all variables are simply copied. I.e., `aFoo._d = a._d`.
+- `aFoo` is deallocated when leaving function (static memory!)
+- Destructor of `aFoo` deallocates `aFoo._d` and thereby `a._d`.
+- Good thing we understand pointers ;)
+
+**Way out:** Define our own copy constructor.
+
+
+## Copy constructor 3/3
+::: {.column width="100%" .custom-box}
+### Code file [`main_copy2.cpp`](./code/main_copy2.cpp)
+```{.cpp include="./code/main_copy2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_copy2.cpp
+```
+:::
+
+
+##  Summary
+Classes can be used to **group data and operations** on them.
+
+- More in object oriented programming
+- This helps to structure code.
+
+But if dynamic memory is used there can be issues.
+
+- Managed via constructors and destructors.
+- This is how std::vector is implemented.
+
+For your own code **consider using `std::vector` and other higher-level classes that have allocation and deallocation already figured out** .
+
+## :trophy: Advanced Exercise
+
+::: {.column width="100%" .custom-box}
+### Solving an ordinary differential equation
+
+Write a class `ODESolver` which stores all needed variables. 
+The class
+
+1. provides a `void` function `Solve(endTime)` which stores the solution inside the class 
+1. provides a `void` function `Write(fileName)` which writes an outputfile with the solution at every time point
+
+:::
