@@ -89,16 +89,6 @@ filters:
 ```
 :::::
 
-## :trophy: Advanced Exercise
-
-::: {.column width="100%" .custom-box}
-### Solving an ordinary differential equation
-
-Rewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.
-
-Rewrite your ODE solver to take the initial condition as an argument.
-:::
-
 ## Call by value
 
 -  What happens in memory? Let's check!
@@ -233,8 +223,6 @@ Rewrite your ODE solver to take the initial condition as an argument.
 %run ../../scripts/compile_and_run_cpp.py ./code/main_function_memory9.cpp 
 ```
 :::::
-
-
 
 ## :trophy: Advanced Exercise
 
