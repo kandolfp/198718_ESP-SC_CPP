@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/3_classes.html</loc>
+    <lastmod>2026-10-19T12:44:27.000Z</lastmod>
+  </url>
+  <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/1_functions.html</loc>
     <lastmod>2026-10-15T14:00:20.000Z</lastmod>
   </url>
@@ -14,7 +18,7 @@
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/index.html</loc>
-    <lastmod>2026-10-15T14:00:32.000Z</lastmod>
+    <lastmod>2026-10-19T12:44:27.000Z</lastmod>
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/0_introduction.html</loc>
@@ -27,5 +31,9 @@
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/02_pointers/2_memory.html</loc>
     <lastmod>2026-10-15T13:59:47.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/2_structs.html</loc>
+    <lastmod>2026-10-19T07:30:53.000Z</lastmod>
   </url>
 </urlset>
