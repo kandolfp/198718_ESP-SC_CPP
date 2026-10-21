@@ -31,7 +31,7 @@ print(f"{a = }, {b = }")
 ```
 
 ```{python}
-a = [1,2,3]
+a = [1, 2, 3]
 b = a
 a[1] = 5
 print(f"{a = }, {b = }")
@@ -383,7 +383,7 @@ digraph memory {
 
 ## Pointers on pointers 1/3
 
-Datatypes to store an address of a pointer is a double pointer:
+The datatype to store an address of a pointer is a double pointer:
 
 ::: {.columns}
 :::: {.column width="66%"}
@@ -429,7 +429,7 @@ digraph memory {
 
 ## Pointers on pointers 2/3
 
-Datatypes to store an address of a pointer is a double pointer:
+The datatype to store an address of a pointer is a double pointer:
 
 ::: {.columns}
 :::: {.column width="66%"}
@@ -476,7 +476,7 @@ digraph memory {
 
 ## Pointers on pointers 3/3
 
-Datatypes to store an address of a pointer is a double pointer:
+The datatype to store an address of a pointer is a double pointer:
 
 ::: {.columns}
 :::: {.column width="66%"}
@@ -543,7 +543,7 @@ Change the value to $3$ with a pointer on a pointer.
 ::: {.column width="100%" .custom-box}
 ### Write your own program - pointer manipulation 3 - [`main_sol_pointers3.cpp`](./code/main_sol_pointers3.cpp)
 
-Print the memory location of `pp`, `p`, and `i` by only using `pp`.
+Print the memory location of `pp`, `p`, and `a` by only using `pp`.
 :::
 
 ## :writing_hand: Exercise
@@ -567,9 +567,9 @@ Generate an `std::vector` for type `long` of size $3$ with values $v = [0,1,2]$.
 :::
 
 
-## More fun with pointers 1/6
+## More fun with pointers 1/8
 
-What does the code do? Which output do you expect?
+What does the code below do? Which output do you expect?
 
 
 ::: {.column width="100%" .custom-box}
@@ -579,9 +579,9 @@ What does the code do? Which output do you expect?
 :::
 
 
-## More fun with pointers 2/6
+## More fun with pointers 2/8
 
-What does the code do? Which output do you expect?
+What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers6.cpp`](./code/main_pointers6.cpp)
@@ -593,10 +593,9 @@ What does the code do? Which output do you expect?
 ```
 :::
 
-## More fun with pointers 3/6
+## More fun with pointers 3/8
 
-What does the code do? Which output do you expect?
-
+What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers7.cpp`](./code/main_pointers7.cpp)
@@ -605,9 +604,9 @@ What does the code do? Which output do you expect?
 :::
 
 
-## More fun with pointers 4/6
+## More fun with pointers 4/8
 
-What does the code do? Which output do you expect?
+What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers7.cpp`](./code/main_pointers7.cpp)
@@ -619,9 +618,9 @@ What does the code do? Which output do you expect?
 ```
 :::
 
-## More fun with pointers 5/6
+## More fun with pointers 5/8
 
-What does the code do? Which output do you expect?
+What does the code below do? Which output do you expect?
 
 
 ::: {.column width="100%" .custom-box}
@@ -631,9 +630,9 @@ What does the code do? Which output do you expect?
 :::
 
 
-## More fun with pointers 6/6
+## More fun with pointers 6/8
 
-What does the code do? Which output do you expect?
+What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers8.cpp`](./code/main_pointers8.cpp)
@@ -644,21 +643,20 @@ Segmentation fault (core dumped)
 ```
 :::
 
-## More fun with pointers 7/6
 
-What does the code do? Which output do you expect?
+## More fun with pointers 7/8
 
+What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
-### Code file [`main_pointers8.cpp`](./code/main_pointers8.cpp)
-```{.cpp include="./code/main_pointers8.cpp"}
+### Code file [`main_pointers9.cpp`](./code/main_pointers9.cpp)
+```{.cpp include="./code/main_pointers9.cpp"}
 ```
 :::
 
+## More fun with pointers 8/8
 
-## More fun with pointers 8/6
-
-What does the code do? Which output do you expect?
+What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers9.cpp`](./code/main_pointers9.cpp)
