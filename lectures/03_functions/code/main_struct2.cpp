@@ -1,9 +1,11 @@
 #include <iostream>
+
 struct entry {
   long data;
   entry *next;
   entry *previous;
 };
+
 int main() {
   entry *previous = NULL;
   for (long i = 0; i < 10; ++i) {

@@ -258,24 +258,35 @@ Peter Kandolf
 <div class="column custom-box" style="width:100%;">
 <h3 id="solution-main_struct2.cpp">Solution <a href="./code/main_struct2.cpp"><code>main_struct2.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb2-2"><a aria-label="2"></a><span class="kw">struct</span> entry <span class="op">{</span></span>
-<span id="cb2-3"><a aria-label="3"></a>  <span class="dt">long</span> data<span class="op">;</span></span>
-<span id="cb2-4"><a aria-label="4"></a>  entry <span class="op">*</span>next<span class="op">;</span></span>
-<span id="cb2-5"><a aria-label="5"></a>  entry <span class="op">*</span>previous<span class="op">;</span></span>
-<span id="cb2-6"><a aria-label="6"></a><span class="op">};</span></span>
-<span id="cb2-7"><a aria-label="7"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-8"><a aria-label="8"></a>  entry <span class="op">*</span>previous <span class="op">=</span> NULL<span class="op">;</span></span>
-<span id="cb2-9"><a aria-label="9"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">long</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-10"><a aria-label="10"></a>    entry <span class="op">*</span>current <span class="op">=</span> <span class="kw">new</span> entry<span class="op">;</span></span>
-<span id="cb2-11"><a aria-label="11"></a>    current<span class="op">-&gt;</span>data <span class="op">=</span> i<span class="op">;</span></span>
-<span id="cb2-12"><a aria-label="12"></a>    current<span class="op">-&gt;</span>previous <span class="op">=</span> previous<span class="op">;</span></span>
-<span id="cb2-13"><a aria-label="13"></a>    <span class="cf">if</span> <span class="op">(</span>previous<span class="op">)</span></span>
-<span id="cb2-14"><a aria-label="14"></a>      previous<span class="op">-&gt;</span>next <span class="op">=</span> current<span class="op">;</span></span>
-<span id="cb2-15"><a aria-label="15"></a>    previous <span class="op">=</span> current<span class="op">;</span></span>
-<span id="cb2-16"><a aria-label="16"></a>  <span class="op">}</span></span>
-<span id="cb2-17"><a aria-label="17"></a>  previous<span class="op">-&gt;</span>next <span class="op">=</span> NULL<span class="op">;</span></span>
-<span id="cb2-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a><span class="kw">struct</span> entry <span class="op">{</span></span>
+<span id="cb2-4"><a aria-label="4"></a>  <span class="dt">long</span> data<span class="op">;</span></span>
+<span id="cb2-5"><a aria-label="5"></a>  entry <span class="op">*</span>next<span class="op">;</span></span>
+<span id="cb2-6"><a aria-label="6"></a>  entry <span class="op">*</span>previous<span class="op">;</span></span>
+<span id="cb2-7"><a aria-label="7"></a><span class="op">};</span></span>
+<span id="cb2-8"><a aria-label="8"></a></span>
+<span id="cb2-9"><a aria-label="9"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-10"><a aria-label="10"></a>  entry <span class="op">*</span>previous <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb2-11"><a aria-label="11"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">long</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-12"><a aria-label="12"></a>    entry <span class="op">*</span>current <span class="op">=</span> <span class="kw">new</span> entry<span class="op">;</span></span>
+<span id="cb2-13"><a aria-label="13"></a>    current<span class="op">-&gt;</span>data <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb2-14"><a aria-label="14"></a>    current<span class="op">-&gt;</span>previous <span class="op">=</span> previous<span class="op">;</span></span>
+<span id="cb2-15"><a aria-label="15"></a>    <span class="cf">if</span> <span class="op">(</span>previous<span class="op">)</span></span>
+<span id="cb2-16"><a aria-label="16"></a>      previous<span class="op">-&gt;</span>next <span class="op">=</span> current<span class="op">;</span></span>
+<span id="cb2-17"><a aria-label="17"></a>    previous <span class="op">=</span> current<span class="op">;</span></span>
+<span id="cb2-18"><a aria-label="18"></a>  <span class="op">}</span></span>
+<span id="cb2-19"><a aria-label="19"></a>  previous<span class="op">-&gt;</span>next <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb2-20"><a aria-label="20"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-21"><a aria-label="21"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></section>
+<section id="in-class-exercise" class="slide level2">
+<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In class Exercise</h2>
+<div class="column custom-box" style="width:100%;">
+<h3 id="write-your-own-program">Write your own program</h3>
+<ul>
+<li><p>Print all entries in reverse and forward order by running through the created objects of type <code>entry</code>.</p></li>
+<li><p>Delete all created objects of type <code>entry</code>.</p></li>
+</ul>
 </div></section>
 <section id="what-does-this-code-do-22" class="slide level2">
 <h2>What does this code do? 2/2</h2>
@@ -318,7 +329,7 @@ Peter Kandolf
 <span id="cb3-35"><a aria-label="35"></a></span>
 <span id="cb3-36"><a aria-label="36"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb3-37"><a aria-label="37"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="87b59a01" class="cell" data-execution_count="2">
+<div id="e93c94bf" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>9
 8
@@ -342,15 +353,6 @@ Peter Kandolf
 9</code></pre>
 </div>
 </div>
-</div></section>
-<section id="in-class-exercise" class="slide level2">
-<h2><span class="emoji" data-emoji="writing_hand">✍️</span> In class Exercise</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="write-your-own-program">Write your own program</h3>
-<ul>
-<li><p>Print all entries in reverse and forward order by running through the created objects of type <code>entry</code>.</p></li>
-<li><p>Delete all created objects of type <code>entry</code>.</p></li>
-</ul>
 </div></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

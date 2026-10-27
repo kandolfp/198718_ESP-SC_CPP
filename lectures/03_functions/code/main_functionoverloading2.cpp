@@ -1,12 +1,12 @@
 #include <iostream>
 
 double add(double a, double b) {
-  std::cout << "double";
+  std::cout << "double+ ";
   return a + b;
 }
 
 int add(int a, int b) {
-  std::cout << "int";
+  std::cout << "int+ ";
   return a + b;
 }
 
