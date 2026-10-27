@@ -40,6 +40,17 @@ filters:
 ```
 :::
 
+
+## :writing_hand: In class Exercise
+
+::: {.column width="100%" .custom-box}
+### Write your own program
+
+- Print all entries in reverse and forward order by running through the created objects of type `entry`.
+
+- Delete all created objects of type `entry`.
+:::
+
 ## What does this code do? 2/2
 
 ::: {.column width="100%" .custom-box}
@@ -50,16 +61,4 @@ filters:
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_struct2_solution.cpp
 ```
-:::
-
-
-
-## :writing_hand: In class Exercise
-
-::: {.column width="100%" .custom-box}
-### Write your own program
-
-- Print all entries in reverse and forward order by running through the created objects of type `entry`.
-
-- Delete all created objects of type `entry`.
 :::
