@@ -85,7 +85,7 @@ filters:
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_argv.cpp 
+%run ../../scripts/compile_and_run_cpp.py ./code/main_argv.cpp 1 foo 1.2
 ```
 :::::
 

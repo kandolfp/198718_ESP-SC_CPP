@@ -15,6 +15,7 @@ from pathlib import Path
 arguments = sys.argv[1:]
 source_paths = []
 compile_options = []
+exec_args = []
 
 # assumes all src files come first, then compiler options --> makes parsing more convenient
 found_compiler_option = False
@@ -24,8 +25,10 @@ for arg in arguments:
 
     if found_compiler_option:
         compile_options.append(arg)
-    else:
+    elif Path(arg).is_file():
         source_paths.append(arg)
+    else:
+        exec_args.append(arg)
 
 # By default optimized with -O3, but for some examples we need to disable optimization
 if not any(opt.startswith("-O") for opt in compile_options):
@@ -34,13 +37,14 @@ if not any(opt.startswith("-O") for opt in compile_options):
 sources: list[Path] = [(Path.cwd() / path).resolve() for path in source_paths]
 executable = str(sources[0].absolute().with_suffix(".out"))
 
+compiler = "g++" if sources[0].suffix == ".cpp" else "gcc"
 # By default subprocess.run() will open a new console window on Windows, which captures focus and is quite annoying.
 # This is surpressed using either the windows_hide argument (Python >= 3.7) or the creationflags argument (Python < 3.7).
 win_kwargs = {}
 if sys.platform == "win32":
     win_kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
 
-result = subprocess.run(["g++", *map(str, sources), "-o", executable, *compile_options, "-fdiagnostics-color=always"], check=False, capture_output=True, text=True, **win_kwargs)
+result = subprocess.run([compiler, *map(str, sources), "-o", executable, *compile_options, "-fdiagnostics-color=always"], check=False, capture_output=True, text=True, **win_kwargs)
 
 # If compilation fails, print the error message to the console. Otherwise, run the compiled executable and print its output.
 if result.returncode != 0:
@@ -49,5 +53,5 @@ if result.returncode != 0:
 
     print(stderr_output, end="")
 else:
-    result = subprocess.run([executable], check=False, capture_output=True, text=True, **win_kwargs)
+    result = subprocess.run([executable, *exec_args], check=False, capture_output=True, text=True, **win_kwargs)
     print(result.stdout, end="")
