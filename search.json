@@ -1,766 +1,59 @@
 [
   {
-    "objectID": "lectures/04_lint/1_lint.html#linter",
-    "href": "lectures/04_lint/1_lint.html#linter",
-    "title": "1. Lint",
-    "section": "Linter",
-    "text": "Linter\nWhy does it make sense to use a Linter?\n\nIn C/C++ the control flow is done via { ... }\nThe compiler does not care how it is formatted but we should, it is easier\n\nto navigate the code\nto find bugs\nto maintain the code\nto homogenise styles between different people\n\nWe use such tools to have consistent code style/coding standard in the project\nIt allows to check for (common) problems → clean-up before a commit\n\nStatic code analysis like unreachable code\nassigned but never used\nsyntax errors\nvulnerabilities\nundefined or dangerous behaviour"
+    "objectID": "lectures/04_lint/2_test.html#testing-1",
+    "href": "lectures/04_lint/2_test.html#testing-1",
+    "title": "2. Testing",
+    "section": "Testing",
+    "text": "Testing\nThere are multiple ways of testing:\n\nUnit tests: low level, close to source, test methods/functions/classes\nIntegration tests: test with different parts work together\nFunctional tests: test for business requirements\nPerformance tests: test how the code performs under particular workload\nSmoke tests: test to cover basic functionality of the application\n\\(\\cdots\\)"
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#coding-is-an-art-12",
-    "href": "lectures/04_lint/1_lint.html#coding-is-an-art-12",
-    "title": "1. Lint",
-    "section": "Coding is an art!? 1/2",
-    "text": "Coding is an art!? 1/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}"
+    "objectID": "lectures/04_lint/2_test.html#unit-testing-with-gtest",
+    "href": "lectures/04_lint/2_test.html#unit-testing-with-gtest",
+    "title": "2. Testing",
+    "section": "Unit testing with gtest",
+    "text": "Unit testing with gtest\nThere are multiple frameworks for testing, we use a framework from google called gtest. https://google.github.io/googletest/\nSome selected features:\n\nxUnit test framework\nTest discovery\nRich set of assertions\nVarious options for running tests"
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#coding-is-an-art-22",
-    "href": "lectures/04_lint/1_lint.html#coding-is-an-art-22",
-    "title": "1. Lint",
-    "section": "Coding is an art!? 2/2",
-    "text": "Coding is an art!? 2/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}\n\n\n                ###########...\n            ##################....\n         #######################.....\n       ##########################......\n     ##############################......\n    ###############################.......\n   #################################.......\n  ###################################.......\n  ###################################.......\n ####################################........\n ####################################........\n ####################################........\n ####################################........\n  ###################################.......\n  ###################################.......\n   #################################.......\n    ###############################.......\n     ##############################......\n       ##########################......\n         #######################.....\n            ##################....\n                ###########..."
+    "objectID": "lectures/04_lint/2_test.html#gtest-example-13",
+    "href": "lectures/04_lint/2_test.html#gtest-example-13",
+    "title": "2. Testing",
+    "section": "gtest example 1/3",
+    "text": "gtest example 1/3\n\nHeader file math_utils.hpp\n// math_utils.hpp\n#ifndef MATH_UTILS_HPP\n#define MATH_UTILS_HPP\n\nint add(int a, int b);\nint sub(int a, int b);\n\n#endif // MATH_UTILS_HPP\n\nCode file math_utils.cpp\n// math_utils.cpp\n#include \"math_utils.hpp\"\n\nint add(int a, int b) { return a + b; }\n\nint sub(int a, int b) { return a - b; }"
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-12",
-    "href": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-12",
-    "title": "1. Lint",
-    "section": "Why we need a formatter? 1/2",
-    "text": "Why we need a formatter? 1/2\n\nCode file code_ugly.cpp\n#include&lt;iostream&gt;\nint main(){int x=10;for(int i=0;i&lt;5;i++){if(i%2==0){x+=i;}else{x-=i;}}std::cout&lt;&lt;\"Result:\"&lt;&lt;x&lt;&lt;std::endl;return 0;}\n\n\nResult:12"
+    "objectID": "lectures/04_lint/2_test.html#gtest-example-23",
+    "href": "lectures/04_lint/2_test.html#gtest-example-23",
+    "title": "2. Testing",
+    "section": "gtest example 2/3",
+    "text": "gtest example 2/3\n\nCode file math_utils.test.cpp\n// math_utils_test.cpp\n#include \"math_utils.hpp\"\n#include &lt;gtest/gtest.h&gt;\n\n// Test case for the add function\nTEST(MathUtilsTest, AddFunction) {\n  EXPECT_EQ(add(2, 3), 5);  // 2 + 3 = 5\n  EXPECT_EQ(add(-1, 1), 0); // -1 + 1 = 0\n  EXPECT_EQ(add(0, 0), 0);  // 0 + 0 = 0\n}\n\n// Test case for the subtract function\nTEST(MathUtilsTest, SubtractFunction) {\n  EXPECT_EQ(sub(5, 3), 2);   // 5 - 3 = 2\n  EXPECT_EQ(sub(0, 1), -1);  // 0 - 1 = -1\n  EXPECT_EQ(sub(10, 10), 0); // 10 - 10 = 0\n}\n\n// Main function to run all tests\nint main(int argc, char **argv) {\n  ::testing::InitGoogleTest(&argc, argv);\n  return RUN_ALL_TESTS();\n}"
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-22",
-    "href": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-22",
-    "title": "1. Lint",
-    "section": "Why we need a formatter? 2/2",
-    "text": "Why we need a formatter? 2/2\n\nCode file code_ugly.cpp\n#include&lt;iostream&gt;\nint main(){int x=10;for(int i=0;i&lt;5;i++){if(i%2==0){x+=i;}else{x-=i;}}std::cout&lt;&lt;\"Result:\"&lt;&lt;x&lt;&lt;std::endl;return 0;}\n\nCode file code_formatted.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int x = 10;\n  for (int i = 0; i &lt; 5; i++) {\n    if (i % 2 == 0) {\n      x += i;\n    } else {\n      x -= i;\n    }\n  }\n  std::cout &lt;&lt; \"Result:\" &lt;&lt; x &lt;&lt; std::endl;\n  return 0;\n}"
+    "objectID": "lectures/04_lint/2_test.html#gtest-example-33",
+    "href": "lectures/04_lint/2_test.html#gtest-example-33",
+    "title": "2. Testing",
+    "section": "gtest example 3/3",
+    "text": "gtest example 3/3\n\n\n$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest\n[==========] Running 2 tests from 1 test suite.\n[----------] Global test environment set-up.\n[----------] 2 tests from MathUtilsTest\n[ RUN      ] MathUtilsTest.AddFunction\n[       OK ] MathUtilsTest.AddFunction (0 ms)\n[ RUN      ] MathUtilsTest.SubtractFunction\n[       OK ] MathUtilsTest.SubtractFunction (0 ms)\n[----------] 2 tests from MathUtilsTest (0 ms total)\n\n[----------] Global test environment tear-down\n[==========] 2 tests from 1 test suite ran. (0 ms total)\n[  PASSED  ] 2 tests."
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#a-formatter-alone-is-no-guarantee-but-helps",
-    "href": "lectures/04_lint/1_lint.html#a-formatter-alone-is-no-guarantee-but-helps",
-    "title": "1. Lint",
-    "section": "A formatter alone is no guarantee but helps",
-    "text": "A formatter alone is no guarantee but helps\n\nCode file phase_formatted.c\n#include &lt;stdio.h&gt;\n#include &lt;time.h&gt;\n\na, b = 44, x, y, z;\nmain() {\n  !a ? a = 2551443, x = -b, y = 2 - b,\n       z = ((time(0) - 592531) % a &lt;&lt; 9) / a\n     : putchar(++x &gt;= a ? x = -b, y += 4,\n               10 : x &lt; 0 ? x = x * x + y * y &lt; b * b ? a = 1 - x, -1 : x + 1,\n               32 : \"#.\"[(x &lt; a * (~z & 255) &gt;&gt; 8) ^ z &gt;&gt; 8]),\n       y &gt; b ? 0 : main();\n}\nFormatted 2024 winner https://github.com/ioccc-src/winner/tree/master/2024/kurdyukov1"
+    "objectID": "lectures/04_lint/2_test.html#gtest-example---default-main-12",
+    "href": "lectures/04_lint/2_test.html#gtest-example---default-main-12",
+    "title": "2. Testing",
+    "section": "‘gtest’ example - default main 1/2",
+    "text": "‘gtest’ example - default main 1/2\nAs long as we use the basic main function we do not need to write the code for it, we just need to link again gtest_main.\n\nCode file math_utils.test2.cpp\n// math_utils_test2.cpp\n#include \"math_utils.hpp\"\n#include &lt;gtest/gtest.h&gt;\n\n// Test case for the add function\nTEST(MathUtilsTest, AddFunction) {\n  EXPECT_EQ(add(2, 3), 5);  // 2 + 3 = 5\n  EXPECT_EQ(add(-1, 1), 0); // -1 + 1 = 0\n  EXPECT_EQ(add(0, 0), 0);  // 0 + 0 = 0\n}\n\n// Test case for the subtract function\nTEST(MathUtilsTest, SubtractFunction) {\n  EXPECT_EQ(sub(5, 3), 2);   // 5 - 3 = 2\n  EXPECT_EQ(sub(0, 1), -1);  // 0 - 1 = -1\n  EXPECT_EQ(sub(10, 10), 0); // 10 - 10 = 0\n}"
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#common-tools-for-formatting",
-    "href": "lectures/04_lint/1_lint.html#common-tools-for-formatting",
-    "title": "1. Lint",
-    "section": "Common tools for formatting",
-    "text": "Common tools for formatting\nThere are multiple tools available\n\nclang-format\nms-vscode.cpptools (comes with the plugin)"
+    "objectID": "lectures/04_lint/2_test.html#gtest-example---default-main22",
+    "href": "lectures/04_lint/2_test.html#gtest-example---default-main22",
+    "title": "2. Testing",
+    "section": "gtest example - default main2/2",
+    "text": "gtest example - default main2/2\n\n\n$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main\nRunning main() from ./googletest/src/gtest_main.cc\n[==========] Running 2 tests from 1 test suite.\n[----------] Global test environment set-up.\n[----------] 2 tests from MathUtilsTest\n[ RUN      ] MathUtilsTest.AddFunction\n[       OK ] MathUtilsTest.AddFunction (0 ms)\n[ RUN      ] MathUtilsTest.SubtractFunction\n[       OK ] MathUtilsTest.SubtractFunction (0 ms)\n[----------] 2 tests from MathUtilsTest (0 ms total)\n\n[----------] Global test environment tear-down\n[==========] 2 tests from 1 test suite ran. (0 ms total)\n[  PASSED  ] 2 tests."
   },
   {
-    "objectID": "lectures/04_lint/1_lint.html#in-class-exercise",
-    "href": "lectures/04_lint/1_lint.html#in-class-exercise",
-    "title": "1. Lint",
+    "objectID": "lectures/04_lint/2_test.html#in-class-exercise",
+    "href": "lectures/04_lint/2_test.html#in-class-exercise",
+    "title": "2. Testing",
     "section": "✍️ In class Exercise",
-    "text": "✍️ In class Exercise\n\nInclude a formatter in your setup\nActivate a formatter in VScode to automatically format the code (usually you can use CTRL+SHIFT+I) and you can activate format on save."
-  },
-  {
-    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-14",
-    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-14",
-    "title": "1. Lint",
-    "section": "Why a code analysis is beneficial? 1/4",
-    "text": "Why a code analysis is beneficial? 1/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}"
-  },
-  {
-    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-24",
-    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-24",
-    "title": "1. Lint",
-    "section": "Why a code analysis is beneficial? 2/4",
-    "text": "Why a code analysis is beneficial? 2/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}\n\n\n$ cppcheck --enable=all code/array.cpp\n\n\n['Checking code/array.cpp ...',\n \"code/array.cpp:3:9: style: Condition 'x=1000' is always true [knownConditionTrueFalse]\",\n '  if (x = 1000)',\n '        ^',\n \"code/array.cpp:2:7: style: The scope of the variable 'buf' can be reduced. [variableScope]\",\n '  int buf[10];',\n '      ^',\n \"code/array.cpp:4:12: style: Variable 'buf[x]' is assigned a value that is never used. [unreadVariable]\",\n '    buf[x] = 0;',\n '           ^',\n \"code/array.cpp:1:0: style: The function 'foo' is never used. [unusedFunction]\",\n 'void foo(int x) {',\n '^',\n 'nofile:0:0: information: Active checkers: 161/592 (use --checkers-report=&lt;filename&gt; to see details) [checkersReport]',\n '']"
-  },
-  {
-    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-34",
-    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-34",
-    "title": "1. Lint",
-    "section": "Why a code analysis is beneficial? 3/4",
-    "text": "Why a code analysis is beneficial? 3/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}\n\n\n$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17\n\n\n['2 warnings generated.',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:3: warning: do not declare C-style arrays, use std::array&lt;&gt; instead [modernize-avoid-c-arrays]',\n '    2 |   int buf[10];',\n '      |   ^',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]',\n '    3 |   if (x = 1000)',\n '      |       ~~^~~~~~',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning',\n '    3 |   if (x = 1000)',\n '      |         ^     ',\n '      |       (       )',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison\",\n '    3 |   if (x = 1000)',\n '      |         ^',\n '      |         ==']"
-  },
-  {
-    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-44",
-    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-44",
-    "title": "1. Lint",
-    "section": "Why a code analysis is beneficial? 4/4",
-    "text": "Why a code analysis is beneficial? 4/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}\n\n\n$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17\n\n\n['6 warnings generated.',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:1:14: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]\",\n '    1 | void foo(int x) {',\n '      |              ^',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:11: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]',\n '    2 |   int buf[10];',\n '      |           ^',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: warning: implicit conversion 'int' -&gt; 'bool' [readability-implicit-bool-conversion]\",\n '    3 |   if (x = 1000)',\n '      |       ^       ',\n '      |                != 0',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]',\n '    3 |   if (x = 1000)',\n '      |       ~~^~~~~~',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning',\n '    3 |   if (x = 1000)',\n '      |         ^     ',\n '      |       (       )',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison\",\n '    3 |   if (x = 1000)',\n '      |         ^',\n '      |         ==',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:11: warning: 1000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]',\n '    3 |   if (x = 1000)',\n '      |           ^',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:16: warning: statement should be inside braces [readability-braces-around-statements]',\n '    3 |   if (x = 1000)',\n '      |                ^',\n '      |                 {',\n '    4 |     buf[x] = 0;',\n '      |                ']"
-  },
-  {
-    "objectID": "lectures/04_lint/1_lint.html#in-class-exercise-1",
-    "href": "lectures/04_lint/1_lint.html#in-class-exercise-1",
-    "title": "1. Lint",
-    "section": "✍️ In class Exercise",
-    "text": "✍️ In class Exercise\n\nInclude a formatter in your setup\nInstall cppcheck and clang-tidy and test them for yourself on some of our code snippets. Try different options.\n# We need to install it in our linux environment\nsudo dnf install cppcheck clang-tidy"
-  },
-  {
-    "objectID": "lectures/04_lint/1_lint.html#why-should-we-care-for-scientific-code",
-    "href": "lectures/04_lint/1_lint.html#why-should-we-care-for-scientific-code",
-    "title": "1. Lint",
-    "section": "Why should we care for scientific code?",
-    "text": "Why should we care for scientific code?\n\nFor scientific code we often get:\nWhy should we care, this is not for production and only we use it!\nWhat are your thoughts on the following statements?\n\nA Segmentation fault will indicates a problem in the mathematics, not the code.\nCorrect code is usually faster.\nSharing the code is good scientific practice.\nI use code, I can not read/understand for my research."
-  },
-  {
-    "objectID": "lectures/03_functions/2_structs.html#structs-1",
-    "href": "lectures/03_functions/2_structs.html#structs-1",
-    "title": "2. Structs",
-    "section": "Structs",
-    "text": "Structs\n\nSometimes you want to generate your own data types.\nExample: Pair of two doubles.\n\n\nSolution main_struct1.cpp\n#include &lt;iostream&gt;\n\nstruct Pair {\n  double first;\n  double second;\n};\n\nint main() {\n  Pair p;\n  p.first = 1.0;\n  p.second = 2.0;\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/03_functions/2_structs.html#what-does-this-code-do-12",
-    "href": "lectures/03_functions/2_structs.html#what-does-this-code-do-12",
-    "title": "2. Structs",
-    "section": "What does this code do? 1/2",
-    "text": "What does this code do? 1/2\n\nSolution main_struct2.cpp\n#include &lt;iostream&gt;\n\nstruct entry {\n  long data;\n  entry *next;\n  entry *previous;\n};\n\nint main() {\n  entry *previous = NULL;\n  for (long i = 0; i &lt; 10; ++i) {\n    entry *current = new entry;\n    current-&gt;data = i;\n    current-&gt;previous = previous;\n    if (previous)\n      previous-&gt;next = current;\n    previous = current;\n  }\n  previous-&gt;next = NULL;\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/03_functions/2_structs.html#in-class-exercise",
-    "href": "lectures/03_functions/2_structs.html#in-class-exercise",
-    "title": "2. Structs",
-    "section": "✍️ In class Exercise",
-    "text": "✍️ In class Exercise\n\nWrite your own program\n\nPrint all entries in reverse and forward order by running through the created objects of type entry.\nDelete all created objects of type entry."
-  },
-  {
-    "objectID": "lectures/03_functions/2_structs.html#what-does-this-code-do-22",
-    "href": "lectures/03_functions/2_structs.html#what-does-this-code-do-22",
-    "title": "2. Structs",
-    "section": "What does this code do? 2/2",
-    "text": "What does this code do? 2/2\n\nSolution main_struct2_solution.cpp\n#include &lt;iostream&gt;\n\nstruct entry {\n  long data;\n  entry *next;\n  entry *previous;\n};\n\nint main() {\n  long nEntries = 10; // number entries in list\n  entry *previous = NULL;\n  for (long i = 0; i &lt; nEntries; ++i) {\n    entry *current = new entry;\n    current-&gt;data = i;\n    current-&gt;previous = previous;\n    if (previous)\n      previous-&gt;next = current;\n    previous = current;\n  }\n  previous-&gt;next = NULL;\n\n  entry *current = previous;\n\n  while (current-&gt;previous) {\n    std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n    current = current-&gt;previous;\n  }\n  std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n\n  while (current-&gt;next) {\n    std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n    current = current-&gt;next;\n  }\n  std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n9\n8\n7\n6\n5\n4\n3\n2\n1\n0\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#why",
-    "href": "lectures/02_pointers/2_memory.html#why",
-    "title": "2. Memory Management",
-    "section": "Why?",
-    "text": "Why?\n\nPointers give control over memory.\nPass data to a different program part without copying it (functions, classes,…).\nControl when to delete data dynamic vs. static memory.\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\nstack\n\nstack\n\nstack\n\n...\n\nheap\n\nheap\n\n\n\n\n\n\n\n\n\nstatic memory managed by compiler (stack)\ndynamic memory managed by user (heap)\ndynamic memory can be accessed with pointers (stored in stack)\naddress space in heap is accessed with new"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#why-1",
-    "href": "lectures/02_pointers/2_memory.html#why-1",
-    "title": "2. Memory Management",
-    "section": "Why?",
-    "text": "Why?\n\nPointers give control over memory.\nPass data to a different program part without copying it (functions, classes,…).\nControl when to delete data dynamic vs. static memory.\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\nstack\n\nstack\n\nstack\n\n...\n\nheap\n\nheap\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nstatic memory managed by compiler (stack)\ndynamic memory managed by user (heap)\ndynamic memory can be accessed with pointers (stored in stack)\naddress space in heap is accessed with new"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-12",
-    "href": "lectures/02_pointers/2_memory.html#some-code-examples-12",
-    "title": "2. Memory Management",
-    "section": "Some code examples 1/2",
-    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.14358e-313"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-22",
-    "href": "lectures/02_pointers/2_memory.html#some-code-examples-22",
-    "title": "2. Memory Management",
-    "section": "Some code examples 2/2",
-    "text": "Some code examples 2/2\n\nCode file main_heap2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *v = new double[2]; // allocate array of size 2 in heap\n  v[0] = 0.1;\n  v[1] = 0.12;\n\n  for (int i = 0; i &lt; 2; i++)\n    std::cout &lt;&lt; v[i] &lt;&lt; \" \";\n  std::cout &lt;&lt; std::endl;\n\n  delete[] v; // free memory of entire array\n\n  return 0;\n}\n\n\n0.1 0.12"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#an-array-in-heap",
-    "href": "lectures/02_pointers/2_memory.html#an-array-in-heap",
-    "title": "2. Memory Management",
-    "section": "An array in heap",
-    "text": "An array in heap\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n...\n\nv[3]\n\nv[2]\n\nv[1]\n\nv = v[0]\n\n...\n\n\n\n\n\n\n\n\nWe store address of v[0] in v.\nSince v[1], \\(\\ldots\\) neighbour v[0] we also know their addresses.\nMore about this when talking about pointer arithmetic."
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#multi-dimensional-arrays",
-    "href": "lectures/02_pointers/2_memory.html#multi-dimensional-arrays",
-    "title": "2. Memory Management",
-    "section": "Multi-dimensional arrays",
-    "text": "Multi-dimensional arrays\nIn the C/C++ standard there is no dynamic multi-dimensional array.\n\noption: Use a pointer to a pointer.\n\nAccess via a[i][j].\n\nNot very good memory layout on modern computer architectures (pointer chasing).\n\n\noption: Use an one-dimensional array and do the index calculations by hand.\n\nAccess via a[i + j*n].\n\noption: Use an external library that implements 2d arrays.\n\nAccess is usually provided by a(i, j)"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
-    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
-    "title": "2. Memory Management",
-    "section": "Some code examples with pointers and memory access 1/3",
-    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.13182e-313"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
-    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
-    "title": "2. Memory Management",
-    "section": "Some code examples with pointers and memory access 2/3",
-    "text": "Some code examples with pointers and memory access 2/3\nCan you explain the behaviour?\n\nCode file main_heap5.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  bool condition = true;\n\n  if (condition) {\n    double *d = new double;\n    *d = 0.1;\n  }\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n\nmain_heap5.cpp: In function ‘int main()’:\nmain_heap5.cpp:11:17: error: ‘d’ was not declared in this scope\n   11 |   std::cout &lt;&lt; *d &lt;&lt; std::endl;\n      |                 ^"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-33",
-    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-33",
-    "title": "2. Memory Management",
-    "section": "Some code examples with pointers and memory access 3/3",
-    "text": "Some code examples with pointers and memory access 3/3\nCan you explain the behaviour?\n\nCode file main_heap6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  bool condition = true;\n  double *d;\n\n  if (condition) {\n    d = new double;\n    *d = 0.1;\n  }\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#good-practice",
-    "href": "lectures/02_pointers/2_memory.html#good-practice",
-    "title": "2. Memory Management",
-    "section": "Good practice!",
-    "text": "Good practice!\nAlways delete storage you allocated with new."
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#pointer-arithmetics",
-    "href": "lectures/02_pointers/2_memory.html#pointer-arithmetics",
-    "title": "2. Memory Management",
-    "section": "Pointer arithmetics",
-    "text": "Pointer arithmetics\n\nArithmetics on pointers allowed.\nd[i] equivalent to *(d + i)\n\n\nCode file main_arithmetics1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d;\n  d = new double[4];\n  d[0] = 0.0;\n  d[1] = 0.1;\n  d[2] = 0.2;\n\n  std::cout &lt;&lt; *d &lt;&lt; \" \" &lt;&lt; *(d + 1) &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0 0.1"
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#pointer-arithmetics-1",
-    "href": "lectures/02_pointers/2_memory.html#pointer-arithmetics-1",
-    "title": "2. Memory Management",
-    "section": "Pointer arithmetics",
-    "text": "Pointer arithmetics\n\n\n\n\n\n\n\n\nmem1\n\n\n\nmem\n\n\n...\n\nv[3]\n\nv[2]\n\nv[1]\n\n*v = v[0]\n\n\n...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmem2\n\n\n\nmem\n\n\n...\n\n*(v+3)\n\n*(v+2)\n\n*(v+1)\n\n*v = v[0]\n\n\n...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmem3\n\n\n\nmem\n\n\n...\n\n(v+1)[2]\n\n(v+1)[1]\n\n(v+1)[0]\n\n*v = v[0]\n\n\n..."
-  },
-  {
-    "objectID": "lectures/02_pointers/2_memory.html#advanced-exercise",
-    "href": "lectures/02_pointers/2_memory.html#advanced-exercise",
-    "title": "2. Memory Management",
-    "section": "🏆 Advanced Exercise",
-    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nRewrite your ODE solver by using dynamic arrays. Make sure to free your memory before the program terminates."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#number-representation",
-    "href": "lectures/01_introduction/2_types.html#number-representation",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Number representation",
-    "text": "Number representation\n\n\n\n\n\n\nbinary\n\n\n\nbits\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n = 42\n2\n10\n2\n9\n2\n8\n2\n7\n2\n6\n2\n5\n2\n4\n2\n3\n2\n2\n2\n1\n2\n0\n\n\n\n\n\n\n\n\nNumbers are represented by bits.\nIntegers usually use \\(16\\) bits (\\(-32768\\) to \\(32767\\))\n\n\n\n\n\n\n\nfloat\n\n\n\nbits\n\n\n0\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n±1\n \n2\n3\n2\n2\n2\n1\n2\n0\n \n2\n-1\n2\n-2\n2\n-3\n2\n-4\n2\n-5\n2\n-6\n\n\n\n\n\n\n\n\nReal numbers: sign \\(\\cdot\\) mantissa \\(\\cdot\\ 2^\\text{exponent}\\)\ndouble uses \\(64\\) bits"
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#what-are-types-and-why-do-we-need-them",
-    "href": "lectures/01_introduction/2_types.html#what-are-types-and-why-do-we-need-them",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "What are types and why do we need them?",
-    "text": "What are types and why do we need them?\n\nWhenever possible, we would like to tell the program how many bits we need.\nRemember that the C++ compiler requires us to define the type in advance\nx = 3 # x is a integer\nif condition:\n  x = 3.0 # x is a floating point number\ny = 2 * x\nTypes simplify readability.\nMain types are: char, string, int, long, float, double"
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#code-example",
-    "href": "lectures/01_introduction/2_types.html#code-example",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Code example",
-    "text": "Code example\n\nCode file main_typer.cpp\nint main() {\n  int i;          // declaration\n  i = 2;          // definition\n  float d = 2.3f; // declaration and definition\n  double a = 1.0, b = 2.3;\n  return 0;\n}\n\nFrom the code, the compiler knows that:\n\n\\(16\\) bit are needed for i,\n\\(32\\) bit for d,\n\\(64\\) for a and b.\n\nIt is good practice to declare variables at the beginning of the code."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise",
-    "href": "lectures/01_introduction/2_types.html#in-class-exercise",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise",
-    "text": "✍️ In Class Exercise\n\nWrite your own program\nApart from the cout and endl commands that you have already seen, the iostream library also offers the cin command to read inputs from the command line via cin &gt;&gt; INPUT;. Write a program which asks the user to provide a number of type double and returns the sin of this value."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---solution",
-    "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(6.93331e-310) = 6.93331e-310\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise-1",
-    "href": "lectures/01_introduction/2_types.html#in-class-exercise-1",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise",
-    "text": "✍️ In Class Exercise\n\nWrite your own program\nRead in an integer and a double and print out the sum of these two values."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---solution-1",
-    "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution-1",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type3.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  int sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is -2147483648\n\n\n\nAccuracy is lost since sum is an integer.\nUse typecast int sum = inputInt + int(inputDouble)\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---second-solution",
-    "href": "lectures/01_introduction/2_types.html#in-class-exercise---second-solution",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise - Second Solution",
-    "text": "✍️ In Class Exercise - Second Solution\n\nSolution main_type3_1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  double sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is 2.11653e+214\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#introducing-vector",
-    "href": "lectures/01_introduction/2_types.html#introducing-vector",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Introducing vector",
-    "text": "Introducing vector\nThe standard C++ libraries provide various helpful datatypes, e.g. std::vector\n\nSolution main_vector1.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nint main() {\n  std::vector&lt;double&gt; v(5);\n  v.reserve(10);\n  v[0] = 1.0;\n  v[2] = 1.0;\n  std::cout &lt;&lt; v.size() &lt;&lt; std::endl;\n  std::cout &lt;&lt; v[0] &lt;&lt; \" \" &lt;&lt; v[1] &lt;&lt; \" \" &lt;&lt; v[2] &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n5\n1 0 1\n\n\n\nNote that you need to put an std:: in front of the vector (and cout, endl). This is a namespace which we will cover later.\nindexing starts at \\(0\\) in C++!\nsome useful functions size, reserve, resize"
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#compiler-and-linker-basics",
-    "href": "lectures/01_introduction/2_types.html#compiler-and-linker-basics",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Compiler and linker basics",
-    "text": "Compiler and linker basics\n\nWe write code that humans understand but computers can’t → translation into machine language\nThe main tools are the compiler and the linker.\nCompiler: C++ code into machine language file (object file, main.o, main.obj)\nLinker: combine obj files and libraries (precompiled code)\n$ g++ -c hello.cpp\n$ g++ -o hello.out hello.o\n$ ls\nhello.cpp  hello.o  hello.out\nWe will revisit the compiler multiple times once our programs become more complicated."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#exercise",
-    "href": "lectures/01_introduction/2_types.html#exercise",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ Exercise",
-    "text": "✍️ Exercise\n\nWrite your own program\nWrite a program which generates two vector \\(v_1 = [0, 0.5, 1]\\) and \\(v_2 = [0, sin(0.1), 1]\\) of type float. Generate a third vector \\(v_3 = v_1 + v_2\\)."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#conditionals",
-    "href": "lectures/01_introduction/2_types.html#conditionals",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Conditionals",
-    "text": "Conditionals\nC/C++ comes with the basic conditionals: if, else if, else\nif ( boolean == true ){\n    // statement executed if the condition boolean == true is valid\n} else if (boolean1 == true){\n    // statement executed if the condition boolean == true is not valid but boolean1 == true\n} else{\n    // statement executed if both conditions are false\n}\nNew variables defined inside these environments are unknown to the global scope."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#loops",
-    "href": "lectures/01_introduction/2_types.html#loops",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Loops",
-    "text": "Loops\nC/C++ comes with the basic loops: for, while, do while\nfor ( long i = 0; i &lt; 10; i++ ){\n   // statement\n}\n\nwhile ( boolean == true ){\n   // statement\n}\n    \ndo {\n  // statement\n} while( boolean == true )\nTo exit a loop early we can use break and continue to jup along"
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#range-based-loops",
-    "href": "lectures/01_introduction/2_types.html#range-based-loops",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Range based loops",
-    "text": "Range based loops\nThe range based of often also called for each loop is available in C++ as well\nstd::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};\n\n// Range-based for loop\nfor (int num : numbers) {\n    std::cout &lt;&lt; num &lt;&lt; \" \";\n}\n\n// Range-based for loop with auto key word\nfor (auto num : numbers) {\n    std::cout &lt;&lt; num &lt;&lt; \" \";\n}"
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#exercise-1",
-    "href": "lectures/01_introduction/2_types.html#exercise-1",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ Exercise",
-    "text": "✍️ Exercise\n\nWrite your own program - FizzBuzz\nWrite a program that prints the integers from \\(1\\) to \\(100\\) (inclusive). If, however, the number is a multiple of three then print Fizz instead, and if the number is a multiple of five then print Buzz. If multiple conditions hold true then all replacements should be printed, for example \\(15\\) should print FizzBuzz."
-  },
-  {
-    "objectID": "lectures/01_introduction/2_types.html#advanced-exercise",
-    "href": "lectures/01_introduction/2_types.html#advanced-exercise",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "🏆 Advanced Exercise",
-    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nConsider a simple ODE \\[\n\\dot y(t) = \\sin(y(t))\n\\]\nForward Euler time discretization: Define grid \\(\\{t_1,\\cdots,t_{N}\\}\\) and define \\(y^n \\simeq y(t_n)\\) \\[\n    y^{n+1} = y^{n} + (t_{n+1}-t_n) \\sin(y^n)\n\\]\nImplement a forward Euler method with equidistant time step size \\(\\Delta t = t_{n+1}-t_n = 0.01\\). Store the solution at all time points \\(t\\in[0, 1]\\) in a vector and write it to a text file."
-  },
-  {
-    "objectID": "lectures/01_introduction/0_introduction.html#who",
-    "href": "lectures/01_introduction/0_introduction.html#who",
-    "title": "0. Basic introduction to the lecture",
-    "section": "Who?",
-    "text": "Who?\n\nPeter Kandolf - Peter.Kandolf@uibk.ac.at\nBSc, MSc, PhD in (Technischer) Mathematik, LFU Innsbruck\nSenior Postdoc - Forschungsschwerpunkt Scientific Computing, LFU Innsbruck"
-  },
-  {
-    "objectID": "lectures/01_introduction/0_introduction.html#what-we-expect-from-you",
-    "href": "lectures/01_introduction/0_introduction.html#what-we-expect-from-you",
-    "title": "0. Basic introduction to the lecture",
-    "section": "What we expect from you?",
-    "text": "What we expect from you?\nThe syllabus is on the overview page index\n\nStructure of the class\n\nYou learn programming by writing/reviewing/debugging code\nLLMs can be helpful but you need to understand and be able to explain the code\nExercises during class, hand in exercises via UIBK gitlab\nPresent the occasional exercise\nProgramming project\n\ngroups of at most three\nuse UIBK gitlab, everybody is expected to work with git/have commits\npresentation of the code\ntopics are fixed in"
-  },
-  {
-    "objectID": "lectures/01_introduction/0_introduction.html#common-markings-on-the-slides",
-    "href": "lectures/01_introduction/0_introduction.html#common-markings-on-the-slides",
-    "title": "0. Basic introduction to the lecture",
-    "section": "Common markings on the slides",
-    "text": "Common markings on the slides\n\nWe use some emojies throughout the slides → they should help when you look at the slides outside of class.\n🤓: Additional information if you want to dive in → probably something that will only be for self study\n🔁: We have seen this in another lecture already, here is the reference\n✍️: This is an exercise → some of them we will do in class\n🏆: This is one of the advanced exercises"
-  },
-  {
-    "objectID": "lectures/01_introduction/0_introduction.html#important",
-    "href": "lectures/01_introduction/0_introduction.html#important",
-    "title": "0. Basic introduction to the lecture",
-    "section": "⚠️ Important!",
-    "text": "⚠️ Important!\n\nThe curriculum changed and this lecture is slightly different → probably some things change and get shifted around\nPlease provide some feedback already during class so we can adapt to it"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "C and C++ in Simulation Development",
-    "section": "",
-    "text": "Here you will find all slides as an interactive presentation (Reveal.js):\nThis is a practical course. For each part of the lecture some exercises will be posed. The main learning benefit is only attained if you actively implement all of the exercises.\nYou have to form groups (consisting of at most 3 students) to work on the exercises and the final project. Working alone is permissible but discouraged.\nFor the exercises, please comply to the following instructions:\n\nUpload the exercises to a repository on the university GitLab https://git.uibk.ac.at/. Make sure that we have access to your code for grading.\nUse a distinct folder for each lecture and use a consistent naming scheme for the folders and files.\nFor every program, indicate in the first line as a comment the compilation instructions (e.g. which libraries have to be linked, compiler flags) and the used compiler (vendor and version).\nDocument and discuss your results in a Markdown file or generate a PDF.\n\nWe will also, from time to time, ask some of you to present exercises in the classroom in order to facilitate discussion.\nTo pass this course, at least 50% of the exercises have to be solved and the final project has to be completed successfully. The grade consists of standard exercises (40% - indicated by ✍️), project work (40%), advanced exercises (10% - indicated by 🏆), and classroom participation (10%). If you want to get an ‘excellent’ we expect you to solve all advanced exercises.\nThe plan for the lecture is as follows:\n\n\n\n\n\n\nTip\n\n\n\nYou can navigate the slides with the arrow keys ← →. The button in the lower left corner opens a toc per slide deck and you can export the slides as a pdf."
-  },
-  {
-    "objectID": "index.html#welcome-to-the-course-on-c-and-c-in-simulation-and-development.",
-    "href": "index.html#welcome-to-the-course-on-c-and-c-in-simulation-and-development.",
-    "title": "C and C++ in Simulation Development",
-    "section": "",
-    "text": "Here you will find all slides as an interactive presentation (Reveal.js):\nThis is a practical course. For each part of the lecture some exercises will be posed. The main learning benefit is only attained if you actively implement all of the exercises.\nYou have to form groups (consisting of at most 3 students) to work on the exercises and the final project. Working alone is permissible but discouraged.\nFor the exercises, please comply to the following instructions:\n\nUpload the exercises to a repository on the university GitLab https://git.uibk.ac.at/. Make sure that we have access to your code for grading.\nUse a distinct folder for each lecture and use a consistent naming scheme for the folders and files.\nFor every program, indicate in the first line as a comment the compilation instructions (e.g. which libraries have to be linked, compiler flags) and the used compiler (vendor and version).\nDocument and discuss your results in a Markdown file or generate a PDF.\n\nWe will also, from time to time, ask some of you to present exercises in the classroom in order to facilitate discussion.\nTo pass this course, at least 50% of the exercises have to be solved and the final project has to be completed successfully. The grade consists of standard exercises (40% - indicated by ✍️), project work (40%), advanced exercises (10% - indicated by 🏆), and classroom participation (10%). If you want to get an ‘excellent’ we expect you to solve all advanced exercises.\nThe plan for the lecture is as follows:\n\n\n\n\n\n\nTip\n\n\n\nYou can navigate the slides with the arrow keys ← →. The button in the lower left corner opens a toc per slide deck and you can export the slides as a pdf."
-  },
-  {
-    "objectID": "index.html#term-plan",
-    "href": "index.html#term-plan",
-    "title": "C and C++ in Simulation Development",
-    "section": "Term plan",
-    "text": "Term plan\n\n\n\nMeeting\nChapter\nSubchapter\nExercise\n\n\n\n\n\n1\n00 General information to the lecture\n0. Introduction\n\n\n\n\n1\n01 Basics and why we teach C/C++\n1. Why we teach C++ and some basics\n✍️\n\n\n\n2\n01 Types\n2. Types\n✍️ 🏆\n\n\n\n2\n02 Pointers\n1. Pointers\n✍️\n\n\n\n3\n02 Memory management\n2. Memory\n✍️ 🏆\n\n\n\n4\n03 Functions, structs and classes\n1. Functions\n🏆\n\n\n\n4\n03 Functions, structs and classes\n2. Structs\n✍️\n\n\n\n4\n03 Functions, structs and classes\n3. Classes\n✍️ 🏆\n\n\n\n5\nCMake, Unit testing\n1. Linting\n✍️\n\n\n\n6\nLinter Code analysis, different types of libraries\n\n\n\n\n\n7\nFinalize the topics of the projects\n\n\n\n\n\n8\nObject oriented programming, operator overloading\n\n\n\n\n\n9\nTemplates, RAIi and smart pointers\n\n\n\n\n\n10\nBLAS, LAPACK, Eigen\n\n\n\n\n\n11\nSparse matrix computations\n\n\n\n\n\n12\nFFT, TOML, Netcdf, Modules\n\n\n\n\n\n13\nDebugging and profiling\n\n\n\n\n\n14\nQ&A Projects\n\n\n\n\n\n15\nProject presentations"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#a-simple-stencil-code",
-    "href": "lectures/01_introduction/1_helloworld.html#a-simple-stencil-code",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "A simple stencil code",
-    "text": "A simple stencil code\nPython\nfor i in np.arange(1, N - 1):\n  for j in np.arange(1, N - 1):\n      out[j + i * N] = inn[j + i * N] \\\n                     + alpha * (inn[j - 1 + i * N] - \n                               2.0 * inn[j + i * N] + inn[j + 1 + i * N])\n\nCompile and Wall time (2nd order):  7.65 s (1.08 s with numba)\n                                           (0.67 s with slicing)\nC++\n\nfor(int i = 1; i &lt; N-1; i++)\n    for(int j = 1; j &lt; N-1; j++)\n        out[j + i * N] = in[j + i * N] \n                       + alpha * (in[j - 1 + i * N] - \n                                 2.0 * in[j + i * N] + in[j + 1 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s\n\n\nThe reference code can be downloaded here"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#performance-implications",
-    "href": "lectures/01_introduction/1_helloworld.html#performance-implications",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Performance implications",
-    "text": "Performance implications\n\nDrastic performance improvement (\\(\\approx 27\\)x).\n\nReduces run time for your code.\n\nPython is an interpreted language.\n\nA program, the interpreter, reads the python code and executes one statement after another.\n\nC++ is a compiled language that uses a two-step approach\n\nCompilation: A program, the compiler, reads the C++ code and translates it into machine code.\nExecution: The machine code is directly executed by the CPU.\n\n\n🤓: In reality Python uses an intermediate representation (bytecode) and relies on compiled Fortran/C/C++ code."
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#what-is-compilation",
-    "href": "lectures/01_introduction/1_helloworld.html#what-is-compilation",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "What is compilation",
-    "text": "What is compilation\nCan we compile Python?\nx = 3           # x is a integer\nif condition:\n    x = 3.0     # x is a floating point number\ny = 2 * x\n\nWhat operation should 2 * x be compiled to?\n\ninteger/floating point multiplication\n\nCompiler would need to understand all possible types that x can have.\n\nFor an interpreted language this is much simpler (can be decided during run time)\n\nIn C++ type information need to be specified at compile time.\n\nHaving type information available makes optimizing the machine code easier."
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#performance-part-2",
-    "href": "lectures/01_introduction/1_helloworld.html#performance-part-2",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Performance part 2",
-    "text": "Performance part 2\nFourth order stencil in Python\nfor i in np.arange(1, N-1):\n    for j in np.arange(1,N-1):\n        out[j + i * N] = inn[j + i * N] + alpha * (\n                -1./12. * inn[j - 2 + i * N] + 4./3. * inn[j - 1 + i * N] \\\n                - 5./2. * inn[j + i * N] + 4./3. * inn[j + 1 + i * N] \\\n                - 1./12. * inn[j + 2 + i * N]);\n\nCompile and Wall time (2nd order):  7.65 s, (4th order):  11.84 s\nFourth order stencil in C++\n\nfor(int i=1; i &lt; N-1; i++)\n    for(int j=2;j &lt; N-2; j++)\n        out[j + i * N] = in[j + i * N] + alpha * (\n            -1./12. * in[j - 2 + i * N] + 4./3. * in[j - 1 + i * N] \\\n            - 5./2. * in[j + i * N] + 4./3. * in[j + 1 + i * N] \\\n            - 1./12. * in[j + 2 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s, (4th order): 0.28 s\n\n\nThe reference code can be downloaded here"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#performance-and-use-of-the-language",
-    "href": "lectures/01_introduction/1_helloworld.html#performance-and-use-of-the-language",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Performance and use of the language",
-    "text": "Performance and use of the language\nIn Python using the second order method is \\(1.5\\)x faster than fourth order method. In C++ the second and fourth order methods take the same time.\n\nPerformance is often limited by fetching data from memory and not by the number of arithmetic operations the CPU can perform. This is called a memory bound problem.\n\nWriting Python code to predict the performance of a C++ code is a bad idea!\nWhy is Python used?: Many software packages have embraced a high-level Python interface.\nPython is often used to specify the problem but all the heavy lifting is done under the hood is usually in C++.\nMakes the software approachable for users while maintaining good performance."
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#performance-comparison",
-    "href": "lectures/01_introduction/1_helloworld.html#performance-comparison",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Performance comparison",
-    "text": "Performance comparison\n\nOriginal source of the image https://julialang.org/benchmarks/ or directly https://julialang.org/assets/images/benchmarks.svg"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#set-up-your-working-environment",
-    "href": "lectures/01_introduction/1_helloworld.html#set-up-your-working-environment",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Set up your working environment",
-    "text": "Set up your working environment\n\nVS code as editor https://code.visualstudio.com/download\nLinux as compile environment → LIVE session on the UIBK environment\n\nWSL for linux\nWSL extension for VS code\nC/C++ extension and other packages for VS code"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#hello-world-in-c",
-    "href": "lectures/01_introduction/1_helloworld.html#hello-world-in-c",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Hello World! in C++",
-    "text": "Hello World! in C++\n\nLet’s start with hello_world.cpp\n#include &lt;iostream&gt; // include dependencies; header files of libraries\n\nint main() { // the main function is called when executing the code\n  std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; // print \"Hello World!\"\n  return 0;                                 // return terminates the program\n}\n\n\nHello World!\n\n\n\ncomments are added by // comment\nstart by including libraries (iostream for printing output)\nmain instructions inside int main(){ program code }\nprint output by std::cout &lt;&lt; \"...\", end line with std::endl\nevery command must be ended with ;\nend program with return 0; (exit as intended, with no errors)"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#compiling-code",
-    "href": "lectures/01_introduction/1_helloworld.html#compiling-code",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "Compiling code",
-    "text": "Compiling code\nTo compile the code we run the following code in the terminal\n$ g++ -o hello_world.out hello_world.cpp\nThe compiler g++ goes through your source code to\n\ncheck if the code has the correct syntax\ntranslate the code into instructions readable by the computer\ngenerates the executable hello_world.out which you can run with\n$ ./hello_world.out"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise",
-    "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In class Exercise",
-    "text": "✍️ In class Exercise\n\nWrite your own program\nWrite a program which prints the result of \\(\\sin(2)\\) to the terminal\n\nHint 1: The \\(\\sin\\) function is included in the cmath library.\nHint 2: To print a number with cout you do not need the quotation marks \".\n\nRecall\n#include &lt;iostream&gt; // include dependencies; header files of libraries\n\nint main() { // the main function is called when executing the code\n  std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; // print \"Hello World!\"\n  return 0;                                 // return terminates the program\n}"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution",
-    "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_sin_error.cpp\n#include &lt;cmath&gt;    // library includes sin\n#include &lt;iostream&gt; // library includes cout, endl\n\nint main() {\n  std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n  return 0\n}\n\n\n\nmain_sin_error.cpp: In function ‘int main()’:\nmain_sin_error.cpp:5:28: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?\n    5 |   std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n      |                            ^~~~\n      |                            std::endl\nIn file included from /usr/include/c++/13/iostream:41,\n                 from main_sin_error.cpp:2:\n/usr/include/c++/13/ostream:735:5: note: ‘std::endl’ declared here\n  735 |     endl(basic_ostream&lt;_CharT, _Traits&gt;& __os)\n      |     ^~~~\nmain_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token\n    6 |   return 0\n      |           ^\n      |           ;\n    7 | }\n      | ~"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution---working",
-    "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution---working",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "✍️ In Class Exercise - Solution - working",
-    "text": "✍️ In Class Exercise - Solution - working\n\nSolution main_sin.cpp\n#include &lt;cmath&gt;    // library includes sin\n#include &lt;iostream&gt; // library includes cout, endl\n\nint main() {\n  std::cout &lt;&lt; sin(2.0) &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0.909297"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---12",
-    "href": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---12",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "A simple I/O library - 1/2",
-    "text": "A simple I/O library - 1/2\nThe fstream library can be used to read/write data from and to files.\n\nCode file main_fstream.cpp, input file main_fstream_input.txt\n#include &lt;fstream&gt; // library to read/write data\n#include &lt;iostream&gt;\n\nint main() {\n  double tmp1, tmp2;\n  std::fstream in(\"./code/main_fstream_input.txt\"); // specify input file\n\n  in &gt;&gt; tmp1; // read first value\n  in &gt;&gt; tmp2; // read second value\n  std::cout &lt;&lt; tmp1 &lt;&lt; \" \";\n  std::cout &lt;&lt; tmp2 &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1 2"
-  },
-  {
-    "objectID": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---22",
-    "href": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---22",
-    "title": "1. Why we teach C++ and some basics",
-    "section": "A simple I/O library - 2/2",
-    "text": "A simple I/O library - 2/2\nThe fstream library can be used to read/write data from and to files.\n\nCode file main_ofstream.cpp\n#include &lt;fstream&gt; // library to read/write data\n#include &lt;iostream&gt;\n\nint main() {\n  std::ofstream out(\"./code/result.txt\"); // specify output file\n\n  out &lt;&lt; 1.0 &lt;&lt; \" \";\n  out &lt;&lt; 2.2 &lt;&lt; std::endl; // write values\n\n  return 0;\n}\n\n%cat ./code/result.txt\n\n1 2.2"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#you-probably-have-all-implicitly-used-pointers",
-    "href": "lectures/02_pointers/1_pointers.html#you-probably-have-all-implicitly-used-pointers",
-    "title": "1. Pointers",
-    "section": "You probably have all (implicitly) used pointers",
-    "text": "You probably have all (implicitly) used pointers\nand were maybe confused by the result…\n\nCan you explain the behaviour in Python?\n\na = 1\nb = a\na = 5\nprint(f\"{a = }, {b = }\")\n\na = 5, b = 1\n\n\n\na = [1, 2, 3]\nb = a\na[1] = 5\nprint(f\"{a = }, {b = }\")\n\na = [1, 5, 3], b = [1, 5, 3]"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#addresses",
-    "href": "lectures/02_pointers/1_pointers.html#addresses",
-    "title": "1. Pointers",
-    "section": "Addresses",
-    "text": "Addresses\n\nEvery variable has a certain place in memory, called its address.\nAccess address via & operator\ndouble d = 0.1;\nstd::cout &lt;&lt; \"Address of d is \" &lt;&lt; &d &lt;&lt; std::endl;\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\n0x558eef078eb8 \n\nd = 0.1\n0x558eef078ec0 \n\n\n\n..."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise",
-    "href": "lectures/02_pointers/1_pointers.html#in-class-exercise",
-    "title": "1. Pointers",
-    "section": "✍️ In class exercise",
-    "text": "✍️ In class exercise\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\nb\n\n\n..."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12",
-    "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12",
-    "title": "1. Pointers",
-    "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb\n\n\n..."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
-    "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
-    "title": "1. Pointers",
-    "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffc700618a8 0x7ffc700618b0\nAddresses: 0x7ffc700618a8 0x7ffc700618b0\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-14",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-14",
-    "title": "1. Pointers",
-    "section": "Pointers 1/4",
-    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc7e8e2eb8 0x7ffc7e8e2eb8 0x7ffc7e8e2ec0\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-24",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-24",
-    "title": "1. Pointers",
-    "section": "Pointers 2/4",
-    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc8ca664d8 0x7ffc8ca664d8 0x7ffc8ca664e0\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-34",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-34",
-    "title": "1. Pointers",
-    "section": "Pointers 3/4",
-    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc40edcc98 0x7ffc40edcc98 0x7ffc40edcca0\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-44",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-44",
-    "title": "1. Pointers",
-    "section": "Pointers 4/4",
-    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe2945f638 0x7ffe2945f638 0x7ffe2945f640\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
-    "title": "1. Pointers",
-    "section": "Pointers on pointers 1/3",
-    "text": "Pointers on pointers 1/3\nThe datatype to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na \n0x558eef078eb8 \n\np \n0x558eef078ec0 \n\npp\n\n\n..."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-23",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-23",
-    "title": "1. Pointers",
-    "section": "Pointers on pointers 2/3",
-    "text": "Pointers on pointers 2/3\nThe datatype to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 1.0\n0x558eef078eb8 \n\np = &a \n0x558eef078ec0 \n\npp = &p \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\nmem:e-&gt;mem:e"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-33",
-    "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-33",
-    "title": "1. Pointers",
-    "section": "Pointers on pointers 3/3",
-    "text": "Pointers on pointers 3/3\nThe datatype to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 1.0\n0x558eef078eb8 \n\np = &a \n0x558eef078ec0 \n\npp = &p \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nPointer on pointer is **pp.\nYou can go on with ***p3, \\(\\ldots\\)\nDereference with **."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#exercise",
-    "href": "lectures/02_pointers/1_pointers.html#exercise",
-    "title": "1. Pointers",
-    "section": "✍️ Exercise",
-    "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 1 - main_sol_pointers1.cpp\nWrite a code which changes the value of an integer i from \\(1\\) to \\(2\\) by using pointers. That is, do not use statements like i = 2.\n\nWrite your own program - pointer manipulation 2 - main_sol_pointers2.cpp\nChange the value to \\(3\\) with a pointer on a pointer.\n\nWrite your own program - pointer manipulation 3 - main_sol_pointers3.cpp\nPrint the memory location of pp, p, and a by only using pp."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#exercise-1",
-    "href": "lectures/02_pointers/1_pointers.html#exercise-1",
-    "title": "1. Pointers",
-    "section": "✍️ Exercise",
-    "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 4 - main_sol_pointers4.cpp\nGiven the code below, make sure that *one = 1, *two = 2, *three = 3 without changing the first two lines and without using \\(i, j\\) and \\(k\\).\nint i = 1, j = 2, k = 3;\nint *one = &j, *two = &k, *three = &i;"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#exercise-2",
-    "href": "lectures/02_pointers/1_pointers.html#exercise-2",
-    "title": "1. Pointers",
-    "section": "✍️ Exercise",
-    "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 5 - main_sol_pointers5.cpp\nGenerate an std::vector for type long of size \\(3\\) with values \\(v = [0,1,2]\\). Generate a pointer p which points on the vector’s address. Change the size of v to \\(4\\) and add a value v[3] = 3 by only using p."
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-18",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-18",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 1/8",
-    "text": "More fun with pointers 1/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-28",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-28",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 2/8",
-    "text": "More fun with pointers 2/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n\nmain_pointers6.cpp: In function ‘int main()’:\nmain_pointers6.cpp:4:12: error: invalid conversion from ‘int’ to ‘int*’ [-fpermissive]\n    4 |   int *i = 1, j = 2;\n      |            ^\n      |            |\n      |            int"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-38",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-38",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 3/8",
-    "text": "More fun with pointers 3/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers7.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, j = 2;\n  int *p = &i;\n  *p = *p + 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-48",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-48",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 4/8",
-    "text": "More fun with pointers 4/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers7.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, j = 2;\n  int *p = &i;\n  *p = *p + 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n5"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-58",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-58",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 5/8",
-    "text": "More fun with pointers 5/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-68",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-68",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 6/8",
-    "text": "More fun with pointers 6/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}\nSegmentation fault (core dumped)"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-78",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-78",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 7/8",
-    "text": "More fun with pointers 7/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers9.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p = &i;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-88",
-    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-88",
-    "title": "1. Pointers",
-    "section": "More fun with pointers 8/8",
-    "text": "More fun with pointers 8/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers9.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p = &i;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}\n\n\n4"
-  },
-  {
-    "objectID": "lectures/02_pointers/1_pointers.html#avoid-wrong-code-behaviour",
-    "href": "lectures/02_pointers/1_pointers.html#avoid-wrong-code-behaviour",
-    "title": "1. Pointers",
-    "section": "Avoid wrong code behaviour",
-    "text": "Avoid wrong code behaviour\n\nUninitialized pointers can point on random space in memory.\nAvoid with NULL or 0 keyword\n double *p1;\n double *p2 = 0;\n\n std::cout &lt;&lt; *p1 &lt;&lt; \" might print some value\" &lt;&lt; std::endl;\n std::cout &lt;&lt; *p2 &lt;&lt; \" gives segmentation fault\" &lt;&lt; std::endl;\nEquivalent to\n double *p1;\n double *p2 = NULL;\n\n std::cout &lt;&lt; *p1 &lt;&lt; \" might print some value\" &lt;&lt; std::endl;\n std::cout &lt;&lt; *p2 &lt;&lt; \" gives segmentation fault\" &lt;&lt; std::endl;"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#basic-structure",
-    "href": "lectures/03_functions/1_functions.html#basic-structure",
-    "title": "1. Functions",
-    "section": "Basic structure",
-    "text": "Basic structure\n\nWho is not familiar with the concept of a function in programming?\n\n&lt;return_data_type&gt; function_name( &lt;input_1&gt;, &lt;input_2&gt;,... ){\n    // function body\n    return &lt;return_value&gt;\n}"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#our-first-function-in-cc",
-    "href": "lectures/03_functions/1_functions.html#our-first-function-in-cc",
-    "title": "1. Functions",
-    "section": "Our first function in C/C++",
-    "text": "Our first function in C/C++\n\nCode file main_function.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  double c = a + b;\n  return c;\n}\n\nint main() {\n  std::cout &lt;&lt; \"add(1, 2) = \" &lt;&lt; add(1, 2) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nadd(1, 2) = 3"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#function-overloading-13",
-    "href": "lectures/03_functions/1_functions.html#function-overloading-13",
-    "title": "1. Functions",
-    "section": "Function overloading 1/3",
-    "text": "Function overloading 1/3\n\nCode file main_functionoverloading.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double+ \";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int+ \";\n  return a + b;\n}\n\nint main() {\n  std::cout &lt;&lt; add(1, 2) &lt;&lt; std::endl;\n  std::cout &lt;&lt; add(1.0, 2.0) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nint+ 3\ndouble+ 3"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#function-overloading-23",
-    "href": "lectures/03_functions/1_functions.html#function-overloading-23",
-    "title": "1. Functions",
-    "section": "Function overloading 2/3",
-    "text": "Function overloading 2/3\n\nWhich of the implementations is going to be called?\n\n\nCode file main_functionoverloading2.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double+ \";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int+ \";\n  return a + b;\n}\n\nint main() {\n  float a = 1.2, b = 2.2;\n  std::cout &lt;&lt; add(a, b) &lt;&lt; std::endl;\n  char c = 'c';\n  long i = 1;\n  std::cout &lt;&lt; add(c, i) &lt;&lt; std::endl;\n  return 0;\n}"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#function-overloading-33",
-    "href": "lectures/03_functions/1_functions.html#function-overloading-33",
-    "title": "1. Functions",
-    "section": "Function overloading 3/3",
-    "text": "Function overloading 3/3\n\nCode file main_functionoverloading2.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double+ \";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int+ \";\n  return a + b;\n}\n\nint main() {\n  float a = 1.2, b = 2.2;\n  std::cout &lt;&lt; add(a, b) &lt;&lt; std::endl;\n  char c = 'c';\n  long i = 1;\n  std::cout &lt;&lt; add(c, i) &lt;&lt; std::endl;\n  return 0;\n}\n\n\ndouble+ 3.4\nint+ 100"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#main-is-also-a-function",
-    "href": "lectures/03_functions/1_functions.html#main-is-also-a-function",
-    "title": "1. Functions",
-    "section": "main is also a function",
-    "text": "main is also a function\n\ninput to main are command line arguments\n\n\nCode file main_argv.cpp\n#include &lt;iostream&gt;\n\nint main(int argc, char **argv) {\n  std::cout &lt;&lt; \"number inputs: \" &lt;&lt; argc &lt;&lt; \", arguments are:\" &lt;&lt; std::endl;\n  for (int i = 0; i &lt; argc; ++i) {\n    std::cout &lt;&lt; i &lt;&lt; \": \" &lt;&lt; argv[i] &lt;&lt; std::endl;\n  }\n\n  return 0;\n}\n\n\nnumber inputs: 4, arguments are:\n0: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/03_functions/code/main_argv.out\n1: 1\n2: foo\n3: 1.2"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#call-by-value",
-    "href": "lectures/03_functions/1_functions.html#call-by-value",
-    "title": "1. Functions",
-    "section": "Call by value",
-    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffcd2e14500\nAddress in function 0x7ffcd2e144d8\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#call-by-reference",
-    "href": "lectures/03_functions/1_functions.html#call-by-reference",
-    "title": "1. Functions",
-    "section": "Call by reference",
-    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7fff5c3d79c0\nAddress in function 0x7fff5c3d79c0\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
-    "href": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
-    "title": "1. Functions",
-    "section": "Call by reference C++ style",
-    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffcef8919b0\nAddress in function 0x7ffcef8919b0\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
-    "href": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
-    "title": "1. Functions",
-    "section": "Call by reference avoids copying arrays",
-    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\n\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffd3395f0c0\n0"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#const",
-    "href": "lectures/03_functions/1_functions.html#const",
-    "title": "1. Functions",
-    "section": "const",
-    "text": "const\n\nBut avoiding copying and avoiding modification is not the same.\n\n\nCode file const.cpp\nvoid print_value(const std::vector&lt;double&gt; &a) {\n  std::cout &lt;&lt; a[0] &lt;&lt; std::endl;\n  a[0] = 5.0; // compile error\n}\n\nvoid print_value(std::vector&lt;double&gt; &a) { a[0] = 5.0; }\n\nconst double *p;      // p can be modified, but *p cannot.\ndouble *const p = &a; // p can not be modified, but *p can."
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#some-examples-15",
-    "href": "lectures/03_functions/1_functions.html#some-examples-15",
-    "title": "1. Functions",
-    "section": "Some examples 1/5",
-    "text": "Some examples 1/5\n\nCode file main_function_memory5.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double a) { a = 0.123; }\n\nint main() {\n  double a = 1.2;\n  foo(a);\n  std::cout &lt;&lt; a &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.2"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#some-examples-25",
-    "href": "lectures/03_functions/1_functions.html#some-examples-25",
-    "title": "1. Functions",
-    "section": "Some examples 2/5",
-    "text": "Some examples 2/5\n\nCode file main_function_memory6.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double &a) { a = 0.123; }\n\nint main() {\n  double a = 1.2;\n  foo(a);\n  std::cout &lt;&lt; a &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0.123"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#some-examples-35",
-    "href": "lectures/03_functions/1_functions.html#some-examples-35",
-    "title": "1. Functions",
-    "section": "Some examples 3/5",
-    "text": "Some examples 3/5\n\nCode file main_function_memory7.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double &a) { a = 0.123; }\n\nint main() {\n  double *p = new double;\n  *p = 1.0;\n  foo(*p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  delete p;\n  \n  return 0;\n}\n\n\n0.123"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#some-examples-45",
-    "href": "lectures/03_functions/1_functions.html#some-examples-45",
-    "title": "1. Functions",
-    "section": "Some examples 4/5",
-    "text": "Some examples 4/5\n\nCode file main_function_memory8.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double *a) { a[0] = 1.234; }\n\nint main() {\n  double *p = new double[3];\n  p[0] = 0;\n  p[1] = 1;\n  p[2] = 2;\n  foo(p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  delete[] p;\n  \n  return 0;\n}\n\n\n1.234"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#some-examples-55",
-    "href": "lectures/03_functions/1_functions.html#some-examples-55",
-    "title": "1. Functions",
-    "section": "Some examples 5/5",
-    "text": "Some examples 5/5\n\nCode file main_function_memory9.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double *a) { a = a + 1; }\n\nint main() {\n  double *p = new double[3];\n  p[0] = 0;\n  p[1] = 1;\n  p[2] = 2;\n  foo(p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  delete[] p;\n  \n  return 0;\n}\n\n\n0"
-  },
-  {
-    "objectID": "lectures/03_functions/1_functions.html#advanced-exercise",
-    "href": "lectures/03_functions/1_functions.html#advanced-exercise",
-    "title": "1. Functions",
-    "section": "🏆 Advanced Exercise",
-    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\n\nRewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.\nRewrite your ODE solver to take the initial condition as an argument.\n\n\nMemory management\nWrite a function which takes a dynamic array of type double called x as an input and an array y as output. The function then stores \\(sin(x[i])\\) in the output array. Make sure that x is copied efficiently and cannot be modified inside the function. The output y should be available outside the function after it has been called."
+    "text": "✍️ In class Exercise\n\nInclude gtest in your setup\nFor some of the code we have so far, write unit tests to make sure you get a feeling for the framework.\n# We need to install it in our linux environment\nsudo dnf install libgtest-dev"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#classes-1",
@@ -872,14 +165,14 @@
     "href": "lectures/03_functions/3_classes.html#what-does-this-code-do-68",
     "title": "3. Classes",
     "section": "What does this code do? 6/8",
-    "text": "What does this code do? 6/8\n\nCode file main_destructor5.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13913e-313"
+    "text": "What does this code do? 6/8\n\nCode file main_destructor5.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13244e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#what-does-this-code-do-78",
     "href": "lectures/03_functions/3_classes.html#what-does-this-code-do-78",
     "title": "3. Classes",
     "section": "What does this code do? 7/8",
-    "text": "What does this code do? 7/8\n\nCode file main_destructor6.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13288e-313"
+    "text": "What does this code do? 7/8\n\nCode file main_destructor6.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13921e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#what-does-this-code-do-88",
@@ -907,7 +200,7 @@
     "href": "lectures/03_functions/3_classes.html#copy-constructor-13",
     "title": "3. Classes",
     "section": "Copy constructor 1/3",
-    "text": "Copy constructor 1/3\n\nCode file main_copy.cpp\n#include &lt;iostream&gt;\n\nclass A {\npublic:\n  double *_d;\n  A(double d) : _d(new double) { *_d = d; }\n  ~A() { delete _d; }\n};\n\nvoid foo(A aFoo) {}\n\nint main() {\n  A a(1.234);\n  foo(a);\n  std::cout &lt;&lt; *a._d &lt;&lt; std::endl;\n}\n\n\n1.13948e-313"
+    "text": "Copy constructor 1/3\n\nCode file main_copy.cpp\n#include &lt;iostream&gt;\n\nclass A {\npublic:\n  double *_d;\n  A(double d) : _d(new double) { *_d = d; }\n  ~A() { delete _d; }\n};\n\nvoid foo(A aFoo) {}\n\nint main() {\n  A a(1.234);\n  foo(a);\n  std::cout &lt;&lt; *a._d &lt;&lt; std::endl;\n}\n\n\n1.13191e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#copy-constructor-23",
@@ -936,5 +229,768 @@
     "title": "3. Classes",
     "section": "🏆 Advanced Exercise",
     "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nWrite a class ODESolver which stores all needed variables. The class\n\nprovides a void function Solve(endTime) which stores the solution inside the class\nprovides a void function Write(fileName) which writes an outputfile with the solution at every time point"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#basic-structure",
+    "href": "lectures/03_functions/1_functions.html#basic-structure",
+    "title": "1. Functions",
+    "section": "Basic structure",
+    "text": "Basic structure\n\nWho is not familiar with the concept of a function in programming?\n\n&lt;return_data_type&gt; function_name( &lt;input_1&gt;, &lt;input_2&gt;,... ){\n    // function body\n    return &lt;return_value&gt;\n}"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#our-first-function-in-cc",
+    "href": "lectures/03_functions/1_functions.html#our-first-function-in-cc",
+    "title": "1. Functions",
+    "section": "Our first function in C/C++",
+    "text": "Our first function in C/C++\n\nCode file main_function.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  double c = a + b;\n  return c;\n}\n\nint main() {\n  std::cout &lt;&lt; \"add(1, 2) = \" &lt;&lt; add(1, 2) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nadd(1, 2) = 3"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#function-overloading-13",
+    "href": "lectures/03_functions/1_functions.html#function-overloading-13",
+    "title": "1. Functions",
+    "section": "Function overloading 1/3",
+    "text": "Function overloading 1/3\n\nCode file main_functionoverloading.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double+ \";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int+ \";\n  return a + b;\n}\n\nint main() {\n  std::cout &lt;&lt; add(1, 2) &lt;&lt; std::endl;\n  std::cout &lt;&lt; add(1.0, 2.0) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nint+ 3\ndouble+ 3"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#function-overloading-23",
+    "href": "lectures/03_functions/1_functions.html#function-overloading-23",
+    "title": "1. Functions",
+    "section": "Function overloading 2/3",
+    "text": "Function overloading 2/3\n\nWhich of the implementations is going to be called?\n\n\nCode file main_functionoverloading2.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double+ \";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int+ \";\n  return a + b;\n}\n\nint main() {\n  float a = 1.2, b = 2.2;\n  std::cout &lt;&lt; add(a, b) &lt;&lt; std::endl;\n  char c = 'c';\n  long i = 1;\n  std::cout &lt;&lt; add(c, i) &lt;&lt; std::endl;\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#function-overloading-33",
+    "href": "lectures/03_functions/1_functions.html#function-overloading-33",
+    "title": "1. Functions",
+    "section": "Function overloading 3/3",
+    "text": "Function overloading 3/3\n\nCode file main_functionoverloading2.cpp\n#include &lt;iostream&gt;\n\ndouble add(double a, double b) {\n  std::cout &lt;&lt; \"double+ \";\n  return a + b;\n}\n\nint add(int a, int b) {\n  std::cout &lt;&lt; \"int+ \";\n  return a + b;\n}\n\nint main() {\n  float a = 1.2, b = 2.2;\n  std::cout &lt;&lt; add(a, b) &lt;&lt; std::endl;\n  char c = 'c';\n  long i = 1;\n  std::cout &lt;&lt; add(c, i) &lt;&lt; std::endl;\n  return 0;\n}\n\n\ndouble+ 3.4\nint+ 100"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#main-is-also-a-function",
+    "href": "lectures/03_functions/1_functions.html#main-is-also-a-function",
+    "title": "1. Functions",
+    "section": "main is also a function",
+    "text": "main is also a function\n\ninput to main are command line arguments\n\n\nCode file main_argv.cpp\n#include &lt;iostream&gt;\n\nint main(int argc, char **argv) {\n  std::cout &lt;&lt; \"number inputs: \" &lt;&lt; argc &lt;&lt; \", arguments are:\" &lt;&lt; std::endl;\n  for (int i = 0; i &lt; argc; ++i) {\n    std::cout &lt;&lt; i &lt;&lt; \": \" &lt;&lt; argv[i] &lt;&lt; std::endl;\n  }\n\n  return 0;\n}\n\n\nnumber inputs: 4, arguments are:\n0: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/03_functions/code/main_argv.out\n1: 1\n2: foo\n3: 1.2"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-value",
+    "href": "lectures/03_functions/1_functions.html#call-by-value",
+    "title": "1. Functions",
+    "section": "Call by value",
+    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7fff11b338e0\nAddress in function 0x7fff11b338b8\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-reference",
+    "href": "lectures/03_functions/1_functions.html#call-by-reference",
+    "title": "1. Functions",
+    "section": "Call by reference",
+    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7ffcaf91ad20\nAddress in function 0x7ffcaf91ad20\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
+    "href": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
+    "title": "1. Functions",
+    "section": "Call by reference C++ style",
+    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffeaba30e40\nAddress in function 0x7ffeaba30e40\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
+    "href": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
+    "title": "1. Functions",
+    "section": "Call by reference avoids copying arrays",
+    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\n\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffc19b72310\n0"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#const",
+    "href": "lectures/03_functions/1_functions.html#const",
+    "title": "1. Functions",
+    "section": "const",
+    "text": "const\n\nBut avoiding copying and avoiding modification is not the same.\n\n\nCode file const.cpp\nvoid print_value(const std::vector&lt;double&gt; &a) {\n  std::cout &lt;&lt; a[0] &lt;&lt; std::endl;\n  a[0] = 5.0; // compile error\n}\n\nvoid print_value(std::vector&lt;double&gt; &a) { a[0] = 5.0; }\n\nconst double *p;      // p can be modified, but *p cannot.\ndouble *const p = &a; // p can not be modified, but *p can."
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-15",
+    "href": "lectures/03_functions/1_functions.html#some-examples-15",
+    "title": "1. Functions",
+    "section": "Some examples 1/5",
+    "text": "Some examples 1/5\n\nCode file main_function_memory5.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double a) { a = 0.123; }\n\nint main() {\n  double a = 1.2;\n  foo(a);\n  std::cout &lt;&lt; a &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.2"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-25",
+    "href": "lectures/03_functions/1_functions.html#some-examples-25",
+    "title": "1. Functions",
+    "section": "Some examples 2/5",
+    "text": "Some examples 2/5\n\nCode file main_function_memory6.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double &a) { a = 0.123; }\n\nint main() {\n  double a = 1.2;\n  foo(a);\n  std::cout &lt;&lt; a &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0.123"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-35",
+    "href": "lectures/03_functions/1_functions.html#some-examples-35",
+    "title": "1. Functions",
+    "section": "Some examples 3/5",
+    "text": "Some examples 3/5\n\nCode file main_function_memory7.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double &a) { a = 0.123; }\n\nint main() {\n  double *p = new double;\n  *p = 1.0;\n  foo(*p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  delete p;\n  \n  return 0;\n}\n\n\n0.123"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-45",
+    "href": "lectures/03_functions/1_functions.html#some-examples-45",
+    "title": "1. Functions",
+    "section": "Some examples 4/5",
+    "text": "Some examples 4/5\n\nCode file main_function_memory8.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double *a) { a[0] = 1.234; }\n\nint main() {\n  double *p = new double[3];\n  p[0] = 0;\n  p[1] = 1;\n  p[2] = 2;\n  foo(p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  delete[] p;\n  \n  return 0;\n}\n\n\n1.234"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#some-examples-55",
+    "href": "lectures/03_functions/1_functions.html#some-examples-55",
+    "title": "1. Functions",
+    "section": "Some examples 5/5",
+    "text": "Some examples 5/5\n\nCode file main_function_memory9.cpp\n#include &lt;iostream&gt;\n\nvoid foo(double *a) { a = a + 1; }\n\nint main() {\n  double *p = new double[3];\n  p[0] = 0;\n  p[1] = 1;\n  p[2] = 2;\n  foo(p);\n  std::cout &lt;&lt; *p &lt;&lt; std::endl;\n  delete[] p;\n  \n  return 0;\n}\n\n\n0"
+  },
+  {
+    "objectID": "lectures/03_functions/1_functions.html#advanced-exercise",
+    "href": "lectures/03_functions/1_functions.html#advanced-exercise",
+    "title": "1. Functions",
+    "section": "🏆 Advanced Exercise",
+    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\n\nRewrite your ODE solver as a function which takes start time and time grid as input and returns the solution at each time point as output. Use another function to define the right-hand-side of your ODE.\nRewrite your ODE solver to take the initial condition as an argument.\n\n\nMemory management\nWrite a function which takes a dynamic array of type double called x as an input and an array y as output. The function then stores \\(sin(x[i])\\) in the output array. Make sure that x is copied efficiently and cannot be modified inside the function. The output y should be available outside the function after it has been called."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#you-probably-have-all-implicitly-used-pointers",
+    "href": "lectures/02_pointers/1_pointers.html#you-probably-have-all-implicitly-used-pointers",
+    "title": "1. Pointers",
+    "section": "You probably have all (implicitly) used pointers",
+    "text": "You probably have all (implicitly) used pointers\nand were maybe confused by the result…\n\nCan you explain the behaviour in Python?\n\na = 1\nb = a\na = 5\nprint(f\"{a = }, {b = }\")\n\na = 5, b = 1\n\n\n\na = [1, 2, 3]\nb = a\na[1] = 5\nprint(f\"{a = }, {b = }\")\n\na = [1, 5, 3], b = [1, 5, 3]"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#addresses",
+    "href": "lectures/02_pointers/1_pointers.html#addresses",
+    "title": "1. Pointers",
+    "section": "Addresses",
+    "text": "Addresses\n\nEvery variable has a certain place in memory, called its address.\nAccess address via & operator\ndouble d = 0.1;\nstd::cout &lt;&lt; \"Address of d is \" &lt;&lt; &d &lt;&lt; std::endl;\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\n0x558eef078eb8 \n\nd = 0.1\n0x558eef078ec0 \n\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise",
+    "href": "lectures/02_pointers/1_pointers.html#in-class-exercise",
+    "title": "1. Pointers",
+    "section": "✍️ In class exercise",
+    "text": "✍️ In class exercise\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\nb\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12",
+    "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12",
+    "title": "1. Pointers",
+    "section": "✍️ In class exercise - Solution 1/2",
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
+    "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
+    "title": "1. Pointers",
+    "section": "✍️ In class exercise - Solution 1/2",
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7fff0453eef8 0x7fff0453ef00\nAddresses: 0x7fff0453eef8 0x7fff0453ef00\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-14",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-14",
+    "title": "1. Pointers",
+    "section": "Pointers 1/4",
+    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffbe031bd8 0x7fffbe031bd8 0x7fffbe031be0\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-24",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-24",
+    "title": "1. Pointers",
+    "section": "Pointers 2/4",
+    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffec69710d8 0x7ffec69710d8 0x7ffec69710e0\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-34",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-34",
+    "title": "1. Pointers",
+    "section": "Pointers 3/4",
+    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffd88470278 0x7ffd88470278 0x7ffd88470280\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-44",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-44",
+    "title": "1. Pointers",
+    "section": "Pointers 4/4",
+    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffca38f4578 0x7ffca38f4578 0x7ffca38f4580\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
+    "title": "1. Pointers",
+    "section": "Pointers on pointers 1/3",
+    "text": "Pointers on pointers 1/3\nThe datatype to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na \n0x558eef078eb8 \n\np \n0x558eef078ec0 \n\npp\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-23",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-23",
+    "title": "1. Pointers",
+    "section": "Pointers on pointers 2/3",
+    "text": "Pointers on pointers 2/3\nThe datatype to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 1.0\n0x558eef078eb8 \n\np = &a \n0x558eef078ec0 \n\npp = &p \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\nmem:e-&gt;mem:e"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-33",
+    "href": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-33",
+    "title": "1. Pointers",
+    "section": "Pointers on pointers 3/3",
+    "text": "Pointers on pointers 3/3\nThe datatype to store an address of a pointer is a double pointer:\n\n\n\nCode file main_pointers2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a = 1.0, *p = &a, **pp = &p;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; \" \" &lt;&lt; **pp &lt;&lt; std::endl;\n  return 0;\n}\n\n\nValues: 1 1 1\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 1.0\n0x558eef078eb8 \n\np = &a \n0x558eef078ec0 \n\npp = &p \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nPointer on pointer is **pp.\nYou can go on with ***p3, \\(\\ldots\\)\nDereference with **."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#exercise",
+    "href": "lectures/02_pointers/1_pointers.html#exercise",
+    "title": "1. Pointers",
+    "section": "✍️ Exercise",
+    "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 1 - main_sol_pointers1.cpp\nWrite a code which changes the value of an integer i from \\(1\\) to \\(2\\) by using pointers. That is, do not use statements like i = 2.\n\nWrite your own program - pointer manipulation 2 - main_sol_pointers2.cpp\nChange the value to \\(3\\) with a pointer on a pointer.\n\nWrite your own program - pointer manipulation 3 - main_sol_pointers3.cpp\nPrint the memory location of pp, p, and a by only using pp."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#exercise-1",
+    "href": "lectures/02_pointers/1_pointers.html#exercise-1",
+    "title": "1. Pointers",
+    "section": "✍️ Exercise",
+    "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 4 - main_sol_pointers4.cpp\nGiven the code below, make sure that *one = 1, *two = 2, *three = 3 without changing the first two lines and without using \\(i, j\\) and \\(k\\).\nint i = 1, j = 2, k = 3;\nint *one = &j, *two = &k, *three = &i;"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#exercise-2",
+    "href": "lectures/02_pointers/1_pointers.html#exercise-2",
+    "title": "1. Pointers",
+    "section": "✍️ Exercise",
+    "text": "✍️ Exercise\n\nWrite your own program - pointer manipulation 5 - main_sol_pointers5.cpp\nGenerate an std::vector for type long of size \\(3\\) with values \\(v = [0,1,2]\\). Generate a pointer p which points on the vector’s address. Change the size of v to \\(4\\) and add a value v[3] = 3 by only using p."
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-18",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-18",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 1/8",
+    "text": "More fun with pointers 1/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-28",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-28",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 2/8",
+    "text": "More fun with pointers 2/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int *i = 1, j = 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n\nmain_pointers6.cpp: In function ‘int main()’:\nmain_pointers6.cpp:4:12: error: invalid conversion from ‘int’ to ‘int*’ [-fpermissive]\n    4 |   int *i = 1, j = 2;\n      |            ^\n      |            |\n      |            int"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-38",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-38",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 3/8",
+    "text": "More fun with pointers 3/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers7.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, j = 2;\n  int *p = &i;\n  *p = *p + 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-48",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-48",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 4/8",
+    "text": "More fun with pointers 4/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers7.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, j = 2;\n  int *p = &i;\n  *p = *p + 2;\n  std::cout &lt;&lt; i + j;\n\n  return 0;\n}\n\n\n5"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-58",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-58",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 5/8",
+    "text": "More fun with pointers 5/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-68",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-68",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 6/8",
+    "text": "More fun with pointers 6/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers8.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}\nSegmentation fault (core dumped)"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-78",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-78",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 7/8",
+    "text": "More fun with pointers 7/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers9.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p = &i;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-88",
+    "href": "lectures/02_pointers/1_pointers.html#more-fun-with-pointers-88",
+    "title": "1. Pointers",
+    "section": "More fun with pointers 8/8",
+    "text": "More fun with pointers 8/8\nWhat does the code below do? Which output do you expect?\n\nCode file main_pointers9.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int i = 1, *p = &i;\n  *p = 2;\n  std::cout &lt;&lt; i + *p;\n\n  return 0;\n}\n\n\n4"
+  },
+  {
+    "objectID": "lectures/02_pointers/1_pointers.html#avoid-wrong-code-behaviour",
+    "href": "lectures/02_pointers/1_pointers.html#avoid-wrong-code-behaviour",
+    "title": "1. Pointers",
+    "section": "Avoid wrong code behaviour",
+    "text": "Avoid wrong code behaviour\n\nUninitialized pointers can point on random space in memory.\nAvoid with NULL or 0 keyword\n double *p1;\n double *p2 = 0;\n\n std::cout &lt;&lt; *p1 &lt;&lt; \" might print some value\" &lt;&lt; std::endl;\n std::cout &lt;&lt; *p2 &lt;&lt; \" gives segmentation fault\" &lt;&lt; std::endl;\nEquivalent to\n double *p1;\n double *p2 = NULL;\n\n std::cout &lt;&lt; *p1 &lt;&lt; \" might print some value\" &lt;&lt; std::endl;\n std::cout &lt;&lt; *p2 &lt;&lt; \" gives segmentation fault\" &lt;&lt; std::endl;"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#a-simple-stencil-code",
+    "href": "lectures/01_introduction/1_helloworld.html#a-simple-stencil-code",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "A simple stencil code",
+    "text": "A simple stencil code\nPython\nfor i in np.arange(1, N - 1):\n  for j in np.arange(1, N - 1):\n      out[j + i * N] = inn[j + i * N] \\\n                     + alpha * (inn[j - 1 + i * N] - \n                               2.0 * inn[j + i * N] + inn[j + 1 + i * N])\n\nCompile and Wall time (2nd order):  7.65 s (1.08 s with numba)\n                                           (0.67 s with slicing)\nC++\n\nfor(int i = 1; i &lt; N-1; i++)\n    for(int j = 1; j &lt; N-1; j++)\n        out[j + i * N] = in[j + i * N] \n                       + alpha * (in[j - 1 + i * N] - \n                                 2.0 * in[j + i * N] + in[j + 1 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s\n\n\nThe reference code can be downloaded here"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#performance-implications",
+    "href": "lectures/01_introduction/1_helloworld.html#performance-implications",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Performance implications",
+    "text": "Performance implications\n\nDrastic performance improvement (\\(\\approx 27\\)x).\n\nReduces run time for your code.\n\nPython is an interpreted language.\n\nA program, the interpreter, reads the python code and executes one statement after another.\n\nC++ is a compiled language that uses a two-step approach\n\nCompilation: A program, the compiler, reads the C++ code and translates it into machine code.\nExecution: The machine code is directly executed by the CPU.\n\n\n🤓: In reality Python uses an intermediate representation (bytecode) and relies on compiled Fortran/C/C++ code."
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#what-is-compilation",
+    "href": "lectures/01_introduction/1_helloworld.html#what-is-compilation",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "What is compilation",
+    "text": "What is compilation\nCan we compile Python?\nx = 3           # x is a integer\nif condition:\n    x = 3.0     # x is a floating point number\ny = 2 * x\n\nWhat operation should 2 * x be compiled to?\n\ninteger/floating point multiplication\n\nCompiler would need to understand all possible types that x can have.\n\nFor an interpreted language this is much simpler (can be decided during run time)\n\nIn C++ type information need to be specified at compile time.\n\nHaving type information available makes optimizing the machine code easier."
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#performance-part-2",
+    "href": "lectures/01_introduction/1_helloworld.html#performance-part-2",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Performance part 2",
+    "text": "Performance part 2\nFourth order stencil in Python\nfor i in np.arange(1, N-1):\n    for j in np.arange(1,N-1):\n        out[j + i * N] = inn[j + i * N] + alpha * (\n                -1./12. * inn[j - 2 + i * N] + 4./3. * inn[j - 1 + i * N] \\\n                - 5./2. * inn[j + i * N] + 4./3. * inn[j + 1 + i * N] \\\n                - 1./12. * inn[j + 2 + i * N]);\n\nCompile and Wall time (2nd order):  7.65 s, (4th order):  11.84 s\nFourth order stencil in C++\n\nfor(int i=1; i &lt; N-1; i++)\n    for(int j=2;j &lt; N-2; j++)\n        out[j + i * N] = in[j + i * N] + alpha * (\n            -1./12. * in[j - 2 + i * N] + 4./3. * in[j - 1 + i * N] \\\n            - 5./2. * in[j + i * N] + 4./3. * in[j + 1 + i * N] \\\n            - 1./12. * in[j + 2 + i * N]);\n\nCompile and Wall time (2nd order): 0.28 s, (4th order): 0.28 s\n\n\nThe reference code can be downloaded here"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#performance-and-use-of-the-language",
+    "href": "lectures/01_introduction/1_helloworld.html#performance-and-use-of-the-language",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Performance and use of the language",
+    "text": "Performance and use of the language\nIn Python using the second order method is \\(1.5\\)x faster than fourth order method. In C++ the second and fourth order methods take the same time.\n\nPerformance is often limited by fetching data from memory and not by the number of arithmetic operations the CPU can perform. This is called a memory bound problem.\n\nWriting Python code to predict the performance of a C++ code is a bad idea!\nWhy is Python used?: Many software packages have embraced a high-level Python interface.\nPython is often used to specify the problem but all the heavy lifting is done under the hood is usually in C++.\nMakes the software approachable for users while maintaining good performance."
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#performance-comparison",
+    "href": "lectures/01_introduction/1_helloworld.html#performance-comparison",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Performance comparison",
+    "text": "Performance comparison\n\nOriginal source of the image https://julialang.org/benchmarks/ or directly https://julialang.org/assets/images/benchmarks.svg"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#set-up-your-working-environment",
+    "href": "lectures/01_introduction/1_helloworld.html#set-up-your-working-environment",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Set up your working environment",
+    "text": "Set up your working environment\n\nVS code as editor https://code.visualstudio.com/download\nLinux as compile environment → LIVE session on the UIBK environment\n\nWSL for linux\nWSL extension for VS code\nC/C++ extension and other packages for VS code"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#hello-world-in-c",
+    "href": "lectures/01_introduction/1_helloworld.html#hello-world-in-c",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Hello World! in C++",
+    "text": "Hello World! in C++\n\nLet’s start with hello_world.cpp\n#include &lt;iostream&gt; // include dependencies; header files of libraries\n\nint main() { // the main function is called when executing the code\n  std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; // print \"Hello World!\"\n  return 0;                                 // return terminates the program\n}\n\n\nHello World!\n\n\n\ncomments are added by // comment\nstart by including libraries (iostream for printing output)\nmain instructions inside int main(){ program code }\nprint output by std::cout &lt;&lt; \"...\", end line with std::endl\nevery command must be ended with ;\nend program with return 0; (exit as intended, with no errors)"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#compiling-code",
+    "href": "lectures/01_introduction/1_helloworld.html#compiling-code",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Compiling code",
+    "text": "Compiling code\nTo compile the code we run the following code in the terminal\n$ g++ -o hello_world.out hello_world.cpp\nThe compiler g++ goes through your source code to\n\ncheck if the code has the correct syntax\ntranslate the code into instructions readable by the computer\ngenerates the executable hello_world.out which you can run with\n$ ./hello_world.out"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise",
+    "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In class Exercise",
+    "text": "✍️ In class Exercise\n\nWrite your own program\nWrite a program which prints the result of \\(\\sin(2)\\) to the terminal\n\nHint 1: The \\(\\sin\\) function is included in the cmath library.\nHint 2: To print a number with cout you do not need the quotation marks \".\n\nRecall\n#include &lt;iostream&gt; // include dependencies; header files of libraries\n\nint main() { // the main function is called when executing the code\n  std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; // print \"Hello World!\"\n  return 0;                                 // return terminates the program\n}"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution",
+    "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise - Solution",
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_sin_error.cpp\n#include &lt;cmath&gt;    // library includes sin\n#include &lt;iostream&gt; // library includes cout, endl\n\nint main() {\n  std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n  return 0\n}\n\n\n\nmain_sin_error.cpp: In function ‘int main()’:\nmain_sin_error.cpp:5:28: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?\n    5 |   std::cout &lt;&lt; sin(2.0) &lt;&lt; endl;\n      |                            ^~~~\n      |                            std::endl\nIn file included from /usr/include/c++/13/iostream:41,\n                 from main_sin_error.cpp:2:\n/usr/include/c++/13/ostream:735:5: note: ‘std::endl’ declared here\n  735 |     endl(basic_ostream&lt;_CharT, _Traits&gt;& __os)\n      |     ^~~~\nmain_sin_error.cpp:6:11: error: expected ‘;’ before ‘}’ token\n    6 |   return 0\n      |           ^\n      |           ;\n    7 | }\n      | ~"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution---working",
+    "href": "lectures/01_introduction/1_helloworld.html#in-class-exercise---solution---working",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise - Solution - working",
+    "text": "✍️ In Class Exercise - Solution - working\n\nSolution main_sin.cpp\n#include &lt;cmath&gt;    // library includes sin\n#include &lt;iostream&gt; // library includes cout, endl\n\nint main() {\n  std::cout &lt;&lt; sin(2.0) &lt;&lt; std::endl;\n  return 0;\n}\n\n\n0.909297"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---12",
+    "href": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---12",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "A simple I/O library - 1/2",
+    "text": "A simple I/O library - 1/2\nThe fstream library can be used to read/write data from and to files.\n\nCode file main_fstream.cpp, input file main_fstream_input.txt\n#include &lt;fstream&gt; // library to read/write data\n#include &lt;iostream&gt;\n\nint main() {\n  double tmp1, tmp2;\n  std::fstream in(\"./code/main_fstream_input.txt\"); // specify input file\n\n  in &gt;&gt; tmp1; // read first value\n  in &gt;&gt; tmp2; // read second value\n  std::cout &lt;&lt; tmp1 &lt;&lt; \" \";\n  std::cout &lt;&lt; tmp2 &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1 2"
+  },
+  {
+    "objectID": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---22",
+    "href": "lectures/01_introduction/1_helloworld.html#a-simple-io-library---22",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "A simple I/O library - 2/2",
+    "text": "A simple I/O library - 2/2\nThe fstream library can be used to read/write data from and to files.\n\nCode file main_ofstream.cpp\n#include &lt;fstream&gt; // library to read/write data\n#include &lt;iostream&gt;\n\nint main() {\n  std::ofstream out(\"./code/result.txt\"); // specify output file\n\n  out &lt;&lt; 1.0 &lt;&lt; \" \";\n  out &lt;&lt; 2.2 &lt;&lt; std::endl; // write values\n\n  return 0;\n}\n\n%cat ./code/result.txt\n\n1 2.2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "C and C++ in Simulation Development",
+    "section": "",
+    "text": "Here you will find all slides as an interactive presentation (Reveal.js):\nThis is a practical course. For each part of the lecture some exercises will be posed. The main learning benefit is only attained if you actively implement all of the exercises.\nYou have to form groups (consisting of at most 3 students) to work on the exercises and the final project. Working alone is permissible but discouraged.\nFor the exercises, please comply to the following instructions:\n\nUpload the exercises to a repository on the university GitLab https://git.uibk.ac.at/. Make sure that we have access to your code for grading.\nUse a distinct folder for each lecture and use a consistent naming scheme for the folders and files.\nFor every program, indicate in the first line as a comment the compilation instructions (e.g. which libraries have to be linked, compiler flags) and the used compiler (vendor and version).\nDocument and discuss your results in a Markdown file or generate a PDF.\n\nWe will also, from time to time, ask some of you to present exercises in the classroom in order to facilitate discussion.\nTo pass this course, at least 50% of the exercises have to be solved and the final project has to be completed successfully. The grade consists of standard exercises (40% - indicated by ✍️), project work (40%), advanced exercises (10% - indicated by 🏆), and classroom participation (10%). If you want to get an ‘excellent’ we expect you to solve all advanced exercises.\nThe plan for the lecture is as follows:\n\n\n\n\n\n\nTip\n\n\n\nYou can navigate the slides with the arrow keys ← →. The button in the lower left corner opens a toc per slide deck and you can export the slides as a pdf."
+  },
+  {
+    "objectID": "index.html#welcome-to-the-course-on-c-and-c-in-simulation-and-development.",
+    "href": "index.html#welcome-to-the-course-on-c-and-c-in-simulation-and-development.",
+    "title": "C and C++ in Simulation Development",
+    "section": "",
+    "text": "Here you will find all slides as an interactive presentation (Reveal.js):\nThis is a practical course. For each part of the lecture some exercises will be posed. The main learning benefit is only attained if you actively implement all of the exercises.\nYou have to form groups (consisting of at most 3 students) to work on the exercises and the final project. Working alone is permissible but discouraged.\nFor the exercises, please comply to the following instructions:\n\nUpload the exercises to a repository on the university GitLab https://git.uibk.ac.at/. Make sure that we have access to your code for grading.\nUse a distinct folder for each lecture and use a consistent naming scheme for the folders and files.\nFor every program, indicate in the first line as a comment the compilation instructions (e.g. which libraries have to be linked, compiler flags) and the used compiler (vendor and version).\nDocument and discuss your results in a Markdown file or generate a PDF.\n\nWe will also, from time to time, ask some of you to present exercises in the classroom in order to facilitate discussion.\nTo pass this course, at least 50% of the exercises have to be solved and the final project has to be completed successfully. The grade consists of standard exercises (40% - indicated by ✍️), project work (40%), advanced exercises (10% - indicated by 🏆), and classroom participation (10%). If you want to get an ‘excellent’ we expect you to solve all advanced exercises.\nThe plan for the lecture is as follows:\n\n\n\n\n\n\nTip\n\n\n\nYou can navigate the slides with the arrow keys ← →. The button in the lower left corner opens a toc per slide deck and you can export the slides as a pdf."
+  },
+  {
+    "objectID": "index.html#term-plan",
+    "href": "index.html#term-plan",
+    "title": "C and C++ in Simulation Development",
+    "section": "Term plan",
+    "text": "Term plan\n\n\n\nMeeting\nChapter\nSubchapter\nExercise\n\n\n\n\n\n1\n00 General information to the lecture\n0. Introduction\n\n\n\n\n1\n01 Basics and why we teach C/C++\n1. Why we teach C++ and some basics\n✍️\n\n\n\n2\n01 Types\n2. Types\n✍️ 🏆\n\n\n\n2\n02 Pointers\n1. Pointers\n✍️\n\n\n\n3\n02 Memory management\n2. Memory\n✍️ 🏆\n\n\n\n4\n03 Functions, structs and classes\n1. Functions\n🏆\n\n\n\n4\n03 Functions, structs and classes\n2. Structs\n✍️\n\n\n\n4\n03 Functions, structs and classes\n3. Classes\n✍️ 🏆\n\n\n\n5\nCMake, Unit testing\n1. Linting\n✍️\n\n\n\n6\nLinter Code analysis, different types of libraries\n\n\n\n\n\n7\nFinalize the topics of the projects\n\n\n\n\n\n8\nObject oriented programming, operator overloading\n\n\n\n\n\n9\nTemplates, RAIi and smart pointers\n\n\n\n\n\n10\nBLAS, LAPACK, Eigen\n\n\n\n\n\n11\nSparse matrix computations\n\n\n\n\n\n12\nFFT, TOML, Netcdf, Modules\n\n\n\n\n\n13\nDebugging and profiling\n\n\n\n\n\n14\nQ&A Projects\n\n\n\n\n\n15\nProject presentations"
+  },
+  {
+    "objectID": "lectures/01_introduction/0_introduction.html#who",
+    "href": "lectures/01_introduction/0_introduction.html#who",
+    "title": "0. Basic introduction to the lecture",
+    "section": "Who?",
+    "text": "Who?\n\nPeter Kandolf - Peter.Kandolf@uibk.ac.at\nBSc, MSc, PhD in (Technischer) Mathematik, LFU Innsbruck\nSenior Postdoc - Forschungsschwerpunkt Scientific Computing, LFU Innsbruck"
+  },
+  {
+    "objectID": "lectures/01_introduction/0_introduction.html#what-we-expect-from-you",
+    "href": "lectures/01_introduction/0_introduction.html#what-we-expect-from-you",
+    "title": "0. Basic introduction to the lecture",
+    "section": "What we expect from you?",
+    "text": "What we expect from you?\nThe syllabus is on the overview page index\n\nStructure of the class\n\nYou learn programming by writing/reviewing/debugging code\nLLMs can be helpful but you need to understand and be able to explain the code\nExercises during class, hand in exercises via UIBK gitlab\nPresent the occasional exercise\nProgramming project\n\ngroups of at most three\nuse UIBK gitlab, everybody is expected to work with git/have commits\npresentation of the code\ntopics are fixed in"
+  },
+  {
+    "objectID": "lectures/01_introduction/0_introduction.html#common-markings-on-the-slides",
+    "href": "lectures/01_introduction/0_introduction.html#common-markings-on-the-slides",
+    "title": "0. Basic introduction to the lecture",
+    "section": "Common markings on the slides",
+    "text": "Common markings on the slides\n\nWe use some emojies throughout the slides → they should help when you look at the slides outside of class.\n🤓: Additional information if you want to dive in → probably something that will only be for self study\n🔁: We have seen this in another lecture already, here is the reference\n✍️: This is an exercise → some of them we will do in class\n🏆: This is one of the advanced exercises"
+  },
+  {
+    "objectID": "lectures/01_introduction/0_introduction.html#important",
+    "href": "lectures/01_introduction/0_introduction.html#important",
+    "title": "0. Basic introduction to the lecture",
+    "section": "⚠️ Important!",
+    "text": "⚠️ Important!\n\nThe curriculum changed and this lecture is slightly different → probably some things change and get shifted around\nPlease provide some feedback already during class so we can adapt to it"
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#number-representation",
+    "href": "lectures/01_introduction/2_types.html#number-representation",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Number representation",
+    "text": "Number representation\n\n\n\n\n\n\nbinary\n\n\n\nbits\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n = 42\n2\n10\n2\n9\n2\n8\n2\n7\n2\n6\n2\n5\n2\n4\n2\n3\n2\n2\n2\n1\n2\n0\n\n\n\n\n\n\n\n\nNumbers are represented by bits.\nIntegers usually use \\(16\\) bits (\\(-32768\\) to \\(32767\\))\n\n\n\n\n\n\n\nfloat\n\n\n\nbits\n\n\n0\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n \n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n±1\n \n2\n3\n2\n2\n2\n1\n2\n0\n \n2\n-1\n2\n-2\n2\n-3\n2\n-4\n2\n-5\n2\n-6\n\n\n\n\n\n\n\n\nReal numbers: sign \\(\\cdot\\) mantissa \\(\\cdot\\ 2^\\text{exponent}\\)\ndouble uses \\(64\\) bits"
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#what-are-types-and-why-do-we-need-them",
+    "href": "lectures/01_introduction/2_types.html#what-are-types-and-why-do-we-need-them",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "What are types and why do we need them?",
+    "text": "What are types and why do we need them?\n\nWhenever possible, we would like to tell the program how many bits we need.\nRemember that the C++ compiler requires us to define the type in advance\nx = 3 # x is a integer\nif condition:\n  x = 3.0 # x is a floating point number\ny = 2 * x\nTypes simplify readability.\nMain types are: char, string, int, long, float, double"
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#code-example",
+    "href": "lectures/01_introduction/2_types.html#code-example",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Code example",
+    "text": "Code example\n\nCode file main_typer.cpp\nint main() {\n  int i;          // declaration\n  i = 2;          // definition\n  float d = 2.3f; // declaration and definition\n  double a = 1.0, b = 2.3;\n  return 0;\n}\n\nFrom the code, the compiler knows that:\n\n\\(16\\) bit are needed for i,\n\\(32\\) bit for d,\n\\(64\\) for a and b.\n\nIt is good practice to declare variables at the beginning of the code."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise",
+    "href": "lectures/01_introduction/2_types.html#in-class-exercise",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise",
+    "text": "✍️ In Class Exercise\n\nWrite your own program\nApart from the cout and endl commands that you have already seen, the iostream library also offers the cin command to read inputs from the command line via cin &gt;&gt; INPUT;. Write a program which asks the user to provide a number of type double and returns the sin of this value."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---solution",
+    "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise - Solution",
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(6.91927e-310) = 6.91927e-310\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise-1",
+    "href": "lectures/01_introduction/2_types.html#in-class-exercise-1",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise",
+    "text": "✍️ In Class Exercise\n\nWrite your own program\nRead in an integer and a double and print out the sum of these two values."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---solution-1",
+    "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution-1",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise - Solution",
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type3.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  int sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is -2147483648\n\n\n\nAccuracy is lost since sum is an integer.\nUse typecast int sum = inputInt + int(inputDouble)\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#in-class-exercise---second-solution",
+    "href": "lectures/01_introduction/2_types.html#in-class-exercise---second-solution",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ In Class Exercise - Second Solution",
+    "text": "✍️ In Class Exercise - Second Solution\n\nSolution main_type3_1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double inputInt;\n  double inputDouble;\n\n  std::cout &lt;&lt; \"Enter two numbers: Integer \";\n  std::cin &gt;&gt; inputInt;\n  std::cout &lt;&lt; \", Double \";\n  std::cin &gt;&gt; inputDouble;\n\n  double sum = inputInt + inputDouble;\n\n  std::cout &lt;&lt; \"sum is \" &lt;&lt; sum &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter two numbers: Integer , Double sum is 2.11653e+214\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#introducing-vector",
+    "href": "lectures/01_introduction/2_types.html#introducing-vector",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Introducing vector",
+    "text": "Introducing vector\nThe standard C++ libraries provide various helpful datatypes, e.g. std::vector\n\nSolution main_vector1.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nint main() {\n  std::vector&lt;double&gt; v(5);\n  v.reserve(10);\n  v[0] = 1.0;\n  v[2] = 1.0;\n  std::cout &lt;&lt; v.size() &lt;&lt; std::endl;\n  std::cout &lt;&lt; v[0] &lt;&lt; \" \" &lt;&lt; v[1] &lt;&lt; \" \" &lt;&lt; v[2] &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n5\n1 0 1\n\n\n\nNote that you need to put an std:: in front of the vector (and cout, endl). This is a namespace which we will cover later.\nindexing starts at \\(0\\) in C++!\nsome useful functions size, reserve, resize"
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#compiler-and-linker-basics",
+    "href": "lectures/01_introduction/2_types.html#compiler-and-linker-basics",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Compiler and linker basics",
+    "text": "Compiler and linker basics\n\nWe write code that humans understand but computers can’t → translation into machine language\nThe main tools are the compiler and the linker.\nCompiler: C++ code into machine language file (object file, main.o, main.obj)\nLinker: combine obj files and libraries (precompiled code)\n$ g++ -c hello.cpp\n$ g++ -o hello.out hello.o\n$ ls\nhello.cpp  hello.o  hello.out\nWe will revisit the compiler multiple times once our programs become more complicated."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#exercise",
+    "href": "lectures/01_introduction/2_types.html#exercise",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ Exercise",
+    "text": "✍️ Exercise\n\nWrite your own program\nWrite a program which generates two vector \\(v_1 = [0, 0.5, 1]\\) and \\(v_2 = [0, sin(0.1), 1]\\) of type float. Generate a third vector \\(v_3 = v_1 + v_2\\)."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#conditionals",
+    "href": "lectures/01_introduction/2_types.html#conditionals",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Conditionals",
+    "text": "Conditionals\nC/C++ comes with the basic conditionals: if, else if, else\nif ( boolean == true ){\n    // statement executed if the condition boolean == true is valid\n} else if (boolean1 == true){\n    // statement executed if the condition boolean == true is not valid but boolean1 == true\n} else{\n    // statement executed if both conditions are false\n}\nNew variables defined inside these environments are unknown to the global scope."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#loops",
+    "href": "lectures/01_introduction/2_types.html#loops",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Loops",
+    "text": "Loops\nC/C++ comes with the basic loops: for, while, do while\nfor ( long i = 0; i &lt; 10; i++ ){\n   // statement\n}\n\nwhile ( boolean == true ){\n   // statement\n}\n    \ndo {\n  // statement\n} while( boolean == true )\nTo exit a loop early we can use break and continue to jup along"
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#range-based-loops",
+    "href": "lectures/01_introduction/2_types.html#range-based-loops",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "Range based loops",
+    "text": "Range based loops\nThe range based of often also called for each loop is available in C++ as well\nstd::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};\n\n// Range-based for loop\nfor (int num : numbers) {\n    std::cout &lt;&lt; num &lt;&lt; \" \";\n}\n\n// Range-based for loop with auto key word\nfor (auto num : numbers) {\n    std::cout &lt;&lt; num &lt;&lt; \" \";\n}"
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#exercise-1",
+    "href": "lectures/01_introduction/2_types.html#exercise-1",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "✍️ Exercise",
+    "text": "✍️ Exercise\n\nWrite your own program - FizzBuzz\nWrite a program that prints the integers from \\(1\\) to \\(100\\) (inclusive). If, however, the number is a multiple of three then print Fizz instead, and if the number is a multiple of five then print Buzz. If multiple conditions hold true then all replacements should be printed, for example \\(15\\) should print FizzBuzz."
+  },
+  {
+    "objectID": "lectures/01_introduction/2_types.html#advanced-exercise",
+    "href": "lectures/01_introduction/2_types.html#advanced-exercise",
+    "title": "1. Why we teach C++ and some basics",
+    "section": "🏆 Advanced Exercise",
+    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nConsider a simple ODE \\[\n\\dot y(t) = \\sin(y(t))\n\\]\nForward Euler time discretization: Define grid \\(\\{t_1,\\cdots,t_{N}\\}\\) and define \\(y^n \\simeq y(t_n)\\) \\[\n    y^{n+1} = y^{n} + (t_{n+1}-t_n) \\sin(y^n)\n\\]\nImplement a forward Euler method with equidistant time step size \\(\\Delta t = t_{n+1}-t_n = 0.01\\). Store the solution at all time points \\(t\\in[0, 1]\\) in a vector and write it to a text file."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#why",
+    "href": "lectures/02_pointers/2_memory.html#why",
+    "title": "2. Memory Management",
+    "section": "Why?",
+    "text": "Why?\n\nPointers give control over memory.\nPass data to a different program part without copying it (functions, classes,…).\nControl when to delete data dynamic vs. static memory.\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\nstack\n\nstack\n\nstack\n\n...\n\nheap\n\nheap\n\n\n\n\n\n\n\n\n\nstatic memory managed by compiler (stack)\ndynamic memory managed by user (heap)\ndynamic memory can be accessed with pointers (stored in stack)\naddress space in heap is accessed with new"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#why-1",
+    "href": "lectures/02_pointers/2_memory.html#why-1",
+    "title": "2. Memory Management",
+    "section": "Why?",
+    "text": "Why?\n\nPointers give control over memory.\nPass data to a different program part without copying it (functions, classes,…).\nControl when to delete data dynamic vs. static memory.\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\nstack\n\nstack\n\nstack\n\n...\n\nheap\n\nheap\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nstatic memory managed by compiler (stack)\ndynamic memory managed by user (heap)\ndynamic memory can be accessed with pointers (stored in stack)\naddress space in heap is accessed with new"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-12",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-12",
+    "title": "2. Memory Management",
+    "section": "Some code examples 1/2",
+    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.13615e-313"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-22",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-22",
+    "title": "2. Memory Management",
+    "section": "Some code examples 2/2",
+    "text": "Some code examples 2/2\n\nCode file main_heap2.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *v = new double[2]; // allocate array of size 2 in heap\n  v[0] = 0.1;\n  v[1] = 0.12;\n\n  for (int i = 0; i &lt; 2; i++)\n    std::cout &lt;&lt; v[i] &lt;&lt; \" \";\n  std::cout &lt;&lt; std::endl;\n\n  delete[] v; // free memory of entire array\n\n  return 0;\n}\n\n\n0.1 0.12"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#an-array-in-heap",
+    "href": "lectures/02_pointers/2_memory.html#an-array-in-heap",
+    "title": "2. Memory Management",
+    "section": "An array in heap",
+    "text": "An array in heap\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n...\n\nv[3]\n\nv[2]\n\nv[1]\n\nv = v[0]\n\n...\n\n\n\n\n\n\n\n\nWe store address of v[0] in v.\nSince v[1], \\(\\ldots\\) neighbour v[0] we also know their addresses.\nMore about this when talking about pointer arithmetic."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#multi-dimensional-arrays",
+    "href": "lectures/02_pointers/2_memory.html#multi-dimensional-arrays",
+    "title": "2. Memory Management",
+    "section": "Multi-dimensional arrays",
+    "text": "Multi-dimensional arrays\nIn the C/C++ standard there is no dynamic multi-dimensional array.\n\noption: Use a pointer to a pointer.\n\nAccess via a[i][j].\n\nNot very good memory layout on modern computer architectures (pointer chasing).\n\n\noption: Use an one-dimensional array and do the index calculations by hand.\n\nAccess via a[i + j*n].\n\noption: Use an external library that implements 2d arrays.\n\nAccess is usually provided by a(i, j)"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
+    "title": "2. Memory Management",
+    "section": "Some code examples with pointers and memory access 1/3",
+    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.14258e-313"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
+    "title": "2. Memory Management",
+    "section": "Some code examples with pointers and memory access 2/3",
+    "text": "Some code examples with pointers and memory access 2/3\nCan you explain the behaviour?\n\nCode file main_heap5.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  bool condition = true;\n\n  if (condition) {\n    double *d = new double;\n    *d = 0.1;\n  }\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n\nmain_heap5.cpp: In function ‘int main()’:\nmain_heap5.cpp:11:17: error: ‘d’ was not declared in this scope\n   11 |   std::cout &lt;&lt; *d &lt;&lt; std::endl;\n      |                 ^"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-33",
+    "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-33",
+    "title": "2. Memory Management",
+    "section": "Some code examples with pointers and memory access 3/3",
+    "text": "Some code examples with pointers and memory access 3/3\nCan you explain the behaviour?\n\nCode file main_heap6.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  bool condition = true;\n  double *d;\n\n  if (condition) {\n    d = new double;\n    *d = 0.1;\n  }\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#good-practice",
+    "href": "lectures/02_pointers/2_memory.html#good-practice",
+    "title": "2. Memory Management",
+    "section": "Good practice!",
+    "text": "Good practice!\nAlways delete storage you allocated with new."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#pointer-arithmetics",
+    "href": "lectures/02_pointers/2_memory.html#pointer-arithmetics",
+    "title": "2. Memory Management",
+    "section": "Pointer arithmetics",
+    "text": "Pointer arithmetics\n\nArithmetics on pointers allowed.\nd[i] equivalent to *(d + i)\n\n\nCode file main_arithmetics1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d;\n  d = new double[4];\n  d[0] = 0.0;\n  d[1] = 0.1;\n  d[2] = 0.2;\n\n  std::cout &lt;&lt; *d &lt;&lt; \" \" &lt;&lt; *(d + 1) &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0 0.1"
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#pointer-arithmetics-1",
+    "href": "lectures/02_pointers/2_memory.html#pointer-arithmetics-1",
+    "title": "2. Memory Management",
+    "section": "Pointer arithmetics",
+    "text": "Pointer arithmetics\n\n\n\n\n\n\n\n\nmem1\n\n\n\nmem\n\n\n...\n\nv[3]\n\nv[2]\n\nv[1]\n\n*v = v[0]\n\n\n...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmem2\n\n\n\nmem\n\n\n...\n\n*(v+3)\n\n*(v+2)\n\n*(v+1)\n\n*v = v[0]\n\n\n...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmem3\n\n\n\nmem\n\n\n...\n\n(v+1)[2]\n\n(v+1)[1]\n\n(v+1)[0]\n\n*v = v[0]\n\n\n..."
+  },
+  {
+    "objectID": "lectures/02_pointers/2_memory.html#advanced-exercise",
+    "href": "lectures/02_pointers/2_memory.html#advanced-exercise",
+    "title": "2. Memory Management",
+    "section": "🏆 Advanced Exercise",
+    "text": "🏆 Advanced Exercise\n\nSolving an ordinary differential equation\nRewrite your ODE solver by using dynamic arrays. Make sure to free your memory before the program terminates."
+  },
+  {
+    "objectID": "lectures/03_functions/2_structs.html#structs-1",
+    "href": "lectures/03_functions/2_structs.html#structs-1",
+    "title": "2. Structs",
+    "section": "Structs",
+    "text": "Structs\n\nSometimes you want to generate your own data types.\nExample: Pair of two doubles.\n\n\nSolution main_struct1.cpp\n#include &lt;iostream&gt;\n\nstruct Pair {\n  double first;\n  double second;\n};\n\nint main() {\n  Pair p;\n  p.first = 1.0;\n  p.second = 2.0;\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/03_functions/2_structs.html#what-does-this-code-do-12",
+    "href": "lectures/03_functions/2_structs.html#what-does-this-code-do-12",
+    "title": "2. Structs",
+    "section": "What does this code do? 1/2",
+    "text": "What does this code do? 1/2\n\nSolution main_struct2.cpp\n#include &lt;iostream&gt;\n\nstruct entry {\n  long data;\n  entry *next;\n  entry *previous;\n};\n\nint main() {\n  entry *previous = NULL;\n  for (long i = 0; i &lt; 10; ++i) {\n    entry *current = new entry;\n    current-&gt;data = i;\n    current-&gt;previous = previous;\n    if (previous)\n      previous-&gt;next = current;\n    previous = current;\n  }\n  previous-&gt;next = NULL;\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/03_functions/2_structs.html#in-class-exercise",
+    "href": "lectures/03_functions/2_structs.html#in-class-exercise",
+    "title": "2. Structs",
+    "section": "✍️ In class Exercise",
+    "text": "✍️ In class Exercise\n\nWrite your own program\n\nPrint all entries in reverse and forward order by running through the created objects of type entry.\nDelete all created objects of type entry."
+  },
+  {
+    "objectID": "lectures/03_functions/2_structs.html#what-does-this-code-do-22",
+    "href": "lectures/03_functions/2_structs.html#what-does-this-code-do-22",
+    "title": "2. Structs",
+    "section": "What does this code do? 2/2",
+    "text": "What does this code do? 2/2\n\nSolution main_struct2_solution.cpp\n#include &lt;iostream&gt;\n\nstruct entry {\n  long data;\n  entry *next;\n  entry *previous;\n};\n\nint main() {\n  long nEntries = 10; // number entries in list\n  entry *previous = NULL;\n  for (long i = 0; i &lt; nEntries; ++i) {\n    entry *current = new entry;\n    current-&gt;data = i;\n    current-&gt;previous = previous;\n    if (previous)\n      previous-&gt;next = current;\n    previous = current;\n  }\n  previous-&gt;next = NULL;\n\n  entry *current = previous;\n\n  while (current-&gt;previous) {\n    std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n    current = current-&gt;previous;\n  }\n  std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n\n  while (current-&gt;next) {\n    std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n    current = current-&gt;next;\n  }\n  std::cout &lt;&lt; current-&gt;data &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n9\n8\n7\n6\n5\n4\n3\n2\n1\n0\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#linter",
+    "href": "lectures/04_lint/1_lint.html#linter",
+    "title": "1. Lint",
+    "section": "Linter",
+    "text": "Linter\nWhy does it make sense to use a Linter?\n\nIn C/C++ the control flow is done via { ... }\nThe compiler does not care how it is formatted but we should, it is easier\n\nto navigate the code\nto find bugs\nto maintain the code\nto homogenise styles between different people\n\nWe use such tools to have consistent code style/coding standard in the project\nIt allows to check for (common) problems → clean-up before a commit\n\nStatic code analysis like unreachable code\nassigned but never used\nsyntax errors\nvulnerabilities\nundefined or dangerous behaviour"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#coding-is-an-art-12",
+    "href": "lectures/04_lint/1_lint.html#coding-is-an-art-12",
+    "title": "1. Lint",
+    "section": "Coding is an art!? 1/2",
+    "text": "Coding is an art!? 1/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#coding-is-an-art-22",
+    "href": "lectures/04_lint/1_lint.html#coding-is-an-art-22",
+    "title": "1. Lint",
+    "section": "Coding is an art!? 2/2",
+    "text": "Coding is an art!? 2/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}\n\n\n                ###########...\n            ##################....\n         #######################.....\n       ##########################......\n     #############################.......\n    ###############################.......\n   #################################.......\n  ##################################........\n  ##################################........\n ####################################........\n ####################################........\n ####################################........\n ####################################........\n  ##################################........\n  ##################################........\n   #################################.......\n    ###############################.......\n     #############################.......\n       ##########################......\n         #######################.....\n            ##################....\n                ###########..."
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-12",
+    "href": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-12",
+    "title": "1. Lint",
+    "section": "Why we need a formatter? 1/2",
+    "text": "Why we need a formatter? 1/2\n\nCode file code_ugly.cpp\n#include&lt;iostream&gt;\nint main(){int x=10;for(int i=0;i&lt;5;i++){if(i%2==0){x+=i;}else{x-=i;}}std::cout&lt;&lt;\"Result:\"&lt;&lt;x&lt;&lt;std::endl;return 0;}\n\n\nResult:12"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-22",
+    "href": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-22",
+    "title": "1. Lint",
+    "section": "Why we need a formatter? 2/2",
+    "text": "Why we need a formatter? 2/2\n\nCode file code_ugly.cpp\n#include&lt;iostream&gt;\nint main(){int x=10;for(int i=0;i&lt;5;i++){if(i%2==0){x+=i;}else{x-=i;}}std::cout&lt;&lt;\"Result:\"&lt;&lt;x&lt;&lt;std::endl;return 0;}\n\nCode file code_formatted.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  int x = 10;\n  for (int i = 0; i &lt; 5; i++) {\n    if (i % 2 == 0) {\n      x += i;\n    } else {\n      x -= i;\n    }\n  }\n  std::cout &lt;&lt; \"Result:\" &lt;&lt; x &lt;&lt; std::endl;\n  return 0;\n}"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#a-formatter-alone-is-no-guarantee-but-helps",
+    "href": "lectures/04_lint/1_lint.html#a-formatter-alone-is-no-guarantee-but-helps",
+    "title": "1. Lint",
+    "section": "A formatter alone is no guarantee but helps",
+    "text": "A formatter alone is no guarantee but helps\n\nCode file phase_formatted.c\n#include &lt;stdio.h&gt;\n#include &lt;time.h&gt;\n\na, b = 44, x, y, z;\nmain() {\n  !a ? a = 2551443, x = -b, y = 2 - b,\n       z = ((time(0) - 592531) % a &lt;&lt; 9) / a\n     : putchar(++x &gt;= a ? x = -b, y += 4,\n               10 : x &lt; 0 ? x = x * x + y * y &lt; b * b ? a = 1 - x, -1 : x + 1,\n               32 : \"#.\"[(x &lt; a * (~z & 255) &gt;&gt; 8) ^ z &gt;&gt; 8]),\n       y &gt; b ? 0 : main();\n}\nFormatted 2024 winner https://github.com/ioccc-src/winner/tree/master/2024/kurdyukov1"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#common-tools-for-formatting",
+    "href": "lectures/04_lint/1_lint.html#common-tools-for-formatting",
+    "title": "1. Lint",
+    "section": "Common tools for formatting",
+    "text": "Common tools for formatting\nThere are multiple tools available\n\nclang-format\nms-vscode.cpptools (comes with the plugin)"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#in-class-exercise",
+    "href": "lectures/04_lint/1_lint.html#in-class-exercise",
+    "title": "1. Lint",
+    "section": "✍️ In class Exercise",
+    "text": "✍️ In class Exercise\n\nInclude a formatter in your setup\nActivate a formatter in VScode to automatically format the code (usually you can use CTRL+SHIFT+I) and you can activate format on save."
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-14",
+    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-14",
+    "title": "1. Lint",
+    "section": "Why a code analysis is beneficial? 1/4",
+    "text": "Why a code analysis is beneficial? 1/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-24",
+    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-24",
+    "title": "1. Lint",
+    "section": "Why a code analysis is beneficial? 2/4",
+    "text": "Why a code analysis is beneficial? 2/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}\n\n\n$ cppcheck --enable=all code/array.cpp\n\n\n['Checking code/array.cpp ...',\n \"code/array.cpp:3:9: style: Condition 'x=1000' is always true [knownConditionTrueFalse]\",\n '  if (x = 1000)',\n '        ^',\n \"code/array.cpp:2:7: style: The scope of the variable 'buf' can be reduced. [variableScope]\",\n '  int buf[10];',\n '      ^',\n \"code/array.cpp:4:12: style: Variable 'buf[x]' is assigned a value that is never used. [unreadVariable]\",\n '    buf[x] = 0;',\n '           ^',\n \"code/array.cpp:1:0: style: The function 'foo' is never used. [unusedFunction]\",\n 'void foo(int x) {',\n '^',\n 'nofile:0:0: information: Active checkers: 161/592 (use --checkers-report=&lt;filename&gt; to see details) [checkersReport]',\n '']"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-34",
+    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-34",
+    "title": "1. Lint",
+    "section": "Why a code analysis is beneficial? 3/4",
+    "text": "Why a code analysis is beneficial? 3/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}\n\n\n$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17\n\n\n['2 warnings generated.',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:3: warning: do not declare C-style arrays, use std::array&lt;&gt; instead [modernize-avoid-c-arrays]',\n '    2 |   int buf[10];',\n '      |   ^',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]',\n '    3 |   if (x = 1000)',\n '      |       ~~^~~~~~',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning',\n '    3 |   if (x = 1000)',\n '      |         ^     ',\n '      |       (       )',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison\",\n '    3 |   if (x = 1000)',\n '      |         ^',\n '      |         ==']"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-44",
+    "href": "lectures/04_lint/1_lint.html#why-a-code-analysis-is-beneficial-44",
+    "title": "1. Lint",
+    "section": "Why a code analysis is beneficial? 4/4",
+    "text": "Why a code analysis is beneficial? 4/4\nWhat is wrong with the following code snippet?\n\nCode file array.cpp\nvoid foo(int x) {\n  int buf[10];\n  if (x = 1000)\n    buf[x] = 0;\n}\n\n\n$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17\n\n\n['6 warnings generated.',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:1:14: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]\",\n '    1 | void foo(int x) {',\n '      |              ^',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:11: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]',\n '    2 |   int buf[10];',\n '      |           ^',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: warning: implicit conversion 'int' -&gt; 'bool' [readability-implicit-bool-conversion]\",\n '    3 |   if (x = 1000)',\n '      |       ^       ',\n '      |                != 0',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]',\n '    3 |   if (x = 1000)',\n '      |       ~~^~~~~~',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning',\n '    3 |   if (x = 1000)',\n '      |         ^     ',\n '      |       (       )',\n \"/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison\",\n '    3 |   if (x = 1000)',\n '      |         ^',\n '      |         ==',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:11: warning: 1000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]',\n '    3 |   if (x = 1000)',\n '      |           ^',\n '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:16: warning: statement should be inside braces [readability-braces-around-statements]',\n '    3 |   if (x = 1000)',\n '      |                ^',\n '      |                 {',\n '    4 |     buf[x] = 0;',\n '      |                ']"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#in-class-exercise-1",
+    "href": "lectures/04_lint/1_lint.html#in-class-exercise-1",
+    "title": "1. Lint",
+    "section": "✍️ In class Exercise",
+    "text": "✍️ In class Exercise\n\nInclude a formatter in your setup\nInstall cppcheck and clang-tidy and test them for yourself on some of our code snippets. Try different options.\n# We need to install it in our linux environment\nsudo dnf install cppcheck clang-tidy"
+  },
+  {
+    "objectID": "lectures/04_lint/1_lint.html#why-should-we-care-for-scientific-code",
+    "href": "lectures/04_lint/1_lint.html#why-should-we-care-for-scientific-code",
+    "title": "1. Lint",
+    "section": "Why should we care for scientific code?",
+    "text": "Why should we care for scientific code?\n\nFor scientific code we often get:\nWhy should we care, this is not for production and only we use it!\nWhat are your thoughts on the following statements?\n\nA Segmentation fault will indicates a problem in the mathematics, not the code.\nCorrect code is usually faster.\nSharing the code is good scientific practice.\nI use code, I can not read/understand for my research."
   }
 ]
