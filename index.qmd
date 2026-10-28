@@ -48,6 +48,7 @@ The button in the lower left corner opens a toc per slide deck and you can expor
 | 4       |  03 Functions, structs and classes                    | [2. Structs](/lectures/03_functions/2_structs.html)                             | :writing_hand: |
 | 4       |  03 Functions, structs and classes                    | [3. Classes](/lectures/03_functions/3_classes.html)                             | :writing_hand: :trophy:|
 | 5       |  CMake, Unit testing                       | [1. Linting](/lectures/04_lint/1_lint.html)                             | :writing_hand: |
+| 5       |  CMake, Unit testing                       | [2. Testing](/lectures/04_lint/2_test.html)                             | :writing_hand: |
 | 6       |  Linter Code analysis, different types of libraries                       |                              | |
 | 7       |  Finalize the topics of the projects                       |                              | |
 | 8       |  Object oriented programming, operator overloading                       |                              | |
