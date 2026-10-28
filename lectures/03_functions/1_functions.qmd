@@ -25,6 +25,7 @@ filters:
 <return_data_type> function_name( <input_1>, <input_2>,... ){
     // function body
     return <return_value>
+}
 ```
 
 ## Our first function in C/C++
