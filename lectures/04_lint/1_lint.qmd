@@ -39,7 +39,7 @@ Why does it make sense to use a Linter?
 
 ::: {.columns}
 :::: {.column width="50%"}
-![Programmer](./figs/programmerhumor-io-programming-memes-72229d81633ff20.jpg)
+![Programmer](./figs/programmerhumor-io-programming-memes-72229d81633ff20.jpg){height=80%}
 ::::
 :::: {.column width="50%"}
 ::::: {.column width="100%" .custom-box}
@@ -73,7 +73,7 @@ Why does it make sense to use a Linter?
 
 ## Why we need a formatter? 1/2
 
-::::: {.column width="100%" .custom-box}
+::: {.column width="100%" .custom-box}
 ### Code file [`code_ugly.cpp`](./code/code_ugly.cpp)
 ```{.cpp include="./code/code_ugly.cpp"}
 ```
@@ -81,7 +81,7 @@ Why does it make sense to use a Linter?
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/code_ugly.cpp 
 ```
-:::::
+:::
 
 ## Why we need a formatter? 2/2
 
