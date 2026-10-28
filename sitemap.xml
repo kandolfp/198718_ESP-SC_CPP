@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/3_classes.html</loc>
-    <lastmod>2026-10-19T12:44:27.000Z</lastmod>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/04_lint/1_lint.html</loc>
+    <lastmod>2026-10-28T11:39:36.000Z</lastmod>
   </url>
   <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/1_functions.html</loc>
-    <lastmod>2026-10-28T07:36:16.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/02_pointers/1_pointers.html</loc>
-    <lastmod>2026-10-21T07:13:56.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/1_helloworld.html</loc>
-    <lastmod>2026-10-08T14:12:16.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/index.html</loc>
-    <lastmod>2026-10-19T12:44:27.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/0_introduction.html</loc>
-    <lastmod>2026-10-07T08:38:08.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/2_types.html</loc>
-    <lastmod>2026-10-08T14:12:16.000Z</lastmod>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/2_structs.html</loc>
+    <lastmod>2026-10-27T15:42:29.000Z</lastmod>
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/02_pointers/2_memory.html</loc>
     <lastmod>2026-10-15T13:59:47.000Z</lastmod>
   </url>
   <url>
-    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/2_structs.html</loc>
-    <lastmod>2026-10-27T15:42:29.000Z</lastmod>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/2_types.html</loc>
+    <lastmod>2026-10-08T14:12:16.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/0_introduction.html</loc>
+    <lastmod>2026-10-07T08:38:08.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/index.html</loc>
+    <lastmod>2026-10-28T11:39:36.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/1_helloworld.html</loc>
+    <lastmod>2026-10-08T14:12:16.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/02_pointers/1_pointers.html</loc>
+    <lastmod>2026-10-21T07:13:56.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/1_functions.html</loc>
+    <lastmod>2026-10-28T07:36:16.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/03_functions/3_classes.html</loc>
+    <lastmod>2026-10-19T12:44:27.000Z</lastmod>
   </url>
 </urlset>
