@@ -9,5 +9,7 @@ int main() {
   p[2] = 2;
   foo(p);
   std::cout << *p << std::endl;
+  delete[] p;
+  
   return 0;
 }

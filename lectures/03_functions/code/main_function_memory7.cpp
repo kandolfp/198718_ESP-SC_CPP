@@ -7,5 +7,7 @@ int main() {
   *p = 1.0;
   foo(*p);
   std::cout << *p << std::endl;
+  delete p;
+  
   return 0;
 }
