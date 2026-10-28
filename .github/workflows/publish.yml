@@ -23,7 +23,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install jupyter nbformat pandas matplotlib # add other packages your notebooks need
-          sudo apt-get install cppcheck clang-tidy libgtest0 libgtest-dev
+          sudo apt-get install cppcheck clang-tidy libgtest-dev
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
