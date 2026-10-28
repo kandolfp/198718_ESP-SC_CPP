@@ -1,0 +1,98 @@
+---
+title: 2. Testing
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Testing
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- unit testing
+:::
+
+## Testing
+There are multiple ways of testing:
+
+- **Unit tests**: low level, close to source, test methods/functions/classes
+- **Integration tests**: test with different parts work together
+- **Functional tests**: test for business requirements
+- **Performance tests**: test how the code performs under particular workload
+- **Smoke tests**: test to cover basic functionality of the application
+- $\cdots$
+
+## Unit testing with `gtest`
+
+There are multiple frameworks for testing, we use a framework from google called `gtest`.
+<https://google.github.io/googletest/>
+
+Some selected features:
+
+- xUnit test framework
+- Test discovery
+- Rich set of assertions
+- Various options for running tests
+
+## `gtest` example 1/3
+
+::: {.column width="100%" .custom-box}
+### Header file [`math_utils.hpp`](./code/math_utils.hpp)
+```{.cpp include="./code/math_utils.hpp"}
+```
+:::
+
+::: {.column width="100%" .custom-box}
+### Code file [`math_utils.cpp`](./code/math_utils.cpp)
+```{.cpp include="./code/math_utils.cpp"}
+```
+:::
+
+## `gtest` example 2/3
+::: {.column width="100%" .custom-box}
+### Code file [`math_utils.test.cpp`](./code/math_utils.test.cpp)
+```{.cpp include="./code/math_utils.test.cpp"}
+```
+:::
+
+## `gtest` example 3/3
+
+```{python}
+#| echo: false
+print("$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest")
+%run ../../scripts/compile_and_run_cpp.py ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main
+```
+
+## 'gtest' example - default `main` 1/2
+
+As long as we use the basic main function we do not need to write the code for it, we just need to link again `gtest_main`.
+
+::: {.column width="100%" .custom-box}
+### Code file [`math_utils.test2.cpp`](./code/math_utils.test2.cpp)
+```{.cpp include="./code/math_utils.test2.cpp"}
+```
+:::
+
+## `gtest` example - default `main`2/2
+
+```{python}
+#| echo: false
+print("$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main")
+%run ../../scripts/compile_and_run_cpp.py ./code/math_utils.test2.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main
+```
+
+## :writing_hand: In class Exercise
+
+::: {.column width="100%" .custom-box}
+### Include `gtest` in your setup
+For some of the code we have so far, write unit tests to make sure you get a feeling for the framework.
+:::
+
+```bash
+# We need to install it in our linux environment
+sudo dnf install libgtest-dev
+```
