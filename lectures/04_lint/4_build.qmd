@@ -176,6 +176,6 @@ install(FILES include/math_utils.h DESTINATION include)
 What are the consequences of providing a library with the absolute path?
 :::
 
-## 
+## Project of this session
 
 The project with everything can be found here [`project.zip`](./code/project.zip)
