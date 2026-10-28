@@ -1,5 +1,124 @@
 [
   {
+    "objectID": "lectures/04_lint/4_build.html#build-system",
+    "href": "lectures/04_lint/4_build.html#build-system",
+    "title": "4. Build",
+    "section": "Build system",
+    "text": "Build system\nAs we could see from the previous example, building a project can be a complex and requires the following steps:\n\nCheck if all dependencies are available, if not install them\nCheck for problems within the code (Lint)\nBuild required libraries\nBuild executable\nRun tests\nCreate documentation"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#project-structure",
+    "href": "lectures/04_lint/4_build.html#project-structure",
+    "title": "4. Build",
+    "section": "Project structure",
+    "text": "Project structure\nHaving an appropriate project structure helps to keep the overview.\n$ tree project\nproject/\n|-- CMakeLists.txt\n|-- include\n|   +-- math_utils.hpp\n|-- src\n|   |-- main.cpp\n|   +-- math_utils.cpp\n+-- tests\n    +-- math_utils.test.cpp\n\n4 directories, 5 files"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#cmakelists.txt",
+    "href": "lectures/04_lint/4_build.html#cmakelists.txt",
+    "title": "4. Build",
+    "section": "CMakeLists.txt",
+    "text": "CMakeLists.txt\n\nCode file CMakeLists.txt\n# Minimum CMake version required\ncmake_minimum_required(VERSION 3.10)\n\n# Project name and version\nproject(Example VERSION 1.0)\n\n# Set the C++ standard\nset(CMAKE_CXX_STANDARD 17)\nset(CMAKE_CXX_STANDARD_REQUIRED True)\n\n# Add the include directory for headers\ninclude_directories(${CMAKE_SOURCE_DIR}/include)\n\n# Add the static library\nadd_library(math_utils STATIC src/math_utils.cpp)\n\n# Add the executable\nadd_executable(main src/main.cpp)\n\n# Link the static library to the executable\ntarget_link_libraries(main PRIVATE math_utils)\n\ntarget_compile_options(main PRIVATE -Wall -Wextra -Wpedantic)"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#building-with-cmake-13",
+    "href": "lectures/04_lint/4_build.html#building-with-cmake-13",
+    "title": "4. Build",
+    "section": "Building with cmake 1/3",
+    "text": "Building with cmake 1/3\n\n\n$ cmake -S . -B build\n-- The C compiler identification is GNU 13.3.0\n-- The CXX compiler identification is GNU 13.3.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE\n-- Configuring done (3.5s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/build"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#building-with-cmake-23",
+    "href": "lectures/04_lint/4_build.html#building-with-cmake-23",
+    "title": "4. Build",
+    "section": "Building with cmake 2/3",
+    "text": "Building with cmake 2/3\n\n\n\n$ cmake --build build\n[  7%] Building CXX object CMakeFiles/math_utils.dir/src/math_utils.cpp.o\n[ 14%] Linking CXX static library libmath_utils.a\n[ 14%] Built target math_utils\n[ 21%] Building CXX object CMakeFiles/main.dir/src/main.cpp.o\n[ 28%] Linking CXX executable main\n[ 28%] Built target main\n[ 35%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all\n.cc.o\n[ 42%] Linking CXX static library ../../../lib/libgtest.a\n[ 42%] Built target gtest\n[ 50%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtes\nt_main.cc.o\n[ 57%] Linking CXX static library ../../../lib/libgtest_main.a\n[ 57%] Built target gtest_main\n[ 64%] Building CXX object CMakeFiles/math_utils_test.dir/tests/math_utils.test.cpp.o\n[ 71%] Linking CXX executable math_utils_test\n[ 71%] Built target math_utils_test\n[ 78%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all\n.cc.o\n[ 85%] Linking CXX static library ../../../lib/libgmock.a\n[ 85%] Built target gmock\n[ 92%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmoc\nk_main.cc.o\n[100%] Linking CXX static library ../../../lib/libgmock_main.a\n[100%] Built target gmock_main"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#building-with-cmake-33",
+    "href": "lectures/04_lint/4_build.html#building-with-cmake-33",
+    "title": "4. Build",
+    "section": "Building with cmake 3/3",
+    "text": "Building with cmake 3/3\n\n\n$ build/main\n1 - (1 + 1) = -1"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#in-class-exercise",
+    "href": "lectures/04_lint/4_build.html#in-class-exercise",
+    "title": "4. Build",
+    "section": "✍️ In class Exercise",
+    "text": "✍️ In class Exercise\n\nInclude gtest in your setup\nAdd gtest to the CMakeLists.txt\n\nInclude cppcheck in your setup\nAdd cppcheck to the CMakeLists.txt\n\nInstallation\nInstall the file to an appropriate place."
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#solution-gtest-12",
+    "href": "lectures/04_lint/4_build.html#solution-gtest-12",
+    "title": "4. Build",
+    "section": "Solution gtest 1/2",
+    "text": "Solution gtest 1/2\n\nAdditional lines CMakeLists.txt\ninclude(FetchContent)\nFetchContent_Declare(\n    googletest\n    GIT_REPOSITORY https://github.com/google/googletest\n    GIT_TAG 52eb8108c5bdec04579160ae17225d66034bd723\n    DOWNLOAD_EXTRACT_TIMESTAMP TRUE\n)\n# For Windows: Prevent overriding the parent project's compiler/linker settings\nset(gtest_force_shared_crt ON CACHE BOOL \"\" FORCE)\nFetchContent_MakeAvailable(googletest)\n\n# Add the include directory for headers\ninclude_directories(${CMAKE_SOURCE_DIR}/include)\n\n# Add the static library\nadd_library(math_utils STATIC src/math_utils.cpp)\n\n# Add the executable\nadd_executable(main src/main.cpp)\n\n# Link the static library to the executable\ntarget_link_libraries(main PRIVATE math_utils)\n\ntarget_compile_options(main PRIVATE -Wall -Wextra -Wpedantic)\n\nenable_testing()\n\nadd_executable(\n    math_utils_test\n    tests/math_utils.test.cpp\n)\n\ntarget_link_libraries(\n    math_utils_test\n    math_utils\n    GTest::gtest_main\n)\n\ninclude(GoogleTest)\ngtest_discover_tests(math_utils_test)"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#solution-gtest-22",
+    "href": "lectures/04_lint/4_build.html#solution-gtest-22",
+    "title": "4. Build",
+    "section": "Solution gtest 2/2",
+    "text": "Solution gtest 2/2\n\n\n\n$ cd build/; ctest; cd -\nTest project /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/bui\nld\n    Start 1: MathUtilsTest.AddFunction\n1/2 Test #1: MathUtilsTest.AddFunction ........   Passed    0.00 sec\n    Start 2: MathUtilsTest.SubtractFunction\n2/2 Test #2: MathUtilsTest.SubtractFunction ...   Passed    0.00 sec\n\n100% tests passed, 0 tests failed out of 2\n\nTotal Test time (real) =   0.07 sec\n/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#solution-cppcheck-12",
+    "href": "lectures/04_lint/4_build.html#solution-cppcheck-12",
+    "title": "4. Build",
+    "section": "Solution cppcheck 1/2",
+    "text": "Solution cppcheck 1/2\n\nAdditional lines CMakeLists.txt\n# Add Cppcheck as a custom target\nfind_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)\nif (CMAKE_CXX_CPPCHECK)\n    add_custom_target(\n        cppcheck\n        COMMAND ${CMAKE_CXX_CPPCHECK}\n        --enable=all\n        --inconclusive\n        --std=c++${CMAKE_CXX_STANDARD}\n        --quiet\n        --suppress=missingIncludeSystem\n        --output-file=${CMAKE_BINARY_DIR}/cppcheck_report.txt\n        ${CMAKE_SOURCE_DIR}/src\n        ${CMAKE_SOURCE_DIR}/include\n        ${CMAKE_SOURCE_DIR}/tests\n        COMMENT \"Running Cppcheck static analysis...\"\n        VERBATIM\n    )\nelse()\n    message(WARNING \"Cppcheck not found! Static analysis will not be available.\")\nendif()"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#solution-cppcheck-22",
+    "href": "lectures/04_lint/4_build.html#solution-cppcheck-22",
+    "title": "4. Build",
+    "section": "Solution cppcheck 2/2",
+    "text": "Solution cppcheck 2/2\n\n\n\n$ cmake --build build --target cppcheck\n[100%] Running Cppcheck static analysis...\n[100%] Built target cppcheck"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#solution-target-22",
+    "href": "lectures/04_lint/4_build.html#solution-target-22",
+    "title": "4. Build",
+    "section": "Solution target 2/2",
+    "text": "Solution target 2/2\ninstall(TARGETS main math_utils DESTINATION bin)\ninstall(FILES include/math_utils.h DESTINATION include)"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#how-to-include-13",
+    "href": "lectures/04_lint/4_build.html#how-to-include-13",
+    "title": "4. Build",
+    "section": "How to include 1/3",
+    "text": "How to include 1/3\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;header&gt;\nSystem include paths only\nStandard library headers or third-party libraries installed in system paths.\n\n\n#include \"header\"\nCurrent directory first, then system include paths\nProject-specific headers or headers in the same directory."
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#how-to-include-23",
+    "href": "lectures/04_lint/4_build.html#how-to-include-23",
+    "title": "4. Build",
+    "section": "How to include 2/3",
+    "text": "How to include 2/3\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;folder/header&gt;\nSystem include paths only\nThird-party libraries with organized subdirectories.\n\n\n#include \"folder/header\"\nCurrent directory first, then system include paths\nProject-specific headers in subdirectories."
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#how-to-include-33",
+    "href": "lectures/04_lint/4_build.html#how-to-include-33",
+    "title": "4. Build",
+    "section": "How to include 3/3",
+    "text": "How to include 3/3\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;absolute/path&gt;\nNo search; directly includes the file from the specified absolute path\nRarely used; for debugging or non-standard locations.\n\n\n#include \"relative/path\"\nCurrent directory or relative to the file, then system include paths\nHeaders in parent or sibling directories."
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#in-class-exercise-1",
+    "href": "lectures/04_lint/4_build.html#in-class-exercise-1",
+    "title": "4. Build",
+    "section": "✍️ In class Exercise",
+    "text": "✍️ In class Exercise\n\nAbsolute path\nWhat are the consequences of providing a library with the absolute path?"
+  },
+  {
+    "objectID": "lectures/04_lint/4_build.html#project-of-this-session",
+    "href": "lectures/04_lint/4_build.html#project-of-this-session",
+    "title": "4. Build",
+    "section": "Project of this session",
+    "text": "Project of this session\nThe project with everything can be found here project.zip"
+  },
+  {
     "objectID": "lectures/04_lint/2_test.html#testing-1",
     "href": "lectures/04_lint/2_test.html#testing-1",
     "title": "2. Testing",
@@ -165,14 +284,14 @@
     "href": "lectures/03_functions/3_classes.html#what-does-this-code-do-68",
     "title": "3. Classes",
     "section": "What does this code do? 6/8",
-    "text": "What does this code do? 6/8\n\nCode file main_destructor5.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13244e-313"
+    "text": "What does this code do? 6/8\n\nCode file main_destructor5.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.14307e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#what-does-this-code-do-78",
     "href": "lectures/03_functions/3_classes.html#what-does-this-code-do-78",
     "title": "3. Classes",
     "section": "What does this code do? 7/8",
-    "text": "What does this code do? 7/8\n\nCode file main_destructor6.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13921e-313"
+    "text": "What does this code do? 7/8\n\nCode file main_destructor6.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13208e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#what-does-this-code-do-88",
@@ -200,7 +319,7 @@
     "href": "lectures/03_functions/3_classes.html#copy-constructor-13",
     "title": "3. Classes",
     "section": "Copy constructor 1/3",
-    "text": "Copy constructor 1/3\n\nCode file main_copy.cpp\n#include &lt;iostream&gt;\n\nclass A {\npublic:\n  double *_d;\n  A(double d) : _d(new double) { *_d = d; }\n  ~A() { delete _d; }\n};\n\nvoid foo(A aFoo) {}\n\nint main() {\n  A a(1.234);\n  foo(a);\n  std::cout &lt;&lt; *a._d &lt;&lt; std::endl;\n}\n\n\n1.13191e-313"
+    "text": "Copy constructor 1/3\n\nCode file main_copy.cpp\n#include &lt;iostream&gt;\n\nclass A {\npublic:\n  double *_d;\n  A(double d) : _d(new double) { *_d = d; }\n  ~A() { delete _d; }\n};\n\nvoid foo(A aFoo) {}\n\nint main() {\n  A a(1.234);\n  foo(a);\n  std::cout &lt;&lt; *a._d &lt;&lt; std::endl;\n}\n\n\n1.13487e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#copy-constructor-23",
@@ -277,28 +396,28 @@
     "href": "lectures/03_functions/1_functions.html#call-by-value",
     "title": "1. Functions",
     "section": "Call by value",
-    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7fff11b338e0\nAddress in function 0x7fff11b338b8\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
+    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffc2bd91060\nAddress in function 0x7ffc2bd91038\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#call-by-reference",
     "href": "lectures/03_functions/1_functions.html#call-by-reference",
     "title": "1. Functions",
     "section": "Call by reference",
-    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7ffcaf91ad20\nAddress in function 0x7ffcaf91ad20\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
+    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7ffd7cd50190\nAddress in function 0x7ffd7cd50190\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
     "href": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
     "title": "1. Functions",
     "section": "Call by reference C++ style",
-    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffeaba30e40\nAddress in function 0x7ffeaba30e40\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
+    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7fff50260a40\nAddress in function 0x7fff50260a40\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
     "href": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
     "title": "1. Functions",
     "section": "Call by reference avoids copying arrays",
-    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\n\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffc19b72310\n0"
+    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\n\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffd8c740860\n0"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#const",
@@ -382,35 +501,35 @@
     "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
     "title": "1. Pointers",
     "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7fff0453eef8 0x7fff0453ef00\nAddresses: 0x7fff0453eef8 0x7fff0453ef00\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffe8c512af8 0x7ffe8c512b00\nAddresses: 0x7ffe8c512af8 0x7ffe8c512b00\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-14",
     "href": "lectures/02_pointers/1_pointers.html#pointers-14",
     "title": "1. Pointers",
     "section": "Pointers 1/4",
-    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffbe031bd8 0x7fffbe031bd8 0x7fffbe031be0\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
+    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffcebaabfd8 0x7ffcebaabfd8 0x7ffcebaabfe0\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-24",
     "href": "lectures/02_pointers/1_pointers.html#pointers-24",
     "title": "1. Pointers",
     "section": "Pointers 2/4",
-    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffec69710d8 0x7ffec69710d8 0x7ffec69710e0\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe1c3a0d58 0x7ffe1c3a0d58 0x7ffe1c3a0d60\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-34",
     "href": "lectures/02_pointers/1_pointers.html#pointers-34",
     "title": "1. Pointers",
     "section": "Pointers 3/4",
-    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffd88470278 0x7ffd88470278 0x7ffd88470280\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffe27882d8 0x7fffe27882d8 0x7fffe27882e0\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-44",
     "href": "lectures/02_pointers/1_pointers.html#pointers-44",
     "title": "1. Pointers",
     "section": "Pointers 4/4",
-    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffca38f4578 0x7ffca38f4578 0x7ffca38f4580\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
+    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc8842ae08 0x7ffc8842ae08 0x7ffc8842ae10\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
@@ -634,7 +753,7 @@
     "href": "index.html#term-plan",
     "title": "C and C++ in Simulation Development",
     "section": "Term plan",
-    "text": "Term plan\n\n\n\nMeeting\nChapter\nSubchapter\nExercise\n\n\n\n\n\n1\n00 General information to the lecture\n0. Introduction\n\n\n\n\n1\n01 Basics and why we teach C/C++\n1. Why we teach C++ and some basics\n✍️\n\n\n\n2\n01 Types\n2. Types\n✍️ 🏆\n\n\n\n2\n02 Pointers\n1. Pointers\n✍️\n\n\n\n3\n02 Memory management\n2. Memory\n✍️ 🏆\n\n\n\n4\n03 Functions, structs and classes\n1. Functions\n🏆\n\n\n\n4\n03 Functions, structs and classes\n2. Structs\n✍️\n\n\n\n4\n03 Functions, structs and classes\n3. Classes\n✍️ 🏆\n\n\n\n5\nCMake, Unit testing\n1. Linting\n✍️\n\n\n\n6\nLinter Code analysis, different types of libraries\n\n\n\n\n\n7\nFinalize the topics of the projects\n\n\n\n\n\n8\nObject oriented programming, operator overloading\n\n\n\n\n\n9\nTemplates, RAIi and smart pointers\n\n\n\n\n\n10\nBLAS, LAPACK, Eigen\n\n\n\n\n\n11\nSparse matrix computations\n\n\n\n\n\n12\nFFT, TOML, Netcdf, Modules\n\n\n\n\n\n13\nDebugging and profiling\n\n\n\n\n\n14\nQ&A Projects\n\n\n\n\n\n15\nProject presentations"
+    "text": "Term plan\n\n\n\nMeeting\nChapter\nSubchapter\nExercise\n\n\n\n\n\n1\n00 General information to the lecture\n0. Introduction\n\n\n\n\n1\n01 Basics and why we teach C/C++\n1. Why we teach C++ and some basics\n✍️\n\n\n\n2\n01 Types\n2. Types\n✍️ 🏆\n\n\n\n2\n02 Pointers\n1. Pointers\n✍️\n\n\n\n3\n02 Memory management\n2. Memory\n✍️ 🏆\n\n\n\n4\n03 Functions, structs and classes\n1. Functions\n🏆\n\n\n\n4\n03 Functions, structs and classes\n2. Structs\n✍️\n\n\n\n4\n03 Functions, structs and classes\n3. Classes\n✍️ 🏆\n\n\n\n5\n04 Linter Code analysis\n1. Linting\n✍️\n\n\n\n5\n04 Unit testing\n2. Testing\n✍️\n\n\n\n6\n04 Libraries, CMake\n3. Libraries\n\n\n\n\n6\n04 CMake\n4. Testing\n✍️\n\n\n\n7\nFinalize the topics of the projects\n\n\n\n\n\n8\nObject oriented programming, operator overloading\n\n\n\n\n\n9\nTemplates, RAIi and smart pointers\n\n\n\n\n\n10\nBLAS, LAPACK, Eigen\n\n\n\n\n\n11\nSparse matrix computations\n\n\n\n\n\n12\nFFT, TOML, Netcdf, Modules\n\n\n\n\n\n13\nDebugging and profiling\n\n\n\n\n\n14\nQ&A Projects\n\n\n\n\n\n15\nProject presentations"
   },
   {
     "objectID": "lectures/01_introduction/0_introduction.html#who",
@@ -697,7 +816,7 @@
     "href": "lectures/01_introduction/2_types.html#in-class-exercise---solution",
     "title": "1. Why we teach C++ and some basics",
     "section": "✍️ In Class Exercise - Solution",
-    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(6.91927e-310) = 6.91927e-310\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
+    "text": "✍️ In Class Exercise - Solution\n\nSolution main_type2.cpp\n#include &lt;cmath&gt;\n#include &lt;iostream&gt;\n\nint main() {\n  double input;\n  std::cout &lt;&lt; \"Enter a number: \";\n  std::cin &gt;&gt; input;\n  std::cout &lt;&lt; std::endl\n            &lt;&lt; \"sin(\" &lt;&lt; input &lt;&lt; \") = \" &lt;&lt; sin(input) &lt;&lt; std::endl;\n  return 0;\n}\n\n\nEnter a number: \nsin(6.90059e-310) = 6.90059e-310\n\n\n\n\n\n\n\n\nWarning\n\n\nThese slides are compiled automatically so no input is provided."
   },
   {
     "objectID": "lectures/01_introduction/2_types.html#in-class-exercise-1",
@@ -795,7 +914,7 @@
     "href": "lectures/02_pointers/2_memory.html#some-code-examples-12",
     "title": "2. Memory Management",
     "section": "Some code examples 1/2",
-    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.13615e-313"
+    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.14342e-313"
   },
   {
     "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-22",
@@ -823,7 +942,7 @@
     "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
     "title": "2. Memory Management",
     "section": "Some code examples with pointers and memory access 1/3",
-    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.14258e-313"
+    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.14124e-313"
   },
   {
     "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
@@ -914,7 +1033,7 @@
     "href": "lectures/04_lint/1_lint.html#coding-is-an-art-22",
     "title": "1. Lint",
     "section": "Coding is an art!? 2/2",
-    "text": "Coding is an art!? 2/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}\n\n\n                ###########...\n            ##################....\n         #######################.....\n       ##########################......\n     #############################.......\n    ###############################.......\n   #################################.......\n  ##################################........\n  ##################################........\n ####################################........\n ####################################........\n ####################################........\n ####################################........\n  ##################################........\n  ##################################........\n   #################################.......\n    ###############################.......\n     #############################.......\n       ##########################......\n         #######################.....\n            ##################....\n                ###########..."
+    "text": "Coding is an art!? 2/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}\n\n\n                ###########...\n            ##################....\n         #######################.....\n       ##########################......\n     #############################.......\n    ###############################.......\n   ################################........\n  ##################################........\n  ##################################........\n ####################################........\n ####################################........\n ####################################........\n ####################################........\n  ##################################........\n  ##################################........\n   ################################........\n    ###############################.......\n     #############################.......\n       ##########################......\n         #######################.....\n            ##################....\n                ###########..."
   },
   {
     "objectID": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-12",
@@ -992,5 +1111,47 @@
     "title": "1. Lint",
     "section": "Why should we care for scientific code?",
     "text": "Why should we care for scientific code?\n\nFor scientific code we often get:\nWhy should we care, this is not for production and only we use it!\nWhat are your thoughts on the following statements?\n\nA Segmentation fault will indicates a problem in the mathematics, not the code.\nCorrect code is usually faster.\nSharing the code is good scientific practice.\nI use code, I can not read/understand for my research."
+  },
+  {
+    "objectID": "lectures/04_lint/3_libs.html#libraries-1",
+    "href": "lectures/04_lint/3_libs.html#libraries-1",
+    "title": "3. Libraries",
+    "section": "Libraries",
+    "text": "Libraries\nSimilar to other programming languages in C++ we do not write everything ourself. Therefore, libraries are linked during the build.\n\nStatic library: contains code that is linked to our program at compile time. The code is copied into our executable.\nDynamic/shared library: contains code shared by multiple programs. The code is loaded at runtime and shared over multiple executables.\n\n\n\n\nTypes of libraries"
+  },
+  {
+    "objectID": "lectures/04_lint/3_libs.html#libraries-2",
+    "href": "lectures/04_lint/3_libs.html#libraries-2",
+    "title": "3. Libraries",
+    "section": "Libraries",
+    "text": "Libraries\nSimilar to other programming languages in C++ we do not write everything ourself. Therefore, libraries are linked during the build.\n\nStatic library: contains code that is linked to our program at compile time. The code is copied into our executable.\nDynamic/shared library: contains code shared by multiple programs. The code is loaded at runtime and shared over multiple executables.\n\n\n\n\nLibraries in memory"
+  },
+  {
+    "objectID": "lectures/04_lint/3_libs.html#pros-and-cons-12",
+    "href": "lectures/04_lint/3_libs.html#pros-and-cons-12",
+    "title": "3. Libraries",
+    "section": "Pros and cons 1/2",
+    "text": "Pros and cons 1/2\n\n\n\n\n\n\n\n\n\nFeature\nStatic Libraries\nDynamic Libraries\n\n\n\n\nLinking\nAt compile time\nAt runtime\n\n\nExecutable Size\nLarger (library code is included)\nSmaller (only references to the library)\n\n\nCode Sharing\nNo\nYes (shared across multiple programs)\n\n\nRuntime Dependency\nNone (self-contained executable)\nRequires the library to be present at runtime\n\n\nPerformance\nFaster (no runtime loading)\nSlightly slower (runtime loading overhead)"
+  },
+  {
+    "objectID": "lectures/04_lint/3_libs.html#pros-and-cons-22",
+    "href": "lectures/04_lint/3_libs.html#pros-and-cons-22",
+    "title": "3. Libraries",
+    "section": "Pros and cons 2/2",
+    "text": "Pros and cons 2/2\n\n\n\n\n\n\n\n\n\nFeature\nStatic Libraries\nDynamic Libraries\n\n\n\n\nUpdates\nRequires recompilation of the executable\nCan update the library without recompiling\n\n\nDeployment\nEasier (single executable)\nMore complex (library must be distributed)\n\n\nMemory Usage\nHigher (duplicate copies in memory)\nLower (shared library in memory)\n\n\nDebugging\nEasier (all code is in the executable)\nHarder (external dependencies to track)\n\n\nSecurity\nSafer (no external library tampering)\nRisk of library hijacking or tampering"
+  },
+  {
+    "objectID": "lectures/04_lint/3_libs.html#example",
+    "href": "lectures/04_lint/3_libs.html#example",
+    "title": "3. Libraries",
+    "section": "Example",
+    "text": "Example\nWe use the example from before with the math_utils and in addition we have a main file. If we compile everything into one file the call looks like this:\n\nCode file main.cpp\n#include&lt;iostream&gt;\n#include &lt;math_utils.hpp&gt;\n\nint main() {\n  std::cout &lt;&lt; \"1 - (1 + 1) = \" &lt;&lt; sub(1, add(1, 1)) &lt;&lt; std::endl;\n  return 0;\n}\n\n\n$ g++ ./code/main.cpp ./code/math_utils.cpp -I./code\n1 - (1 + 1) = -1"
+  },
+  {
+    "objectID": "lectures/04_lint/3_libs.html#compiling",
+    "href": "lectures/04_lint/3_libs.html#compiling",
+    "title": "3. Libraries",
+    "section": "Compiling",
+    "text": "Compiling\n\n\nStatic library\n# compile the library to an object file\n$ g++ -c math_utils.cpp -o math_utils.o\n# bundle object into static library\n$ ar rcs libmath_utils.a math_utils.o\n# Compile\n$ g++ -I. -c main.cpp -o main.o\n$ g++ -L. main.o libmath_utils.a -o main\n# alternative\n$ g++ main.o -L. -lmath_utils -o main.out\n# run th executable\n./main.out\n\nDynamic library\n# compile the library to an object file\n$ g++ -c math_utils.cpp -o math_utils.o\n# bundle object(s) into shared library\n$ g++ -shared -o libmath_utils.so math_utils.o\n# Compile\n$ g++ -I. -c main.cpp -o main.o\n$ g++ -L. main.o libmath_utils.so -o main.out\n# alternative\n$ g++ main.o -L. -lmath_utils -o main.out\n# Specify location of shared library\n$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./\n# run the executable\n$ ./main.out"
   }
 ]

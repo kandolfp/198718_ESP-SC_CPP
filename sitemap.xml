@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/04_lint/4_build.html</loc>
+    <lastmod>2026-10-28T15:47:42.000Z</lastmod>
+  </url>
+  <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/04_lint/2_test.html</loc>
     <lastmod>2026-10-28T13:00:26.000Z</lastmod>
   </url>
@@ -22,7 +26,7 @@
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/index.html</loc>
-    <lastmod>2026-10-28T11:39:36.000Z</lastmod>
+    <lastmod>2026-10-28T15:46:46.000Z</lastmod>
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/01_introduction/0_introduction.html</loc>
@@ -42,6 +46,10 @@
   </url>
   <url>
     <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/04_lint/1_lint.html</loc>
-    <lastmod>2026-10-28T11:39:36.000Z</lastmod>
+    <lastmod>2026-10-28T14:41:11.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kandolfp.github.io/198718_ESP-SC_CPP/lectures/04_lint/3_libs.html</loc>
+    <lastmod>2026-10-28T14:40:44.000Z</lastmod>
   </url>
 </urlset>
