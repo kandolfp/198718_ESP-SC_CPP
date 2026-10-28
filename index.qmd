@@ -50,7 +50,7 @@ The button in the lower left corner opens a toc per slide deck and you can expor
 | 5       |  04 Linter Code analysis                      | [1. Linting](/lectures/04_lint/1_lint.html)                             | :writing_hand: |
 | 5       |  04 Unit testing                       | [2. Testing](/lectures/04_lint/2_test.html)                             | :writing_hand: |
 | 6       |  04 Libraries, CMake                   | [3. Libraries](/lectures/04_lint/3_libs.html)                             |  |
-| 6       |  04 CMake                   |                              |  |
+| 6       |  04 CMake                   | [4. Testing](/lectures/04_lint/4_build.html)                             | :writing_hand: |
 | 7       |  Finalize the topics of the projects                       |                              | |
 | 8       |  Object oriented programming, operator overloading                       |                              | |
 | 9       |  Templates, RAIi and smart pointers                       |                              | |

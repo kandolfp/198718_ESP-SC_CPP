@@ -1,0 +1,181 @@
+---
+title: 4. Build
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+
+# Build Systems
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- How can I manage my builds
+- Get to know and work with `cmake`
+:::
+
+## Build system
+
+As we could see from the previous example, building a project can be a complex and requires the following steps:
+
+- Check if all dependencies are available, if not install them
+- Check for problems within the code (Lint)
+- Build required libraries
+- Build executable
+- Run tests
+- Create documentation
+
+## Project structure
+
+Having an appropriate project structure helps to keep the overview.
+```{.bash code-line-numbers="false"}
+$ tree project
+project/
+|-- CMakeLists.txt
+|-- include
+|   +-- math_utils.hpp
+|-- src
+|   |-- main.cpp
+|   +-- math_utils.cpp
++-- tests
+    +-- math_utils.test.cpp
+
+4 directories, 5 files
+```
+
+## `CMakeLists.txt`
+
+::: {.column width="100%" .custom-box}
+### Code file [`CMakeLists.txt`](./code/CMakeLists.txt)
+```{.cpp include="./code/CMakeLists.txt"}
+```
+:::
+
+## Building with cmake 1/3
+
+```{python}
+#| echo: false
+%%bash
+cd code/project
+echo "$ cmake -S . -B build"
+cmake -S . -B build
+```
+
+## Building with cmake 2/3
+
+```{python}
+#| echo: false
+%%bash
+cd code/project
+echo "$ cmake --build build"
+cmake --build build
+```
+
+## Building with cmake 3/3
+
+```{python}
+#| echo: false
+%%bash
+cd code/project
+echo "$ build/main"
+build/main
+```
+
+
+## :writing_hand: In class Exercise
+
+::: {.column width="100%" .custom-box}
+### Include `gtest` in your setup
+Add `gtest` to the `CMakeLists.txt`
+:::
+
+::: {.column width="100%" .custom-box}
+### Include `cppcheck` in your setup
+Add `cppcheck` to the `CMakeLists.txt`
+:::
+
+::: {.column width="100%" .custom-box}
+### Installation
+Install the file to an appropriate place.
+:::
+
+
+## Solution `gtest` 1/2
+::: {.column width="100%" .custom-box}
+### Additional lines [`CMakeLists.txt`](./code/project/CMakeLists.txt)
+```{.cpp include="./code/project/CMakeLists.txt" start-line=11 end-line=50}
+```
+:::
+
+
+## Solution `gtest` 2/2
+
+```{python}
+#| echo: false
+%%bash
+cd code/project
+echo "$ cd build/; ctest; cd -"
+cd build/; ctest; cd -
+```
+
+## Solution `cppcheck` 1/2
+::: {.column width="100%" .custom-box}
+### Additional lines [`CMakeLists.txt`](./code/project/CMakeLists.txt)
+```{.cpp include="./code/project/CMakeLists.txt" start-line=52 end-line=80}
+```
+:::
+
+
+## Solution `cppcheck` 2/2
+
+```{python}
+#| echo: false
+%%bash
+cd code/project
+echo "$ cmake --build build --target cppcheck"
+cmake --build build --target cppcheck
+```
+
+## Solution `target` 2/2
+
+```{.cpp}
+install(TARGETS main math_utils DESTINATION bin)
+install(FILES include/math_utils.h DESTINATION include)
+```
+
+## How to include 1/3
+
+| **Form** | **Search Order** | **Use Case** |
+|---|---|---|
+| `#include <header>` | System include paths only | Standard library headers or third-party libraries installed in system paths. |
+| `#include "header"` | Current directory first, then system include paths | Project-specific headers or headers in the same directory. |
+
+## How to include 2/3
+
+| **Form** | **Search Order** | **Use Case** |
+|---|---|---|
+| `#include <folder/header>` | System include paths only | Third-party libraries with organized subdirectories. |
+| `#include "folder/header"` | Current directory first, then system include paths | Project-specific headers in subdirectories. |
+
+
+## How to include 3/3
+
+| **Form** | **Search Order** | **Use Case** |
+|---|---|---|
+| `#include <absolute/path>` | No search; directly includes the file from the specified absolute path | Rarely used; for debugging or non-standard locations. |
+| `#include "relative/path"` | Current directory or relative to the file, then system include paths | Headers in parent or sibling directories. |
+
+
+## :writing_hand: In class Exercise
+::: {.column width="100%" .custom-box}
+### Absolute path
+What are the consequences of providing a library with the absolute path?
+:::
+
+## 
+
+The project with everything can be found here [`project.zip`](./code/project.zip)
