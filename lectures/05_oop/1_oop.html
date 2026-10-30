@@ -323,6 +323,7 @@ Peter Kandolf
 <h2>Object Oriented Programming - C++ - Class code</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="basic-structure-matrix.cpp">Basic structure <a href="./code/matrix.cpp"><code>matrix.cpp</code></a></h3>
+<div class="code-height-500">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">"matrix.hpp"</span><span class="pp"> </span><span class="co">// Include the definition of our class</span></span>
 <span id="cb3-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb3-3"><a aria-label="3"></a><span class="pp">#include </span><span class="im">&lt;stdexcept&gt;</span><span class="pp"> </span><span class="co">// For exceptions</span></span>
@@ -361,7 +362,11 @@ Peter Kandolf
 <span id="cb3-36"><a aria-label="36"></a>    stream <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb3-37"><a aria-label="37"></a>  <span class="op">}</span></span>
 <span id="cb3-38"><a aria-label="38"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><ul>
+</div>
+</div></section>
+<section id="object-oriented-programming---c---constructordestructor" class="slide level2">
+<h2><span class="emoji" data-emoji="repeat">🔁</span> Object Oriented Programming - C++ - Constructor/Destructor</h2>
+<ul>
 <li><strong>Constructor</strong>: Is called during the initialization of an <em>object</em> and handles setting up all necessary variables. <strong>Dynamic memory allocation is performed here.</strong></li>
 <li><strong>Destructor</strong>: Is called during the deletion of an object and takes care of cleaning up. <strong>Free dynamically allocated memory.</strong></li>
 </ul>
@@ -390,7 +395,7 @@ Peter Kandolf
 <span id="cb4-18"><a aria-label="18"></a></span>
 <span id="cb4-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb4-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="4f17c1e5" class="cell" data-execution_count="1">
+<div id="ea91a2cd" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Matrix:
 1 2 
@@ -459,7 +464,7 @@ Peter Kandolf
 <span id="cb7-17"><a aria-label="17"></a></span>
 <span id="cb7-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb7-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="58be5ef6" class="cell" data-execution_count="2">
+<div id="50dc909f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>This is a 2 x 2 matrix with trace 5</code></pre>
 </div>
@@ -601,7 +606,7 @@ Peter Kandolf
 <span id="cb12-18"><a aria-label="18"></a></span>
 <span id="cb12-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb12-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="a5919c3c" class="cell" data-execution_count="3">
+<div id="a50ffa7f" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>mat1 * 2.0 = 
 2 4 
@@ -723,7 +728,7 @@ Peter Kandolf
 <span id="cb19-22"><a aria-label="22"></a></span>
 <span id="cb19-23"><a aria-label="23"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb19-24"><a aria-label="24"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="83f8ea4c" class="cell" data-execution_count="4">
+<div id="b840f357" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>-4 -4 
 -4 -4 
@@ -737,7 +742,7 @@ Peter Kandolf
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a aria-label="1"></a>  Matrix mat2<span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span>
 <span id="cb21-2"><a aria-label="2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> mat2<span class="op">.</span>det<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div id="4d8ebd1b" class="cell" data-execution_count="5">
+<div id="fb72502f" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/05_oop/code/main_matrix6a.cpp:</span> In function ‘<span class="ansi-bold">int</span><span class="ansi-green-fg ansi-bold"> main</span>()’:
@@ -797,7 +802,7 @@ Peter Kandolf
 <span id="cb22-15"><a aria-label="15"></a></span>
 <span id="cb22-16"><a aria-label="16"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb22-17"><a aria-label="17"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="0129b89a" class="cell" data-execution_count="6">
+<div id="63511ca2" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>1 2 
 3 4 </code></pre>
@@ -828,7 +833,7 @@ Peter Kandolf
 <span id="cb24-16"><a aria-label="16"></a></span>
 <span id="cb24-17"><a aria-label="17"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb24-18"><a aria-label="18"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="054f03ff" class="cell" data-execution_count="7">
+<div id="6ed169b9" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/05_oop/code/main_matrix7a.cpp:</span> In function ‘<span class="ansi-bold">int</span><span class="ansi-green-fg ansi-bold"> main</span>()’:
