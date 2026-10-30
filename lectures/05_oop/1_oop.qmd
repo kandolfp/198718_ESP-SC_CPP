@@ -80,10 +80,13 @@ The main building block is a `class`, which contains:
 
 ::: {.column width="100%" .custom-box}
 ### Basic structure [`matrix.cpp`](./code/matrix.cpp)
+:::: {.code-height-500}
 ```{.cpp include="./code/matrix.cpp"}
 ```
+::::
 :::
 
+## :repeat: Object Oriented Programming - C++ - Constructor/Destructor
 - **Constructor**: Is called during the initialization of an _object_ and handles setting up all necessary variables. **Dynamic memory allocation is performed here.**
 - **Destructor**: Is called during the deletion of an object and takes care of cleaning up. **Free dynamically allocated memory.**
 
