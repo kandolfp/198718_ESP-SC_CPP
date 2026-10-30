@@ -30,7 +30,7 @@ filters:
 
 ## Our first function in C/C++
 
-::::: {.column width="100%" .custom-box}
+::: {.column width="100%" .custom-box}
 ### Code file [`main_function.cpp`](./code/main_function.cpp)
 ```{.cpp include="./code/main_function.cpp"}
 ```
@@ -38,7 +38,7 @@ filters:
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_function.cpp
 ```
-:::::
+:::
 
 ## Function overloading 1/3
 

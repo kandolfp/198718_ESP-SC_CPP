@@ -49,10 +49,10 @@ The button in the lower left corner opens a toc per slide deck and you can expor
 | 4       |  03 Functions, structs and classes                    | [3. Classes](/lectures/03_functions/3_classes.html)                             | :writing_hand: :trophy:|
 | 5       |  04 Linter Code analysis                      | [1. Linting](/lectures/04_lint/1_lint.html)                             | :writing_hand: |
 | 5       |  04 Unit testing                       | [2. Testing](/lectures/04_lint/2_test.html)                             | :writing_hand: |
-| 6       |  04 Libraries, CMake                   | [3. Libraries](/lectures/04_lint/3_libs.html)                             |  |
-| 6       |  04 CMake                   | [4. Build](/lectures/04_lint/4_build.html)                             | :writing_hand: |
+| 6       |  04 Libraries                   | [3. Libraries](/lectures/04_lint/3_libs.html)                             |  |
+| 6       |  04 Build with `CMake`                   | [4. Build](/lectures/04_lint/4_build.html)                             | :writing_hand: |
 | 7       |  Finalize the topics of the projects                       |                              | |
-| 8       |  Object oriented programming, operator overloading                       |                              | |
+| 8       |  Object oriented programming, operator overloading                       |  [1. Object Oriented Programming](/lectures/05_oop/1_oop.html)    | :writing_hand: |
 | 9       |  Templates, RAIi and smart pointers                       |                              | |
 | 10      |  BLAS, LAPACK, Eigen                       |                              | |
 | 11      |  Sparse matrix computations |                              | |
