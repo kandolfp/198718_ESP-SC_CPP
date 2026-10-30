@@ -25,7 +25,7 @@
     "href": "lectures/04_lint/4_build.html#building-with-cmake-13",
     "title": "4. Build",
     "section": "Building with cmake 1/3",
-    "text": "Building with cmake 1/3\n\n\n$ cmake -S . -B build\n-- The C compiler identification is GNU 13.3.0\n-- The CXX compiler identification is GNU 13.3.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE\n-- Configuring done (2.3s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/build"
+    "text": "Building with cmake 1/3\n\n\n$ cmake -S . -B build\n-- The C compiler identification is GNU 13.3.0\n-- The CXX compiler identification is GNU 13.3.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE\n-- Configuring done (2.7s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/build"
   },
   {
     "objectID": "lectures/04_lint/4_build.html#building-with-cmake-23",
@@ -60,7 +60,7 @@
     "href": "lectures/04_lint/4_build.html#solution-gtest-22",
     "title": "4. Build",
     "section": "Solution gtest 2/2",
-    "text": "Solution gtest 2/2\n\n\n\n$ cd build/; ctest; cd -\nTest project /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/bui\nld\n    Start 1: MathUtilsTest.AddFunction\n1/2 Test #1: MathUtilsTest.AddFunction ........   Passed    0.00 sec\n    Start 2: MathUtilsTest.SubtractFunction\n2/2 Test #2: MathUtilsTest.SubtractFunction ...   Passed    0.00 sec\n\n100% tests passed, 0 tests failed out of 2\n\nTotal Test time (real) =   0.19 sec\n/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project"
+    "text": "Solution gtest 2/2\n\n\n\n$ cd build/; ctest; cd -\nTest project /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/bui\nld\n    Start 1: MathUtilsTest.AddFunction\n1/2 Test #1: MathUtilsTest.AddFunction ........   Passed    0.00 sec\n    Start 2: MathUtilsTest.SubtractFunction\n2/2 Test #2: MathUtilsTest.SubtractFunction ...   Passed    0.00 sec\n\n100% tests passed, 0 tests failed out of 2\n\nTotal Test time (real) =   0.17 sec\n/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project"
   },
   {
     "objectID": "lectures/04_lint/4_build.html#solution-cppcheck-12",
@@ -84,25 +84,11 @@
     "text": "Solution target 2/2\ninstall(TARGETS main math_utils DESTINATION bin)\ninstall(FILES include/math_utils.h DESTINATION include)"
   },
   {
-    "objectID": "lectures/04_lint/4_build.html#how-to-include-13",
-    "href": "lectures/04_lint/4_build.html#how-to-include-13",
+    "objectID": "lectures/04_lint/4_build.html#how-to-include",
+    "href": "lectures/04_lint/4_build.html#how-to-include",
     "title": "4. Build",
-    "section": "How to include 1/3",
-    "text": "How to include 1/3\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;header&gt;\nSystem include paths only\nStandard library headers or third-party libraries installed in system paths.\n\n\n#include \"header\"\nCurrent directory first, then system include paths\nProject-specific headers or headers in the same directory."
-  },
-  {
-    "objectID": "lectures/04_lint/4_build.html#how-to-include-23",
-    "href": "lectures/04_lint/4_build.html#how-to-include-23",
-    "title": "4. Build",
-    "section": "How to include 2/3",
-    "text": "How to include 2/3\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;folder/header&gt;\nSystem include paths only\nThird-party libraries with organized subdirectories.\n\n\n#include \"folder/header\"\nCurrent directory first, then system include paths\nProject-specific headers in subdirectories."
-  },
-  {
-    "objectID": "lectures/04_lint/4_build.html#how-to-include-33",
-    "href": "lectures/04_lint/4_build.html#how-to-include-33",
-    "title": "4. Build",
-    "section": "How to include 3/3",
-    "text": "How to include 3/3\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;absolute/path&gt;\nNo search; directly includes the file from the specified absolute path\nRarely used; for debugging or non-standard locations.\n\n\n#include \"relative/path\"\nCurrent directory or relative to the file, then system include paths\nHeaders in parent or sibling directories."
+    "section": "How to include",
+    "text": "How to include\n\n\n\n\n\n\n\n\nForm\nSearch Order\nUse Case\n\n\n\n\n#include &lt;header&gt;\nSystem include paths only\nStandard library headers or third-party libraries installed in system paths.\n\n\n#include \"header\"\nCurrent directory first, then system include paths\nProject-specific headers or headers in the same directory.\n\n\n#include &lt;folder/header&gt;\nSystem include paths only\nThird-party libraries with organized subdirectories.\n\n\n#include \"folder/header\"\nCurrent directory first, then system include paths\nProject-specific headers in subdirectories.\n\n\n#include &lt;absolute/path&gt;\nNo search; directly includes the file from the specified absolute path\nRarely used; for debugging or non-standard locations.\n\n\n#include \"relative/path\"\nCurrent directory or relative to the file, then system include paths\nHeaders in parent or sibling directories."
   },
   {
     "objectID": "lectures/04_lint/4_build.html#in-class-exercise-1",
@@ -116,7 +102,7 @@
     "href": "lectures/04_lint/4_build.html#project-of-this-session",
     "title": "4. Build",
     "section": "Project of this session",
-    "text": "Project of this session\nThe project with everything can be found here project.zip"
+    "text": "Project of this session\n\nSource code\nThe project folder with the entire code and config files can be downloaded here project.zip"
   },
   {
     "objectID": "lectures/04_lint/2_test.html#testing-1",
@@ -284,14 +270,14 @@
     "href": "lectures/03_functions/3_classes.html#what-does-this-code-do-68",
     "title": "3. Classes",
     "section": "What does this code do? 6/8",
-    "text": "What does this code do? 6/8\n\nCode file main_destructor5.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13622e-313"
+    "text": "What does this code do? 6/8\n\nCode file main_destructor5.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.14148e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#what-does-this-code-do-78",
     "href": "lectures/03_functions/3_classes.html#what-does-this-code-do-78",
     "title": "3. Classes",
     "section": "What does this code do? 7/8",
-    "text": "What does this code do? 7/8\n\nCode file main_destructor6.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.13673e-313"
+    "text": "What does this code do? 7/8\n\nCode file main_destructor6.cpp\n#include &lt;iostream&gt;\n\nclass Entry {\n  double *_data;\n\npublic:\n  Entry(double data) : _data(new double) { *_data = data; }\n  double *GetData() { return _data; }\n  ~Entry() { delete _data; }\n};\n\nint main() {\n  double *d;\n  if (true) {\n    Entry tmp(1.0);\n    d = tmp.GetData();\n  }\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n  return 0;\n}\n\n\n1.14467e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#what-does-this-code-do-88",
@@ -319,7 +305,7 @@
     "href": "lectures/03_functions/3_classes.html#copy-constructor-13",
     "title": "3. Classes",
     "section": "Copy constructor 1/3",
-    "text": "Copy constructor 1/3\n\nCode file main_copy.cpp\n#include &lt;iostream&gt;\n\nclass A {\npublic:\n  double *_d;\n  A(double d) : _d(new double) { *_d = d; }\n  ~A() { delete _d; }\n};\n\nvoid foo(A aFoo) {}\n\nint main() {\n  A a(1.234);\n  foo(a);\n  std::cout &lt;&lt; *a._d &lt;&lt; std::endl;\n}\n\n\n1.13197e-313"
+    "text": "Copy constructor 1/3\n\nCode file main_copy.cpp\n#include &lt;iostream&gt;\n\nclass A {\npublic:\n  double *_d;\n  A(double d) : _d(new double) { *_d = d; }\n  ~A() { delete _d; }\n};\n\nvoid foo(A aFoo) {}\n\nint main() {\n  A a(1.234);\n  foo(a);\n  std::cout &lt;&lt; *a._d &lt;&lt; std::endl;\n}\n\n\n1.14014e-313"
   },
   {
     "objectID": "lectures/03_functions/3_classes.html#copy-constructor-23",
@@ -396,28 +382,28 @@
     "href": "lectures/03_functions/1_functions.html#call-by-value",
     "title": "1. Functions",
     "section": "Call by value",
-    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffd17db9740\nAddress in function 0x7ffd17db9718\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
+    "text": "Call by value\n\nWhat happens in memory? Let’s check!\n\n\nCode file main_function_memory.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7fffdb67a450\nAddress in function 0x7fffdb67a428\n\n\n\nPer default, the input is copied to a new location in memory.\nAdvantage: Data is save from modification inside the function.\nDisadvantage?"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#call-by-reference",
     "href": "lectures/03_functions/1_functions.html#call-by-reference",
     "title": "1. Functions",
     "section": "Call by reference",
-    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7ffcee4d5b40\nAddress in function 0x7ffcee4d5b40\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
+    "text": "Call by reference\n\nCode file main_function_memory2p.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double *pa) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; pa &lt;&lt; std::endl;\n  *pa = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(&a);\n  return 0;\n}\n\n\nAddress in function 0x7ffca3be0e70\nAddress in function 0x7ffca3be0e70\n\n\n\nAddress of a is copied to a new location in memory.\nData can be modified by dereferencing the pointer (output).\nDisadvantage?"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
     "href": "lectures/03_functions/1_functions.html#call-by-reference-c-style",
     "title": "1. Functions",
     "section": "Call by reference C++ style",
-    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffce81cf680\nAddress in function 0x7ffce81cf680\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
+    "text": "Call by reference C++ style\n\nCode file main_function_memory2.cpp\n#include &lt;iostream&gt;\n\nvoid print_address(double &a) {\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  a = 5.0;\n}\n\nint main() {\n  double a = 1.2;\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_address(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffe46ba8240\nAddress in function 0x7ffe46ba8240\n\n\n\n& operator ensures data is not copied (pointers!)\nDisadvantage: Data is not save from modification inside function.\nAdvantage: Data can be modified from within function, performance"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
     "href": "lectures/03_functions/1_functions.html#call-by-reference-avoids-copying-arrays",
     "title": "1. Functions",
     "section": "Call by reference avoids copying arrays",
-    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\n\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7fffc8463210\n0"
+    "text": "Call by reference avoids copying arrays\n\nCode file main_function_memory3.cpp\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nvoid print_value(std::vector&lt;double&gt; a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\nvoid print_ptr(std::vector&lt;double&gt; *a) { std::cout &lt;&lt; (*a)[0] &lt;&lt; std::endl; }\nvoid print_reference(std::vector&lt;double&gt; &a) { std::cout &lt;&lt; a[0] &lt;&lt; std::endl; }\n\nint main() {\n  std::vector&lt;double&gt; a(10);\n  std::cout &lt;&lt; \"Address in function \" &lt;&lt; &a &lt;&lt; std::endl;\n  print_value(a);\n  return 0;\n}\n\n\nAddress in function 0x7ffde808e290\n0"
   },
   {
     "objectID": "lectures/03_functions/1_functions.html#const",
@@ -501,35 +487,35 @@
     "href": "lectures/02_pointers/1_pointers.html#in-class-exercise---solution-12-1",
     "title": "1. Pointers",
     "section": "✍️ In class exercise - Solution 1/2",
-    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffec346bc78 0x7ffec346bc80\nAddresses: 0x7ffec346bc78 0x7ffec346bc80\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
+    "text": "✍️ In class exercise - Solution 1/2\nWhat does the code do? Which output do you expect?\n\n\n\nCode file main_pointers0.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a, b;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  a = 0.1;\n  b = a;\n  std::cout &lt;&lt; \"Addresses: \"&lt;&lt; &a &lt;&lt; \" \" &lt;&lt; &b &lt;&lt; std::endl;\n  return 0;\n}\n\n\nAddresses: 0x7ffe53973118 0x7ffe53973120\nAddresses: 0x7ffe53973118 0x7ffe53973120\n\n\n\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1\n0x558eef078eb8 \n\nb = 0.1\n\n\n...\n\n\n\n\n\n\n\n\n\nChanging the value does not change address!\nIs there a datatype for addresses?"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-14",
     "href": "lectures/02_pointers/1_pointers.html#pointers-14",
     "title": "1. Pointers",
     "section": "Pointers 1/4",
-    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fff35c175b8 0x7fff35c175b8 0x7fff35c175c0\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
+    "text": "Pointers 1/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffeea045818 0x7ffeea045818 0x7ffeea045820\n\n\n\nmemory after line 5\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np\n\n\n..."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-24",
     "href": "lectures/02_pointers/1_pointers.html#pointers-24",
     "title": "1. Pointers",
     "section": "Pointers 2/4",
-    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffc3d224398 0x7ffc3d224398 0x7ffc3d2243a0\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 2/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffbb5364c8 0x7fffbb5364c8 0x7fffbb5364d0\n\n\n\nmemory after line 6\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na\n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-34",
     "href": "lectures/02_pointers/1_pointers.html#pointers-34",
     "title": "1. Pointers",
     "section": "Pointers 3/4",
-    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe9235eb38 0x7ffe9235eb38 0x7ffe9235eb40\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
+    "text": "Pointers 3/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7fffb84408a8 0x7fffb84408a8 0x7fffb84408b0\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e"
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-44",
     "href": "lectures/02_pointers/1_pointers.html#pointers-44",
     "title": "1. Pointers",
     "section": "Pointers 4/4",
-    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffe00fa8fa8 0x7ffe00fa8fa8 0x7ffe00fa8fb0\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
+    "text": "Pointers 4/4\nDatatype to store an address is a pointer:\n\n\n\nCode file main_pointers1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double a;\n  double *p;\n  p = &a;\n  a = 0.1;\n  std::cout &lt;&lt; \"Values: \" &lt;&lt; a &lt;&lt; \" \" &lt;&lt; *p &lt;&lt; std::endl;\n  std::cout &lt;&lt; \"Addresses: \" &lt;&lt; &a &lt;&lt; \" \" &lt;&lt; p &lt;&lt; \" \" &lt;&lt; &p;\n  return 0;\n}\n\n\nValues: 0.1 0.1\nAddresses: 0x7ffdb4e137f8 0x7ffdb4e137f8 0x7ffdb4e13800\n\n\n\nmemory after line 7\n\n\n\n\n\n\nmemory\n\n\n\nmem\n\n\n...\n0x558eef078eb0 \n\na = 0.1 \n0x558eef078eb8 \n\np = &a \n\n\n...\n\n\n\nmem:e-&gt;mem:e\n\n\n\n\n\n\n\n\n\n\n\nChanges of address will change *p.\nAddress of p remains the same.\nPointers depend on data types.\nDereference with *."
   },
   {
     "objectID": "lectures/02_pointers/1_pointers.html#pointers-on-pointers-13",
@@ -914,7 +900,7 @@
     "href": "lectures/02_pointers/2_memory.html#some-code-examples-12",
     "title": "2. Memory Management",
     "section": "Some code examples 1/2",
-    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.13493e-313"
+    "text": "Some code examples 1/2\n\nCode file main_heap1.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double dStatic = 0.1;\n  double *dDynamic = new double; // allocate memory in heap\n  *dDynamic = 0.1;\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  delete dDynamic; // free memory\n\n  std::cout &lt;&lt; dStatic &lt;&lt; \" \" &lt;&lt; *dDynamic &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n0.1 0.1\n0.1 1.13593e-313"
   },
   {
     "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-22",
@@ -942,7 +928,7 @@
     "href": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-13",
     "title": "2. Memory Management",
     "section": "Some code examples with pointers and memory access 1/3",
-    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.14251e-313"
+    "text": "Some code examples with pointers and memory access 1/3\nCan you explain the behaviour?\n\nCode file main_heap4.cpp\n#include &lt;iostream&gt;\n\nint main() {\n  double *d = new double;\n  *d = 0.1;\n  double *p = d;\n\n  delete p;\n\n  std::cout &lt;&lt; *d &lt;&lt; std::endl;\n\n  return 0;\n}\n\n\n1.14384e-313"
   },
   {
     "objectID": "lectures/02_pointers/2_memory.html#some-code-examples-with-pointers-and-memory-access-23",
@@ -1033,7 +1019,7 @@
     "href": "lectures/04_lint/1_lint.html#coding-is-an-art-22",
     "title": "1. Lint",
     "section": "Coding is an art!? 2/2",
-    "text": "Coding is an art!? 2/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}\n\n\n                ##########....\n            #################.....\n         #####################.......\n       #########################.......\n     ############################........\n    #############################.........\n   ###############################.........\n  ################################..........\n  ################################..........\n ##################################..........\n ##################################..........\n ##################################..........\n ##################################..........\n  ################################..........\n  ################################..........\n   ###############################.........\n    #############################.........\n     ############################........\n       #########################.......\n         #####################.......\n            #################.....\n                ##########...."
+    "text": "Coding is an art!? 2/2\n\n\n\n\n\nProgrammer\n\n\n\n\nCode file phase.c\n#include &lt;time.h&gt;\n#include &lt;stdio.h&gt;\n\n        a,b=44,x,\n     y,z;main()  {!a\n   ?a=2551443,x=    -b\n  ,y=2-b,z=((time     (\n 0)-592531)%a&lt;&lt;9)/     a\n :putchar(++x&gt;=a?x     =\n -b,y+=4,10:x&lt;0?x=     x\n *x+y*y&lt;b*b?a=1-x,     -\n  1:x+1,32:\"#.\"[(     x\n   &lt;a*(~z&255)&gt;&gt;    8)\n     ^z&gt;&gt;8]),y&gt;  b?0\n        :main();}\n\n\n                #########.....\n            ###############.......\n         ###################.........\n       ######################..........\n     #########################...........\n    ##########################............\n   ############################............\n  #############################.............\n  #############################.............\n ###############################.............\n ###############################.............\n ###############################.............\n ###############################.............\n  #############################.............\n  #############################.............\n   ############################............\n    ##########################............\n     #########################...........\n       ######################..........\n         ###################.........\n            ###############.......\n                #########....."
   },
   {
     "objectID": "lectures/04_lint/1_lint.html#why-we-need-a-formatter-12",
