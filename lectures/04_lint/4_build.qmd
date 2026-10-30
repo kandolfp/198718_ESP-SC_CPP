@@ -147,25 +147,15 @@ install(TARGETS main math_utils DESTINATION bin)
 install(FILES include/math_utils.h DESTINATION include)
 ```
 
-## How to include 1/3
+## How to include {.smaller}
+
 
 | **Form** | **Search Order** | **Use Case** |
-|---|---|---|
+|--|---|---|
 | `#include <header>` | System include paths only | Standard library headers or third-party libraries installed in system paths. |
 | `#include "header"` | Current directory first, then system include paths | Project-specific headers or headers in the same directory. |
-
-## How to include 2/3
-
-| **Form** | **Search Order** | **Use Case** |
-|---|---|---|
 | `#include <folder/header>` | System include paths only | Third-party libraries with organized subdirectories. |
 | `#include "folder/header"` | Current directory first, then system include paths | Project-specific headers in subdirectories. |
-
-
-## How to include 3/3
-
-| **Form** | **Search Order** | **Use Case** |
-|---|---|---|
 | `#include <absolute/path>` | No search; directly includes the file from the specified absolute path | Rarely used; for debugging or non-standard locations. |
 | `#include "relative/path"` | Current directory or relative to the file, then system include paths | Headers in parent or sibling directories. |
 
@@ -178,4 +168,7 @@ What are the consequences of providing a library with the absolute path?
 
 ## Project of this session
 
-The project with everything can be found here [`project.zip`](./code/project.zip)
+::: {.column width="100%" .custom-box}
+### Source code
+The project folder with the entire code and config files can be downloaded here [`project.zip`](./code/project.zip)
+:::
