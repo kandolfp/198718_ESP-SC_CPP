@@ -317,29 +317,30 @@ Peter Kandolf
 <span id="cb2-13"><a aria-label="13"></a>   <span class="op">&lt;</span>a<span class="op">*(~</span>z<span class="op">&amp;</span><span class="dv">255</span><span class="op">)&gt;&gt;</span>    <span class="dv">8</span><span class="op">)</span></span>
 <span id="cb2-14"><a aria-label="14"></a>     <span class="op">^</span>z<span class="op">&gt;&gt;</span><span class="dv">8</span><span class="op">]),</span>y<span class="op">&gt;</span>  b<span class="op">?</span><span class="dv">0</span></span>
 <span id="cb2-15"><a aria-label="15"></a>        <span class="op">:</span>main<span class="op">();}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="a257ae44" class="cell" data-execution_count="1">
+<div id="3361764a" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-bold">phase.c:4:9:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">a</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
-    4 |         <span class="ansi-red-fg ansi-bold">a</span>,b=44,x,
-      |         <span class="ansi-red-fg ansi-bold">^</span>
-<span class="ansi-bold">phase.c:4:11:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">b</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
-    4 |         a,<span class="ansi-red-fg ansi-bold">b</span>=44,x,
-      |           <span class="ansi-red-fg ansi-bold">^</span>
-<span class="ansi-bold">phase.c:4:16:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">x</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
-    4 |         a,b=44,<span class="ansi-red-fg ansi-bold">x</span>,
-      |                <span class="ansi-red-fg ansi-bold">^</span>
-<span class="ansi-bold">phase.c:5:6:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">y</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
-    5 |      <span class="ansi-red-fg ansi-bold">y</span>,z;main()  {!a
-      |      <span class="ansi-red-fg ansi-bold">^</span>
-<span class="ansi-bold">phase.c:5:8:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">z</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
-    5 |      y,<span class="ansi-red-fg ansi-bold">z</span>;main()  {!a
-      |        <span class="ansi-red-fg ansi-bold">^</span>
-<span class="ansi-bold">phase.c:5:10:</span> <span class="ansi-red-fg ansi-bold">error: </span>return type defaults to ‘<span class="ansi-bold">int</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
-    5 |      y,z;<span class="ansi-red-fg ansi-bold">main</span>()  {!a
-      |          <span class="ansi-red-fg ansi-bold">^~~~</span>
-</pre>
-</div>
+<pre><code>                #####.........
+            #######...............
+         ##########..................
+       ###########.....................
+     ############........................
+    #############.........................
+   ##############..........................
+  ###############...........................
+  ###############...........................
+ ###############.............................
+ ###############.............................
+ ###############.............................
+ ###############.............................
+  ###############...........................
+  ###############...........................
+   ##############..........................
+    #############.........................
+     ############........................
+       ###########.....................
+         ##########..................
+            #######...............
+                #####.........</code></pre>
 </div>
 </div>
 </div></div></div>
@@ -348,9 +349,9 @@ Peter Kandolf
 <h2>Why we need a formatter? 1/2</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-code_ugly.cpp">Code file <a href="./code/code_ugly.cpp"><code>code_ugly.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a aria-label="1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb3-2"><a aria-label="2"></a><span class="dt">int</span> main<span class="op">(){</span><span class="dt">int</span> x<span class="op">=</span><span class="dv">10</span><span class="op">;</span><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span>i<span class="op">++){</span><span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span>x<span class="op">+=</span>i<span class="op">;}</span><span class="cf">else</span><span class="op">{</span>x<span class="op">-=</span>i<span class="op">;}}</span><span class="bu">std::</span>cout<span class="op">&lt;&lt;</span><span class="st">"Result:"</span><span class="op">&lt;&lt;</span>x<span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span><span class="cf">return</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="535cc1d3" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a aria-label="1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb4-2"><a aria-label="2"></a><span class="dt">int</span> main<span class="op">(){</span><span class="dt">int</span> x<span class="op">=</span><span class="dv">10</span><span class="op">;</span><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span>i<span class="op">++){</span><span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span>x<span class="op">+=</span>i<span class="op">;}</span><span class="cf">else</span><span class="op">{</span>x<span class="op">-=</span>i<span class="op">;}}</span><span class="bu">std::</span>cout<span class="op">&lt;&lt;</span><span class="st">"Result:"</span><span class="op">&lt;&lt;</span>x<span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span><span class="cf">return</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f14b9b82" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Result:12</code></pre>
 </div>
@@ -360,41 +361,41 @@ Peter Kandolf
 <h2>Why we need a formatter? 2/2</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-code_ugly.cpp-1">Code file <a href="./code/code_ugly.cpp"><code>code_ugly.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a aria-label="1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb5-2"><a aria-label="2"></a><span class="dt">int</span> main<span class="op">(){</span><span class="dt">int</span> x<span class="op">=</span><span class="dv">10</span><span class="op">;</span><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span>i<span class="op">++){</span><span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span>x<span class="op">+=</span>i<span class="op">;}</span><span class="cf">else</span><span class="op">{</span>x<span class="op">-=</span>i<span class="op">;}}</span><span class="bu">std::</span>cout<span class="op">&lt;&lt;</span><span class="st">"Result:"</span><span class="op">&lt;&lt;</span>x<span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span><span class="cf">return</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a aria-label="1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb6-2"><a aria-label="2"></a><span class="dt">int</span> main<span class="op">(){</span><span class="dt">int</span> x<span class="op">=</span><span class="dv">10</span><span class="op">;</span><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span>i<span class="op">++){</span><span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span>x<span class="op">+=</span>i<span class="op">;}</span><span class="cf">else</span><span class="op">{</span>x<span class="op">-=</span>i<span class="op">;}}</span><span class="bu">std::</span>cout<span class="op">&lt;&lt;</span><span class="st">"Result:"</span><span class="op">&lt;&lt;</span>x<span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span><span class="cf">return</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column custom-box" style="width:100%;">
 <h3 id="code-file-code_formatted.cpp">Code file <a href="./code/code_formatted.cpp"><code>code_formatted.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb6-2"><a aria-label="2"></a></span>
-<span id="cb6-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb6-4"><a aria-label="4"></a>  <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb6-5"><a aria-label="5"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb6-6"><a aria-label="6"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-7"><a aria-label="7"></a>      x <span class="op">+=</span> i<span class="op">;</span></span>
-<span id="cb6-8"><a aria-label="8"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb6-9"><a aria-label="9"></a>      x <span class="op">-=</span> i<span class="op">;</span></span>
-<span id="cb6-10"><a aria-label="10"></a>    <span class="op">}</span></span>
-<span id="cb6-11"><a aria-label="11"></a>  <span class="op">}</span></span>
-<span id="cb6-12"><a aria-label="12"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Result:"</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb6-13"><a aria-label="13"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-4"><a aria-label="4"></a>  <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb7-5"><a aria-label="5"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb7-6"><a aria-label="6"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-7"><a aria-label="7"></a>      x <span class="op">+=</span> i<span class="op">;</span></span>
+<span id="cb7-8"><a aria-label="8"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb7-9"><a aria-label="9"></a>      x <span class="op">-=</span> i<span class="op">;</span></span>
+<span id="cb7-10"><a aria-label="10"></a>    <span class="op">}</span></span>
+<span id="cb7-11"><a aria-label="11"></a>  <span class="op">}</span></span>
+<span id="cb7-12"><a aria-label="12"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Result:"</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb7-13"><a aria-label="13"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></section>
 <section id="a-formatter-alone-is-no-guarantee-but-helps" class="slide level2">
 <h2>A formatter alone is no guarantee but helps</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-phase_formatted.c">Code file <a href="./code/phase_formatted.c"><code>phase_formatted.c</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb7-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;time.h&gt;</span></span>
-<span id="cb7-3"><a aria-label="3"></a></span>
-<span id="cb7-4"><a aria-label="4"></a>a<span class="op">,</span> b <span class="op">=</span> <span class="dv">44</span><span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
-<span id="cb7-5"><a aria-label="5"></a>main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-6"><a aria-label="6"></a>  <span class="op">!</span>a <span class="op">?</span> a <span class="op">=</span> <span class="dv">2551443</span><span class="op">,</span> x <span class="op">=</span> <span class="op">-</span>b<span class="op">,</span> y <span class="op">=</span> <span class="dv">2</span> <span class="op">-</span> b<span class="op">,</span></span>
-<span id="cb7-7"><a aria-label="7"></a>       z <span class="op">=</span> <span class="op">((</span>time<span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">-</span> <span class="dv">592531</span><span class="op">)</span> <span class="op">%</span> a <span class="op">&lt;&lt;</span> <span class="dv">9</span><span class="op">)</span> <span class="op">/</span> a</span>
-<span id="cb7-8"><a aria-label="8"></a>     <span class="op">:</span> putchar<span class="op">(++</span>x <span class="op">&gt;=</span> a <span class="op">?</span> x <span class="op">=</span> <span class="op">-</span>b<span class="op">,</span> y <span class="op">+=</span> <span class="dv">4</span><span class="op">,</span></span>
-<span id="cb7-9"><a aria-label="9"></a>               <span class="dv">10</span> <span class="op">:</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">?</span> x <span class="op">=</span> x <span class="op">*</span> x <span class="op">+</span> y <span class="op">*</span> y <span class="op">&lt;</span> b <span class="op">*</span> b <span class="op">?</span> a <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> x<span class="op">,</span> <span class="op">-</span><span class="dv">1</span> <span class="op">:</span> x <span class="op">+</span> <span class="dv">1</span><span class="op">,</span></span>
-<span id="cb7-10"><a aria-label="10"></a>               <span class="dv">32</span> <span class="op">:</span> <span class="st">"#."</span><span class="op">[(</span>x <span class="op">&lt;</span> a <span class="op">*</span> <span class="op">(~</span>z <span class="op">&amp;</span> <span class="dv">255</span><span class="op">)</span> <span class="op">&gt;&gt;</span> <span class="dv">8</span><span class="op">)</span> <span class="op">^</span> z <span class="op">&gt;&gt;</span> <span class="dv">8</span><span class="op">]),</span></span>
-<span id="cb7-11"><a aria-label="11"></a>       y <span class="op">&gt;</span> b <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> main<span class="op">();</span></span>
-<span id="cb7-12"><a aria-label="12"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb8-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;time.h&gt;</span></span>
+<span id="cb8-3"><a aria-label="3"></a></span>
+<span id="cb8-4"><a aria-label="4"></a>a<span class="op">,</span> b <span class="op">=</span> <span class="dv">44</span><span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
+<span id="cb8-5"><a aria-label="5"></a>main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-6"><a aria-label="6"></a>  <span class="op">!</span>a <span class="op">?</span> a <span class="op">=</span> <span class="dv">2551443</span><span class="op">,</span> x <span class="op">=</span> <span class="op">-</span>b<span class="op">,</span> y <span class="op">=</span> <span class="dv">2</span> <span class="op">-</span> b<span class="op">,</span></span>
+<span id="cb8-7"><a aria-label="7"></a>       z <span class="op">=</span> <span class="op">((</span>time<span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">-</span> <span class="dv">592531</span><span class="op">)</span> <span class="op">%</span> a <span class="op">&lt;&lt;</span> <span class="dv">9</span><span class="op">)</span> <span class="op">/</span> a</span>
+<span id="cb8-8"><a aria-label="8"></a>     <span class="op">:</span> putchar<span class="op">(++</span>x <span class="op">&gt;=</span> a <span class="op">?</span> x <span class="op">=</span> <span class="op">-</span>b<span class="op">,</span> y <span class="op">+=</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb8-9"><a aria-label="9"></a>               <span class="dv">10</span> <span class="op">:</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">?</span> x <span class="op">=</span> x <span class="op">*</span> x <span class="op">+</span> y <span class="op">*</span> y <span class="op">&lt;</span> b <span class="op">*</span> b <span class="op">?</span> a <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> x<span class="op">,</span> <span class="op">-</span><span class="dv">1</span> <span class="op">:</span> x <span class="op">+</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb8-10"><a aria-label="10"></a>               <span class="dv">32</span> <span class="op">:</span> <span class="st">"#."</span><span class="op">[(</span>x <span class="op">&lt;</span> a <span class="op">*</span> <span class="op">(~</span>z <span class="op">&amp;</span> <span class="dv">255</span><span class="op">)</span> <span class="op">&gt;&gt;</span> <span class="dv">8</span><span class="op">)</span> <span class="op">^</span> z <span class="op">&gt;&gt;</span> <span class="dv">8</span><span class="op">]),</span></span>
+<span id="cb8-11"><a aria-label="11"></a>       y <span class="op">&gt;</span> b <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> main<span class="op">();</span></span>
+<span id="cb8-12"><a aria-label="12"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Formatted 2024 winner <a href="https://github.com/ioccc-src/winner/tree/master/2024/kurdyukov1" class="uri">https://github.com/ioccc-src/winner/tree/master/2024/kurdyukov1</a></p>
 </div></section>
 <section id="common-tools-for-formatting" class="slide level2">
@@ -417,23 +418,23 @@ Peter Kandolf
 <p>What is wrong with the following code snippet?</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-array.cpp">Code file <a href="./code/array.cpp"><code>array.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb8-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
-<span id="cb8-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb9-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
+<span id="cb9-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></section>
 <section id="why-a-code-analysis-is-beneficial-24" class="slide level2">
 <h2>Why a code analysis is beneficial? 2/4</h2>
 <p>What is wrong with the following code snippet?</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-array.cpp-1">Code file <a href="./code/array.cpp"><code>array.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb9-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
-<span id="cb9-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="60a0086b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
+<span id="cb10-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div id="4c969e3a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>$ cppcheck --enable=all ./code/array.cpp
@@ -461,12 +462,12 @@ void foo(int x) {
 <p>What is wrong with the following code snippet?</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-array.cpp-2">Code file <a href="./code/array.cpp"><code>array.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb10-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
-<span id="cb10-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb10-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="88e828e2" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb11-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
+<span id="cb11-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div id="6a5e4b1d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17</code></pre>
 </div>
@@ -505,12 +506,12 @@ void foo(int x) {
 <p>What is wrong with the following code snippet?</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-array.cpp-3">Code file <a href="./code/array.cpp"><code>array.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb13-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
-<span id="cb13-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb13-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="26c2a52e" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb14-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
+<span id="cb14-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb14-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div id="b037c90f" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17</code></pre>
 </div>
@@ -565,8 +566,8 @@ void foo(int x) {
 <div class="column custom-box" style="width:100%;">
 <h3 id="include-a-formatter-in-your-setup-1">Include a formatter in your setup</h3>
 <p>Install <code>cppcheck</code> and <code>clang-tidy</code> and test them for yourself on some of our code snippets. Try different options.</p>
-</div><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-label="1"></a><span class="co"># We need to install it in our linux environment</span></span>
-<span id="cb16-2"><a aria-label="2"></a><span class="fu">sudo</span> dnf install cppcheck clang-tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-label="1"></a><span class="co"># We need to install it in our linux environment</span></span>
+<span id="cb17-2"><a aria-label="2"></a><span class="fu">sudo</span> dnf install cppcheck clang-tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="why-should-we-care-for-scientific-code" class="slide level2">
 <h2>Why should we care for scientific code?</h2>
