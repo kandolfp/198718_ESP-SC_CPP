@@ -230,8 +230,8 @@ Peter Kandolf
 </div>
 </div>
 </section>
-<section id="linter" class="slide level2">
-<h2>Linter</h2>
+<section id="linter-12" class="slide level2">
+<h2>Linter 1/2</h2>
 <p>Why does it make sense to use a Linter?</p>
 <ul>
 <li>In C/C++ the control flow is done via <code>{ ... }</code></li>
@@ -243,6 +243,12 @@ Peter Kandolf
 <li>to homogenise styles between different people</li>
 </ul></li>
 <li>We use such tools to have consistent code style/coding standard in the project</li>
+</ul>
+</section>
+<section id="linter-22" class="slide level2">
+<h2>Linter 2/2</h2>
+<p>Why does it make sense to use a Linter?</p>
+<ul>
 <li>It allows to check for (common) problems → clean-up before a commit
 <ul>
 <li>Static code analysis like unreachable code</li>
@@ -311,7 +317,7 @@ Peter Kandolf
 <span id="cb2-13"><a aria-label="13"></a>   <span class="op">&lt;</span>a<span class="op">*(~</span>z<span class="op">&amp;</span><span class="dv">255</span><span class="op">)&gt;&gt;</span>    <span class="dv">8</span><span class="op">)</span></span>
 <span id="cb2-14"><a aria-label="14"></a>     <span class="op">^</span>z<span class="op">&gt;&gt;</span><span class="dv">8</span><span class="op">]),</span>y<span class="op">&gt;</span>  b<span class="op">?</span><span class="dv">0</span></span>
 <span id="cb2-15"><a aria-label="15"></a>        <span class="op">:</span>main<span class="op">();}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d2589600" class="cell" data-execution_count="1">
+<div id="65857e1d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">phase.c:4:9:</span> <span class="ansi-magenta-fg ansi-bold">warning: </span>data definition has no type or storage class
@@ -345,7 +351,7 @@ Peter Kandolf
 <h3 id="code-file-code_ugly.cpp">Code file <a href="./code/code_ugly.cpp"><code>code_ugly.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a aria-label="1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb3-2"><a aria-label="2"></a><span class="dt">int</span> main<span class="op">(){</span><span class="dt">int</span> x<span class="op">=</span><span class="dv">10</span><span class="op">;</span><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span>i<span class="op">++){</span><span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span>x<span class="op">+=</span>i<span class="op">;}</span><span class="cf">else</span><span class="op">{</span>x<span class="op">-=</span>i<span class="op">;}}</span><span class="bu">std::</span>cout<span class="op">&lt;&lt;</span><span class="st">"Result:"</span><span class="op">&lt;&lt;</span>x<span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span><span class="cf">return</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f34ff985" class="cell" data-execution_count="2">
+<div id="31316c93" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Result:12</code></pre>
 </div>
@@ -396,6 +402,7 @@ Peter Kandolf
 <h2>Common tools for formatting</h2>
 <p>There are multiple tools available</p>
 <ul>
+<li><code>cppcheck</code></li>
 <li><code>clang-format</code></li>
 <li><code>ms-vscode.cpptools</code> (comes with the plugin)</li>
 </ul>
@@ -427,26 +434,26 @@ Peter Kandolf
 <span id="cb9-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
 <span id="cb9-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb9-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="b6358583" class="cell" data-results="asis" data-execution_count="3">
+</div><div id="2d229738" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>$ cppcheck --enable=all code/array.cpp</code></pre>
+<div class="ansi-escaped-output">
+<pre>$ cppcheck --enable=all ./code/array.cpp
+<span class="ansi-green-fg">Checking code/array.cpp ...</span>
+<span class="ansi-bold">code/array.cpp:3:9: </span><span class="ansi-red-fg ansi-bold">style:</span><span class="ansi-bold"> Condition 'x=1000' is always true [knownConditionTrueFalse]</span>
+  if (x = 1000)
+        ^
+<span class="ansi-bold">code/array.cpp:2:7: </span><span class="ansi-red-fg ansi-bold">style:</span><span class="ansi-bold"> The scope of the variable 'buf' can be reduced. [variableScope]</span>
+  int buf[10];
+      ^
+<span class="ansi-bold">code/array.cpp:4:12: </span><span class="ansi-red-fg ansi-bold">style:</span><span class="ansi-bold"> Variable 'buf[x]' is assigned a value that is never used. [unreadVariable]</span>
+    buf[x] = 0;
+           ^
+<span class="ansi-bold">code/array.cpp:1:6: </span><span class="ansi-red-fg ansi-bold">style:</span><span class="ansi-bold"> The function 'foo' is never used. [unusedFunction]</span>
+void foo(int x) {
+     ^
+<span class="ansi-bold">nofile:0:0: </span><span class="ansi-red-fg ansi-bold">information:</span><span class="ansi-bold"> Active checkers: 173/975 (use --checkers-report=&lt;filename&gt; to see details) [checkersReport]</span>
+</pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>['\x1b[32mChecking code/array.cpp ...\x1b[0m',
- "\x1b[1mcode/array.cpp:3:9: \x1b[31mstyle:\x1b[39m Condition 'x=1000' is always true [knownConditionTrueFalse]\x1b[0m",
- '  if (x = 1000)',
- '        ^',
- "\x1b[1mcode/array.cpp:2:7: \x1b[31mstyle:\x1b[39m The scope of the variable 'buf' can be reduced. [variableScope]\x1b[0m",
- '  int buf[10];',
- '      ^',
- "\x1b[1mcode/array.cpp:4:12: \x1b[31mstyle:\x1b[39m Variable 'buf[x]' is assigned a value that is never used. [unreadVariable]\x1b[0m",
- '    buf[x] = 0;',
- '           ^',
- "\x1b[1mcode/array.cpp:1:6: \x1b[31mstyle:\x1b[39m The function 'foo' is never used. [unusedFunction]\x1b[0m",
- 'void foo(int x) {',
- '     ^',
- '\x1b[1mnofile:0:0: \x1b[31minformation:\x1b[39m Active checkers: 173/975 (use --checkers-report=&lt;filename&gt; to see details) [checkersReport]\x1b[0m',
- '']</code></pre>
 </div>
 </div>
 </section>
@@ -455,43 +462,42 @@ Peter Kandolf
 <p>What is wrong with the following code snippet?</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-array.cpp-2">Code file <a href="./code/array.cpp"><code>array.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb12-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
-<span id="cb12-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb12-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="eacf8eef" class="cell" data-results="asis" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
+<span id="cb10-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div id="4e6725a0" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>['3 warnings generated.',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:3: warning: do not declare C-style arrays, use 'std::array' instead [modernize-avoid-c-arrays]",
- '    2 |   int buf[10];',
- '      |   ^',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]',
- '    3 |   if (x = 1000)',
- '      |       ~~^~~~~~',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning',
- '    3 |   if (x = 1000)',
- '      |         ^     ',
- '      |       (       )',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison",
- '    3 |   if (x = 1000)',
- '      |         ^',
- '      |         ==',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: warning: Out of bound access to memory after the end of 'buf' [clang-analyzer-security.ArrayBound]",
- '    4 |     buf[x] = 0;',
- '      |     ^~~~~~',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: note: Assuming 'x' is not equal to 0",
- '    3 |   if (x = 1000)',
- '      |       ^',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:3: note: Taking true branch',
- '    3 |   if (x = 1000)',
- '      |   ^',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: note: Access of 'buf' at index 1000, while it holds only 10 'int' elements",
- '    4 |     buf[x] = 0;',
- '      |     ^~~~~~']</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:3: warning: do not declare C-style arrays, use 'std::array' instead [modernize-avoid-c-arrays]
+    2 |   int buf[10];
+      |   ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]
+    3 |   if (x = 1000)
+      |       ~~^~~~~~
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning
+    3 |   if (x = 1000)
+      |         ^     
+      |       (       )
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison
+    3 |   if (x = 1000)
+      |         ^
+      |         ==
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: warning: Out of bound access to memory after the end of 'buf' [clang-analyzer-security.ArrayBound]
+    4 |     buf[x] = 0;
+      |     ^~~~~~
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: note: Assuming 'x' is not equal to 0
+    3 |   if (x = 1000)
+      |       ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:3: note: Taking true branch
+    3 |   if (x = 1000)
+      |   ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: note: Access of 'buf' at index 1000, while it holds only 10 'int' elements
+    4 |     buf[x] = 0;
+      |     ^~~~~~</code></pre>
 </div>
 </div>
 </section>
@@ -500,59 +506,58 @@ Peter Kandolf
 <p>What is wrong with the following code snippet?</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-array.cpp-3">Code file <a href="./code/array.cpp"><code>array.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb15-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb15-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
-<span id="cb15-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb15-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="d7282dd2" class="cell" data-results="asis" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a aria-label="1"></a><span class="dt">void</span> foo<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="dt">int</span> buf<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb13-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
+<span id="cb13-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div id="e6d654c0" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>['7 warnings generated.',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:1:14: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]",
- '    1 | void foo(int x) {',
- '      |              ^',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:11: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]',
- '    2 |   int buf[10];',
- '      |           ^',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: warning: implicit conversion 'int' -&gt; 'bool' [readability-implicit-bool-conversion]",
- '    3 |   if (x = 1000)',
- '      |       ^       ',
- '      |                != 0',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]',
- '    3 |   if (x = 1000)',
- '      |       ~~^~~~~~',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning',
- '    3 |   if (x = 1000)',
- '      |         ^     ',
- '      |       (       )',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison",
- '    3 |   if (x = 1000)',
- '      |         ^',
- '      |         ==',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:11: warning: 1000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]',
- '    3 |   if (x = 1000)',
- '      |           ^',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:16: warning: statement should be inside braces [readability-braces-around-statements]',
- '    3 |   if (x = 1000)',
- '      |                ^',
- '      |                 {',
- '    4 |     buf[x] = 0;',
- '      |                ',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: warning: Out of bound access to memory after the end of 'buf' [clang-analyzer-security.ArrayBound]",
- '    4 |     buf[x] = 0;',
- '      |     ^~~~~~',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: note: Assuming 'x' is not equal to 0",
- '    3 |   if (x = 1000)',
- '      |       ^',
- '/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:3: note: Taking true branch',
- '    3 |   if (x = 1000)',
- '      |   ^',
- "/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: note: Access of 'buf' at index 1000, while it holds only 10 'int' elements",
- '    4 |     buf[x] = 0;',
- '      |     ^~~~~~']</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:1:14: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
+    1 | void foo(int x) {
+      |              ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:2:11: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    2 |   int buf[10];
+      |           ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: warning: implicit conversion 'int' -&gt; 'bool' [readability-implicit-bool-conversion]
+    3 |   if (x = 1000)
+      |       ^       
+      |                != 0
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: warning: using the result of an assignment as a condition without parentheses [clang-diagnostic-parentheses]
+    3 |   if (x = 1000)
+      |       ~~^~~~~~
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: place parentheses around the assignment to silence this warning
+    3 |   if (x = 1000)
+      |         ^     
+      |       (       )
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:9: note: use '==' to turn this assignment into an equality comparison
+    3 |   if (x = 1000)
+      |         ^
+      |         ==
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:11: warning: 1000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    3 |   if (x = 1000)
+      |           ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:16: warning: statement should be inside braces [readability-braces-around-statements]
+    3 |   if (x = 1000)
+      |                ^
+      |                 {
+    4 |     buf[x] = 0;
+      |                
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: warning: Out of bound access to memory after the end of 'buf' [clang-analyzer-security.ArrayBound]
+    4 |     buf[x] = 0;
+      |     ^~~~~~
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:7: note: Assuming 'x' is not equal to 0
+    3 |   if (x = 1000)
+      |       ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:3:3: note: Taking true branch
+    3 |   if (x = 1000)
+      |   ^
+/home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/array.cpp:4:5: note: Access of 'buf' at index 1000, while it holds only 10 'int' elements
+    4 |     buf[x] = 0;
+      |     ^~~~~~</code></pre>
 </div>
 </div>
 </section>
@@ -561,8 +566,8 @@ Peter Kandolf
 <div class="column custom-box" style="width:100%;">
 <h3 id="include-a-formatter-in-your-setup-1">Include a formatter in your setup</h3>
 <p>Install <code>cppcheck</code> and <code>clang-tidy</code> and test them for yourself on some of our code snippets. Try different options.</p>
-</div><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-label="1"></a><span class="co"># We need to install it in our linux environment</span></span>
-<span id="cb18-2"><a aria-label="2"></a><span class="fu">sudo</span> dnf install cppcheck clang-tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-label="1"></a><span class="co"># We need to install it in our linux environment</span></span>
+<span id="cb16-2"><a aria-label="2"></a><span class="fu">sudo</span> dnf install cppcheck clang-tidy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="why-should-we-care-for-scientific-code" class="slide level2">
 <h2>Why should we care for scientific code?</h2>
