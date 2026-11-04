@@ -6,13 +6,13 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.20">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.9">
 
   <title>C and C++ in Simulation Development – 3. Classes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-4782559d5f3a9b0ca613ce4bb94d040f.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-92e143bd307aa793c779057e6fe893fa.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -408,27 +408,31 @@ Peter Kandolf
 <span id="cb10-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb10-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="what-does-this-code-do-18" class="slide level2">
-<h2>What does this code do? 1/8</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a aria-label="1"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
-<span id="cb11-2"><a aria-label="2"></a>  <span class="dt">double</span> <span class="op">*</span>_data<span class="op">;</span></span>
-<span id="cb11-3"><a aria-label="3"></a></span>
-<span id="cb11-4"><a aria-label="4"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb11-5"><a aria-label="5"></a>  Entry<span class="op">(</span><span class="dt">double</span> data<span class="op">)</span> <span class="op">:</span> _data<span class="op">(&amp;</span>data<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb11-6"><a aria-label="6"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb11-7"><a aria-label="7"></a><span class="op">};</span></span>
-<span id="cb11-8"><a aria-label="8"></a></span>
-<span id="cb11-9"><a aria-label="9"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb11-10"><a aria-label="10"></a>  <span class="dt">double</span> <span class="op">*</span>data <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">;</span></span>
-<span id="cb11-11"><a aria-label="11"></a>  Entry tmp<span class="op">(</span>data<span class="op">);</span></span>
-<span id="cb11-12"><a aria-label="12"></a>  <span class="kw">delete</span> data<span class="op">;</span></span>
-<span id="cb11-13"><a aria-label="13"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb11-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="what-does-this-code-do-28" class="slide level2">
-<h2>What does this code do? 2/8</h2>
+<section id="what-does-this-code-do-17" class="slide level2">
+<h2>What does this code do? 1/7</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor.cpp">Code file <a href="./code/main_destructor.cpp"><code>main_destructor.cpp</code></a></h3>
+<h3 id="code-file-main_destructor1.cpp">Code file <a href="./code/main_destructor1.cpp"><code>main_destructor1.cpp</code></a></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb11-2"><a aria-label="2"></a></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
+<span id="cb11-4"><a aria-label="4"></a>  <span class="dt">double</span> <span class="op">*</span>_data<span class="op">;</span></span>
+<span id="cb11-5"><a aria-label="5"></a></span>
+<span id="cb11-6"><a aria-label="6"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-7"><a aria-label="7"></a>  Entry<span class="op">(</span><span class="dt">double</span> data<span class="op">)</span> <span class="op">:</span> _data<span class="op">(&amp;</span>data<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb11-8"><a aria-label="8"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _data<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb11-9"><a aria-label="9"></a><span class="op">};</span></span>
+<span id="cb11-10"><a aria-label="10"></a></span>
+<span id="cb11-11"><a aria-label="11"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-12"><a aria-label="12"></a>  <span class="dt">double</span> <span class="op">*</span>data <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">;</span></span>
+<span id="cb11-13"><a aria-label="13"></a>  Entry tmp<span class="op">(*</span>data<span class="op">);</span></span>
+<span id="cb11-14"><a aria-label="14"></a>  <span class="kw">delete</span> data<span class="op">;</span></span>
+<span id="cb11-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></section>
+<section id="what-does-this-code-do-27" class="slide level2">
+<h2>What does this code do? 2/7</h2>
+<div class="column custom-box" style="width:100%;">
+<h3 id="code-file-main_destructor2.cpp">Code file <a href="./code/main_destructor2.cpp"><code>main_destructor2.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb12-2"><a aria-label="2"></a></span>
 <span id="cb12-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
@@ -449,16 +453,16 @@ Peter Kandolf
 <span id="cb12-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb12-19"><a aria-label="19"></a><span class="op">}</span></span>
 <span id="cb12-20"><a aria-label="20"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b4e06693" class="cell" data-execution_count="1">
+<div id="e230cdbc" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
 </div>
 </div></section>
-<section id="what-does-this-code-do-38" class="slide level2">
-<h2>What does this code do? 3/8</h2>
+<section id="what-does-this-code-do-37" class="slide level2">
+<h2>What does this code do? 3/7</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor2.cpp">Code file <a href="./code/main_destructor2.cpp"><code>main_destructor2.cpp</code></a></h3>
+<h3 id="code-file-main_destructor3.cpp">Code file <a href="./code/main_destructor3.cpp"><code>main_destructor3.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb14-2"><a aria-label="2"></a></span>
 <span id="cb14-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
@@ -472,22 +476,22 @@ Peter Kandolf
 <span id="cb14-11"><a aria-label="11"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <span id="cb14-12"><a aria-label="12"></a>  <span class="dt">double</span> <span class="op">*</span>d<span class="op">;</span></span>
 <span id="cb14-13"><a aria-label="13"></a>  <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-14"><a aria-label="14"></a>    Entry <span class="op">*</span>tmp <span class="op">=</span> <span class="kw">new</span> Entry<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
-<span id="cb14-15"><a aria-label="15"></a>    d <span class="op">=</span> tmp<span class="op">-&gt;</span>GetData<span class="op">();</span></span>
+<span id="cb14-14"><a aria-label="14"></a>    Entry tmp<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
+<span id="cb14-15"><a aria-label="15"></a>    d <span class="op">=</span> tmp<span class="op">.</span>GetData<span class="op">();</span></span>
 <span id="cb14-16"><a aria-label="16"></a>  <span class="op">}</span></span>
 <span id="cb14-17"><a aria-label="17"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb14-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb14-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="bef854dd" class="cell" data-execution_count="2">
+<div id="b437a9ae" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
 </div>
 </div></section>
-<section id="what-does-this-code-do-48" class="slide level2">
-<h2>What does this code do? 4/8</h2>
+<section id="what-does-this-code-do-47" class="slide level2">
+<h2>What does this code do? 4/7</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor3.cpp">Code file <a href="./code/main_destructor3.cpp"><code>main_destructor3.cpp</code></a></h3>
+<h3 id="code-file-main_destructor4.cpp">Code file <a href="./code/main_destructor4.cpp"><code>main_destructor4.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb16-2"><a aria-label="2"></a></span>
 <span id="cb16-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
@@ -496,27 +500,29 @@ Peter Kandolf
 <span id="cb16-6"><a aria-label="6"></a><span class="kw">public</span><span class="op">:</span></span>
 <span id="cb16-7"><a aria-label="7"></a>  Entry<span class="op">(</span><span class="dt">double</span> data<span class="op">)</span> <span class="op">:</span> _data<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_data <span class="op">=</span> data<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb16-8"><a aria-label="8"></a>  <span class="dt">double</span> <span class="op">*</span>GetData<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> _data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb16-9"><a aria-label="9"></a><span class="op">};</span></span>
-<span id="cb16-10"><a aria-label="10"></a></span>
-<span id="cb16-11"><a aria-label="11"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb16-12"><a aria-label="12"></a>  <span class="dt">double</span> <span class="op">*</span>d<span class="op">;</span></span>
-<span id="cb16-13"><a aria-label="13"></a>  <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb16-14"><a aria-label="14"></a>    Entry tmp<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
-<span id="cb16-15"><a aria-label="15"></a>    d <span class="op">=</span> tmp<span class="op">.</span>GetData<span class="op">();</span></span>
-<span id="cb16-16"><a aria-label="16"></a>  <span class="op">}</span></span>
-<span id="cb16-17"><a aria-label="17"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb16-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb16-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f320f7df" class="cell" data-execution_count="3">
+<span id="cb16-9"><a aria-label="9"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Removing data..."</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb16-10"><a aria-label="10"></a><span class="op">};</span></span>
+<span id="cb16-11"><a aria-label="11"></a></span>
+<span id="cb16-12"><a aria-label="12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-13"><a aria-label="13"></a>  <span class="dt">double</span> <span class="op">*</span>d<span class="op">;</span></span>
+<span id="cb16-14"><a aria-label="14"></a>  <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-15"><a aria-label="15"></a>    Entry tmp<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
+<span id="cb16-16"><a aria-label="16"></a>    d <span class="op">=</span> tmp<span class="op">.</span>GetData<span class="op">();</span></span>
+<span id="cb16-17"><a aria-label="17"></a>  <span class="op">}</span></span>
+<span id="cb16-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb16-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="993dd061" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
+<pre><code>Removing data...
+1</code></pre>
 </div>
 </div>
 </div></section>
-<section id="what-does-this-code-do-58" class="slide level2">
-<h2>What does this code do? 5/8</h2>
+<section id="what-does-this-code-do-57" class="slide level2">
+<h2>What does this code do? 5/7</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor4.cpp">Code file <a href="./code/main_destructor4.cpp"><code>main_destructor4.cpp</code></a></h3>
+<h3 id="code-file-main_destructor5.cpp">Code file <a href="./code/main_destructor5.cpp"><code>main_destructor5.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb18-2"><a aria-label="2"></a></span>
 <span id="cb18-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
@@ -525,7 +531,7 @@ Peter Kandolf
 <span id="cb18-6"><a aria-label="6"></a><span class="kw">public</span><span class="op">:</span></span>
 <span id="cb18-7"><a aria-label="7"></a>  Entry<span class="op">(</span><span class="dt">double</span> data<span class="op">)</span> <span class="op">:</span> _data<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_data <span class="op">=</span> data<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb18-8"><a aria-label="8"></a>  <span class="dt">double</span> <span class="op">*</span>GetData<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> _data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb18-9"><a aria-label="9"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Removing data..."</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb18-9"><a aria-label="9"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _data<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb18-10"><a aria-label="10"></a><span class="op">};</span></span>
 <span id="cb18-11"><a aria-label="11"></a></span>
 <span id="cb18-12"><a aria-label="12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
@@ -537,17 +543,16 @@ Peter Kandolf
 <span id="cb18-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb18-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb18-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="39a0c066" class="cell" data-execution_count="4">
+<div id="ef97ce34" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>Removing data...
-1</code></pre>
+<pre><code>1.19233e-313</code></pre>
 </div>
 </div>
 </div></section>
-<section id="what-does-this-code-do-68" class="slide level2">
-<h2>What does this code do? 6/8</h2>
+<section id="what-does-this-code-do-67" class="slide level2">
+<h2>What does this code do? 6/7</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor5.cpp">Code file <a href="./code/main_destructor5.cpp"><code>main_destructor5.cpp</code></a></h3>
+<h3 id="code-file-main_destructor6.cpp">Code file <a href="./code/main_destructor6.cpp"><code>main_destructor6.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb20-2"><a aria-label="2"></a></span>
 <span id="cb20-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
@@ -568,16 +573,16 @@ Peter Kandolf
 <span id="cb20-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb20-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb20-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="30baa315" class="cell" data-execution_count="5">
+<div id="2f72aace" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
-<pre><code>1.14136e-313</code></pre>
+<pre><code>1.167e-313</code></pre>
 </div>
 </div>
 </div></section>
-<section id="what-does-this-code-do-78" class="slide level2">
-<h2>What does this code do? 7/8</h2>
+<section id="what-does-this-code-do-77" class="slide level2">
+<h2>What does this code do? 7/7</h2>
 <div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor6.cpp">Code file <a href="./code/main_destructor6.cpp"><code>main_destructor6.cpp</code></a></h3>
+<h3 id="code-file-main_destructor7.cpp">Code file <a href="./code/main_destructor7.cpp"><code>main_destructor7.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb22-2"><a aria-label="2"></a></span>
 <span id="cb22-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
@@ -587,47 +592,17 @@ Peter Kandolf
 <span id="cb22-7"><a aria-label="7"></a>  Entry<span class="op">(</span><span class="dt">double</span> data<span class="op">)</span> <span class="op">:</span> _data<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_data <span class="op">=</span> data<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb22-8"><a aria-label="8"></a>  <span class="dt">double</span> <span class="op">*</span>GetData<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> _data<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb22-9"><a aria-label="9"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb22-10"><a aria-label="10"></a><span class="op">};</span></span>
-<span id="cb22-11"><a aria-label="11"></a></span>
-<span id="cb22-12"><a aria-label="12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb22-13"><a aria-label="13"></a>  <span class="dt">double</span> <span class="op">*</span>d<span class="op">;</span></span>
-<span id="cb22-14"><a aria-label="14"></a>  <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb22-15"><a aria-label="15"></a>    Entry tmp<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
-<span id="cb22-16"><a aria-label="16"></a>    d <span class="op">=</span> tmp<span class="op">.</span>GetData<span class="op">();</span></span>
-<span id="cb22-17"><a aria-label="17"></a>  <span class="op">}</span></span>
-<span id="cb22-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb22-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb22-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="6e9d10d9" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-stdout">
-<pre><code>1.13548e-313</code></pre>
-</div>
-</div>
-</div></section>
-<section id="what-does-this-code-do-88" class="slide level2">
-<h2>What does this code do? 8/8</h2>
-<div class="column custom-box" style="width:100%;">
-<h3 id="code-file-main_destructor7.cpp">Code file <a href="./code/main_destructor7.cpp"><code>main_destructor7.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb24-2"><a aria-label="2"></a></span>
-<span id="cb24-3"><a aria-label="3"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
-<span id="cb24-4"><a aria-label="4"></a>  <span class="dt">double</span> <span class="op">*</span>_data<span class="op">;</span></span>
-<span id="cb24-5"><a aria-label="5"></a></span>
-<span id="cb24-6"><a aria-label="6"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb24-7"><a aria-label="7"></a>  Entry<span class="op">(</span><span class="dt">double</span> data<span class="op">)</span> <span class="op">:</span> _data<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_data <span class="op">=</span> data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb24-8"><a aria-label="8"></a>  <span class="dt">double</span> <span class="op">*</span>GetData<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> _data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb24-9"><a aria-label="9"></a>  <span class="op">~</span>Entry<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb24-10"><a aria-label="10"></a>  <span class="kw">friend</span> <span class="dt">double</span> <span class="op">*</span>GetData<span class="op">(</span>Entry <span class="op">&amp;</span>e<span class="op">);</span></span>
-<span id="cb24-11"><a aria-label="11"></a><span class="op">};</span></span>
-<span id="cb24-12"><a aria-label="12"></a></span>
-<span id="cb24-13"><a aria-label="13"></a><span class="dt">double</span> <span class="op">*</span>GetData<span class="op">(</span>Entry <span class="op">&amp;</span>e<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> e<span class="op">.</span>_data<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb24-14"><a aria-label="14"></a></span>
-<span id="cb24-15"><a aria-label="15"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb24-16"><a aria-label="16"></a>  Entry tmp<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
-<span id="cb24-17"><a aria-label="17"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>GetData<span class="op">(</span>tmp<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb24-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb24-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="1b469725" class="cell" data-execution_count="7">
+<span id="cb22-10"><a aria-label="10"></a>  <span class="kw">friend</span> <span class="dt">double</span> <span class="op">*</span>GetData<span class="op">(</span>Entry <span class="op">&amp;</span>e<span class="op">);</span></span>
+<span id="cb22-11"><a aria-label="11"></a><span class="op">};</span></span>
+<span id="cb22-12"><a aria-label="12"></a></span>
+<span id="cb22-13"><a aria-label="13"></a><span class="dt">double</span> <span class="op">*</span>GetData<span class="op">(</span>Entry <span class="op">&amp;</span>e<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> e<span class="op">.</span>_data<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb22-14"><a aria-label="14"></a></span>
+<span id="cb22-15"><a aria-label="15"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb22-16"><a aria-label="16"></a>  Entry tmp<span class="op">(</span><span class="fl">1.0</span><span class="op">);</span></span>
+<span id="cb22-17"><a aria-label="17"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>GetData<span class="op">(</span>tmp<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb22-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb22-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4126e4de" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
@@ -656,25 +631,25 @@ Peter Kandolf
 <h2>Copy constructor 1/3</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_copy.cpp">Code file <a href="./code/main_copy.cpp"><code>main_copy.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb26-2"><a aria-label="2"></a></span>
-<span id="cb26-3"><a aria-label="3"></a><span class="kw">class</span> A <span class="op">{</span></span>
-<span id="cb26-4"><a aria-label="4"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb26-5"><a aria-label="5"></a>  <span class="dt">double</span> <span class="op">*</span>_d<span class="op">;</span></span>
-<span id="cb26-6"><a aria-label="6"></a>  A<span class="op">(</span><span class="dt">double</span> d<span class="op">)</span> <span class="op">:</span> _d<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_d <span class="op">=</span> d<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb26-7"><a aria-label="7"></a>  <span class="op">~</span>A<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _d<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb26-8"><a aria-label="8"></a><span class="op">};</span></span>
-<span id="cb26-9"><a aria-label="9"></a></span>
-<span id="cb26-10"><a aria-label="10"></a><span class="dt">void</span> foo<span class="op">(</span>A aFoo<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb26-11"><a aria-label="11"></a></span>
-<span id="cb26-12"><a aria-label="12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb26-13"><a aria-label="13"></a>  A a<span class="op">(</span><span class="fl">1.234</span><span class="op">);</span></span>
-<span id="cb26-14"><a aria-label="14"></a>  foo<span class="op">(</span>a<span class="op">);</span></span>
-<span id="cb26-15"><a aria-label="15"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>a<span class="op">.</span>_d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb26-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f2bcaea9" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb24-2"><a aria-label="2"></a></span>
+<span id="cb24-3"><a aria-label="3"></a><span class="kw">class</span> A <span class="op">{</span></span>
+<span id="cb24-4"><a aria-label="4"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb24-5"><a aria-label="5"></a>  <span class="dt">double</span> <span class="op">*</span>_d<span class="op">;</span></span>
+<span id="cb24-6"><a aria-label="6"></a>  A<span class="op">(</span><span class="dt">double</span> d<span class="op">)</span> <span class="op">:</span> _d<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_d <span class="op">=</span> d<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb24-7"><a aria-label="7"></a>  <span class="op">~</span>A<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _d<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb24-8"><a aria-label="8"></a><span class="op">};</span></span>
+<span id="cb24-9"><a aria-label="9"></a></span>
+<span id="cb24-10"><a aria-label="10"></a><span class="dt">void</span> foo<span class="op">(</span>A aFoo<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb24-11"><a aria-label="11"></a></span>
+<span id="cb24-12"><a aria-label="12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb24-13"><a aria-label="13"></a>  A a<span class="op">(</span><span class="fl">1.234</span><span class="op">);</span></span>
+<span id="cb24-14"><a aria-label="14"></a>  foo<span class="op">(</span>a<span class="op">);</span></span>
+<span id="cb24-15"><a aria-label="15"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>a<span class="op">.</span>_d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb24-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d50fcaa9" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>1.14451e-313</code></pre>
+<pre><code>1.30963e-313</code></pre>
 </div>
 </div>
 </div></section>
@@ -694,28 +669,28 @@ Peter Kandolf
 <h2>Copy constructor 3/3</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_copy2.cpp">Code file <a href="./code/main_copy2.cpp"><code>main_copy2.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb28-2"><a aria-label="2"></a></span>
-<span id="cb28-3"><a aria-label="3"></a><span class="kw">class</span> A <span class="op">{</span></span>
-<span id="cb28-4"><a aria-label="4"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb28-5"><a aria-label="5"></a>  <span class="dt">double</span> <span class="op">*</span>_d<span class="op">;</span></span>
-<span id="cb28-6"><a aria-label="6"></a>  A<span class="op">(</span><span class="dt">double</span> d<span class="op">)</span> <span class="op">:</span> _d<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_d <span class="op">=</span> d<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb28-7"><a aria-label="7"></a>  A<span class="op">(</span><span class="at">const</span> A <span class="op">&amp;</span>a<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb28-8"><a aria-label="8"></a>    _d <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">;</span></span>
-<span id="cb28-9"><a aria-label="9"></a>    <span class="op">*</span>_d <span class="op">=</span> <span class="op">*</span>a<span class="op">.</span>_d<span class="op">;</span></span>
-<span id="cb28-10"><a aria-label="10"></a>  <span class="op">}</span></span>
-<span id="cb28-11"><a aria-label="11"></a>  <span class="op">~</span>A<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _d<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb28-12"><a aria-label="12"></a><span class="op">};</span></span>
-<span id="cb28-13"><a aria-label="13"></a><span class="dt">void</span> foo<span class="op">(</span>A a<span class="op">)</span> <span class="op">{}</span> <span class="co">// calls copy constructor</span></span>
-<span id="cb28-14"><a aria-label="14"></a></span>
-<span id="cb28-15"><a aria-label="15"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb28-16"><a aria-label="16"></a>  A a<span class="op">(</span><span class="fl">1.234</span><span class="op">);</span></span>
-<span id="cb28-17"><a aria-label="17"></a>  <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span></span>
-<span id="cb28-18"><a aria-label="18"></a>    A b<span class="op">(</span>a<span class="op">);</span> <span class="co">// calls copy constructor</span></span>
-<span id="cb28-19"><a aria-label="19"></a>  foo<span class="op">(</span>a<span class="op">);</span></span>
-<span id="cb28-20"><a aria-label="20"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>a<span class="op">.</span>_d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb28-21"><a aria-label="21"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c9a60fd2" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb26-2"><a aria-label="2"></a></span>
+<span id="cb26-3"><a aria-label="3"></a><span class="kw">class</span> A <span class="op">{</span></span>
+<span id="cb26-4"><a aria-label="4"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-5"><a aria-label="5"></a>  <span class="dt">double</span> <span class="op">*</span>_d<span class="op">;</span></span>
+<span id="cb26-6"><a aria-label="6"></a>  A<span class="op">(</span><span class="dt">double</span> d<span class="op">)</span> <span class="op">:</span> _d<span class="op">(</span><span class="kw">new</span> <span class="dt">double</span><span class="op">)</span> <span class="op">{</span> <span class="op">*</span>_d <span class="op">=</span> d<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb26-7"><a aria-label="7"></a>  A<span class="op">(</span><span class="at">const</span> A <span class="op">&amp;</span>a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-8"><a aria-label="8"></a>    _d <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">;</span></span>
+<span id="cb26-9"><a aria-label="9"></a>    <span class="op">*</span>_d <span class="op">=</span> <span class="op">*</span>a<span class="op">.</span>_d<span class="op">;</span></span>
+<span id="cb26-10"><a aria-label="10"></a>  <span class="op">}</span></span>
+<span id="cb26-11"><a aria-label="11"></a>  <span class="op">~</span>A<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> _d<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb26-12"><a aria-label="12"></a><span class="op">};</span></span>
+<span id="cb26-13"><a aria-label="13"></a><span class="dt">void</span> foo<span class="op">(</span>A a<span class="op">)</span> <span class="op">{}</span> <span class="co">// calls copy constructor</span></span>
+<span id="cb26-14"><a aria-label="14"></a></span>
+<span id="cb26-15"><a aria-label="15"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-16"><a aria-label="16"></a>  A a<span class="op">(</span><span class="fl">1.234</span><span class="op">);</span></span>
+<span id="cb26-17"><a aria-label="17"></a>  <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span></span>
+<span id="cb26-18"><a aria-label="18"></a>    A b<span class="op">(</span>a<span class="op">);</span> <span class="co">// calls copy constructor</span></span>
+<span id="cb26-19"><a aria-label="19"></a>  foo<span class="op">(</span>a<span class="op">);</span></span>
+<span id="cb26-20"><a aria-label="20"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>a<span class="op">.</span>_d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb26-21"><a aria-label="21"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c8d44629" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>1.234</code></pre>
 </div>
@@ -782,7 +757,7 @@ Peter Kandolf
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\">\u003ckbd>b\u003c/kbd> Toggle Chalkboard\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"6\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\">\u003ckbd>c\u003c/kbd> Toggle Notes Canvas\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"7\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\">\u003ckbd>d\u003c/kbd> Download Drawings\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"8\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu"},
 'chalkboard': {"buttons":true,"theme":"whiteboard","chalkEffect":0},
 'smaller': false,
  
@@ -1038,7 +1013,8 @@ Peter Kandolf
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
           // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
           for (var i=0; i<links.length; i++) {
             const link = links[i];
             if (!isInternal(link.href)) {
@@ -1047,8 +1023,69 @@ Peter Kandolf
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
+              if (!link.classList.contains('no-external-icon')) {
+              }
             }
           }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
           const config = {
             allowHTML: true,
@@ -1062,6 +1099,7 @@ Peter Kandolf
             interactiveBorder: 10,
             theme: 'light-border',
             placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
           };
           if (contentFn) {
             config.content = contentFn;

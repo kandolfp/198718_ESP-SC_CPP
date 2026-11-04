@@ -6,13 +6,13 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.20">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.9">
 
   <title>C and C++ in Simulation Development – 1. Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-4782559d5f3a9b0ca613ce4bb94d040f.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-92e143bd307aa793c779057e6fe893fa.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -256,7 +256,7 @@ Peter Kandolf
 <span id="cb2-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"add(1, 2) = "</span> <span class="op">&lt;&lt;</span> add<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb2-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb2-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f4071220" class="cell" data-execution_count="1">
+<div id="079e8b0e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>add(1, 2) = 3</code></pre>
 </div>
@@ -283,7 +283,7 @@ Peter Kandolf
 <span id="cb4-15"><a aria-label="15"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> add<span class="op">(</span><span class="fl">1.0</span><span class="op">,</span> <span class="fl">2.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb4-16"><a aria-label="16"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb4-17"><a aria-label="17"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e7c2ec28" class="cell" data-execution_count="2">
+<div id="a25a6cd8" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>int+ 3
 double+ 3</code></pre>
@@ -342,7 +342,7 @@ double+ 3</code></pre>
 <span id="cb7-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> add<span class="op">(</span>c<span class="op">,</span> i<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb7-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb7-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="88989598" class="cell" data-execution_count="3">
+<div id="84ae2c99" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>double+ 3.4
 int+ 100</code></pre>
@@ -366,7 +366,7 @@ int+ 100</code></pre>
 <span id="cb9-8"><a aria-label="8"></a></span>
 <span id="cb9-9"><a aria-label="9"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb9-10"><a aria-label="10"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="054a2609" class="cell" data-execution_count="4">
+<div id="98726048" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>number inputs: 4, arguments are:
 0: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/03_functions/code/main_argv.out
@@ -395,10 +395,10 @@ int+ 100</code></pre>
 <span id="cb11-10"><a aria-label="10"></a>  print_address<span class="op">(</span>a<span class="op">);</span></span>
 <span id="cb11-11"><a aria-label="11"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb11-12"><a aria-label="12"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="2ed9fb32" class="cell" data-execution_count="5">
+<div id="dae7253e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>Address in function 0x7ffe72adffe0
-Address in function 0x7ffe72adffb8</code></pre>
+<pre><code>Address in function 0x7fffeff0c3a0
+Address in function 0x7fffeff0c378</code></pre>
 </div>
 </div>
 </div><ul>
@@ -424,10 +424,10 @@ Address in function 0x7ffe72adffb8</code></pre>
 <span id="cb13-11"><a aria-label="11"></a>  print_address<span class="op">(&amp;</span>a<span class="op">);</span></span>
 <span id="cb13-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb13-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="12267083" class="cell" data-execution_count="6">
+<div id="5130b16b" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
-<pre><code>Address in function 0x7ffefc128980
-Address in function 0x7ffefc128980</code></pre>
+<pre><code>Address in function 0x7ffe25adf100
+Address in function 0x7ffe25adf100</code></pre>
 </div>
 </div>
 </div><ul>
@@ -453,10 +453,10 @@ Address in function 0x7ffefc128980</code></pre>
 <span id="cb15-11"><a aria-label="11"></a>  print_address<span class="op">(</span>a<span class="op">);</span></span>
 <span id="cb15-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb15-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="4baa9ea0" class="cell" data-execution_count="7">
+<div id="9d599a06" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>Address in function 0x7ffccf274020
-Address in function 0x7ffccf274020</code></pre>
+<pre><code>Address in function 0x7ffedc6b8000
+Address in function 0x7ffedc6b8000</code></pre>
 </div>
 </div>
 </div><ul>
@@ -482,9 +482,9 @@ Address in function 0x7ffccf274020</code></pre>
 <span id="cb17-11"><a aria-label="11"></a>  print_value<span class="op">(</span>a<span class="op">);</span></span>
 <span id="cb17-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb17-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f1eeaa0a" class="cell" data-execution_count="8">
+<div id="d5ce842e" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>Address in function 0x7ffcdc549140
+<pre><code>Address in function 0x7ffc240b6750
 0</code></pre>
 </div>
 </div>
@@ -520,7 +520,7 @@ Address in function 0x7ffccf274020</code></pre>
 <span id="cb20-8"><a aria-label="8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> a <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb20-9"><a aria-label="9"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb20-10"><a aria-label="10"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="fd1a7cec" class="cell" data-execution_count="9">
+<div id="dbab4b3d" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>1.2</code></pre>
 </div>
@@ -540,7 +540,7 @@ Address in function 0x7ffccf274020</code></pre>
 <span id="cb22-8"><a aria-label="8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> a <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb22-9"><a aria-label="9"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb22-10"><a aria-label="10"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="732c9532" class="cell" data-execution_count="10">
+<div id="5f32d080" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>0.123</code></pre>
 </div>
@@ -563,7 +563,7 @@ Address in function 0x7ffccf274020</code></pre>
 <span id="cb24-11"><a aria-label="11"></a>  </span>
 <span id="cb24-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb24-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="684e2d8d" class="cell" data-execution_count="11">
+<div id="88c92760" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>0.123</code></pre>
 </div>
@@ -588,7 +588,7 @@ Address in function 0x7ffccf274020</code></pre>
 <span id="cb26-13"><a aria-label="13"></a>  </span>
 <span id="cb26-14"><a aria-label="14"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb26-15"><a aria-label="15"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="ceeba38b" class="cell" data-execution_count="12">
+<div id="24060a8e" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>1.234</code></pre>
 </div>
@@ -613,7 +613,7 @@ Address in function 0x7ffccf274020</code></pre>
 <span id="cb28-13"><a aria-label="13"></a>  </span>
 <span id="cb28-14"><a aria-label="14"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb28-15"><a aria-label="15"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="fc659e08" class="cell" data-execution_count="13">
+<div id="d2f8100f" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>0</code></pre>
 </div>
@@ -668,7 +668,7 @@ Address in function 0x7ffccf274020</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\">\u003ckbd>b\u003c/kbd> Toggle Chalkboard\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"6\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\">\u003ckbd>c\u003c/kbd> Toggle Notes Canvas\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"7\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\">\u003ckbd>d\u003c/kbd> Download Drawings\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"8\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu"},
 'chalkboard': {"buttons":true,"theme":"whiteboard","chalkEffect":0},
 'smaller': false,
  
@@ -924,7 +924,8 @@ Address in function 0x7ffccf274020</code></pre>
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
           // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
           for (var i=0; i<links.length; i++) {
             const link = links[i];
             if (!isInternal(link.href)) {
@@ -933,8 +934,69 @@ Address in function 0x7ffccf274020</code></pre>
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
+              if (!link.classList.contains('no-external-icon')) {
+              }
             }
           }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
           const config = {
             allowHTML: true,
@@ -948,6 +1010,7 @@ Address in function 0x7ffccf274020</code></pre>
             interactiveBorder: 10,
             theme: 'light-border',
             placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
           };
           if (contentFn) {
             config.content = contentFn;

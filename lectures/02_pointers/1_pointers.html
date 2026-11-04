@@ -6,13 +6,13 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.20">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.9">
 
   <title>C and C++ in Simulation Development – 1. Pointers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-4782559d5f3a9b0ca613ce4bb94d040f.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-92e143bd307aa793c779057e6fe893fa.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -235,7 +235,7 @@ Peter Kandolf
 <p>and were maybe confused by the result…</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="can-you-explain-the-behaviour-in-python">Can you explain the behaviour in Python?</h3>
-<div id="c82bcd68" class="cell" data-execution_count="1">
+<div id="2602dc94" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb1-2"><a aria-label="2"></a>b <span class="op">=</span> a</span>
 <span id="cb1-3"><a aria-label="3"></a>a <span class="op">=</span> <span class="dv">5</span></span>
@@ -244,7 +244,7 @@ Peter Kandolf
 <pre><code>a = 5, b = 1</code></pre>
 </div>
 </div>
-<div id="af89637f" class="cell" data-execution_count="2">
+<div id="76b692b0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb3-2"><a aria-label="2"></a>b <span class="op">=</span> a</span>
 <span id="cb3-3"><a aria-label="3"></a>a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span>
@@ -411,10 +411,10 @@ Peter Kandolf
 <span id="cb8-8"><a aria-label="8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Addresses: "</span><span class="op">&lt;&lt;</span> <span class="op">&amp;</span>a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>b <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb8-9"><a aria-label="9"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb8-10"><a aria-label="10"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="394d2bae" class="cell" data-execution_count="3">
+<div id="8ddf570d" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>Addresses: 0x7ffd70453c18 0x7ffd70453c20
-Addresses: 0x7ffd70453c18 0x7ffd70453c20</code></pre>
+<pre><code>Addresses: 0x7ffc6aaf8248 0x7ffc6aaf8250
+Addresses: 0x7ffc6aaf8248 0x7ffc6aaf8250</code></pre>
 </div>
 </div>
 </div></div><div class="column" style="width:33%;">
@@ -472,10 +472,10 @@ Addresses: 0x7ffd70453c18 0x7ffd70453c20</code></pre>
 <span id="cb10-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Addresses: "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>p<span class="op">;</span></span>
 <span id="cb10-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb10-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="07e6171b" class="cell" data-execution_count="4">
+<div id="c32e1070" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 0.1 0.1
-Addresses: 0x7fff7a1d5aa8 0x7fff7a1d5aa8 0x7fff7a1d5ab0</code></pre>
+Addresses: 0x7ffda10edda8 0x7ffda10edda8 0x7ffda10eddb0</code></pre>
 </div>
 </div>
 </div></div><div class="column" style="width:33%;">
@@ -530,10 +530,10 @@ Addresses: 0x7fff7a1d5aa8 0x7fff7a1d5aa8 0x7fff7a1d5ab0</code></pre>
 <span id="cb12-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Addresses: "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>p<span class="op">;</span></span>
 <span id="cb12-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb12-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="edb84308" class="cell" data-execution_count="5">
+<div id="f6c01427" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 0.1 0.1
-Addresses: 0x7ffc18f54b58 0x7ffc18f54b58 0x7ffc18f54b60</code></pre>
+Addresses: 0x7fff9bc4c088 0x7fff9bc4c088 0x7fff9bc4c090</code></pre>
 </div>
 </div>
 </div></div><div class="column" style="width:33%;">
@@ -594,10 +594,10 @@ Addresses: 0x7ffc18f54b58 0x7ffc18f54b58 0x7ffc18f54b60</code></pre>
 <span id="cb14-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Addresses: "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>p<span class="op">;</span></span>
 <span id="cb14-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb14-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="2ea3080d" class="cell" data-execution_count="6">
+<div id="96729c7e" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 0.1 0.1
-Addresses: 0x7ffcc464e5b8 0x7ffcc464e5b8 0x7ffcc464e5c0</code></pre>
+Addresses: 0x7ffd50df7dc8 0x7ffd50df7dc8 0x7ffd50df7dd0</code></pre>
 </div>
 </div>
 </div></div><div class="column" style="width:33%;">
@@ -658,10 +658,10 @@ Addresses: 0x7ffcc464e5b8 0x7ffcc464e5b8 0x7ffcc464e5c0</code></pre>
 <span id="cb16-9"><a aria-label="9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Addresses: "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>p<span class="op">;</span></span>
 <span id="cb16-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb16-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="674d783c" class="cell" data-execution_count="7">
+<div id="0e1189a8" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 0.1 0.1
-Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
+Addresses: 0x7ffeb4de8388 0x7ffeb4de8388 0x7ffeb4de8390</code></pre>
 </div>
 </div>
 </div></div><div class="column" style="width:33%;">
@@ -724,7 +724,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 <span id="cb18-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Values: "</span> <span class="op">&lt;&lt;</span> a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">**</span>pp <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb18-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb18-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="937f2065" class="cell" data-execution_count="8">
+<div id="afb78a2c" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 1 1 1</code></pre>
 </div>
@@ -779,7 +779,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 <span id="cb20-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Values: "</span> <span class="op">&lt;&lt;</span> a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">**</span>pp <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb20-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb20-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="72bfbaf3" class="cell" data-execution_count="9">
+<div id="9b664c35" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 1 1 1</code></pre>
 </div>
@@ -846,7 +846,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 <span id="cb22-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Values: "</span> <span class="op">&lt;&lt;</span> a <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>p <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> <span class="op">**</span>pp <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb22-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb22-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="deb9d6a3" class="cell" data-execution_count="10">
+<div id="0c334bb8" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>Values: 1 1 1</code></pre>
 </div>
@@ -957,15 +957,15 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 <span id="cb26-6"><a aria-label="6"></a></span>
 <span id="cb26-7"><a aria-label="7"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb26-8"><a aria-label="8"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="28d53e31" class="cell" data-execution_count="11">
+<div id="c2eeeaa2" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">main_pointers6.cpp:</span> In function ‘<span class="ansi-bold">int</span><span class="ansi-green-fg ansi-bold"> main</span>()’:
-<span class="ansi-bold">main_pointers6.cpp:4:12:</span> <span class="ansi-red-fg ansi-bold">error: </span>invalid conversion from ‘<span class="ansi-bold">int</span>’ to ‘<span class="ansi-bold">int*</span>’ [<span class="ansi-red-fg ansi-bold">-fpermissive</span>]
-    4 |   int *i = <span class="ansi-red-fg ansi-bold">1</span>, j = 2;
-      |            <span class="ansi-red-fg ansi-bold">^</span>
-      |            <span class="ansi-red-fg ansi-bold">|</span>
-      |            <span class="ansi-red-fg ansi-bold">int</span>
+<span class="ansi-bold">main_pointers6.cpp:4:12:</span> <span class="ansi-red-fg ansi-bold">error: </span>invalid conversion from ‘<span class="ansi-green-fg ansi-bold">int</span>’ to ‘<span class="ansi-blue-fg ansi-bold">int*</span>’ [<span class="ansi-red-fg ansi-bold">-fpermissive</span>]
+    4 |   int *i = <span class="ansi-green-fg ansi-bold">1</span>, j = 2;
+      |            <span class="ansi-green-fg ansi-bold">^</span>
+      |            <span class="ansi-green-fg ansi-bold">|</span>
+      |            <span class="ansi-green-fg ansi-bold">int</span>
 </pre>
 </div>
 </div>
@@ -1002,7 +1002,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 <span id="cb28-8"><a aria-label="8"></a></span>
 <span id="cb28-9"><a aria-label="9"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb28-10"><a aria-label="10"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d3f5660e" class="cell" data-execution_count="12">
+<div id="12088547" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>5</code></pre>
 </div>
@@ -1068,7 +1068,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 <span id="cb34-7"><a aria-label="7"></a></span>
 <span id="cb34-8"><a aria-label="8"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb34-9"><a aria-label="9"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="77d8dff5" class="cell" data-execution_count="13">
+<div id="8d380db6" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>4</code></pre>
 </div>
@@ -1131,7 +1131,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\">\u003ckbd>b\u003c/kbd> Toggle Chalkboard\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"6\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\">\u003ckbd>c\u003c/kbd> Toggle Notes Canvas\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"7\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\">\u003ckbd>d\u003c/kbd> Download Drawings\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"8\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu"},
 'chalkboard': {"buttons":true,"theme":"whiteboard","chalkEffect":0},
 'smaller': false,
  
@@ -1387,7 +1387,8 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
           // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
           for (var i=0; i<links.length; i++) {
             const link = links[i];
             if (!isInternal(link.href)) {
@@ -1396,8 +1397,69 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
+              if (!link.classList.contains('no-external-icon')) {
+              }
             }
           }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
           const config = {
             allowHTML: true,
@@ -1411,6 +1473,7 @@ Addresses: 0x7ffea0fcfd38 0x7ffea0fcfd38 0x7ffea0fcfd40</code></pre>
             interactiveBorder: 10,
             theme: 'light-border',
             placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
           };
           if (contentFn) {
             config.content = contentFn;
