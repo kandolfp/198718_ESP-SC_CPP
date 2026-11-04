@@ -195,25 +195,17 @@ int main() {
 
 
 ## Do I need a destructor?
-```{.cpp}
-class Entry {
-  double *_data;
 
-public:
-  Entry(double data) : _data(NULL) {
-    _data = new double[10];
-    _data[0] = data;
-  }
-};
-
-int main() {
-  double *data = new double;
-  Entry tmp(*data);
-  delete data;
-  return 0;
-}
-
+::: {.column width="100%" .custom-box}
+### Code file [`main_destructor0.cpp`](./code/main_destructor0.cpp)
+```{.cpp include="./code/main_destructor0.cpp"}
 ```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor0.cpp
+```
+:::
+
 
 ## What does this code do? 1/7
 
