@@ -68,7 +68,7 @@ Why does it make sense to use a Linter?
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/phase.c
+%run ../../scripts/compile_and_run_cpp.py ./code/phase.c -w
 ```
 :::::
 ::::
