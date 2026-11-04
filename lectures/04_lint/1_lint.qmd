@@ -17,7 +17,7 @@ filters:
 :::
 
 
-## Linter
+## Linter 1/2
 Why does it make sense to use a Linter?
 
 - In C/C++ the control flow is done via `{ ... }`
@@ -27,6 +27,10 @@ Why does it make sense to use a Linter?
    - to maintain the code
    - to homogenise styles between different people
 - We use such tools to have consistent code style/coding standard in the project
+
+## Linter 2/2
+Why does it make sense to use a Linter?
+
 - It allows to check for (common) problems &rarr; clean-up before a commit
    - Static code analysis like unreachable code
    - _assigned but never used_
@@ -147,9 +151,9 @@ What is wrong with the following code snippet?
 
 ```{python}
 #| echo: false
-#| results: asis
-print("$ cppcheck --enable=all code/array.cpp")
-%sx cppcheck --enable=all code/array.cpp
+%%bash
+echo "$ cppcheck --enable=all ./code/array.cpp"
+cppcheck --enable=all ./code/array.cpp 2>&1
 ```
 
 ## Why a code analysis is beneficial? 3/4
@@ -164,9 +168,9 @@ What is wrong with the following code snippet?
 
 ```{python}
 #| echo: false
-#| results: asis
-print("$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17")
-%sx clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17 
+%%bash
+echo "$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17"
+clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17 
 ```
 
 
@@ -182,9 +186,9 @@ What is wrong with the following code snippet?
 
 ```{python}
 #| echo: false
-#| results: asis
-print("$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17")
-%sx clang-tidy code/array.cpp -checks=readability-* -- -std=c++17
+%%bash
+echo "$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17"
+clang-tidy code/array.cpp -checks=readability-* -- -std=c++17
 ```
 
 ## :writing_hand: In class Exercise
