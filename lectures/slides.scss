@@ -49,6 +49,13 @@ $code-inline-font-size: $code-font-size !default;
   max-height: 600px !important;
 } */
 
+
+.reveal .tall-output,
+.reveal .tall-output pre {
+  max-height: 1000px !important;
+  overflow-y: auto;
+}
+
 .reveal .custom-box {
   margin-left: 0;
   border-radius: 5px;
@@ -88,4 +95,12 @@ $code-inline-font-size: $code-font-size !default;
   color: #333 !important;
   padding: 10px;
   //display: block; /* Ensures padding applies correctly */
+}
+
+.tall-output pre,
+.tall-output .cell-output pre code,
+.tall-output .cell-output-stderr pre code,
+-tall-output  .cell-output-stdout pre code {
+  max-height: 1000px !important;
+  overflow-y: auto !important;
 }

@@ -63,13 +63,13 @@ Why does it make sense to use a Linter?
 ::::
 :::: {.column width="50%"}
 ::::: {.column width="100%" .custom-box}
-### Code file [`phase.c`](./code/phase.c)
-```{.cpp include="./code/phase.c"}
-```
+### Code file [`phase.c`](./code/phase.c) - Output
+:::::: {.tall-output}
 ```{python}
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/phase.c -std=gnu17 -Wall -Wextra -pedantic -Wno-implicit-int -Wno-strict-prototypes -Wno-unknown-warning-option -O3
 ```
+::::::
 :::::
 ::::
 :::
