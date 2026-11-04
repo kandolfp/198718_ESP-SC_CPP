@@ -215,38 +215,20 @@ int main() {
 
 ```
 
-## What does this code do? 1/8
-```{.cpp}
-class Entry {
-  double *_data;
-
-public:
-  Entry(double data) : _data(&data) {}
-  ~Entry() { delete data; }
-};
-
-int main() {
-  double *data = new double;
-  Entry tmp(data);
-  delete data;
-  return 0;
-}
-```
-
-## What does this code do? 2/8
+## What does this code do? 1/7
 
 ::: {.column width="100%" .custom-box}
-### Code file [`main_destructor.cpp`](./code/main_destructor.cpp)
-```{.cpp include="./code/main_destructor.cpp"}
+### Code file [`main_destructor1.cpp`](./code/main_destructor1.cpp)
+```{.cpp include="./code/main_destructor1.cpp"}
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor.cpp
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor1.cpp
 ```
 :::
 
 
-##  What does this code do? 3/8
+##  What does this code do? 2/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor2.cpp`](./code/main_destructor2.cpp)
@@ -259,7 +241,7 @@ int main() {
 :::
 
 
-##  What does this code do? 4/8
+##  What does this code do? 3/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor3.cpp`](./code/main_destructor3.cpp)
@@ -271,7 +253,7 @@ int main() {
 ```
 :::
 
-##  What does this code do? 5/8
+##  What does this code do? 4/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor4.cpp`](./code/main_destructor4.cpp)
@@ -283,7 +265,7 @@ int main() {
 ```
 :::
 
-##  What does this code do? 6/8
+##  What does this code do? 5/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor5.cpp`](./code/main_destructor5.cpp)
@@ -295,7 +277,7 @@ int main() {
 ```
 :::
 
-##  What does this code do? 7/8
+##  What does this code do? 6/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor6.cpp`](./code/main_destructor6.cpp)
@@ -303,12 +285,12 @@ int main() {
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor5.cpp
+%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor6.cpp
 ```
 :::
 
 
-##  What does this code do? 8/8
+##  What does this code do? 7/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor7.cpp`](./code/main_destructor7.cpp)
