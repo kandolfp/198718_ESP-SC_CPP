@@ -289,7 +289,7 @@ Peter Kandolf
 </div></section>
 <section id="building-with-cmake-13" class="slide level2">
 <h2>Building with cmake 1/3</h2>
-<div id="736b7f94" class="cell" data-execution_count="1">
+<div id="3ece8dc4" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ cmake -S . -B build
 -- The C compiler identification is GNU 15.2.0
@@ -307,7 +307,7 @@ Peter Kandolf
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE
--- Configuring done (3.2s)
+-- Configuring done (3.5s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project/build</code></pre>
 </div>
@@ -315,7 +315,7 @@ Peter Kandolf
 </section>
 <section id="building-with-cmake-23" class="slide level2">
 <h2>Building with cmake 2/3</h2>
-<div id="feab72a3" class="cell" data-execution_count="2">
+<div id="3cc4bbec" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>$ cmake --build build
@@ -347,7 +347,7 @@ Peter Kandolf
 </section>
 <section id="building-with-cmake-33" class="slide level2">
 <h2>Building with cmake 3/3</h2>
-<div id="dfad20f7" class="cell" data-execution_count="3">
+<div id="e9814501" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ build/main
 1 - (1 + 1) = -1</code></pre>
@@ -413,7 +413,7 @@ Peter Kandolf
 </div></section>
 <section id="solution-gtest-22" class="slide level2">
 <h2>Solution <code>gtest</code> 2/2</h2>
-<div id="c973a632" class="cell" data-execution_count="4">
+<div id="d5a67b39" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>$ cd build/; ctest; cd -
@@ -423,7 +423,7 @@ Test project /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_l
     Start 2: MathUtilsTest.SubtractFunction
 2/2 Test #2: MathUtilsTest.SubtractFunction ...   Passed    0.00 sec
 <span class="ansi-green-fg">100% tests passed</span> out of 2
-Total Test time (real) =   0.08 sec
+Total Test time (real) =   0.11 sec
 /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/04_lint/code/project
 </pre>
 </div>
@@ -458,7 +458,7 @@ Total Test time (real) =   0.08 sec
 </div></section>
 <section id="solution-cppcheck-22" class="slide level2">
 <h2>Solution <code>cppcheck</code> 2/2</h2>
-<div id="42fa2eb7" class="cell" data-execution_count="5">
+<div id="91fabfa3" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>$ cmake --build build --target cppcheck

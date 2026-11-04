@@ -391,6 +391,8 @@ Peter Kandolf
 </section>
 <section id="do-i-need-a-destructor" class="slide level2">
 <h2>Do I need a destructor?</h2>
+<div class="column custom-box" style="width:100%;">
+<h3 id="code-file-main_destructor0.cpp">Code file <a href="./code/main_destructor0.cpp"><code>main_destructor0.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a aria-label="1"></a><span class="kw">class</span> Entry <span class="op">{</span></span>
 <span id="cb10-2"><a aria-label="2"></a>  <span class="dt">double</span> <span class="op">*</span>_data<span class="op">;</span></span>
 <span id="cb10-3"><a aria-label="3"></a></span>
@@ -407,7 +409,21 @@ Peter Kandolf
 <span id="cb10-14"><a aria-label="14"></a>  <span class="kw">delete</span> data<span class="op">;</span></span>
 <span id="cb10-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb10-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
+<div id="c9d0d7a2" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-bold">main_destructor0.cpp:</span> In constructor ‘<span class="ansi-bold">Entry::</span><span class="ansi-green-fg ansi-bold">Entry</span>(double)’:
+<span class="ansi-bold">main_destructor0.cpp:5:30:</span> <span class="ansi-red-fg ansi-bold">error: </span>‘<span class="ansi-bold">NULL</span>’ was not declared in this scope
+    5 |   Entry(double data) : _data(<span class="ansi-red-fg ansi-bold">NULL</span>) {
+      |                              <span class="ansi-red-fg ansi-bold">^~~~</span>
+<span class="ansi-bold">main_destructor0.cpp:1:1:</span> <span class="ansi-cyan-fg ansi-bold">note: </span>‘<span class="ansi-bold">NULL</span>’ is defined in header ‘<span class="ansi-bold">&lt;cstddef&gt;</span>’; this is probably fixable by adding ‘<span class="ansi-bold">#include &lt;cstddef&gt;</span>’
+  +++ |+<span class="ansi-green-fg">#include &lt;cstddef&gt;</span>
+    1 | class Entry {
+</pre>
+</div>
+</div>
+</div>
+</div></section>
 <section id="what-does-this-code-do-17" class="slide level2">
 <h2>What does this code do? 1/7</h2>
 <div class="column custom-box" style="width:100%;">
@@ -453,7 +469,7 @@ Peter Kandolf
 <span id="cb12-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb12-19"><a aria-label="19"></a><span class="op">}</span></span>
 <span id="cb12-20"><a aria-label="20"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e230cdbc" class="cell" data-execution_count="2">
+<div id="e3f72251" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
@@ -482,7 +498,7 @@ Peter Kandolf
 <span id="cb14-17"><a aria-label="17"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb14-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb14-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b437a9ae" class="cell" data-execution_count="3">
+<div id="c9850d29" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
@@ -512,7 +528,7 @@ Peter Kandolf
 <span id="cb16-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb16-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb16-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="993dd061" class="cell" data-execution_count="4">
+<div id="d65c4d1b" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Removing data...
 1</code></pre>
@@ -543,9 +559,9 @@ Peter Kandolf
 <span id="cb18-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb18-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb18-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="ef97ce34" class="cell" data-execution_count="5">
+<div id="77f941ad" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
-<pre><code>1.19233e-313</code></pre>
+<pre><code>1.13634e-313</code></pre>
 </div>
 </div>
 </div></section>
@@ -573,9 +589,9 @@ Peter Kandolf
 <span id="cb20-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb20-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb20-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="2f72aace" class="cell" data-execution_count="6">
+<div id="be9f83e6" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>1.167e-313</code></pre>
+<pre><code>1.2714e-313</code></pre>
 </div>
 </div>
 </div></section>
@@ -602,7 +618,7 @@ Peter Kandolf
 <span id="cb22-17"><a aria-label="17"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>GetData<span class="op">(</span>tmp<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb22-18"><a aria-label="18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb22-19"><a aria-label="19"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="4126e4de" class="cell" data-execution_count="7">
+<div id="914d4492" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
@@ -647,9 +663,9 @@ Peter Kandolf
 <span id="cb24-14"><a aria-label="14"></a>  foo<span class="op">(</span>a<span class="op">);</span></span>
 <span id="cb24-15"><a aria-label="15"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>a<span class="op">.</span>_d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb24-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d50fcaa9" class="cell" data-execution_count="8">
+<div id="a7eceb48" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>1.30963e-313</code></pre>
+<pre><code>1.20795e-313</code></pre>
 </div>
 </div>
 </div></section>
@@ -690,7 +706,7 @@ Peter Kandolf
 <span id="cb26-19"><a aria-label="19"></a>  foo<span class="op">(</span>a<span class="op">);</span></span>
 <span id="cb26-20"><a aria-label="20"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>a<span class="op">.</span>_d <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb26-21"><a aria-label="21"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c8d44629" class="cell" data-execution_count="9">
+<div id="26f2ed48" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>1.234</code></pre>
 </div>
