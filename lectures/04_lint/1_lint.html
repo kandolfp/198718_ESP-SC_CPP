@@ -317,13 +317,12 @@ Peter Kandolf
 <span id="cb2-13"><a aria-label="13"></a>   <span class="op">&lt;</span>a<span class="op">*(~</span>z<span class="op">&amp;</span><span class="dv">255</span><span class="op">)&gt;&gt;</span>    <span class="dv">8</span><span class="op">)</span></span>
 <span id="cb2-14"><a aria-label="14"></a>     <span class="op">^</span>z<span class="op">&gt;&gt;</span><span class="dv">8</span><span class="op">]),</span>y<span class="op">&gt;</span>  b<span class="op">?</span><span class="dv">0</span></span>
 <span id="cb2-15"><a aria-label="15"></a>        <span class="op">:</span>main<span class="op">();}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="65857e1d" class="cell" data-execution_count="1">
+<div id="a257ae44" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-bold">phase.c:4:9:</span> <span class="ansi-magenta-fg ansi-bold">warning: </span>data definition has no type or storage class
-    4 |         <span class="ansi-magenta-fg ansi-bold">a</span>,b=44,x,
-      |         <span class="ansi-magenta-fg ansi-bold">^</span>
-<span class="ansi-bold">phase.c:4:9:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">a</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
+<pre><span class="ansi-bold">phase.c:4:9:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">a</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
+    4 |         <span class="ansi-red-fg ansi-bold">a</span>,b=44,x,
+      |         <span class="ansi-red-fg ansi-bold">^</span>
 <span class="ansi-bold">phase.c:4:11:</span> <span class="ansi-red-fg ansi-bold">error: </span>type defaults to ‘<span class="ansi-bold">int</span>’ in declaration of ‘<span class="ansi-bold">b</span>’ [<span class="ansi-red-fg ansi-bold">-Wimplicit-int</span>]
     4 |         a,<span class="ansi-red-fg ansi-bold">b</span>=44,x,
       |           <span class="ansi-red-fg ansi-bold">^</span>
@@ -351,7 +350,7 @@ Peter Kandolf
 <h3 id="code-file-code_ugly.cpp">Code file <a href="./code/code_ugly.cpp"><code>code_ugly.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a aria-label="1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb3-2"><a aria-label="2"></a><span class="dt">int</span> main<span class="op">(){</span><span class="dt">int</span> x<span class="op">=</span><span class="dv">10</span><span class="op">;</span><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span>i<span class="op">++){</span><span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span>x<span class="op">+=</span>i<span class="op">;}</span><span class="cf">else</span><span class="op">{</span>x<span class="op">-=</span>i<span class="op">;}}</span><span class="bu">std::</span>cout<span class="op">&lt;&lt;</span><span class="st">"Result:"</span><span class="op">&lt;&lt;</span>x<span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span><span class="cf">return</span> <span class="dv">0</span><span class="op">;}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="31316c93" class="cell" data-execution_count="2">
+<div id="535cc1d3" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Result:12</code></pre>
 </div>
@@ -434,7 +433,7 @@ Peter Kandolf
 <span id="cb9-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
 <span id="cb9-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb9-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="2d229738" class="cell" data-execution_count="3">
+</div><div id="60a0086b" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>$ cppcheck --enable=all ./code/array.cpp
@@ -467,7 +466,7 @@ void foo(int x) {
 <span id="cb10-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
 <span id="cb10-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb10-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="4e6725a0" class="cell" data-execution_count="4">
+</div><div id="88e828e2" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ clang-tidy code/array.cpp -checks=modernize-* -- -std=c++17</code></pre>
 </div>
@@ -511,7 +510,7 @@ void foo(int x) {
 <span id="cb13-3"><a aria-label="3"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">1000</span><span class="op">)</span></span>
 <span id="cb13-4"><a aria-label="4"></a>    buf<span class="op">[</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb13-5"><a aria-label="5"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div id="e6d654c0" class="cell" data-execution_count="5">
+</div><div id="26c2a52e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17</code></pre>
 </div>
