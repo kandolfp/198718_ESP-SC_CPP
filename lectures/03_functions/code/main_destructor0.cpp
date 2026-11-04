@@ -2,8 +2,8 @@ class Entry {
   double *_data;
 
 public:
-  Entry(double data) : _data(NULL) {
-    _data = new double[10];
+  Entry(double data) : _data() {
+    _data = new double;
     _data[0] = data;
   }
 };
