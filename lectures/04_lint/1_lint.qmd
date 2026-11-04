@@ -118,6 +118,7 @@ Formatted 2024 winner \emph{International Obfuscated C Code Contest}
 ## Common tools for formatting
 There are multiple tools available
 
+- `cppcheck`
 - `clang-format`
 - `ms-vscode.cpptools` (comes with the plugin)
 
