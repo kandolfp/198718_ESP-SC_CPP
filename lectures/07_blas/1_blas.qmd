@@ -1,0 +1,141 @@
+---
+title: 1. BLAS
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# BLAS - basic linear algebra subroutines. 
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- BLAS - basic linear algebra subroutines. 
+- LAPACK - linear algebra package.
+- eigen - leveraging the two above
+:::
+
+
+## Why BLAS/LAPACK/Eigen?
+
+- Linear algebra is at the core of scientific computing, ML, graphics, simulation.
+- Highly optimized libraries deliver near-peak performance on modern CPUs.
+- Separation of concerns:
+   - BLAS: Basic building blocks (vector, matrix-vector, matrix-matrix).
+   - LAPACK: Higher-level factorizations and solvers built atop BLAS.
+   - eigen: C++ template library with expressive API; can leverage BLAS/LAPACK backends.
+- Portability: same API, different vendor implementations (OpenBLAS, BLIS, MKL, Apple Accelerate).
+
+## Ein viel zu einfaches Beispiel
+
+> I do hate sums.
+>
+> There is no greater mistake than to call arithmetic an exact science.
+>
+> There are. .. hidden laws of Number
+>
+> which it requires a mind like mine to perceive.
+>
+> For instance, if you add a sum from the bottom up,
+>
+> and then again from the top down,
+>
+> the result is always different.
+>
+>
+> MRS. LA TOUCHE
+
+_Accuracy and Stability of Numerical Algorithms (Quoted in Mathematical Gazette [819, 1924])_
+
+## Recursive sum
+
+:::: {.columns}
+
+::: {.column width="11%"}
+$$\begin{matrix} s = 0\\ x_{1}\\ x_{2}\\ x_{3}\\ x_{4}\\ x_{5}\\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=1}
+$$\begin{matrix} s\mathrel{+}=x_{1}\\ \\ x_{2}\\ x_{3}\\ x_{4}\\ x_{5}\\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=2}
+$$\begin{matrix} s\mathrel{+}=x_{2}\\ \\ \\ x_{3}\\ x_{4}\\ x_{5}\\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=3}
+$$\begin{matrix} s\mathrel{+}=x_{3}\\ \\ \\ \\ x_{4}\\ x_{5}\\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=4}
+$$\begin{matrix} s\mathrel{+}=x_{4}\\ \\ \\ \\ \\ x_{5}\\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=5}
+$$\begin{matrix} s\mathrel{+}=x_{5}\\ \\ \\ \\ \\ \\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=6}
+$$\begin{matrix} s\mathrel{+}=x_{6}\\ \\ \\ \\ \\ \\ \\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=7}
+$$\begin{matrix} s\mathrel{+}=x_{7}\\ \\ \\ \\ \\ \\ \\ \\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="11%" .fragment fragment-index=8}
+$$\begin{matrix} s\mathrel{+}=x_{8}\\ \\ \\ \\ \\ \\ \\ \\ \ \end{matrix}$$
+:::
+
+::::
+
+$s = \sum_{i=1}^8 x_i = x_1$
+[$+\, x_2$]{.fragment fragment-index=2}
+[$+\, x_3$]{.fragment fragment-index=3}
+[$+\, x_4$]{.fragment fragment-index=4}
+[$+\, x_5$]{.fragment fragment-index=5}
+[$+\, x_6$]{.fragment fragment-index=6}
+[$+\, x_7$]{.fragment fragment-index=7}
+[$+\, x_8$]{.fragment fragment-index=8}
+[$\overset{?}{=} \sum_{i=1}^8 x_{9-i}$]{.fragment fragment-index=9 style="color:orange;"}
+
+## Pairwise summation
+
+:::: {.columns}
+
+::: {.column width="20%"}
+$$\begin{matrix} x_{1}\\ x_{2}\\ x_{3}\\ x_{4}\\ x_{5}\\ x_{6}\\ x_{7}\\ x_{8} \end{matrix}$$
+:::
+
+::: {.column width="26%" .fragment fragment-index=1}
+$$\begin{matrix} \\ x_1+x_2=:x^1_1\\ \\ x_3+x_4=:x^1_2\\ \\ x_5+x_6=:x^1_3\\ \\ x_7+x_8=:x^1_4 \end{matrix}$$
+:::
+
+::: {.column width="27%" .fragment fragment-index=2}
+$$\begin{matrix} \\ \\ \\ x^1_1+x^1_2=:x^2_1\\ \\ \\ \\ x^1_3+x^1_4=:x^2_2 \end{matrix}$$
+:::
+
+::: {.column width="27%" .fragment fragment-index=3}
+$$\begin{matrix} \\ \\ \\ \\ \\ \\ \\ x^2_1+x^2_2=:s \end{matrix}$$
+:::
+
+::::
+
+:::: {.r-stack}
+
+::: {.fragment .fade-in-then-out fragment-index=1}
+$$s = \phantom{((}(x_1+x_2)+(x_3+x_4)\phantom{)} + \phantom{(}(x_5+x_6)+(x_7+x_8)\phantom{))}$$
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+$$s = \phantom{(}((x_1+x_2)+(x_3+x_4)) + ((x_5+x_6)+(x_7+x_8))\phantom{)}$$
+:::
+
+::: {.fragment fragment-index=3}
+$$s = (((x_1+x_2)+(x_3+x_4)) + ((x_5+x_6)+(x_7+x_8)))$$
+:::
+
+::::
