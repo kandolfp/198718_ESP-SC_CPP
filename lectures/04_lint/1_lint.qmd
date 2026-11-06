@@ -192,19 +192,6 @@ echo "$ clang-tidy code/array.cpp -checks=readability-* -- -std=c++17"
 clang-tidy code/array.cpp -checks=readability-* -- -std=c++17
 ```
 
-## :writing_hand: In class Exercise
-
-::: {.column width="100%" .custom-box}
-### Include a formatter in your setup
-
-Install `cppcheck` and `clang-tidy` and test them for yourself on some of our code snippets. Try different options.
-:::
-
-```bash
-# We need to install it in our linux environment
-sudo dnf install cppcheck clang-tidy
-```
-
 ## Why should we care for scientific code?
 
 ::: {.column width="100%" .custom-box}
@@ -219,3 +206,16 @@ What are your thoughts on the following statements?
 - Correct code is usually faster.
 - Sharing the code is good scientific practice.
 - I use code, I can not read/understand for my research.
+
+## :writing_hand: In class Exercise
+
+::: {.column width="100%" .custom-box}
+### Include a formatter in your setup
+
+Install `cppcheck` and `clang-tidy` and test them for yourself on some of our code snippets. Try different options.
+:::
+
+```bash
+# We need to install it in our linux environment
+sudo dnf install cppcheck clang-tidy
+```
