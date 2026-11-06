@@ -50,6 +50,7 @@ void processFile() {
 ## RAII - Library examples
 
 - Locking a resource with mutex:
+
    ```{.cpp}
     std::mutex mtx;
     {
@@ -58,6 +59,7 @@ void processFile() {
     } // Mutex is automatically unlocked here
     ```
 - Manage file handlers
+
    ```{.cpp}
     {
       std::ofstream file("output.txt");
@@ -65,13 +67,15 @@ void processFile() {
     } // File is automatically closed here
     ``` 
 
-## RAII - Some good reasons to use it
+## RAII - Some good reasons to use it 1/2
 
 - Advantages:
    - Automatic Resource Management - Resources are automatically released when the object goes out of scope.
    - Exception Safety - Resources are released even if an exception is thrown.
    - Cleaner Code - No need to manually manage resources (e.g., `delete`, `fclose`).
    - Prevents Bugs - Avoids common issues like memory leaks, dangling pointers, and double deletions.
+
+## RAII - Some good reasons to use it 2/2
 
 - When to Use RAII:
    - Managing dynamic memory (`new`/`delete`).
