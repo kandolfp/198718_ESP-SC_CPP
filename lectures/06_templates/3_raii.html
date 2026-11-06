@@ -261,12 +261,21 @@ Peter Kandolf
 <section id="raii---library-examples" class="slide level2">
 <h2>RAII - Library examples</h2>
 <ul>
-<li>Locking a resource with mutex: <code>{.cpp}   std::mutex mtx;   {     std::lock_guard&lt;std::mutex&gt; lock(mtx);     // Critical section   } // Mutex is automatically unlocked here</code></li>
-<li>Manage file handlers <code>{.cpp}   {     std::ofstream file("output.txt");     file &lt;&lt; "Hello, RAII!";   } // File is automatically closed here</code></li>
+<li><p>Locking a resource with mutex:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a aria-label="1"></a> <span class="bu">std::</span>mutex mtx<span class="op">;</span></span>
+<span id="cb2-2"><a aria-label="2"></a> <span class="op">{</span></span>
+<span id="cb2-3"><a aria-label="3"></a>   <span class="bu">std::</span>lock_guard<span class="op">&lt;</span><span class="bu">std::</span>mutex<span class="op">&gt;</span> lock<span class="op">(</span>mtx<span class="op">);</span></span>
+<span id="cb2-4"><a aria-label="4"></a>   <span class="co">// Critical section</span></span>
+<span id="cb2-5"><a aria-label="5"></a> <span class="op">}</span> <span class="co">// Mutex is automatically unlocked here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Manage file handlers</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a aria-label="1"></a> <span class="op">{</span></span>
+<span id="cb3-2"><a aria-label="2"></a>   <span class="bu">std::</span>ofstream file<span class="op">(</span><span class="st">"output.txt"</span><span class="op">);</span></span>
+<span id="cb3-3"><a aria-label="3"></a>   file <span class="op">&lt;&lt;</span> <span class="st">"Hello, RAII!"</span><span class="op">;</span></span>
+<span id="cb3-4"><a aria-label="4"></a> <span class="op">}</span> <span class="co">// File is automatically closed here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
-<section id="raii---some-good-reasons-to-use-it" class="slide level2">
-<h2>RAII - Some good reasons to use it</h2>
+<section id="raii---some-good-reasons-to-use-it-12" class="slide level2">
+<h2>RAII - Some good reasons to use it 1/2</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -275,6 +284,11 @@ Peter Kandolf
 <li>Cleaner Code - No need to manually manage resources (e.g., <code>delete</code>, <code>fclose</code>).</li>
 <li>Prevents Bugs - Avoids common issues like memory leaks, dangling pointers, and double deletions.</li>
 </ul></li>
+</ul>
+</section>
+<section id="raii---some-good-reasons-to-use-it-22" class="slide level2">
+<h2>RAII - Some good reasons to use it 2/2</h2>
+<ul>
 <li>When to Use RAII:
 <ul>
 <li>Managing dynamic memory (<code>new</code>/<code>delete</code>).</li>
