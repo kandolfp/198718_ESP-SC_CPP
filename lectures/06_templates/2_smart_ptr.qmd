@@ -1,0 +1,252 @@
+---
+title: 1. Smart pointers
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Smart Pointers
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- Smart pointers to reduce dangling storage.
+:::
+
+
+## Smart pointers
+
+In C++11 smart pointers where introduced, the idea is to have a wrapper class that manages the lifetime of the object it points to.
+They were introduced to help ensure that programs are free of memory and resource leaks and are exception-safe.
+
+![Source <https://xkcd.com/371>](https://imgs.xkcd.com/comics/compiler_complaint.png){.lightbox}
+
+(and to keep your compiler happy)
+
+## Smart pointers - Motivational example
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_smart_ptr_motivation.cpp`](./code/main_smart_ptr_motivation.cpp)
+```{.cpp include="./code/main_smart_ptr_motivation.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_smart_ptr_motivation.cpp
+```
+:::
+
+## Smart pointers - Reasons
+
+There are several problems with pointers that smart pointers try to solve or at least mitigate
+
+- Memory Leaks: This occurs when memory is repeatedly allocated by a program but never freed. This leads to excessive memory consumption and eventually leads to a system crash. 
+- Wild Pointers: A pointer that never be initialize with valid object or address called wild pointer.
+- Dangling Pointers: Assume there is a pointer that refers to memory which was deallocated earlier in the program, that pointer is called a dangling pointer.
+
+
+## Smart pointers - Types
+
+There are several different types of smart pointers defined in `<memory>`.
+
+- `std::unique_ptr`
+- `std::shared_ptr`
+- `std::weak_ptr`
+- `std::auto_ptr` (replaced by `std::unique_ptr`)
+
+
+## Smart pointers - Motivational example 2
+
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_smart_ptr_motivation2.cpp`](./code/main_smart_ptr_motivation2.cpp)
+```{.cpp include="./code/main_smart_ptr_motivation2.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_smart_ptr_motivation2.cpp
+```
+:::
+
+The `unique_ptr<>` template holds a pointer to an object and deletes this object when the `unique_ptr<>` object is deleted - which happens when it falls out of scope. 
+**So, in the example above, in all possible situations.**
+
+
+## Smart pointers - unique pointer 1/2
+
+::: {.column width="100%" .custom-box}
+### Code file [`main_smart_ptr_motivation3.cpp`](./code/main_smart_ptr_motivation3.cpp)
+```{.cpp include="./code/main_smart_ptr_motivation3.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_smart_ptr_motivation3.cpp
+```
+:::
+
+The `unique_ptr<>` template holds a pointer to an object and deletes this object when the `unique_ptr<>` object is deleted. 
+**So, in the example above, in all possible situations.**
+
+## Smart pointers - unique pointer 2/2
+
+We can not copy a `unique_ptr<>` but we can transfer ownership. 
+
+::: {.columns}
+:::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: move-ownership
+//| fig-width: 3
+digraph ownership {
+  bgcolor="transparent";
+  rankdir=BT;
+  node [fontname="Helvetica-Bold"];
+
+  obj [label="Object", shape=circle, style=filled,
+       fillcolor="#d5e8d4", color="#d5e8d4", fontsize=18];
+
+  p1 [label="P1", shape=box, style=filled,
+      fillcolor="#f5f5f5", color=black];
+  p2 [label="P2", shape=box, style=filled,
+      fillcolor="#d5e8d4", color=black];
+
+  p1 -> obj [color=gray75,
+             label=<<FONT COLOR="red" POINT-SIZE="20">&#10008;</FONT>>];
+  p2 -> obj [color=black, penwidth=1.5];
+
+  { rank=same; obj; }
+}
+```
+We can only transfer the control of object to P2
+::::
+
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_smart_ptr_matrix_unique.cpp`](./code/main_smart_ptr_matrix_unique.cpp)
+```{.cpp include="./code/main_smart_ptr_matrix_unique.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_smart_ptr_matrix_unique.cpp -I./code ./code/matrix3.cpp
+```
+:::::
+::::
+:::
+
+
+## Smart pointers - shared pointer
+
+By using `shared_ptr`, more than one pointer can point to same object at a time, and it will maintain a reference counter using the `use_count()` method.
+
+::: {.columns}
+:::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: move-ownership
+//| fig-width: 3
+digraph ownership {
+  bgcolor="transparent";
+  rankdir=BT;
+  node [fontname="Helvetica-Bold"];
+
+  obj [label="Object", shape=circle, style=filled,
+       fillcolor="#d5e8d4", color="#d5e8d4", fontsize=18];
+
+  p1 [label="P1", shape=box, style=filled,
+      fillcolor="#f5f5f5", color=black];
+  p2 [label="P2", shape=box, style=filled,
+      fillcolor="#d5e8d4", color=black];
+
+  p1 -> obj [color=black, penwidth=1.5];
+  p2 -> obj [color=black, penwidth=1.5];
+
+  { rank=same; obj; }
+}
+```
+We can maintain the reference count, in this case $2$.
+::::
+
+:::: {.column width="66%"}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_smart_ptr_matrix_shared.cpp`](./code/main_smart_ptr_matrix_shared.cpp)
+```{.cpp include="./code/main_smart_ptr_matrix_shared.cpp"}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_smart_ptr_matrix_shared.cpp -I./code ./code/matrix3.cpp
+```
+:::::
+::::
+:::
+
+## Smart pointers - weak pointer
+
+A `weak_ptr` is a smart pointer that holds a non-owning reference to an object, i.e a `shared_ptr` without a reference counter. 
+The reason is to avoid the circular dependency created by two or more object pointing to each other using `shared_ptr`.
+
+
+::: {.columns}
+:::: {.column width="33%"}
+```{dot}
+//| echo: false
+//| label: move-ownership
+//| fig-width: 3
+digraph ownership {
+  bgcolor="transparent";
+  rankdir=BT;
+  node [fontname="Helvetica-Bold"];
+
+  obj [label="Object", shape=circle, style=filled,
+       fillcolor="#d5e8d4", color="#d5e8d4", fontsize=18];
+
+  p1 [label="P1", shape=box, style=filled,
+      fillcolor="#f5f5f5", color=black];
+  p2 [label="P2", shape=box, style="filled,dashed",
+      fillcolor="#eaf3ea", color=gray40];
+
+  p1 -> obj [color=black, penwidth=1.5];
+  p2 -> obj [color=gray40, style=dashed];
+
+  { rank=same; obj; }
+}
+```
+Here `object` is still owned by `P1` and `P2` is a none owing reference.
+::::
+
+:::: {.column width="66%" .scrollable}
+::::: {.column width="100%" .custom-box}
+### Code file [`main_smart_ptr_matrix_weak.cpp`](./code/main_smart_ptr_matrix_weak.cpp)
+```{.cpp include="./code/main_smart_ptr_matrix_weak.cpp" start-line=6}
+```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_smart_ptr_matrix_weak.cpp -I./code ./code/matrix3.cpp
+```
+:::::
+::::
+:::
+
+## Smart pointers - extended example - What to use?
+
+::: {.column width="100%" .custom-box}
+### Code file [`weak_pointer.cpp`](./code/weak_pointer.cpp)
+```{.cpp include="./code/weak_pointer.cpp" start-line=1 end-line=17}
+```
+
+:::
+
+What class of smart pointers should I use for this definition to make it work? Is it the only possible solutions?
+
+## Smart pointers - extended example
+
+::: {.column width="100%" .custom-box}
+### Code file [`weak_pointer.cpp`](./code/weak_pointer.cpp)
+```{.cpp include="./code/weak_pointer.cpp" start-line=18 end-line=80}
+```
+:::
+
+## Smart pointers - overview
+
+![Source <https://10xlearner.com/2020/01/22/memory-management-and-raii/>](https://10xlearner.com/wp-content/uploads/2020/01/smart_ptr.jpg){.lightbox}

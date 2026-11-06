@@ -1,0 +1,83 @@
+---
+title: 3. RAII
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# RAII - Resource Acquisition Is Initialization
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- RAII - Resource Acquisition Is Initialization
+:::
+
+
+## RAII - Resource Allocation Is Initialization
+
+The concept **Resource Allocation Is Initialization** states that when we add a resource (e.g., memory, file handles, sockets) to the memory, we should state its lifetime.
+
+- For stack-allocated objects this is controlled by the system and managed via the scope of an object.
+- For heap-allocated objects the system has no saying and we need to take care of it.
+- With smart pointers we can delegate the cleanup to the system i.e. the resource is tided to the object.
+
+RAII requires disciple but will help if we search for a memory leak and improves the experience with Valgrind or such tools.
+
+## RAII - The old way
+
+Manual resource management is error-prone and can lead to:
+
+- Memory leaks: Forgetting to release resources.
+- Dangling pointers: Using resources after they are released.
+- Double deletion: Releasing the same resource multiple times
+
+```{.cpp}
+void processFile() {
+  FILE *file = fopen("data.txt", "r");
+  if (!file) {
+    throw std::runtime_error("Failed to open file");
+  }
+  // Process the file...
+  fclose(file); // Must remember to close the file
+}
+```
+**Problem:** What happens to the pointer if an exception occurs before `fclose` is called? 
+
+## RAII - Library examples
+
+- Locking a resource with mutex:
+   ```{.cpp}
+    std::mutex mtx;
+    {
+      std::lock_guard<std::mutex> lock(mtx);
+      // Critical section
+    } // Mutex is automatically unlocked here
+    ```
+- Manage file handlers
+   ```{.cpp}
+    {
+      std::ofstream file("output.txt");
+      file << "Hello, RAII!";
+    } // File is automatically closed here
+    ``` 
+
+## RAII - Some good reasons to use it
+
+- Advantages:
+   - Automatic Resource Management - Resources are automatically released when the object goes out of scope.
+   - Exception Safety - Resources are released even if an exception is thrown.
+   - Cleaner Code - No need to manually manage resources (e.g., `delete`, `fclose`).
+   - Prevents Bugs - Avoids common issues like memory leaks, dangling pointers, and double deletions.
+
+- When to Use RAII:
+   - Managing dynamic memory (`new`/`delete`).
+   - Managing file handles, sockets, or database connections.
+   - Managing locks (e.g., `std::mutex`).
+
+RAII is a cornerstone of modern C++ programming.
+It simplifies resource management and makes code safer and more maintainable.
+
