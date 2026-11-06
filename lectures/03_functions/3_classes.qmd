@@ -194,20 +194,7 @@ int main() {
 - Usually an object which allocates dynamic memory is responsible for deallocating it.
 
 
-## Do I need a destructor?
-
-::: {.column width="100%" .custom-box}
-### Code file [`main_destructor0.cpp`](./code/main_destructor0.cpp)
-```{.cpp include="./code/main_destructor0.cpp"}
-```
-```{python}
-#| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_destructor0.cpp
-```
-:::
-
-
-## What does this code do? 1/7
+## Do I need a destructor? 1/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor1.cpp`](./code/main_destructor1.cpp)
@@ -220,7 +207,7 @@ int main() {
 :::
 
 
-##  What does this code do? 2/7
+##  Do I need a destructor? 2/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor2.cpp`](./code/main_destructor2.cpp)
@@ -233,7 +220,7 @@ int main() {
 :::
 
 
-##  What does this code do? 3/7
+##  Do I need a destructor? 3/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor3.cpp`](./code/main_destructor3.cpp)
@@ -245,7 +232,7 @@ int main() {
 ```
 :::
 
-##  What does this code do? 4/7
+##  Do I need a destructor? 4/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor4.cpp`](./code/main_destructor4.cpp)
@@ -257,7 +244,7 @@ int main() {
 ```
 :::
 
-##  What does this code do? 5/7
+##  Do I need a destructor? 5/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor5.cpp`](./code/main_destructor5.cpp)
@@ -269,7 +256,7 @@ int main() {
 ```
 :::
 
-##  What does this code do? 6/7
+##  Do I need a destructor? 6/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor6.cpp`](./code/main_destructor6.cpp)
@@ -282,7 +269,7 @@ int main() {
 :::
 
 
-##  What does this code do? 7/7
+##  Do I need a destructor? 7/7
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor7.cpp`](./code/main_destructor7.cpp)

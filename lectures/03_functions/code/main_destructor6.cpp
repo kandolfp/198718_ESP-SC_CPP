@@ -9,11 +9,14 @@ public:
   ~Entry() { delete _data; }
 };
 
+//How can I do something like this?
+double *GetData(Entry &e) { return e._data; }
+
 int main() {
   double *d;
   if (true) {
     Entry tmp(1.0);
-    d = tmp.GetData();
+    d = GetData(tmp);
   }
   std::cout << *d << std::endl;
   return 0;
