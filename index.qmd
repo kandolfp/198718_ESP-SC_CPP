@@ -56,7 +56,7 @@ The button in the lower left corner opens a toc per slide deck and you can expor
 | 9       |  06 Templates                       | [1. Templates](/lectures/06_templates/1_templates.html)    | :writing_hand: |
 | 9       |  06 Smart Pointers | [2. Smart Pointers](/lectures/06_templates/2_smart_ptr.html) | |
 | 9       |  06 RAII | [3. RAII](/lectures/06_templates/3_raii.html) | |
-| 10      |  BLAS, LAPACK, Eigen                       |                              | |
+| 10      |  BLAS, LAPACK, Eigen                       |    [1. Blas, LAPACK, Eigen](/lectures/07_blas/1_blas.html)                          | :writing_hand: |
 | 11      |  Sparse matrix computations |                              | |
 | 12      |  FFT, TOML, Netcdf, Modules                       |                              | |
 | 13      |  Debugging and profiling                       |                              | |
