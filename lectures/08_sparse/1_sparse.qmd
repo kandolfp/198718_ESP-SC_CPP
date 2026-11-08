@@ -1,0 +1,313 @@
+---
+title: 1. Sparse Matrix formats
+format:
+  revealjs:
+    footer: '<a href="../../index.html">← Back to overview</a>'
+    output-dir: ../../
+filters:
+  - include-code-files
+  - ansi-newlines
+---
+
+# Spares matrix formats
+
+::: {.callout-tip icon=false} 
+## :dart: Learning goals of this lecture
+- what are spares matrices
+- How to deal with sparse matrices in an efficient way
+:::
+
+
+## Why Sparse?
+
+- Many real-world problems produce matrices with $\ll 1\%$ nonzeros: PDEs, graphs, ML, optimization.
+- Storage and time: dense $\mathcal{O}(n^2)$ memory vs. sparse $\mathcal{O}(\text{nnz})$.
+- Computation: operations like SpMV scale as $\mathcal{O}(\text{nnz})$.
+- No clear line to separate sparse from dense/full matrices.
+- Operational definition: choosing a specific sparse storage scheme, do I (compared to the full storage scheme) get
+    - increased performance?
+    - lower memory consumption?
+
+## Key Operations
+
+- Sparse matrix–vector multiply (SpMV): $y \leftarrow A x$
+- Triangular solves with sparse factors
+- Sparse matrix–matrix product (SpGEMM): $C \leftarrow A B$
+- Preconditioned iterative methods: $M^{-1} A x = M^{-1} b$
+
+
+## Data structures for sparse matrices
+
+The purpose of a sparse matrix storage format is to reduce the amount of memory that is required to hold that matrix in memory &rarr; data structures, that do not need to store all the non-zero entries. This usually also has a positive effect on performance as the zero-entries do not contribute to the result of, say, a matrix-vector multiplication (i.e., we do not perform the corresponding floating point operations). 
+
+. . .
+
+The banded matrix store format (`gb`) does exactly that for a particular type of sparse matrices (namely banded matrices): the amount of storage required is proportional to the number of non-zero entries in the matrix (as opposed to the number of entries in the matrix).
+
+. . .
+
+We are now looking at storage formats that can store arbitrary matrices in such a manner, that the amount of storage required is proportional to the number of non-zero entries.(dense matrices could be stored in these formats as well, but this would be quite inefficient).
+
+## Overview - Coordinate (COO)
+
+- Triplet lists $(i,j,a_{ij})$.
+- Advantages: easy to build, insert, concatenate.
+- Disadvantages: slow arithmetic; need sorting and duplicate summation.
+
+## Overview - Compressed Sparse Row (CSR)
+
+- Arrays: `rowptr` (size $m+1$), `colind` (size nnz), `values` (size nnz).
+- Row $i$ stored in indices $k \in [\texttt{rowptr}[i], \texttt{rowptr}[i+1])$.
+- SpMV: for each row $i$, for $k$ in row-range, accumulate $y_i = y_i + a_k x_{\text{colind}[k]}$. Cost $\approx 2\cdot\text{nnz}$ flops.
+
+## Overview - Compressed Sparse Column (CSC)
+
+- Column-major analog of CSR: `colptr`, `rowind`, `values`.
+- Natural for column operations and some factorization libraries.
+
+## Overview - Other Formats (When to Use)
+
+- ELL/ELLPACK: fixed nonzeros per row; good on GPUs for uniform sparsity.
+- HYB (ELL+COO): hybrid for irregular sparsity (e.g., cuSPARSE).
+- BCSR: block compressed row for block-structured matrices.
+- DIA: diagonal storage for banded matrices.
+
+See <https://netlib.org/linalg/html_templates/node90.html> for a discussion of some formats by _Jack Dongarra_.
+
+## The compressed row storage (CSR) format
+
+This format requires three different arrays: 
+
+```{.cpp}
+double* val; 
+int* col_ind; 
+int* row_ptr;
+```
+
+- `val` stores the values of the non-zero entries. The other two arrays determine the position of the according values: 
+- `col_ind` store the column index of the corresponding entry in `val`. 
+  It has the same size as `val` (the number of non-zero elements of the matrix). 
+- `row_ptr` could do the same as `col_ind` for the rows, but that would not be as memory efficient. It only stores the index in `val` at which a new row starts &rarr; its size is qual to the number of rows $+ 1$ of the matrix (which is almost always smaller than the number of non-zero elements).
+
+
+## CSR format: example
+
+$$A=\begin{bmatrix}
+a_{11} & 0 & 0 & a_{14} & 0 \\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & a_{33} & a_{34} & a_{35}\\
+0 & 0 & 0 & a_{44} & 0 \\
+a_{51} & 0 & 0 & 0 & a_{55}
+\end{bmatrix} $$
+
+is stored as follows:
+
+```{.cpp}
+val = {a11, a14, a33, a34, a35, a44, a51, a55}; 
+col_ind = {0, 3, 2, 3, 4, 3, 0, 4}; 
+row_ptr = {0, 2, 2, 5, 6, 8};
+``` 
+
+## CSR format
+
+- The CSR format is widely supported and the de facto standard if no more appropriate format is available for a given problem.
+- There is no issue in finding software that converts to and from CSR stored matrices.
+- It is very difficult to construct a matrix for which the number of non-zero entries in each row are **not** known beforehand (the assembly step of certain finite element methods would, e.g., require this).
+
+
+## CSR format: strategies for assembling 1
+
+- First construct the matrix in a different format which is then converted to CSR
+- only useful if the construction step is not the performance limiting part of the numerical simulation
+
+## CSR format: strategies for assembling 2
+  
+- Use the spares storage format _coordinate list_ (COO), which stores three arrays with the value of the non-zero entry, the column index, and the row index of this entry:
+
+   ```{.cpp}
+   double* val = {a11, a33, a34, a44, a51, a55, a14, a35}; 
+   int* col_ind = {0, 2, 3, 3, 0, 4, 3, 4}; 
+   int* row_ind = {0, 2, 2, 3, 4, 4, 0, 2};
+   ```
+
+- format duplicates some information
+- allowed elements can appear in any order
+- particularly easy to construct a matrix
+    
+After sorting the elements by row
+
+```{.cpp}
+double* val = {a11, a14, a33, a34, a35, a44, a51, a55}; 
+int* col_ind = {0, 3, 2, 3, 4, 3, 0, 4}; 
+int* row_ind = {0, 0, 2, 2, 2, 3, 4, 4};
+``` 
+
+it is straight forward to convert this format to CSR (which is usually more efficient in terms of storage as well as with respect to performance).
+
+
+## CSR format: sparse matrix-vector multiplication
+
+```{.cpp}
+for (int i = 0; i<N; i++) {
+  y[i] = 0.0;
+  // iterate over non-zeros
+  for(int j = row_ptr[i]; j<row_ptr[i+1];j++)
+    y[i] += val[j]*x[col_ind[j]];
+}
+``` 
+
+- The outer loop iterates over all rows.
+- The inner loop processes the columns that have non-zero values.
+
+## Sparse matrix libraries 1/2
+
+Implementing certain dense matrix routines can be already a challenging task if optimal performance is desired. This is even more true for implementations based on sparse matrix formats. 
+
+. . .
+
+We have repeatedly emphasized that sequential memory access is important for good performance. However, if we transverse a CSR stored sparse matrix sequentially in order to perform a matrix-vector multiplication, there is no guarantee that the corresponding access into the vector are sequential. This usually results in poor cache performance and thus in significant loss of performance. Fortunately, a number of sparse matrix libraries exist which have been extensively optimized. 
+
+## Sparse matrix libraries 2/2
+
+- Libraries that implement the BLAS functionality of sparse matrices: SuiteSparse, PSBLAS, certain vendor implementations (such as Intel MKL)
+- Libraries that implement entire linear solvers (both direct and iterative methods)
+    - PETSc & Trilinos: implement iterative methods and preconditioners
+    - MUMPS: implements direct solvers that are optimized for sparse matrices
+- `eigen`
+
+
+## `eigen` - Building Sparse Matrices
+
+``` {.cpp}
+#include <Eigen/Sparse>
+#include <vector>
+using T = double;
+using SpMat = Eigen::SparseMatrix<T>;     // column-major by default
+using Triplet = Eigen::Triplet<T>;
+
+SpMat build_matrix(int m, int n, const std::vector<Triplet>& trips) {
+  SpMat A(m,n);
+  A.setFromTriplets(trips.begin(), trips.end()); // sums duplicates
+  A.makeCompressed(); // optional: ensure compressed form
+  return A;
+}
+```
+
+- Use `Eigen::SparseMatrix<T, RowMajor>` for CSR-like traversal.
+- Prefer bulk insertion via triplets; avoid repeated coefficient writes in hot loops.
+
+## `eigen` - SpMV and Basic Ops
+
+``` {.cpp}
+#include <Eigen/Sparse>
+#include <Eigen/Dense>
+int main(){
+  using SpMat = Eigen::SparseMatrix<double>;
+  Eigen::VectorXd x, y;
+  SpMat A; // assume filled and compressed
+  y = A * x;               // SpMV
+  SpMat B = A.transpose(); // cheap transpose view (explicit if needed)
+  SpMat C = A + B;         // addition (may uncompress/realloc)
+}
+```
+
+**Performance tips**:
+
+- Ensure `A.isCompressed()` and `OuterIndexPtr` monotone.
+- Reserve nonzeros when building: `A.reserve(Eigen::VectorXi::Constant(n, k))`.
+
+## SuiteSparse Overview
+
+- A collection of high-quality sparse matrix packages by T. A. Davis et al.
+- Key components:
+    - CHOLMOD: sparse Cholesky for symmetric positive definite (SPD).
+    - UMFPACK: sparse LU for general (unsymmetric) matrices.
+    - SPQR: multifrontal sparse QR (rank-revealing, least squares).
+    - Ordering: AMD/CAMD, COLAMD/CCOLAMD; interfaces to METIS/ParMETIS.
+- Strengths:
+    - Robust, production-ready direct solvers with fill-reducing orderings.
+    - Supports real/complex, single/double; threaded via OpenMP in some builds.
+    - Interoperates with BLAS/LAPACK; well-integrated in many ecosystems (MATLAB, Eigen, Python, Julia).
+-  Website: <https://people.engr.tamu.edu/davis/suitesparse.html>
+
+
+## MKL Sparse Overview 1/2
+
+- Intel MKL provides:
+    - Sparse BLAS C interface: inspector–executor API for CSR/CSC/COO.
+    - PARDISO: high-performance direct solver (LU/LDLT) for sparse systems.
+    - RCI iterative solvers: CG, FGMRES, BiCGSTAB with preconditioning.
+-  Typical workflow (Sparse BLAS):
+    - Create sparse handle from CSR/COO via `mkl_sparse_*_create_csr/coo`.
+    - Inspect and optimize pattern via `mkl_sparse_optimize`.
+    - Execute operations: SpMV (`mkl_sparse_d_mv`), SpMM (`mkl_sparse_d_mm`), triangular solves, etc.
+
+## MKL Sparse Overview 2/2
+
+- Advantages:
+    - Preprocessing captures sparsity patterns for faster repeated calls.
+    - Threaded and vectorized kernels; supports symmetric structure and hints.
+- Docs: <https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html>
+
+
+## Example - eigen with SuiteSparse cholmod
+
+::: {.column width="100%" .custom-box}
+### Code file [`eigen_colmod.cpp`](./code/src/eigen_colmod.cpp)
+```{.cpp include="./code/src/eigen_colmod.cpp"}
+```
+:::
+
+## Example - eigen with SuiteSparse cholmod - build script
+
+::: {.column width="100%" .custom-box}
+### Code file [`CMakeLists.txt`](./code/CMakeLists.txt)
+```{.cpp include="./code/CMakeLists.txt"}
+```
+:::
+
+## Example - eigen with SuiteSparse cholmod - build 1/3
+
+```{bash}
+$ cmake -S . -B build
+```
+```{python}
+#| echo: false
+%%bash
+cd code
+cmake -S . -B build
+```
+
+## Example - eigen with SuiteSparse cholmod - build 2/3
+
+```{bash}
+cmake --build build
+```
+```{python}
+#| echo: false
+%%bash
+cd code
+cmake --build build
+```
+
+## Example - eigen with SuiteSparse cholmod - build 3/3
+
+```{bash}
+build/main
+```
+```{python}
+#| echo: false
+%%bash
+cd code
+build/main
+```
+
+## :trophy: Advanced Exercise
+
+::: {.column width="100%" .custom-box}
+### Compare performance of 
+
+- eigen - <https://libeigen.gitlab.io/eigen/docs-5.0/GettingStarted.html>
+- MKL or some other vendor specific library
+- At what point percentage of \verb+nnz+ is sparse faster than full MM? Only test within one framework.
+:::
