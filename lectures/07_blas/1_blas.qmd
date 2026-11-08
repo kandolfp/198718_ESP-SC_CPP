@@ -1,5 +1,5 @@
 ---
-title: 1. BLAS
+title: 1. BLAS, LAPACK, `eigen`
 format:
   revealjs:
     footer: '<a href="../../index.html">← Back to overview</a>'
@@ -9,7 +9,7 @@ filters:
   - ansi-newlines
 ---
 
-# BLAS - basic linear algebra subroutines. 
+# BLAS, LAPACK, `eigen`
 
 ::: {.callout-tip icon=false} 
 ## :dart: Learning goals of this lecture
