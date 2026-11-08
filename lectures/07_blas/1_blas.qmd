@@ -139,3 +139,385 @@ $$s = (((x_1+x_2)+(x_3+x_4)) + ((x_5+x_6)+(x_7+x_8)))$$
 :::
 
 ::::
+
+## Compensated summation
+
+```{.fortran}
+s = 0, e = 0
+for i = 1:n
+   temp = s
+   y = x_i + e
+   s = temp + y
+   e = (temp - s) + y
+end
+```
+
+```{dot}
+//| echo: false
+//| label: fp-add-error
+//| fig-cap: "Error of floating-point addition"
+digraph fperr {
+  bgcolor="transparent";
+  node [shape=plaintext, fontname="Times-Italic"];
+  tbl [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+      <!-- grid: 1 label col + 10 unit cols (60 each) + 1 trailing label col -->
+      <TR>
+        <TD WIDTH="60"  HEIGHT="30" FIXEDSIZE="TRUE" ALIGN="RIGHT"><I>a</I>&nbsp;</TD>
+        <TD BORDER="1" COLSPAN="3" WIDTH="180" HEIGHT="30" FIXEDSIZE="TRUE"><I>a</I><SUB>1</SUB></TD>
+        <TD BORDER="1" COLSPAN="2" WIDTH="120" HEIGHT="30" FIXEDSIZE="TRUE"><I>a</I><SUB>2</SUB></TD>
+        <TD COLSPAN="5" WIDTH="300" FIXEDSIZE="TRUE"></TD>
+        <TD WIDTH="60" FIXEDSIZE="TRUE"></TD>
+      </TR>
+      <TR><TD COLSPAN="12" HEIGHT="12" FIXEDSIZE="TRUE"></TD></TR>
+      <TR>
+        <TD ALIGN="RIGHT" HEIGHT="30">+<I>b</I>&nbsp;</TD>
+        <TD COLSPAN="3" WIDTH="180" FIXEDSIZE="TRUE"></TD>
+        <TD BORDER="1" COLSPAN="2" WIDTH="120" HEIGHT="30" FIXEDSIZE="TRUE"><I>b</I><SUB>1</SUB></TD>
+        <TD BORDER="1" COLSPAN="3" WIDTH="180" HEIGHT="30" FIXEDSIZE="TRUE"><I>b</I><SUB>2</SUB></TD>
+        <TD COLSPAN="2" WIDTH="120" FIXEDSIZE="TRUE"></TD>
+        <TD></TD>
+      </TR>
+      <TR><TD COLSPAN="12" HEIGHT="12" FIXEDSIZE="TRUE"></TD></TR>
+      <TR>
+        <TD ALIGN="RIGHT" HEIGHT="30">=&nbsp;<I>ŝ</I>&nbsp;</TD>
+        <TD BORDER="1" COLSPAN="3" WIDTH="180" HEIGHT="30" FIXEDSIZE="TRUE"><I>a</I><SUB>1</SUB></TD>
+        <TD BORDER="1" COLSPAN="2" WIDTH="120" HEIGHT="30" FIXEDSIZE="TRUE"><I>a</I><SUB>2</SUB> + <I>b</I><SUB>1</SUB></TD>
+        <TD COLSPAN="5"></TD>
+        <TD></TD>
+      </TR>
+      <TR><TD COLSPAN="12" HEIGHT="12" FIXEDSIZE="TRUE"></TD></TR>
+      <TR>
+        <TD ALIGN="RIGHT" HEIGHT="30">&#8722;<I>a</I>&nbsp;</TD>
+        <TD COLSPAN="3"></TD>
+        <TD BORDER="1" COLSPAN="2" WIDTH="120" HEIGHT="30" FIXEDSIZE="TRUE"><I>b</I><SUB>1</SUB></TD>
+        <TD BORDER="1" COLSPAN="3" WIDTH="180" HEIGHT="30" FIXEDSIZE="TRUE">0</TD>
+        <TD COLSPAN="2"></TD>
+        <TD></TD>
+      </TR>
+      <TR><TD COLSPAN="12" HEIGHT="12" FIXEDSIZE="TRUE"></TD></TR>
+      <TR>
+        <TD ALIGN="RIGHT" HEIGHT="30">&#8722;<I>b</I>&nbsp;</TD>
+        <TD COLSPAN="5"></TD>
+        <TD BORDER="1" COLSPAN="3" WIDTH="180" HEIGHT="30" FIXEDSIZE="TRUE">&#8722;<I>b</I><SUB>2</SUB></TD>
+        <TD BORDER="1" COLSPAN="2" WIDTH="120" HEIGHT="30" FIXEDSIZE="TRUE">0</TD>
+        <TD ALIGN="LEFT">&nbsp;=: &#8722;<I>e</I></TD>
+      </TR>
+    </TABLE>
+  >];
+}
+```
+
+## Motivation
+
+&#x27F6; a standardized set of routines has emerged
+
+- various publicly available implementations (OpenBLAS, BLIS, MKL, Apple Accelerate)
+- most vendors such as Intel, AMD, and NVIDIA provide versions of this interface optimized for a particular architecture
+- often relatively easy to switch from one implementation to another or even from one hardware platform to another 
+    - BLAS and LAPACK implementations are available on GPUs as well
+
+## Basic Linear Algebra Subprograms (BLAS)
+
+- dense linear algebra
+- collection of functions that can be used to perform low-level matrix-vector operations
+- routines follow a naming scheme which is given as follows
+    - first letter is the data type used
+        - `s` ... single precision
+        - `d` ... double precision
+        - `c` ... single precision, complex number
+        - `z` ... double precision, complex number
+    - remainder: name of the routine (historically limited to four letters)
+    
+- BLAS routines are classified into three different levels
+
+## BLAS level 1: vector operations
+
+::: {.columns}
+:::: {.column width="65%"}
+- `axpy` computes $y = a \cdot x + y$
+    - `a` ... scalar
+    - `x`, `y` ... vectors
+- `sdot` computes the dot product of two vectors
+- `asum` computes the sum of absolute values
+- `scal` computes $x = a\cdot x$
+    - `a` ... scalar
+    - `x` ... vector
+- `nrm2` computes the $l^2$ norm of a vector
+- `copy` computes $x = y$
+    - `x`, `y` .. vectors
+::::
+:::: {.column width="35%"}
+
+To call these functions, we have to prepend either `s`, `d`, `c`, or `z` to the function name to specify the desired data type. For example `dsdot` is the function used to compute the dot product using double precision floating point numbers.
+::::
+:::
+
+# BLAS level 2
+
+matrix-vector operations 
+
+## BLAS level 2: matrix-vector operations 1/6
+
+In this case the name of the function is subdivided into two parts
+
+- first part: type of the matrix used
+- second part: name of operation
+
+For example `sgemv` operates on single precision data (`s`), expects a general full matrix (`ge`), and performs a matrix-vector multiplication (`mv`). 
+
+## BLAS level 2: matrix-vector operations 2/6
+
+In BLAS level 2 the following matrix types can be used
+
+- `ge` ... A generic full matrix that is stored as a single block of memory. Every matrix can be stored in this format. &rarr; Fortran-style column-major is the canonical BLAS layout
+
+. . .
+
+- `sy` ... A generic symmetric matrix that is stored as a single block of memory. The difference with ge is that the algorithm can assume that the matrix is symmetric and that only the upper or the lower part (specified by an argument to the function) of the matrix (in both cases including the diagonal) has to be set. The remaining elements are not read by the algorithm. Note that using the sy function does **not** save storage compared to ge. Any symmetric matrix can be stored in this format
+
+. . .
+
+- `tr` ... A generic triangular matrix that is stored as a single block of memory. The algorithm can assume that the matrix is triangular (i.e. that all entries below or above the diagonal are zero). Note that using the tr type does **not** save storage compared to ge. Any triangular matrix can be stored in tr.
+
+
+## BLAS level 2: matrix-vector operations 3/6
+    
+- `gb` ... A $m\times n$ banded matrix with $l$ subdiagonals and $u$ superdiagonals is stored as a two-dimensional array with $l + u + 1$ rows and $n$ columns. Columns of the matrix are stored in the corresponding columns of the array and (sub/sup) diagonals of the matrix are stored in rows of the array. 
+
+As an example, let us consider the following matrix
+$$A=\begin{bmatrix}
+a_{11} & a_{12} & 0 & 0 & 0 \\
+a_{21} & a_{22} & a_{23} & 0 & 0\\
+0 & a_{32} & a_{33} & a_{34} & 0\\
+0 & 0 & a_{43} & a_{44} & a_{45} \\
+0 & 0 & 0 & a_{54} & a_{55}
+\end{bmatrix} $$
+which has $l = 1$ subdiagonals and $u = 1$ superdiagonals and is thus stored in an array with 3 rows and 5 columns.
+
+## BLAS level 2: matrix-vector operations 4/6 -  `gb` continuation 1/2
+
+The matrix is stored in an array with 3 rows and 5 columns as follows
+$$\begin{bmatrix}
+  & a_{12} & a_{23} & a_{34} & a_{45} \\
+a_{11} & a_{22} & a_{33} & a_{44} & a_{55}\\
+a_{21} & a_{32} & a_{43} & a_{54} &  
+\end{bmatrix}$$
+
+- The blank elements are not used, but have to be stored in memory
+    - they are wasted in some sense
+    - for large matrices they contribute only a small fraction of the total storage space needed
+- In order to reconstruct the matrix $A$ we also have to know the distance of the different bands from the diagonal
+    - which sub- and superdiagonal of the matrix is not equal to zero
+
+## BLAS level 2: matrix-vector operations 4/6 -  `gb` continuation 2/2
+
+- Banded matrices are particularly important in applications
+    - most stencil codes can be formulated as a banded matrix-vector multiplication
+    - in this case the storage required is drastically reduced
+    - however, this is still inefficient as for a two-dimensional problem we have only three non-zero superdiagonals but have to choose $l = u = N$.
+
+
+## BLAS level 2: matrix-vector operations 5/6
+
+- `tb` ... A triangular banded matrix is stored in the same way as a banded matrix. However, only half of the matrix has to bet set.
+- `sb` ... The symmetric banded storage scheme is similar to `gb` but since the matrix is symmetric only half of the matrix has to be set.
+- `sp` ... The symmetric packed matrix storage scheme is similar to `sy` but stores the symmetric matrix in a one-dimensional array. 
+
+
+## BLAS level 2: matrix-vector operations 5/6 - `sp` example
+
+- `sp` ... [...] stores the symmetric matrix in a one-dimensional array. 
+
+Thus, $$\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} & a_{15} \\
+a_{12} & a_{22} & a_{23} & a_{24} & a_{25}\\
+a_{13} & a_{23} & a_{33} & a_{34} & a_{35}\\
+a_{14} & a_{24} & a_{34} & a_{44} & a_{45} \\
+a_{15} & a_{25} & a_{35} & a_{45} & a_{55}
+\end{bmatrix}$$ is stored as $$[a_{11}\quad a_{12} \quad a_{13} \quad a_{14} \quad a_{15}\quad a_{12} \quad ... \quad a_{45}\quad a_{55}].$$ This reduces the amount of memory required by one-half as compared to `sy`.
+
+## BLAS level 2: matrix-vector operations 6/6
+
+- `tp` ... The triangular packed matrix storage scheme is equivalent to `sp` but instructs the algorithm to assume a triangular matrix. It reduces the amount of memory required by one-half as compared to `tr`.
+
+
+By the description of the matrix types we have seen that the BLAS interface is mostly geared towards dense
+matrix algebra. However, it also includes banded storage schemes which are often useful for the discretization of PDEs. Now, let us turn to the actual matrix operations that are implemented in BLAS level 2.
+
+- `mv` ... Multiplies a matrix with a vector resulting in a vector.
+- `sv` ... solves a linear system of equations. 
+    - For this operation only the matrices of type `tr`, `tb`, and `tp` can be used!
+
+# BLAS level 3
+
+matrix-matrix operations 
+
+## BLAS level 3: matrix-matrix operations
+
+- `mm` ... Computes a matrix-matrix multiplication.
+- `sm` ... Solve a triangular system of equations with multiple right hand sides.
+
+We should note that especially matrix-matrix multiplication is quite difficult to implement efficiently and large gains in performance are expected by using a tuned BLAS library as compared to a hand written implementation.
+
+# BLAS Examples with `cmake`
+
+## BLAS level 1: vector-vector operations - `cmake`
+
+::: {.column width="100%" .custom-box}
+### Code file [`CMakeLists.txt`](./code/CMakeLists.txt)
+```{.cpp include="./code/CMakeLists.txt"}
+```
+:::
+
+## BLAS level 1: vector-vector operations - code
+
+::: {.column width="100%" .custom-box}
+### Code file [`blas.cpp`](./code/src/blas.cpp)
+```{.cpp include="./code/src/blas.cpp"}
+```
+:::
+
+## BLAS level 1: vector-vector operations - include
+
+::: {.column width="100%" .custom-box}
+### Code file [`timer.hpp`](./code/include/timer.hpp)
+```{.cpp include="./code/include/timer.hpp"}
+```
+:::
+
+## BLAS level 1: vector-vector operations - build 1/3
+
+```{bash}
+$ cmake -S . -B build
+```
+```{python}
+#| echo: false
+%%bash
+cd code
+echo "$ cmake -S . -B build"
+cmake -S . -B build
+```
+
+## BLAS level 1: vector-vector operations - build 2/3
+
+```{bash}
+cmake --build build
+```
+```{python}
+#| echo: false
+%%bash
+cd code
+cmake --build build
+```
+
+## BLAS level 1: vector-vector operations - build 3/3
+
+```{bash}
+build/main
+```
+```{python}
+#| echo: false
+%%bash
+cd code
+build/main
+```
+
+This the the not optimized BLAS implementation!
+
+The project as a single zip can be found [here](./code/blas_project.zip)
+
+# LAPACK
+
+Linear Algebra PACKage
+
+## LAPACK - Linear Algebra PACKage
+
+- Implementations are usually based on BLAS.
+- Provides more complicated matrix operations (e.g., solution of a linear system of equations).
+- Naming conventions similar to the BLAS level 2 and 3 routines in that we have to prepend the algorithm with the desired data type and the matrix type we wish to use.
+- The most important operations:
+    - `sv` ... Solves a linear system of equations (possibly with multiple right-hand sides). This operation is supported for both dense (for example, ge) as well as sparse (for example, gb) storage schemes.
+    - `ls` ... Computes the least square solution of an over-determined system of linear equations.
+    - `ev` ... Computes all eigenvalues and eigenvectors of a matrix.
+    - `vd` ... Computes the singular value decomposition (SVD) of a matrix.
+
+
+Note that to call the `sv` operation we have to actually use `dgesv` to perform a double precision generic matrix linear solve.
+
+## LAPACK and CMAKE: preliminary information
+
+- LAPACK is a FORTRAN library.
+- Using the command line to link the LAPACK library works similar as for the BLAS library.
+- Due to the intercommunication with FORTRAN, linking LAPACK with `cmake` is a bit trickier.
+- The documentation can be found on <https://netlib.org/lapack>.
+- Note that in FORTRAN, every function parameter is a pointer
+    - `real` translates to float
+    - `dimension` denotes an array and the corresponding size of the array
+
+# `eigen`
+
+## What is eigen?
+
+- Header-only C++ template library for linear algebra.
+- Expression templates, lazy evaluation, vectorization.
+- Decompositions: LU, QR, Cholesky, SVD, eigensolvers.
+- Can call vendor BLAS/LAPACK backends for certain ops (optional).
+
+
+## `eigen`: the C++ way to do it - Pro
+
+-  Pro 
+    - `eigen` has no other dependency than the C++ standard library.
+    - Offers some features, BLAS and LAPACK do not (built-in support for sparse matrices and vectors, provides a lot of convenience features (see Geometry module, Array module, etc), which are also very widely used)
+    - Using only one thread, `eigen` compares very well performance-wise against the existing BLAS implementations.
+    - The syntax is as close to numpy/matlab, as C++ permits.
+    
+## `eigen`: the C++ way to do it - Con 
+
+- Con: 
+    - `eigen` is a very heavy library &rarr; not necessarily clear, what it is doing. It can happen, that `eigen` performs terrible compared to BLAS, but most of the time it performs similar.
+    - LAPACK is a standardized API, while `eigen` is very x86-architecture specific. You might not have Eigen available on, e.g, GPUs
+
+- Summary: you can probably use `eigen` for $90%$  of use cases. If you find out, however, that a matrix operation is the bottleneck in your application and you need performance, you should probably switch to BLAS/LAPACK.
+
+## Using BLAS/LAPACK with `eigen`
+
+- `eigen` can delegate large GEMM/GEMV to BLAS if configured.
+- Define compile flags and link a backend:
+
+   ```{.bash}
+   # Example: Use BLAS as a backend (selected operations)
+   g++ main.cpp -O3 -DEIGEN_USE_BLAS -DEIGEN_USE_LAPACKE -I/path/to/eigen -lblas -llapacke
+   ```
+
+## Mapping External Data and Interop
+
+```{.cpp}
+#include <Eigen/Dense>
+using Eigen::Map;
+using Eigen::MatrixXd;
+using Eigen::RowMajor;
+
+void wrap_double_ptr(double* data, int m, int n) {
+  // Default: column-major
+  Map<MatrixXd> A_col(data, m, n);
+  // Row-major view if your data is row-major
+  Map<Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, RowMajor>> A_row(data, m, n);
+}
+```
+
+**Tips**:
+
+- Ensure correct storage order when interfacing with BLAS/LAPACK.
+- Use Map to avoid copies when mixing ecosystems.
+
+## :trophy: Advanced Exercise
+
+::: {.column width="100%" .custom-box}
+### Compare our own Matrix implementation with
+
+- BLAS/LINPACK - <https://www.netlib.org/blas/>, <https://www.netlib.org/lapack/>
+- eigen - <https://libeigen.gitlab.io/eigen/docs-5.0/GettingStarted.html>
+- MKL or some other vendor specific library
+:::
