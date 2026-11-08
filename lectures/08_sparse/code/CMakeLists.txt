@@ -25,7 +25,7 @@ set(SUITESPARSE_ENABLE_PROJECTS "cholmod" CACHE STRING "" FORCE)
 FetchContent_Declare(
     SuiteSparse
     GIT_REPOSITORY https://github.com/DrTimothyAldenDavis/SuiteSparse
-    GIT_TAG v7.12.1
+    GIT_TAG v7.14.1
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 FetchContent_MakeAvailable(SuiteSparse)
