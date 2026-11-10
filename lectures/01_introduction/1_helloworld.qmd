@@ -35,9 +35,12 @@ for i in np.arange(1, N - 1):
 Compile and Wall time (2nd order):  7.65 s (1.08 s with numba)
                                            (0.67 s with slicing)
 ```
+:::
+
+. . .
 
 C++
-:::
+
 ```{.cpp}
 for(int i = 1; i < N-1; i++)
     for(int j = 1; j < N-1; j++)
@@ -104,9 +107,12 @@ for i in np.arange(1, N-1):
 ```{.bash code-line-numbers="false"}
 Compile and Wall time (2nd order):  7.65 s, (4th order):  11.84 s
 ```
+:::
+
+. . .
 
 Fourth order stencil in C++
-:::
+
 ```{.cpp}
 for(int i=1; i < N-1; i++)
     for(int j=2;j < N-2; j++)
