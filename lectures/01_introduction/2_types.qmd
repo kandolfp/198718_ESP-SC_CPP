@@ -212,14 +212,19 @@ These slides are compiled automatically so no input is provided.
 
 The standard C++ libraries provide various helpful datatypes, e.g. `std::vector`
 
-::: {.column width="100%" .custom-box}
+::: {.columns}
+:::: {.column width="75%" .custom-box}
 ### Solution [`main_vector1.cpp`](./code/main_vector1.cpp)
 ```{.cpp include="./code/main_vector1.cpp"}
 ```
+::::
+:::: {.column width="20%" .custom-box}
+### Output
 ```{python}
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_vector1.cpp
 ```
+::::
 :::
 
 - Note that you need to put an `std::` in front of the vector (and `cout`, `endl`). This is a namespace which we will cover later.

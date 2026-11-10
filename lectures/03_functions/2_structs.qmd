@@ -59,6 +59,7 @@ filters:
 ```
 ::::
 :::: {.column width="20%" .custom-box}
+### Output
 ::::: {.tall-output}
 ```{python}
 #| echo: false
