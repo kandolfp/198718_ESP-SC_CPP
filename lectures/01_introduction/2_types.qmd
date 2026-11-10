@@ -290,19 +290,16 @@ To exit a loop early we can use `break` and `continue` to jup along
 
 The range based of often also called `for each` loop is available in C++ as well
 
-```{cpp}
-std::vector<int> numbers = {1, 2, 3, 4, 5};
-
-// Range-based for loop
-for (int num : numbers) {
-    std::cout << num << " ";
-}
-
-// Range-based for loop with auto key word
-for (auto num : numbers) {
-    std::cout << num << " ";
-}
+::: {.column width="100%" .custom-box}
+### Code file [`main_loops_auto.cpp`](./code/main_loops_auto.cpp)
+```{.cpp include="./code/main_loops_auto.cpp"}
 ```
+```{python}
+#| echo: false
+%run ../../scripts/compile_and_run_cpp.py ./code/main_loops_auto.cpp
+```
+:::
+
 
 ## :writing_hand: Exercise
 
