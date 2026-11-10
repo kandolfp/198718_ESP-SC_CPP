@@ -212,7 +212,7 @@ digraph ownership {
   { rank=same; obj; }
 }
 ```
-Here `object` is still owned by `P1` and `P2` is a none owing reference.
+Here `object` is still owned by `P1` and `P2` is a none owning reference.
 ::::
 
 :::: {.column width="66%" .scrollable}
