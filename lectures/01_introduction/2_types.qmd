@@ -128,7 +128,7 @@ digraph float {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_typer.cpp`](./code/main_typer.cpp)
-```{.cpp include="./code/main_typer.cpp"}
+```{.cpp include="./code/main_typer.cpp" code-line-numbers="|2-3|4|5"}
 ```
 ```{python}
 #| echo: false
