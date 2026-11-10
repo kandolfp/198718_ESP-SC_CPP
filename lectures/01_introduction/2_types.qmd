@@ -257,7 +257,7 @@ We need some conditionals and loops
 ## Conditionals
 
 C/C++ comes with the basic conditionals: `if`, `else if`, `else` 
-```{cpp}
+```{.cpp}
 if ( boolean == true ){
     // statement executed if the condition boolean == true is valid
 } else if (boolean1 == true){
@@ -271,7 +271,7 @@ New variables defined inside these environments are unknown to the global scope.
 ## Loops
 
 C/C++ comes with the basic loops: `for`, `while`, `do while` 
-```{cpp}
+```{.cpp}
 for ( long i = 0; i < 10; i++ ){
    // statement
 }
