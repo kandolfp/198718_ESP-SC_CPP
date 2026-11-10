@@ -119,7 +119,7 @@ What does the code do? Which output do you expect?
 :::: {.column width="66%"}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers0.cpp`](./code/main_pointers0.cpp)
-```{.cpp include="./code/main_pointers0.cpp"}
+```{.cpp include="./code/main_pointers0.cpp" code-line-numbers="6"}
 ```
 :::::
 ::::
@@ -150,7 +150,7 @@ digraph memory {
 ::::
 :::
 
-## :writing_hand: In class exercise - Solution 1/2
+## :writing_hand: In class exercise - Solution 2/2
 
 What does the code do? Which output do you expect?
 
@@ -158,7 +158,7 @@ What does the code do? Which output do you expect?
 :::: {.column width="66%"}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers0.cpp`](./code/main_pointers0.cpp)
-```{.cpp include="./code/main_pointers0.cpp"}
+```{.cpp include="./code/main_pointers0.cpp" code-line-numbers="7"}
 ```
 ```{python}
 #| echo: false
@@ -214,7 +214,6 @@ Datatype to store an address is a pointer:
 
 ::::  {.column width="33%"} 
 
-memory after line 5
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4
@@ -249,7 +248,7 @@ Datatype to store an address is a pointer:
 :::: {.column width="66%"}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers1.cpp`](./code/main_pointers1.cpp)
-```{.cpp include="./code/main_pointers1.cpp"}
+```{.cpp include="./code/main_pointers1.cpp" code-line-numbers="6"}
 ```
 ```{python}
 #| echo: false
@@ -259,7 +258,6 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
-memory after line 6
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4.25
@@ -294,7 +292,7 @@ Datatype to store an address is a pointer:
 :::: {.column width="66%"}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers1.cpp`](./code/main_pointers1.cpp)
-```{.cpp include="./code/main_pointers1.cpp"}
+```{.cpp include="./code/main_pointers1.cpp" code-line-numbers="7"}
 ```
 ```{python}
 #| echo: false
@@ -304,7 +302,6 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
-memory after line 7
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4.25
@@ -349,7 +346,6 @@ Datatype to store an address is a pointer:
 ::::
 
 ::::  {.column width="33%"} 
-memory after line 7
 ```{dot}
 //| label: memory5_1
 //| fig-width: 4.25
@@ -638,9 +634,12 @@ What does the code below do? Which output do you expect?
 ### Code file [`main_pointers8.cpp`](./code/main_pointers8.cpp)
 ```{.cpp include="./code/main_pointers8.cpp"}
 ```
-```{bash}
-Segmentation fault (core dumped)
+::::: {.tall-output}
+```{python}
+#| echo: false
+print("Segmentation fault (core dumped)")
 ```
+:::::
 :::
 
 
@@ -650,7 +649,7 @@ What does the code below do? Which output do you expect?
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_pointers9.cpp`](./code/main_pointers9.cpp)
-```{.cpp include="./code/main_pointers9.cpp"}
+```{.cpp include="./code/main_pointers9.cpp" code-line-numbers="4"}
 ```
 :::
 
