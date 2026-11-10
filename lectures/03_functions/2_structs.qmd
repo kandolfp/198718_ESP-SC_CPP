@@ -52,13 +52,18 @@ filters:
 :::
 
 ## What does this code do? 2/2
-
-::: {.column width="100%" .custom-box}
+::: {.columns}
+:::: {.column width="75%" .custom-box}
 ### Solution [`main_struct2_solution.cpp`](./code/main_struct2_solution.cpp)
 ```{.cpp include="./code/main_struct2_solution.cpp"}
 ```
+::::
+:::: {.column width="20%" .custom-box}
+::::: {.tall-output}
 ```{python}
 #| echo: false
 %run ../../scripts/compile_and_run_cpp.py ./code/main_struct2_solution.cpp
 ```
+:::::
+::::
 :::
