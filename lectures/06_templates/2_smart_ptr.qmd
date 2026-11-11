@@ -125,7 +125,7 @@ We can only transfer the control of object to P2
 :::: {.column width="66%"}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_smart_ptr_matrix_unique.cpp`](./code/main_smart_ptr_matrix_unique.cpp)
-```{.cpp include="./code/main_smart_ptr_matrix_unique.cpp"}
+```{.cpp include="./code/main_smart_ptr_matrix_unique.cpp" code-line-numbers="|13"}
 ```
 ```{python}
 #| echo: false
@@ -171,7 +171,7 @@ We can maintain the reference count, in this case $2$.
 :::: {.column width="66%"}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_smart_ptr_matrix_shared.cpp`](./code/main_smart_ptr_matrix_shared.cpp)
-```{.cpp include="./code/main_smart_ptr_matrix_shared.cpp"}
+```{.cpp include="./code/main_smart_ptr_matrix_shared.cpp" code-line-numbers="|14"}
 ```
 ```{python}
 #| echo: false
@@ -218,7 +218,7 @@ Here `object` is still owned by `P1` and `P2` is a none owning reference.
 :::: {.column width="66%" .scrollable}
 ::::: {.column width="100%" .custom-box}
 ### Code file [`main_smart_ptr_matrix_weak.cpp`](./code/main_smart_ptr_matrix_weak.cpp)
-```{.cpp include="./code/main_smart_ptr_matrix_weak.cpp" start-line=6}
+```{.cpp include="./code/main_smart_ptr_matrix_weak.cpp" start-line=6 code-line-numbers="|8,10-11"}
 ```
 ```{python}
 #| echo: false
