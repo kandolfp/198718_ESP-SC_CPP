@@ -26,19 +26,11 @@ Therefore, libraries are _linked_ during the build.
 - **Dynamic/shared library**: contains code shared by multiple programs.
     The code is loaded _at runtime_ and shared over multiple executables. 
 
+## Libraries - visualization - types
 
 ![Types of libraries](./figs/static_vs_dynamic_lib.svg){.lightbox}
 
-## Libraries
-
-Similar to other programming languages in C++ we do not write everything ourself.
-Therefore, libraries are _linked_ during the build.
-
-- **Static library**: contains code that is linked to our program at _compile time_. 
-    The code is _copied_ into our executable.
-- **Dynamic/shared library**: contains code shared by multiple programs.
-    The code is loaded _at runtime_ and shared over multiple executables. 
-
+## Libraries - visualization - memory
 
 ![Libraries in memory](./figs/static_vs_dynamic_lib_mem.svg){.lightbox}
 
