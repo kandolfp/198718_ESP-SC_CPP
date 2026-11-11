@@ -211,7 +211,7 @@ int main() {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor2.cpp`](./code/main_destructor2.cpp)
-```{.cpp include="./code/main_destructor2.cpp"}
+```{.cpp include="./code/main_destructor2.cpp" code-line-numbers="|13-16"}
 ```
 ```{python}
 #| echo: false
@@ -224,7 +224,7 @@ int main() {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor3.cpp`](./code/main_destructor3.cpp)
-```{.cpp include="./code/main_destructor3.cpp"}
+```{.cpp include="./code/main_destructor3.cpp"code-line-numbers="|14-15" }
 ```
 ```{python}
 #| echo: false
@@ -236,7 +236,7 @@ int main() {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor4.cpp`](./code/main_destructor4.cpp)
-```{.cpp include="./code/main_destructor4.cpp"}
+```{.cpp include="./code/main_destructor4.cpp" code-line-numbers="|9"}
 ```
 ```{python}
 #| echo: false
@@ -248,7 +248,7 @@ int main() {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor5.cpp`](./code/main_destructor5.cpp)
-```{.cpp include="./code/main_destructor5.cpp"}
+```{.cpp include="./code/main_destructor5.cpp" code-line-numbers="|9"}
 ```
 ```{python}
 #| echo: false
@@ -260,7 +260,7 @@ int main() {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor6.cpp`](./code/main_destructor6.cpp)
-```{.cpp include="./code/main_destructor6.cpp"}
+```{.cpp include="./code/main_destructor6.cpp" code-line-numbers="|12-13"}
 ```
 ```{python}
 #| echo: false
@@ -273,7 +273,7 @@ int main() {
 
 ::: {.column width="100%" .custom-box}
 ### Code file [`main_destructor7.cpp`](./code/main_destructor7.cpp)
-```{.cpp include="./code/main_destructor7.cpp"}
+```{.cpp include="./code/main_destructor7.cpp" code-line-numbers="|10"}
 ```
 ```{python}
 #| echo: false
