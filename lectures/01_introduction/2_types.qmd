@@ -157,12 +157,12 @@ Apart from the `cout` and `endl` commands that you have already seen, the `iostr
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_type2.cpp
+%run ../../scripts/compile_and_run_cpp.py ./code/main_type2.cpp +0.5236
 ```
 :::
 
 ::: {.callout-warning}
-These slides are compiled automatically so no input is provided.
+These slides are compiled automatically, the argument is $\frac{\pi}{6} \approx 0.5236$.
 :::
 
 ## :writing_hand: In Class Exercise
@@ -181,16 +181,13 @@ Read in an integer and a double and print out the sum of these two values.
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_type3.cpp
+%run ../../scripts/compile_and_run_cpp.py ./code/main_type3.cpp  +1 +1.1
 ```
 :::
 
 - Accuracy is lost since `sum` is an integer.
 - Use _typecast_ `int sum = inputInt + int(inputDouble)`
-
-::: {.callout-warning}
-These slides are compiled automatically so no input is provided.
-:::
+- The provided input is `1` and `1.1`.
 
 ## :writing_hand: In Class Exercise - Second Solution
 
@@ -200,13 +197,11 @@ These slides are compiled automatically so no input is provided.
 ```
 ```{python}
 #| echo: false
-%run ../../scripts/compile_and_run_cpp.py ./code/main_type3_1.cpp
+%run ../../scripts/compile_and_run_cpp.py ./code/main_type3_1.cpp +1 +1.1
 ```
 :::
 
-::: {.callout-warning}
-These slides are compiled automatically so no input is provided.
-:::
+- The provided input is `1` and `1.1`.
 
 ## Introducing `vector`
 

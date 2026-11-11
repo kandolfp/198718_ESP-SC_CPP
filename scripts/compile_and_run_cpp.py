@@ -15,16 +15,20 @@ from pathlib import Path
 arguments = sys.argv[1:]
 source_paths = []
 compile_options = []
+input_args = []
 exec_args = []
 
 # assumes all src files come first, then compiler options --> makes parsing more convenient
-found_compiler_option = False
+#found_compiler_option = False
 for arg in arguments:
-    if arg.startswith("-"):
-        found_compiler_option = True
+    #if arg.startswith("-"):
+    #    found_compiler_option = True
 
-    if found_compiler_option:
+    #if found_compiler_option:
+    if arg.startswith("-"):
         compile_options.append(arg)
+    elif arg.startswith("+"):
+        input_args.append(arg[1:])
     elif Path(arg).is_file():
         source_paths.append(arg)
     else:
@@ -53,5 +57,5 @@ if result.returncode != 0:
 
     print(stderr_output, end="")
 else:
-    result = subprocess.run([executable, *exec_args], check=False, capture_output=True, text=True, **win_kwargs)
+    result = subprocess.run([executable, *exec_args], input="\n".join(input_args) + "\n", check=False, capture_output=True, text=True, **win_kwargs)
     print(result.stdout, end="")
