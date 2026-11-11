@@ -82,7 +82,7 @@ print("$ g++ ./code/main.cpp ./code/math_utils.cpp -I./code")
 ::: {.column width="50%"}
 Static library
 
-```bash
+```{.bash}
 # compile the library to an object file
 $ g++ -c math_utils.cpp -o math_utils.o
 # bundle object into static library
@@ -90,8 +90,6 @@ $ ar rcs libmath_utils.a math_utils.o
 # Compile
 $ g++ -I. -c main.cpp -o main.o
 $ g++ -L. main.o libmath_utils.a -o main
-# alternative
-$ g++ main.o -L. -lmath_utils -o main.out
 # run th executable
 ./main.out
 ```
@@ -107,8 +105,6 @@ $ g++ -shared -o libmath_utils.so math_utils.o
 # Compile
 $ g++ -I. -c main.cpp -o main.o
 $ g++ -L. main.o libmath_utils.so -o main.out
-# alternative
-$ g++ main.o -L. -lmath_utils -o main.out
 # Specify location of shared library
 $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./
 # run the executable
@@ -116,3 +112,10 @@ $ ./main.out
 ```
 :::
 ::::
+
+- We can merge the two compile steps in line 6-7 into a single line
+
+    ```{bash}
+    # alternative compile in one line
+    $ g++ main.o -L. -lmath_utils -o main.out
+    ```
