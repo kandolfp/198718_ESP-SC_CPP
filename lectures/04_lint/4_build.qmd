@@ -57,6 +57,7 @@ project/
 
 ## Building with cmake 1/3
 
+::::: {.tall-output}
 ```{python}
 #| echo: false
 %%bash
@@ -64,6 +65,7 @@ cd code/project
 echo "$ cmake -S . -B build"
 cmake -S . -B build
 ```
+:::::
 
 ## Building with cmake 2/3
 
