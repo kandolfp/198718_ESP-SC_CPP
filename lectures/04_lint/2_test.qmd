@@ -63,11 +63,12 @@ Some selected features:
 
 ```{python}
 #| echo: false
-print("$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest")
+print("$ g++ ./code/math_utils.test.cpp -o ./code/math_utils.test.out ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest")
+print("$ ./code/math_utils.test.out")
 %run ../../scripts/compile_and_run_cpp.py ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main
 ```
 
-## 'gtest' example - default `main` 1/2
+## `gtest` example - default `main` 1/2
 
 As long as we use the basic main function we do not need to write the code for it, we just need to link again `gtest_main`.
 
@@ -77,13 +78,16 @@ As long as we use the basic main function we do not need to write the code for i
 ```
 :::
 
-## `gtest` example - default `main`2/2
+## `gtest` example - default `main` 2/2
 
+::::: {.tall-output}
 ```{python}
 #| echo: false
-print("$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main")
+print("$ g++ ./code/math_utils.test.cpp -o ./code/math_utils.test.out ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main")
+print("$ ./code/math_utils.test.cpp")
 %run ../../scripts/compile_and_run_cpp.py ./code/math_utils.test2.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main
 ```
+::::::
 
 ## :writing_hand: In class Exercise
 
