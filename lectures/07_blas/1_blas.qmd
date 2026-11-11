@@ -391,25 +391,28 @@ We should note that especially matrix-matrix multiplication is quite difficult t
 ```{bash}
 $ cmake -S . -B build
 ```
+::::: {.tall-output}
 ```{python}
 #| echo: false
 %%bash
 cd code
-echo "$ cmake -S . -B build"
 cmake -S . -B build
 ```
+:::::
 
 ## BLAS level 1: vector-vector operations - build 2/3
 
 ```{bash}
 cmake --build build
 ```
+::::: {.tall-output}
 ```{python}
 #| echo: false
 %%bash
 cd code
 cmake --build build
 ```
+:::::
 
 ## BLAS level 1: vector-vector operations - build 3/3
 
@@ -431,11 +434,14 @@ The project as a single zip can be found [here](./code/blas_project.zip)
 
 Linear Algebra PACKage
 
-## LAPACK - Linear Algebra PACKage
+## LAPACK - Linear Algebra PACKage 1/2
 
 - Implementations are usually based on BLAS.
 - Provides more complicated matrix operations (e.g., solution of a linear system of equations).
 - Naming conventions similar to the BLAS level 2 and 3 routines in that we have to prepend the algorithm with the desired data type and the matrix type we wish to use.
+
+## LAPACK - Linear Algebra PACKage 2/2
+
 - The most important operations:
     - `sv` ... Solves a linear system of equations (possibly with multiple right-hand sides). This operation is supported for both dense (for example, ge) as well as sparse (for example, gb) storage schemes.
     - `ls` ... Computes the least square solution of an over-determined system of linear equations.
