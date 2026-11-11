@@ -651,10 +651,10 @@ a_{15} &amp; a_{25} &amp; a_{35} &amp; a_{45} &amp; a_{55}
 <section id="blas-level-1-vector-vector-operations---build-13" class="slide level2">
 <h2>BLAS level 1: vector-vector operations - build 1/3</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a aria-label="1"></a>$ cmake -S . -B build</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="be99ee1c" class="cell" data-execution_count="1">
+<div class="tall-output">
+<div id="67a588c2" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<pre><code>$ cmake -S . -B build
--- The C compiler identification is GNU 15.2.0
+<pre><code>-- The C compiler identification is GNU 15.2.0
 -- The CXX compiler identification is GNU 15.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -700,16 +700,18 @@ a_{15} &amp; a_{25} &amp; a_{35} &amp; a_{45} &amp; a_{55}
 -- --&gt; Will use second_INT_ETIME.f and dsecnd_INT_ETIME.f as timing function.
 -- Build html documentation: OFF
 -- Build man documentation: OFF
--- Configuring done (10.7s)
--- Generating done (1.2s)
+-- Configuring done (14.6s)
+-- Generating done (0.9s)
 -- Build files have been written to: /home/runner/work/198718_ESP-SC_CPP/198718_ESP-SC_CPP/lectures/07_blas/code/build</code></pre>
+</div>
 </div>
 </div>
 </section>
 <section id="blas-level-1-vector-vector-operations---build-23" class="slide level2">
 <h2>BLAS level 1: vector-vector operations - build 2/3</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a aria-label="1"></a>cmake --build build</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="a2c2777b" class="cell" data-execution_count="2">
+<div class="tall-output">
+<div id="c7299a7b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>[  0%] <span class="ansi-green-fg">Building Fortran object _deps/lapack-build/CBLAS/src/CMakeFiles/cblas_64_fobj.dir/cblas_64_fobj/cdotcsub.f.o</span>
@@ -5272,14 +5274,15 @@ a_{15} &amp; a_{25} &amp; a_{35} &amp; a_{45} &amp; a_{55}
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="blas-level-1-vector-vector-operations---build-33" class="slide level2">
 <h2>BLAS level 1: vector-vector operations - build 3/3</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a aria-label="1"></a>build/main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b2d0e8de" class="cell" data-execution_count="3">
+<div id="a91b21fa" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>MY:     3.33333e+07 0.106068 s
-BLAS:   3.33333e+07 0.106068 s</code></pre>
+<pre><code>MY:     3.33333e+07 0.0824635 s
+BLAS:   3.33333e+07 0.0824361 s</code></pre>
 </div>
 </div>
 <p>This the the not optimized BLAS implementation!</p>
@@ -5290,12 +5293,17 @@ BLAS:   3.33333e+07 0.106068 s</code></pre>
 <h1>LAPACK</h1>
 <p>Linear Algebra PACKage</p>
 </section>
-<section id="lapack---linear-algebra-package" class="slide level2">
-<h2>LAPACK - Linear Algebra PACKage</h2>
+<section id="lapack---linear-algebra-package-12" class="slide level2">
+<h2>LAPACK - Linear Algebra PACKage 1/2</h2>
 <ul>
 <li>Implementations are usually based on BLAS.</li>
 <li>Provides more complicated matrix operations (e.g., solution of a linear system of equations).</li>
 <li>Naming conventions similar to the BLAS level 2 and 3 routines in that we have to prepend the algorithm with the desired data type and the matrix type we wish to use.</li>
+</ul>
+</section>
+<section id="lapack---linear-algebra-package-22" class="slide level2">
+<h2>LAPACK - Linear Algebra PACKage 2/2</h2>
+<ul>
 <li>The most important operations:
 <ul>
 <li><code>sv</code> … Solves a linear system of equations (possibly with multiple right-hand sides). This operation is supported for both dense (for example, ge) as well as sparse (for example, gb) storage schemes.</li>

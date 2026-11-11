@@ -410,7 +410,7 @@ Peter Kandolf
 <h2>Code example</h2>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_typer.cpp">Code file <a href="./code/main_typer.cpp"><code>main_typer.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a aria-label="1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-code-line-numbers="|2-3|4|5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a aria-label="1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <span id="cb2-2"><a aria-label="2"></a>  <span class="dt">int</span> i<span class="op">;</span>          <span class="co">// declaration</span></span>
 <span id="cb2-3"><a aria-label="3"></a>  i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>          <span class="co">// definition</span></span>
 <span id="cb2-4"><a aria-label="4"></a>  <span class="dt">float</span> d <span class="op">=</span> <span class="fl">2.3</span><span class="bu">f</span><span class="op">;</span> <span class="co">// declaration and definition</span></span>
@@ -448,10 +448,10 @@ Peter Kandolf
 <span id="cb3-9"><a aria-label="9"></a>            <span class="op">&lt;&lt;</span> <span class="st">"sin("</span> <span class="op">&lt;&lt;</span> input <span class="op">&lt;&lt;</span> <span class="st">") = "</span> <span class="op">&lt;&lt;</span> sin<span class="op">(</span>input<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb3-10"><a aria-label="10"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb3-11"><a aria-label="11"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="60224739" class="cell" data-execution_count="2">
+<div id="8bda54f1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Enter a number: 
-sin(3.64265e-319) = 3.64265e-319</code></pre>
+sin(0.5236) = 0.500001</code></pre>
 </div>
 </div>
 </div><div class="callout callout-warning callout-titled callout-style-default">
@@ -463,7 +463,7 @@ sin(3.64265e-319) = 3.64265e-319</code></pre>
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>These slides are compiled automatically so no input is provided.</p>
+<p>These slides are compiled automatically, the argument is <span class="math inline">\(\frac{\pi}{6} \approx 0.5236\)</span>.</p>
 </div>
 </div>
 </div>
@@ -494,28 +494,16 @@ sin(3.64265e-319) = 3.64265e-319</code></pre>
 <span id="cb5-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb5-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb5-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="819edc61" class="cell" data-execution_count="3">
+<div id="cc203501" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>Enter two numbers: Integer , Double sum is 0</code></pre>
+<pre><code>Enter two numbers: Integer , Double sum is 2</code></pre>
 </div>
 </div>
 </div><ul>
 <li>Accuracy is lost since <code>sum</code> is an integer.</li>
 <li>Use <em>typecast</em> <code>int sum = inputInt + int(inputDouble)</code></li>
+<li>The provided input is <code>1</code> and <code>1.1</code>.</li>
 </ul>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p>These slides are compiled automatically so no input is provided.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="in-class-exercise---second-solution" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> In Class Exercise - Second Solution</h2>
@@ -537,29 +525,20 @@ sin(3.64265e-319) = 3.64265e-319</code></pre>
 <span id="cb7-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"sum is "</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb7-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb7-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="6efddfd1" class="cell" data-execution_count="4">
+<div id="6f221cb7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>Enter two numbers: Integer , Double sum is 6.95302e-310</code></pre>
+<pre><code>Enter two numbers: Integer , Double sum is 2.1</code></pre>
 </div>
 </div>
-</div><div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p>These slides are compiled automatically so no input is provided.</p>
-</div>
-</div>
-</div>
+</div><ul>
+<li>The provided input is <code>1</code> and <code>1.1</code>.</li>
+</ul>
 </section>
 <section id="introducing-vector" class="slide level2">
 <h2>Introducing <code>vector</code></h2>
 <p>The standard C++ libraries provide various helpful datatypes, e.g.&nbsp;<code>std::vector</code></p>
-<div class="column custom-box" style="width:100%;">
+<div class="columns">
+<div class="column custom-box" style="width:75%;">
 <h3 id="solution-main_vector1.cpp">Solution <a href="./code/main_vector1.cpp"><code>main_vector1.cpp</code></a></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb9-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
@@ -574,13 +553,16 @@ sin(3.64265e-319) = 3.64265e-319</code></pre>
 <span id="cb9-11"><a aria-label="11"></a></span>
 <span id="cb9-12"><a aria-label="12"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb9-13"><a aria-label="13"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="596c669f" class="cell" data-execution_count="5">
+</div><div class="column custom-box" style="width:20%;">
+<h3 id="output">Output</h3>
+<div id="3bad31dc" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>5
 1 0 1</code></pre>
 </div>
 </div>
-</div><ul>
+</div></div>
+<ul>
 <li>Note that you need to put an <code>std::</code> in front of the vector (and <code>cout</code>, <code>endl</code>). This is a namespace which we will cover later.</li>
 <li>indexing starts at <span class="math inline">\(0\)</span> in C++!</li>
 <li>some useful functions <code>size</code>, <code>reserve</code>, <code>resize</code></li>
@@ -619,46 +601,58 @@ sin(3.64265e-319) = 3.64265e-319</code></pre>
 <section id="conditionals" class="slide level2">
 <h2>Conditionals</h2>
 <p>C/C++ comes with the basic conditionals: <code>if</code>, <code>else if</code>, <code>else</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a aria-label="1"></a>if ( boolean == true ){</span>
-<span id="cb12-2"><a aria-label="2"></a>    // statement executed if the condition boolean == true is valid</span>
-<span id="cb12-3"><a aria-label="3"></a>} else if (boolean1 == true){</span>
-<span id="cb12-4"><a aria-label="4"></a>    // statement executed if the condition boolean == true is not valid but boolean1 == true</span>
-<span id="cb12-5"><a aria-label="5"></a>} else{</span>
-<span id="cb12-6"><a aria-label="6"></a>    // statement executed if both conditions are false</span>
-<span id="cb12-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a aria-label="1"></a><span class="cf">if</span> <span class="op">(</span> boolean <span class="op">==</span> <span class="kw">true</span> <span class="op">){</span></span>
+<span id="cb12-2"><a aria-label="2"></a>    <span class="co">// statement executed if the condition boolean == true is valid</span></span>
+<span id="cb12-3"><a aria-label="3"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>boolean1 <span class="op">==</span> <span class="kw">true</span><span class="op">){</span></span>
+<span id="cb12-4"><a aria-label="4"></a>    <span class="co">// statement executed if the condition boolean == true is not valid but boolean1 == true</span></span>
+<span id="cb12-5"><a aria-label="5"></a><span class="op">}</span> <span class="cf">else</span><span class="op">{</span></span>
+<span id="cb12-6"><a aria-label="6"></a>    <span class="co">// statement executed if both conditions are false</span></span>
+<span id="cb12-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>New variables defined inside these environments are unknown to the global scope.</p>
 </section>
 <section id="loops" class="slide level2">
 <h2>Loops</h2>
 <p>C/C++ comes with the basic loops: <code>for</code>, <code>while</code>, <code>do while</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a aria-label="1"></a>for ( long i = 0; i &lt; 10; i++ ){</span>
-<span id="cb13-2"><a aria-label="2"></a>   // statement</span>
-<span id="cb13-3"><a aria-label="3"></a>}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a aria-label="1"></a><span class="cf">for</span> <span class="op">(</span> <span class="dt">long</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span> <span class="op">){</span></span>
+<span id="cb13-2"><a aria-label="2"></a>   <span class="co">// statement</span></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="op">}</span></span>
 <span id="cb13-4"><a aria-label="4"></a></span>
-<span id="cb13-5"><a aria-label="5"></a>while ( boolean == true ){</span>
-<span id="cb13-6"><a aria-label="6"></a>   // statement</span>
-<span id="cb13-7"><a aria-label="7"></a>}</span>
+<span id="cb13-5"><a aria-label="5"></a><span class="cf">while</span> <span class="op">(</span> boolean <span class="op">==</span> <span class="kw">true</span> <span class="op">){</span></span>
+<span id="cb13-6"><a aria-label="6"></a>   <span class="co">// statement</span></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="op">}</span></span>
 <span id="cb13-8"><a aria-label="8"></a>    </span>
-<span id="cb13-9"><a aria-label="9"></a>do {</span>
-<span id="cb13-10"><a aria-label="10"></a>  // statement</span>
-<span id="cb13-11"><a aria-label="11"></a>} while( boolean == true )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-9"><a aria-label="9"></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb13-10"><a aria-label="10"></a>  <span class="co">// statement</span></span>
+<span id="cb13-11"><a aria-label="11"></a><span class="op">}</span> <span class="cf">while</span><span class="op">(</span> boolean <span class="op">==</span> <span class="kw">true</span> <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To exit a loop early we can use <code>break</code> and <code>continue</code> to jup along</p>
 </section>
 <section id="range-based-loops" class="slide level2">
 <h2>Range based loops</h2>
 <p>The range based of often also called <code>for each</code> loop is available in C++ as well</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a aria-label="1"></a>std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};</span>
-<span id="cb14-2"><a aria-label="2"></a></span>
-<span id="cb14-3"><a aria-label="3"></a>// Range-based for loop</span>
-<span id="cb14-4"><a aria-label="4"></a>for (int num : numbers) {</span>
-<span id="cb14-5"><a aria-label="5"></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
-<span id="cb14-6"><a aria-label="6"></a>}</span>
-<span id="cb14-7"><a aria-label="7"></a></span>
-<span id="cb14-8"><a aria-label="8"></a>// Range-based for loop with auto key word</span>
-<span id="cb14-9"><a aria-label="9"></a>for (auto num : numbers) {</span>
-<span id="cb14-10"><a aria-label="10"></a>    std::cout &lt;&lt; num &lt;&lt; " ";</span>
-<span id="cb14-11"><a aria-label="11"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
+<div class="column custom-box" style="width:100%;">
+<h3 id="code-file-main_loops_auto.cpp">Code file <a href="./code/main_loops_auto.cpp"><code>main_loops_auto.cpp</code></a></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a aria-label="1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb14-3"><a aria-label="3"></a></span>
+<span id="cb14-4"><a aria-label="4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb14-5"><a aria-label="5"></a>  <span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span></span>
+<span id="cb14-6"><a aria-label="6"></a></span>
+<span id="cb14-7"><a aria-label="7"></a>  <span class="co">// Range-based for loop</span></span>
+<span id="cb14-8"><a aria-label="8"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> num <span class="op">:</span> numbers<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-9"><a aria-label="9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> num <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb14-10"><a aria-label="10"></a>  <span class="op">}</span></span>
+<span id="cb14-11"><a aria-label="11"></a></span>
+<span id="cb14-12"><a aria-label="12"></a>  <span class="co">// Range-based for loop with auto key word</span></span>
+<span id="cb14-13"><a aria-label="13"></a>  <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> num <span class="op">:</span> numbers<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-14"><a aria-label="14"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> num <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb14-15"><a aria-label="15"></a>  <span class="op">}</span></span>
+<span id="cb14-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7d529633" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>1 2 3 4 5 1 2 3 4 5 </code></pre>
+</div>
+</div>
+</div></section>
 <section id="exercise-1" class="slide level2">
 <h2><span class="emoji" data-emoji="writing_hand">✍️</span> Exercise</h2>
 <div class="column custom-box" style="width:100%;">

@@ -304,9 +304,10 @@ Peter Kandolf
 </div></section>
 <section id="gtest-example-33" class="slide level2">
 <h2><code>gtest</code> example 3/3</h2>
-<div id="a6921d55" class="cell" data-execution_count="1">
+<div id="62dac582" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<pre><code>$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest
+<pre><code>$ g++ ./code/math_utils.test.cpp -o ./code/math_utils.test.out ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest
+$ ./code/math_utils.test.out
 [==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 2 tests from MathUtilsTest
@@ -323,7 +324,7 @@ Peter Kandolf
 </div>
 </section>
 <section id="gtest-example---default-main-12" class="slide level2">
-<h2>‘gtest’ example - default <code>main</code> 1/2</h2>
+<h2><code>gtest</code> example - default <code>main</code> 1/2</h2>
 <p>As long as we use the basic main function we do not need to write the code for it, we just need to link again <code>gtest_main</code>.</p>
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-math_utils.test2.cpp">Code file <a href="./code/math_utils.test2.cpp"><code>math_utils.test2.cpp</code></a></h3>
@@ -345,11 +346,13 @@ Peter Kandolf
 <span id="cb5-16"><a aria-label="16"></a>  EXPECT_EQ<span class="op">(</span>sub<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">10</span><span class="op">),</span> <span class="dv">0</span><span class="op">);</span> <span class="co">// 10 - 10 = 0</span></span>
 <span id="cb5-17"><a aria-label="17"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></section>
-<section id="gtest-example---default-main22" class="slide level2">
-<h2><code>gtest</code> example - default <code>main</code>2/2</h2>
-<div id="f368c2ac" class="cell" data-execution_count="2">
+<section id="gtest-example---default-main-22" class="slide level2">
+<h2><code>gtest</code> example - default <code>main</code> 2/2</h2>
+<div class="tall-output">
+<div id="6341d9e1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
-<pre><code>$ g++ ./code/math_utils.test.cpp ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main
+<pre><code>$ g++ ./code/math_utils.test.cpp -o ./code/math_utils.test.out ./code/math_utils.cpp -std=c++17 -Igtest  -lgtest -lgtest_main
+$ ./code/math_utils.test.cpp
 Running main() from ./googletest/src/gtest_main.cc
 [==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -363,6 +366,7 @@ Running main() from ./googletest/src/gtest_main.cc
 [----------] Global test environment tear-down
 [==========] 2 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 2 tests.</code></pre>
+</div>
 </div>
 </div>
 </section>

@@ -240,6 +240,9 @@ Peter Kandolf
 <li><strong>Static library</strong>: contains code that is linked to our program at <em>compile time</em>. The code is <em>copied</em> into our executable.</li>
 <li><strong>Dynamic/shared library</strong>: contains code shared by multiple programs. The code is loaded <em>at runtime</em> and shared over multiple executables.</li>
 </ul>
+</section>
+<section id="libraries---visualization---types" class="slide level2">
+<h2>Libraries - visualization - types</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="./figs/static_vs_dynamic_lib.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Types of libraries"><img data-src="./figs/static_vs_dynamic_lib.svg" alt="Types of libraries"></a></p>
@@ -247,13 +250,8 @@ Peter Kandolf
 </figure>
 </div>
 </section>
-<section id="libraries-2" class="slide level2">
-<h2>Libraries</h2>
-<p>Similar to other programming languages in C++ we do not write everything ourself. Therefore, libraries are <em>linked</em> during the build.</p>
-<ul>
-<li><strong>Static library</strong>: contains code that is linked to our program at <em>compile time</em>. The code is <em>copied</em> into our executable.</li>
-<li><strong>Dynamic/shared library</strong>: contains code shared by multiple programs. The code is loaded <em>at runtime</em> and shared over multiple executables.</li>
-</ul>
+<section id="libraries---visualization---memory" class="slide level2">
+<h2>Libraries - visualization - memory</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="./figs/static_vs_dynamic_lib_mem.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Libraries in memory"><img data-src="./figs/static_vs_dynamic_lib_mem.svg" alt="Libraries in memory"></a></p>
@@ -365,7 +363,7 @@ Peter Kandolf
 <span id="cb1-5"><a aria-label="5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"1 - (1 + 1) = "</span> <span class="op">&lt;&lt;</span> sub<span class="op">(</span><span class="dv">1</span><span class="op">,</span> add<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">))</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb1-6"><a aria-label="6"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb1-7"><a aria-label="7"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="dc5e8bc9" class="cell" data-execution_count="1">
+<div id="770a2416" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>$ g++ ./code/main.cpp ./code/math_utils.cpp -I./code
 1 - (1 + 1) = -1</code></pre>
@@ -384,10 +382,8 @@ Peter Kandolf
 <span id="cb3-5"><a aria-label="5"></a><span class="co"># Compile</span></span>
 <span id="cb3-6"><a aria-label="6"></a><span class="ex">$</span> g++ <span class="at">-I.</span> <span class="at">-c</span> main.cpp <span class="at">-o</span> main.o</span>
 <span id="cb3-7"><a aria-label="7"></a><span class="ex">$</span> g++ <span class="at">-L.</span> main.o libmath_utils.a <span class="at">-o</span> main</span>
-<span id="cb3-8"><a aria-label="8"></a><span class="co"># alternative</span></span>
-<span id="cb3-9"><a aria-label="9"></a><span class="ex">$</span> g++ main.o <span class="at">-L.</span> <span class="at">-lmath_utils</span> <span class="at">-o</span> main.out</span>
-<span id="cb3-10"><a aria-label="10"></a><span class="co"># run th executable</span></span>
-<span id="cb3-11"><a aria-label="11"></a><span class="ex">./main.out</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-8"><a aria-label="8"></a><span class="co"># run th executable</span></span>
+<span id="cb3-9"><a aria-label="9"></a><span class="ex">./main.out</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <p>Dynamic library</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-label="1"></a><span class="co"># compile the library to an object file</span></span>
@@ -397,13 +393,16 @@ Peter Kandolf
 <span id="cb4-5"><a aria-label="5"></a><span class="co"># Compile</span></span>
 <span id="cb4-6"><a aria-label="6"></a><span class="ex">$</span> g++ <span class="at">-I.</span> <span class="at">-c</span> main.cpp <span class="at">-o</span> main.o</span>
 <span id="cb4-7"><a aria-label="7"></a><span class="ex">$</span> g++ <span class="at">-L.</span> main.o libmath_utils.so <span class="at">-o</span> main.out</span>
-<span id="cb4-8"><a aria-label="8"></a><span class="co"># alternative</span></span>
-<span id="cb4-9"><a aria-label="9"></a><span class="ex">$</span> g++ main.o <span class="at">-L.</span> <span class="at">-lmath_utils</span> <span class="at">-o</span> main.out</span>
-<span id="cb4-10"><a aria-label="10"></a><span class="co"># Specify location of shared library</span></span>
-<span id="cb4-11"><a aria-label="11"></a><span class="ex">$</span> export LD_LIBRARY_PATH=<span class="va">$LD_LIBRARY_PATH</span>:./</span>
-<span id="cb4-12"><a aria-label="12"></a><span class="co"># run the executable</span></span>
-<span id="cb4-13"><a aria-label="13"></a><span class="ex">$</span> ./main.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-8"><a aria-label="8"></a><span class="co"># Specify location of shared library</span></span>
+<span id="cb4-9"><a aria-label="9"></a><span class="ex">$</span> export LD_LIBRARY_PATH=<span class="va">$LD_LIBRARY_PATH</span>:./</span>
+<span id="cb4-10"><a aria-label="10"></a><span class="co"># run the executable</span></span>
+<span id="cb4-11"><a aria-label="11"></a><span class="ex">$</span> ./main.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
+<ul>
+<li><p>We can merge the two compile steps in line 6-7 into a single line</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a aria-label="1"></a># alternative compile in one line</span>
+<span id="cb5-2"><a aria-label="2"></a>$ g++ main.o -L. -lmath_utils -o main.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
 
 
 </section></section>

@@ -377,7 +377,7 @@ Peter Kandolf
 </div><div class="column" style="width:66%;">
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_smart_ptr_matrix_unique.cpp">Code file <a href="./code/main_smart_ptr_matrix_unique.cpp"><code>main_smart_ptr_matrix_unique.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a aria-label="1"></a><span class="co">// g++ -std=c++17 -o matrix.out main_smart_ptr_matrix_unique.cpp matrix3.cpp</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-code-line-numbers="|13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a aria-label="1"></a><span class="co">// g++ -std=c++17 -o matrix.out main_smart_ptr_matrix_unique.cpp matrix3.cpp</span></span>
 <span id="cb4-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">"matrix3.hpp"</span></span>
 <span id="cb4-3"><a aria-label="3"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb4-4"><a aria-label="4"></a><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></span>
@@ -393,7 +393,7 @@ Peter Kandolf
 <span id="cb4-14"><a aria-label="14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"B-&gt;getRows() = "</span> <span class="op">&lt;&lt;</span> B<span class="op">-&gt;</span>getRows<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb4-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb4-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="aa3682f9" class="cell" data-execution_count="4">
+<div id="851fbc50" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>A-&gt;getRows() = 2
 B-&gt;getRows() = 2</code></pre>
@@ -453,7 +453,7 @@ B-&gt;getRows() = 2</code></pre>
 </div><div class="column" style="width:66%;">
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_smart_ptr_matrix_shared.cpp">Code file <a href="./code/main_smart_ptr_matrix_shared.cpp"><code>main_smart_ptr_matrix_shared.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a aria-label="1"></a><span class="co">// g++ -std=c++17 -o matrix.out main_smart_ptr_matrix_shared.cpp matrix3.cpp</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-code-line-numbers="|14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a aria-label="1"></a><span class="co">// g++ -std=c++17 -o matrix.out main_smart_ptr_matrix_shared.cpp matrix3.cpp</span></span>
 <span id="cb6-2"><a aria-label="2"></a><span class="pp">#include </span><span class="im">"matrix3.hpp"</span></span>
 <span id="cb6-3"><a aria-label="3"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb6-4"><a aria-label="4"></a><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></span>
@@ -469,7 +469,7 @@ B-&gt;getRows() = 2</code></pre>
 <span id="cb6-14"><a aria-label="14"></a>            <span class="op">&lt;&lt;</span> <span class="st">"A.use_count() = "</span> <span class="op">&lt;&lt;</span> A<span class="op">.</span>use_count<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb6-15"><a aria-label="15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb6-16"><a aria-label="16"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3e030faf" class="cell" data-execution_count="5">
+<div id="3435d821" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>A.getRows() = 2
 B.getRows() = 2
@@ -526,11 +526,11 @@ A.use_count() = 2</code></pre>
 </div>
 </div>
 </div>
-<p>Here <code>object</code> is still owned by <code>P1</code> and <code>P2</code> is a none owing reference.</p>
+<p>Here <code>object</code> is still owned by <code>P1</code> and <code>P2</code> is a none owning reference.</p>
 </div><div class="column scrollable" style="width:66%;">
 <div class="column custom-box" style="width:100%;">
 <h3 id="code-file-main_smart_ptr_matrix_weak.cpp">Code file <a href="./code/main_smart_ptr_matrix_weak.cpp"><code>main_smart_ptr_matrix_weak.cpp</code></a></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-startfrom="6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp" style="counter-reset: source-line 5;"><span id="cb8-6"><a aria-label="6"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-startfrom="6" data-code-line-numbers="|8,10-11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp" style="counter-reset: source-line 5;"><span id="cb8-6"><a aria-label="6"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <span id="cb8-7"><a aria-label="7"></a>  <span class="bu">std::</span>shared_ptr<span class="op">&lt;</span>Matrix<span class="op">&gt;</span> A<span class="op">(</span><span class="kw">new</span> Matrix<span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
 <span id="cb8-8"><a aria-label="8"></a>  <span class="bu">std::</span>weak_ptr<span class="op">&lt;</span>Matrix<span class="op">&gt;</span> B<span class="op">;</span></span>
 <span id="cb8-9"><a aria-label="9"></a></span>
@@ -545,7 +545,7 @@ A.use_count() = 2</code></pre>
 <span id="cb8-18"><a aria-label="18"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"A.use_count() = "</span> <span class="op">&lt;&lt;</span> A<span class="op">.</span>use_count<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb8-19"><a aria-label="19"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb8-20"><a aria-label="20"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="95b088bf" class="cell" data-execution_count="6">
+<div id="34703406" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>A.getRows() = 2
 B.getRows() = 2
